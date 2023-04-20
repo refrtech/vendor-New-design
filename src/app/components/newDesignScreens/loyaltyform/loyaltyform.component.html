@@ -30,15 +30,37 @@
                         </div>
                     </div>
 
-                    <div class="flex_2">
-                        <div class="setup_heading">
-                            <div class="h1">Loyalty</div>
-                            <div class="p">It pays to have loyal customers</div>
-                            <span class="divide"></span>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam deserunt aliquid fugit
-                            minus, ratione dolor unde provident quos illo tempora consequatur laboriosam inventore!
-                            Saepe exercitationem cum quia fugit ad illum?
 
+                    <div class="flex_2">
+                        <div class="ld_dflex md_dflex sd_dflex ld_align-items-center md_align-items-center sd_align-items-center
+                            ld_M90width md_M90width sd_M90width
+                            ">
+                            <div class="setup_heading">
+                                <div class="h1">Loyalty</div>
+                                <div class="p">It pays to have loyal customers</div>
+                            </div>
+                            <span class="divide"></span>
+                            <div>
+                                <a href="" class="purple_text ld_m_size md_m_size sd_m_size">Setup later</a>
+                            </div>
+                        </div>
+                        <div class="section_type">
+                            <div class="store_section section_w">
+                                <div class="h1">Start Date</div>
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+
+
+                            </div>
+                            <div class="store_section section_w">
+                                <div class="h1">Loyalty program name</div>
+
+
+                            </div>
                         </div>
 
                     </div>
