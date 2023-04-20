@@ -2,20 +2,9 @@
   .main {
     display: flex;
     justify-content: center;
-    background-color: red;
   }
 
-  .gradient_svg {
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
-    background-position: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+
 
   .box {
     display: flex;

@@ -187,6 +187,14 @@ const routes: Routes = [
       ).then((m) => m.AddsuperpowerstoresModuleModule),
   },
 
+  {
+    path: 'recommendation_CPC',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/recommendation-cpc/recommendation-cpc-module/recommendation-cpc-module.module'
+      ).then((m) => m.RecommendationCPCModuleModule),
+  },
+
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
