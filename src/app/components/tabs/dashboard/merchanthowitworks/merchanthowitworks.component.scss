@@ -1,0 +1,25 @@
+.box:last-child {
+  border-bottom: none;
+}
+
+.box {
+  border-radius: 3px;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  .dialog {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+  }
+  .refr_ques {
+    p {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px !important;
+      line-height: 25px !important;
+      color: #000000;
+      margin: 0 !important;
+    }
+  }
+}

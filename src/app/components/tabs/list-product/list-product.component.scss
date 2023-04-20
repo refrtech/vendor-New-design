@@ -1,0 +1,349 @@
+.inventoryList {
+  min-height: 80vh;
+  .content {
+    display: flex;
+    align-items: flex-start;
+    border: 2px dotted #eeeeee;
+    border-bottom: 0px solid;
+    border-radius: 8px;
+    padding: 8px 0 0 0;
+    margin: 0 8px;
+
+    .prod-name {
+      width: 100%;
+
+      .prod-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        color: #000000;
+
+        .inform {
+          padding: 0 4px;
+          display: inline-block;
+          font-size: 8px;
+          line-height: 14px;
+          vertical-align: middle;
+          color: #fff;
+          border-radius: 0 8px 8px;
+        }
+      }
+
+      .prod-desc {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px !important;
+        line-height: 18px !important;
+        height: 36px;
+        color: #a2a3a3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .discounted {
+        display: flex;
+
+        .prod-price {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px !important;
+          line-height: 23px !important;
+          text-decoration: line-through;
+          color: #000000;
+          margin-right: 0 !important;
+        }
+
+        .discount-price {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .prod-img {
+      width: 80px;
+      min-height: 80px;
+      margin: 0 8px;
+      border: 1px solid #eeeeee;
+
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .crud {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    border: 2px dotted #eeeeee;
+    border-top: 0px solid;
+    border-radius: 0 0 8px 8px;
+    padding: 0 0 8px 0;
+    margin: 0 8px;
+    .prod-view {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px !important;
+      line-height: 19px !important;
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .req-excul {
+      border-radius: 3px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+    }
+  }
+}
+
+.editProduct {
+  max-width: 480px;
+  min-width: 300px;
+  .formHold {
+    animation: formHold .6s;
+
+    @keyframes formHold {
+      0% {
+        height: 0vh;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      50% {
+        height: 0vh;
+        visibility: visible;
+        opacity: 0;
+      }
+
+      100% {
+        height: auto;
+        opacity: 1;
+      }
+    }
+
+    form {
+      .fullWidth {
+        width: 98%;
+        font-size: 18px;
+        margin: 0 1% 8px 1%;
+        a svg {
+          height: 20px;
+          line-height: 20px;
+          padding: 5px;
+        }
+
+        a .loader {
+          animation: loader 1s infinite;
+        }
+
+        @keyframes loader {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
+
+      .halfWidth {
+        width: 48%;
+        font-size: 18px;
+        margin: 0 1% 8px 1%;
+      }
+    }
+  }
+
+  .formFoot {
+    margin: 24px 0;
+  }
+
+  form .imageUploader {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    border: 3px dotted;
+    padding: 0 0 8px 0;
+    margin: 0px 0 0 0;
+    border-radius: 8px;
+
+    .svgHold {
+      width: 134px;
+      height: 92px;
+      border: 3px solid #ffffff;
+      display: inline-block;
+      border-radius: 16px;
+
+      svg {
+        width: 90px;
+        height: 90px;
+        padding: 0 22px;
+        fill: #eeeeee;
+      }
+    }
+
+    .gallery {
+      width: -webkit-fill-available;
+      width: -moz-available;
+      display: flex;
+      align-items: center;
+      overflow-x: scroll;
+    }
+
+    .squareImage {
+      background: #eeeeee;
+      width: 128px;
+      min-width: 128px;
+      border-radius: 8px;
+      padding: 0;
+      margin: 8px 4px;
+      animation: squareImage .3s;
+
+      @keyframes squareImage {
+        0% {
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        40% {
+          opacity: 0;
+          visibility: visible;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+
+    a {
+      padding: 0 8px;
+    }
+  }
+
+  .variants {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    line-height: 26px;
+    font-size: 14px;
+
+    table {
+      width: -webkit-fill-available;
+      width: -moz-available;
+      margin: 0 0 8px 0;
+      padding: 16px 0 4px 8px;
+      border-radius: 8px;
+
+      tr,
+      td {
+        padding: 0 8px 0 0;
+        margin: 0;
+        vertical-align: top;
+      }
+
+      tr th,
+      tr td {
+        height: 52px;
+        max-width: 60%;
+      }
+
+      tr td {
+        .heldVarients {
+          border-radius: 0 0 8px 8px;
+          width: -webkit-fill-available;
+          width: -moz-available;
+          padding-bottom: 17px;
+          border-top: none !important;
+
+          .optList {
+            display: inline-block;
+            padding: 0;
+            margin: 0 0 0 8px;
+          }
+        }
+      }
+
+      tr:nth-child(1) td .heldVarients {
+        border: #B983FF solid 2px;
+      }
+
+      tr:nth-child(2) td .heldVarients {
+        border: #94B3FD solid 2px;
+      }
+
+      tr:nth-child(3) td .heldVarients {
+        border: #94DAFF solid 2px;
+      }
+
+      .heldCustom td .heldVarients {
+        border: #FF8AAE solid 2px !important;
+        border-top: none !important;
+      }
+    }
+
+  }
+
+  .colorPalete {
+    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    display: inline-block;
+    border-radius: 8px;
+    transform: translatey(-24px);
+    width: 320px;
+
+    .paletescroll {
+      display: flex;
+      overflow-x: scroll;
+
+      a {
+        transition-duration: .3s;
+      }
+
+      .circle {
+        margin: 6px;
+        font-size: 0;
+        border: 1px solid #eeeeee;
+        vertical-align: middle;
+        display: inline-block;
+
+        mat-icon {
+          transform: scale(1);
+        }
+      }
+
+      .picker {
+        mat-icon {
+          opacity: 0;
+          transition-duration: .3s;
+        }
+
+        &:hover {
+          mat-icon {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
+
+        .active {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+
+      .square {
+        margin: 6px;
+        padding: 0 8px 0 4px;
+        min-width: auto;
+        border: 1px solid #eeeeee;
+      }
+    }
+  }
+}

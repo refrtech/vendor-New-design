@@ -1,0 +1,167 @@
+.formHold{
+    animation: formHold .6s;
+        @keyframes formHold {
+          0%{height: 0vh; visibility: hidden; opacity: 0;}
+          50%{height: 0vh; visibility: visible; opacity: 0;}
+          100%{height: auto; opacity: 1;}
+        }
+    form{
+      .fullWidth{
+        width: 98%;
+        font-size: 18px;
+        margin: 0 1% 8px 1%; max-width: 380px;
+          a svg{height: 20px; line-height: 20px; padding: 5px;}
+          a .loader{animation: loader 1s infinite;}
+          @keyframes loader {
+              from{transform: rotate(0deg);}
+              to{transform: rotate(360deg);}
+          }
+      }
+      .halfWidth{
+        width: 48%;
+        font-size: 18px; 
+        margin: 0 1% 8px 1%; 
+        max-width: 190px;
+      }
+    }
+    @media only screen and (max-width: 767px) {//MOBILE
+      margin-left: -18px;
+      form .halfWidth{
+        width: 98%;
+        max-width: 380px;
+      }
+    }
+  }
+  
+  .formFoot{
+      margin: 24px 0 0 0;
+  }
+
+  form .imageUploader{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    border: 3px dotted;
+    padding: 0 0 8px 0;
+    margin: 0px 0 0 0;
+    border-radius: 8px;
+    .svgHold{
+      width: 134px; height: 92px; border: 3px solid; display: inline-block; border-radius: 16px;
+      svg{width: 90px; height: 90px; padding: 0 22px;}
+    }
+    .gallery{
+      width: -webkit-fill-available;
+      width: -moz-available;
+      display: flex;
+      align-items: center;
+      overflow-x: scroll;
+    }
+    .squareImage{
+      background: #eeeeee;
+      width: 128px;
+      border-radius: 8px;
+      padding: 0;
+      margin: 8px 4px;
+      animation: squareImage .3s;
+      @keyframes squareImage {
+        0%{opacity: 0; visibility: hidden;}
+        40%{opacity: 0; visibility: visible;}
+        100%{opacity: 1;}
+      }
+    }
+    a{padding: 0 8px;}
+  }
+  .variants{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    line-height: 26px;
+    font-size: 14px;
+    margin: 0 -16px 0 -16px;
+
+    table{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    margin: 0 0 8px 0;
+    padding: 16px 0 4px 8px;
+    border-radius: 8px;
+      
+      tr, td{padding: 0 8px 0 0; margin: 0; vertical-align: top;}
+      tr th, tr td{ 
+        height: 52px; max-width: 60%;
+      }
+      tr td {
+        .heldVarients{
+          border-radius: 0 0 8px 8px;
+          width: -webkit-fill-available;
+          width: -moz-available;
+          padding-bottom: 17px;
+          border-top: none !important;
+          .optList{
+            display: inline-block;
+            padding: 0; margin: 0 0 0 8px;
+          }
+        }
+      }
+      tr:nth-child(1) td .heldVarients{
+        border:#B983FF solid 2px;
+      }
+      tr:nth-child(2) td .heldVarients{
+        border:#94B3FD solid 2px;
+      }
+      tr:nth-child(3) td .heldVarients{
+        border:#94DAFF solid 2px;
+      }
+      .heldCustom td .heldVarients{
+        border:#FF8AAE solid 2px !important;
+        border-top: none !important;
+      }
+    }
+    @media only screen and (max-width: 767px) {//MOBILE
+      margin: 0 -16px 0 -4px;
+    }
+  }
+
+  .colorPalete{
+    margin: 0 1% 0 1%;
+    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    display: inline-block;
+    width: 98%; border-radius: 8px; 
+    max-width: 380px;
+    transform: translatey(-24px);
+    .paletescroll{
+      display: flex;
+      overflow-x: scroll;
+      align-items: center;
+      a{transition-duration: .3s;}
+      .circle{    
+        margin: 6px;
+        font-size: 0;
+        border: 1px solid #eeeeee;
+        vertical-align: middle;
+        display: inline-block;
+        mat-icon{
+          transform: scale(1);
+        }
+      }
+      .picker{
+        mat-icon{
+          opacity: 0; transition-duration: .3s;
+        }
+        &:hover{
+          mat-icon{
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
+        .active{
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+      .square{
+        margin: 6px;
+        padding: 0 8px 0 4px;
+        min-width: auto;
+        border: 1px solid #eeeeee;
+      }
+    }
+  }

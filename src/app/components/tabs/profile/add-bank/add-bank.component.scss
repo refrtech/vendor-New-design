@@ -1,0 +1,18 @@
+.formHold{
+    max-width: 380px;
+    margin: 0 auto;
+    form{
+        .fullWidth{
+          width: 98%;
+          font-size: 18px;
+          margin: 0 1% 8px 1%;
+          max-width: 380px;
+            a svg{height: 20px; line-height: 20px; padding: 5px;}
+            a .loader{animation: loader 1s infinite;}
+            @keyframes loader {
+                from{transform: rotate(0deg);}
+                to{transform: rotate(360deg);}
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div *ngIf="notify.message;">
+    <h1>{{ notify.message.notification.title }}</h1>
+    <h2>{{ notify.message.notification.body }}</h2>
+  </div>
+  <div *ngIf="!notify.message;">
+    No Message Arrived
+  </div>
+
+  <button mat-button (click)="go1()">Permit</button>
+  <button mat-button (click)="go2()">Listen</button>
+
+  <button mat-button (click)="notify.doWhat()">doWhat</button>

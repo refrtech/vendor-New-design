@@ -1,0 +1,169 @@
+header {
+  text-align: center;
+  height: 70px;
+  padding: 20px;
+
+  .head {
+    display: flex;
+    align-items: flex-end;
+
+    button {
+      color: #ffffff;
+      background: transparent;
+      border: none;
+    }
+  }
+
+  .logo_svg {
+    width: 100%;
+  }
+}
+
+.normal-container {
+  position: relative;
+}
+
+.segment-container {
+  color: #000000;
+  width: fit-content;
+  max-width: fit-content;
+  display: flex;
+  border-radius: 18px;
+  box-shadow: 0px 2px 4px #ccc;
+  background-color: #ffffff;
+  margin: 26px auto;
+  padding: 4px;
+
+  button {
+    border-radius: 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    color: #8000ff !important;
+    padding: 4px 10px;
+    border: none;
+    background: white;
+  }
+
+  .active {
+    border-radius: 24px;
+    background-color: #e0c0ff;
+    color: #ffffff;
+  }
+}
+
+//
+
+.dont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin: auto;
+}
+
+.img-container {
+  text-align: center;
+}
+
+//
+
+.add_contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+
+  button {
+    background: #8000ff;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px !important;
+    line-height: 19px !important;
+    color: #ffffff;
+    width: 90%;
+    max-width: 430px;
+    padding: 10px 0;
+    border: none;
+  }
+}
+
+.seachcontact {
+  width: 100%;
+  padding: 0;
+  margin: 40px 0 0 0;
+  .searchBar{
+    width: 90%;
+    margin: 0 5%;
+    max-width: 430px;
+    font-size: 14px;
+  }
+}
+
+.trans_btn {
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+}
+
+.customers {
+  min-width: 100%;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.initial_cont {
+  width: 50px;
+
+  .initial {
+    height: 35px;
+    width: 35px;
+    border: 1px solid gray;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    text-transform: uppercase;
+  }
+}
+
+td {
+  padding: 0px !important;
+  border-bottom-width: 0 !important;
+}
+
+.number {
+  font-size: 10px !important;
+  color: gray !important;
+}
+
+.rowdata {
+  display: table-row !important;
+  height: 56px !important;
+}
+
+.subtext {
+  font-size: 10px !important;
+  color: gray !important;
+}
+
+.divider {
+  border-top: 1px solid #DBDBDB;
+}
+
+.send {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 2px 10px !important;
+  border: 1px solid gray;
+}

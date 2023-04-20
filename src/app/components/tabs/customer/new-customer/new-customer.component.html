@@ -1,0 +1,34 @@
+<header>
+    <div class="head">
+        <div>
+            <p>Add contact</p>
+        </div>
+        <span class="divide"></span>
+        <button mat-icon-button (click)="close()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</header>
+<div class="col col-50 col-sm-100">
+    <div>
+        <div class="form">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <mat-form-field class="fields" appearance="legacy">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="fields" appearance="legacy">
+                    <mat-label>Moblie Number </mat-label>
+                    <input matInput type="tel" maxlength="10" formControlName="phone">
+                    <span matPrefix>+91&nbsp;</span>
+                </mat-form-field>
+                <!--div class="sync_contact">
+                    <a>Sync&nbsp;your&nbsp;contacts</a>
+                </div-->
+                <div class="add_contact">
+                    <button mat-button type="submit">Add contact</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

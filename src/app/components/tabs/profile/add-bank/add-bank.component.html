@@ -1,0 +1,66 @@
+<div class="formHold textC">
+    <div style="display: flex;margin: 0 0 20px 0; align-items: center;">
+        <h4 style="padding: 0 !important; margin: 0 !important;">Payout via {{data.type  == 'IMPS' ? 'Bank Account':''}}{{data.type  == 'UPI' ? 'UPI':''}}</h4>
+        <span class="divide"></span>
+        <a mat-icon-button color="primary" mat-dialog-close><mat-icon>close</mat-icon></a>
+    </div>
+
+
+
+<form (submit)="true" *ngIf="type == 'IMPS'">
+  <mat-form-field class="fullWidth" appearance="legacy">
+    <mat-label>Bank IFSC</mat-label>
+    <input matInput type="text" [(ngModel)]="bankX.IFSC" placeholder="Enter Bank IFSC" name="IFSC" [disabled]=" makingChanges " required >
+    <mat-hint>bank IFSC code here</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="fullWidth" appearance="legacy">
+    <mat-label>Account Number</mat-label>
+    <input matInput type="tel" [(ngModel)]="bankX.AcNo" placeholder="Enter Account Number" name="Account" [disabled]=" makingChanges " required >
+    <mat-hint>Your account number here</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="fullWidth" appearance="legacy">
+    <mat-label>Account Holders Name</mat-label>
+    <input matInput type="text" [(ngModel)]="bankX.NAME" placeholder="Enter Your Name" name="Name" [disabled]=" makingChanges " required>
+    <mat-hint>Your name as per account here</mat-hint>
+  </mat-form-field>
+
+    <div style="display: flex;margin: 20px 0 0 0;">
+      <span class="divide"></span>
+      <span class="progress" *ngIf="makingChanges">
+        <span class="progress1">|</span>
+        <span class="progress2">|</span>
+        <span class="progress3">|</span>
+      </span>
+
+    <button mat-raised-button color="primary" type="submit" (click)="submitBANK()" [disabled]=" makingChanges ">Submit</button>
+    </div>
+</form>
+
+
+
+
+
+<form (submit)="true" *ngIf="type == 'UPI'">
+  <mat-form-field class="fullWidth" appearance="legacy">
+    <mat-label>Virtual Private Address</mat-label>
+    <input matInput type="text" [(ngModel)]="vpaX" placeholder="vpa@upi" name="UPI" [disabled]=" makingChanges " required>
+    <mat-hint>UPI VPA here</mat-hint>
+  </mat-form-field>
+
+    <div style="display: flex;margin: 20px 0 0 0;">
+      <span class="divide"></span>
+      <span class="progress" *ngIf="makingChanges">
+        <span class="progress1">|</span>
+        <span class="progress2">|</span>
+        <span class="progress3">|</span>
+      </span>
+
+    <button mat-raised-button color="primary" type="submit" (click)="submitUPI()" [disabled]=" makingChanges ">Submit</button>
+    </div>
+</form>
+
+
+
+</div>

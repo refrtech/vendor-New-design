@@ -1,0 +1,17 @@
+.choice{
+    button{
+        width: -webkit-fill-available;
+        margin: 8px 0 0 0; padding: 4px 8px;
+        background: #fafafa;
+        .selectionX{
+            width: -webkit-fill-available;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            p{margin-bottom: 0 !important; margin-left: 8px !important;
+                img{height:1.2em; vertical-align: middle;}
+                .about{font-size: 14px !important;}
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<div *ngIf="auth.user$ | async as mine">
+    <div style="display: flex; align-items: center;">
+        <h3 style="padding: 0 !important; margin: 0 !important;">Payout</h3>
+        <span class="divide"></span>
+        <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+    </div>
+    <div>
+        <p>
+          <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+            <mat-label>Amount</mat-label>
+            <input matInput [(ngModel)]="amountX" placeholder="Enter withdrawl amount" type="tel" name="Withdrawl" >
+            <span matPrefix>₹ &nbsp;</span>
+            <mat-hint>Your current withdrawable Balance ₹ {{ getDRAWABLE(mine.acBalV, mine.acBalH) }}.</mat-hint>
+            <mat-error>Minimum Withdrawl starts from ₹ {{minLimit}}.</mat-error>
+          </mat-form-field>
+        </p>
+
+        <p style="
+    background: rgb(249 171 0 / 20%);
+    color: #ffa726;
+    text-align: center;
+    padding: 4px 0 !important;
+    margin: 0 0 8px 0 !important;
+    border-radius: 16px;
+        " *ngIf="mine.acBalH < 0">₹ Please pay {{-(mine.acBalH)}} campaign dues to unlock {{-(mine.acBalV + mine.acBalH)}}.</p>
+    </div>
+    <div class="choice">
+        <p style="margin: 16px 0 0 0 !important;">Payout Methods</p>
+
+        <button mat-button (click)="setPayMethod('IMPS', mine.BankIMPS, mine.BankUPI)" [disabled]="makingChanges" >
+            <div class="selectionX"><mat-icon>{{ payMethod !== 'IMPS' ? 'radio_button_unchecked':'radio_button_checked' }}</mat-icon><div>
+                <p>Bank Withdrawl via <img src="assets/company/bhim.webp" />IMPS<br><span class="about">maximum Rs 2 Lakhs per transaction</span></p>
+            </div>
+            <span class="divide"></span>
+            <mat-icon *ngIf="true">{{ mine.BankIMPS && mine.BankIMPS?.verified ? 'verified_user':'remove_moderator' }}</mat-icon>
+            </div>
+        </button>
+
+        <button mat-button (click)="setPayMethod('UPI', mine.BankIMPS, mine.BankUPI )" [disabled]="makingChanges" >
+            <div class="selectionX"><mat-icon>{{ payMethod !== 'UPI' ? 'radio_button_unchecked':'radio_button_checked' }}</mat-icon><div>
+                <p>VPA Withdrawl via <img src="assets/company/bhim.webp" />UPI<br><span class="about">maximum Rs 1 Lakhs per transaction</span></p>
+            </div>
+            <span class="divide"></span>
+            <mat-icon *ngIf="true">{{ mine.BankUPI && mine.BankUPI?.verified ? 'verified_user':'remove_moderator' }}</mat-icon>
+            </div>
+        </button>
+
+    </div>
+    <div class="textR" style="margin: 16px 0 0 0;">
+        <button mat-raised-button color="primary" [disabled]="makingChanges" 
+        (click)="reqDRAW(mine.uid, mine.storeLoc[0], mine.acBalV, mine.acBalH, mine.BankIMPS, mine.BankUPI, mine.name  )">Request Withdrawl</button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.container{
+  background-image: url(../../../assets/other/liquid-cheese.svg) !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.card-box{
+  animation: welcome .3s; 
+  min-height: 100vh;
+
+  box-shadow: 0px 25px 40px #1687d933 !important;
+}
+@keyframes welcome{
+    0%{transform: translateY(40px);}
+    100%{transform: translateY(0px);}
+}
+
+.clouds{
+    .cloud-circle{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      position: absolute;
+      left: -20px;
+      bottom: -70px;
+      animation: bounce 10s infinite;
+    }
+    @media only screen and (max-width: 767px) {//MOBILE
+      .cloud-circle{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+  @keyframes bounce {
+    0%{
+      transform: translateX(0) scale(2.5);
+    }
+    50%{
+      transform: translateY(10 + px) scale(3);
+    }
+    100% { 
+      transform: translateX(0) scale(2.5);
+    }
+  }
+  

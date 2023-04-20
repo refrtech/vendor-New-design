@@ -1,0 +1,48 @@
+<div class="overflow_x_hidden">
+  <div *ngIf="orderData">
+    <div class="header bg_purple dflex align_items_center c_white padd1020">
+      <div class="text fs_16 fw_600">
+        From&nbsp;:&nbsp;<span class="fs_16 fw_400">{{orderData.userName}}</span>
+      </div>
+      <span class="divide"></span>
+      <div (click)="close()">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 8L8 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M8 8L24 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+    </div>
+    <div class="bg_gray padd1020 dflex align_items_center c_black">
+      <div class="oid fs_16 fw_500">
+        Order ID&nbsp;:&nbsp;<span class="fs_16 fw_400">{{orderData.id}}</span>
+      </div>
+      <span class="divide"></span>
+      <div class="oid fs_16 fw_500">
+        Date&nbsp;:&nbsp;<span class="fs_16 fw_400">23/02/2022</span>
+      </div>
+    </div>
+    <div class="padd1020 dflex align_items_center border_bottom tb15padding">
+      <div class="min_width_80 fs_16 fw_500">Items</div>
+      <div class="min_width_20 fs_16 fw_500 textC">Qty</div>
+      <!-- <div class="min_width_20 fs_16 fw_500 textC">Price (₹)</div> -->
+    </div>
+    <ng-container *ngFor="let x of orderData.cart">
+      <div class="padd1020 dflex align_items_baseline border_bottom tb15padding">
+        <div class="min_width_80 fs_14 fw_400">{{x.title}}</div>
+        <div class="min_width_20 fs_14 fw_400 textC">{{x.Q}}</div>
+        <!-- <div class="min_width_20 fs_14 fw_400 textC">{{x.cost}}</div> -->
+      </div>
+    </ng-container>
+    <div class="padd1020 dflex align_items_baseline border_bottom tb15padding">
+      <div clas="fs_16 fw_500">
+        Total: <span class="fs_16 fw_500 c_purple">₹{{orderData.amTotal}}</span>
+      </div>
+      <span class="divide"></span>
+      <div>
+        <button disableRipple mat-button class="c_purple border_purple lineheight_normal order_cta" (click)="order()">Go
+          to Order</button>
+      </div>
+
+    </div>
+  </div>
+</div>

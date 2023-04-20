@@ -1,0 +1,107 @@
+<app-content *ngIf=" !(campaign$ | async) "></app-content>
+
+<ng-container *ngIf=" campaign$ | async as camp ">
+
+    <!--div class="c_accent textC" style="
+    width: -webkit-fill-available;
+    height: 216px;
+    margin: 0 -16px 48px -16px;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;">
+        <img src="assets/uploads/bannerFinance.jpeg" style="
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        margin: 0;
+        display: inline-block;
+        object-fit: cover;" />
+    </div-->
+
+    <ng-container *ngFor="let x of auth.resource.merchandiseList">
+        <div class="Cart-Items textL" *ngIf="x.avil.includes(storeTyp)">
+        <!--div class="image-box">
+        <img src="assets/other/avatarB.svg" />
+        </div-->
+        
+        <div class="about">
+        <h4 class="title c_primary">{{x.tit}}</h4>
+        <p class="subtitle c_invert">
+            <span style="font-size: 14px !important;">{{x.sub}}</span>
+            <br><a class="c_green" *ngIf="
+            x.avil.includes('Onli') && !oferOFF || 
+            x.avil.includes('Offl') && !oferONL || 
+            oferOFF == x.tit || oferONL == x.tit "
+            (click)=" 
+            (oferOFF !== x.tit && oferONL !== x.tit ) ? (
+                setCheck( x.tit, (x.avil.includes('Onli') ? 'Onli':'Offl'), x.free )
+            ) : (
+                oferOFF == x.tit ? (oferOFF = '') : (oferONL = '')
+            ); "><mat-icon style="vertical-align: bottom;">{{ (oferOFF !== x.tit && oferONL !== x.tit ) ? 'check_box_outline_blank' : 'check_box_outline'}}</mat-icon> x{{x.free}} Free*</a>
+            </p>
+        <!--img src="assets/other/avatarB.svg" height="30px"/-->
+        
+        </div>
+        
+        <span class="divide"></span>
+        
+        <div class="prices textR">
+        <h4 class="amount textC"><u *ngIf=" cart.includes(x.tit) && (oferOFF == x.tit || oferONL == x.tit) " style="text-decoration: line-through 3px;">₹ {{ x.cost * getCart(x.tit) }}</u> ₹ {{
+            oferONL !== x.tit && oferOFF !== x.tit ? (
+                x.cost * getCart(x.tit)
+            ) : (
+                getCart(x.tit) > x.free ? ((x.cost * getCart(x.tit)) - (x.cost * x.free)) : 0
+            )
+        }}</h4>
+        <!--button mat-button>{{x.free}} Free <mat-icon>check_box_outline_blank</mat-icon></button-->
+        <!--div class="save"><u>Save for later</u></div>
+        <div class="remove"><u>Remove</u></div-->
+            <div class="counter c_invert textL">
+            <div class="count">&nbsp;{{getCart(x.tit)}}</div>
+            <button mat-icon-button class="btnL" (click)="cart.splice(cart.indexOf(x.tit), 1)" [disabled]="!cart.includes(x.tit) || minMerch(x.tit, x.free)"><mat-icon>remove_circle_outline</mat-icon></button>
+            <button mat-icon-button class="btnR" (click)="cart.push(x.tit)"><mat-icon>add_circle_outline</mat-icon></button>
+            </div>
+        </div>
+        
+        </div>
+    </ng-container>
+
+    <hr class="c_accent">
+
+    <div class="checkout textC">
+        <h3 style="
+        margin: 0 0 8px 0 !important;
+        padding: 8px 16px !important;
+        border-radius: 16px;
+        " class="textL b_accent c_primary">invoice</h3>
+        <div class="total textL">
+            <div class="Subtotal">
+                <h4>Campaign Refill<br>Merchandise<br>Discount<!--br>Balance--></h4>
+                <h4 class="textC b_accent">{{ !paymentDone ? 'Total':'Amount Paid'}}</h4>
+            </div>
+            <span class="divide"></span>
+            <div class="total-amount">
+                <h4 class="textR">₹ {{ campCost(camp.tX) | number:'1.2-2' }}
+                    <br>₹ {{ getMerchCost() | number:'1.2-2' }}
+                    <br>- {{ (oferOFF ? oferCost(oferOFF):0) + ( oferONL ? oferCost(oferONL):0) | number:'1.2-2'}}<!--br>- 0.00--></h4>
+                <h4 class="textR c_primary">₹ <span style="font-size: 22px; vertical-align: middle;">{{ (
+                    ( campCost(camp.tX) + (getMerchCost() || 0) ) - ( (oferOFF ? oferCost(oferOFF):0) + ( oferONL ? oferCost(oferONL):0) )
+                    ) | number:'1.2-2' }}</span></h4>
+            </div>
+        </div>
+    </div>
+    <hr class="c_accent">
+
+<div class="textC" style="margin: 24px 0 0 0;"><!--{{storeTyp}}-->
+    <a mat-button class="button" [routerLink]=" (storeTyp =='Both' || storeTyp == 'Onli') ? '/store/add-product' : '/dash'">Skip</a>
+    &nbsp;
+    <button mat-stroked-button *ngIf="!paymentDone" [disabled]="disableForm" 
+            (click)="cheackOut(
+                camp.by, camp.tX, oferOFF, oferONL
+            )" color="primary" class="button">Pay Now</button>
+
+    <a mat-stroked-button routerLink="/store/add-product"
+    *ngIf="paymentDone && (storeTyp == 'Both' || storeTyp == 'Onli')" color="primary">Next</a>
+    <a mat-stroked-button routerLink="/dash"
+    *ngIf="paymentDone && storeTyp == 'Offl'" color="primary">Next</a>
+</div>
+</ng-container>

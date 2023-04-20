@@ -1,0 +1,58 @@
+<div class="formHold textC">
+    <!--h3 class="textL c_primary" style="margin-bottom: 24px !important;" >Create campaign</h3-->
+  
+      <app-content *ngIf="!(store$ | async)"></app-content>
+  
+  <form (submit)="true" *ngIf="store$ | async as store">
+  
+        <table class="tierTable"  cellspacing="0" cellpadding="0">
+          <tr class="c_persist">
+              <th class="textL" colspan="2"><span class="tit">Tier</span></th>
+              <th class="b_primaryLight"><span class="c_primary">No of Sales</span></th>
+              <th>Payment</th>
+          </tr>
+  <ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
+          <!--tr class="c_persist textL">
+              <td><span class="c_invert">Tier {{i+1}}</span></td>
+              <td colspan="2"><span class="c_invert" style="font-size: 12px;" *ngIf="i == 0">No of Sales</span></td>
+          </tr-->
+  
+            <tr class="c_primaryLight" [class]=" 'tier' + (i + 1) ">
+                <!--td class="textL">{{i+1 == 1 ? 'I':''}}{{i+1 == 2 ? 'II':''}}{{i+1 == 3 ? 'III':''}}{{i+1 == 4 ? 'IV':''}}</td-->
+                <td class="textL" colspan="2"><p class="c_white">₹ {{t.cost}}<br><span style="font-size: 12px;">You get ₹ {{t.refill}}</span></p></td>
+                <td class="b_primaryLight"><p class="c_white scaleIT">{{(t.refill/(1.5 * 
+                    ( 
+                        (storeCamp.type !== 'flat' ? 0 : (storeCamp.cbNew || defualtCamp.nowCB) ) +
+                        (storeCamp.type !== 'percent' ? 0 : (storeCamp.max) || defualtCamp.maxCB) +
+                        0
+                    )
+                    ) | number:'1.0-0' )}}</p></td>
+                <td class="textR"><button mat-raised-button color="primary" 
+                  [disabled]="disableForm || 
+                  storeCamp.cbNew > t.refill ||
+                  storeCamp.type !== 'percent' && storeCamp.max > t.refill " (click)="createStoreCampaign( t.tX, t.cost )">Pay</button></td>
+            </tr>
+  
+  </ng-container>
+  
+          <!--tr class="b_accent c_persist">
+              <th class="textL" colspan="4"><span class="c_invert">Enterprise Tier for large Corporations</span></th>
+          </tr>
+            <tr class="b_accent tierCustom c_white" >
+                <td colspan="3"><input class="b_persist c_invert" [(ngModel)]="payCustom" min="1" placeholder="Negotiated amount" type="number" name="customPack">
+                </td>
+                <td class="textR"><button mat-stroked-button color="primary" [disabled]="disableForm || !payCustom" (click)="createStoreCampaign( 'tC', t.cost )">Apply</button></td>
+            </tr-->
+  
+            <tr class="c_persist"><td colspan="4" style="padding: 30px 0 0 0 !important;">
+                <a mat-raised-button class="c_invert" mat-dialog-close>Create Later</a>
+            </td></tr>
+        </table>
+      
+          <!--div class="formFoot">
+              <span class="divide"></span>
+              <button [disabled]="disableForm" type="submit"
+              mat-stroked-button matStepperNext color="primary">Create Campaign</button>
+          </div-->
+  </form>
+      </div>

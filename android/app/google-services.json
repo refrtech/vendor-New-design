@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "471641178783",
+    "firebase_url": "https://refr-india-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "refr-india",
+    "storage_bucket": "refr-india.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471641178783:android:402e0ac82fd917535f18aa",
+        "android_client_info": {
+          "package_name": "club.refr.biz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471641178783-e9upvt429e9gm9cbne5tqvqou08psa1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "club.refr.biz",
+            "certificate_hash": "20d2e2a54b12c4b606cf9c3cbe6025f1528e156b"
+          }
+        },
+        {
+          "client_id": "471641178783-poa1lb0fjdv7amnvh5ntftepaskgohh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-KRVQ9S08yzkdrTTadCVbFofuxLgeLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471641178783-poa1lb0fjdv7amnvh5ntftepaskgohh2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "471641178783-8qhbb1gghj6u59h1c0hdgog8ivk1ea7f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "club.refr.biz",
+                "app_store_id": "962194608"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471641178783:android:064176513175ba585f18aa",
+        "android_client_info": {
+          "package_name": "club.refr.biz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471641178783-cv3upb6nit59vehr2om0cr8kh86c8qsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "club.refr.biz",
+            "certificate_hash": "20d2e2a54b12c4b606cf9c3cbe6025f1528e156b"
+          }
+        },
+        {
+          "client_id": "471641178783-poa1lb0fjdv7amnvh5ntftepaskgohh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-KRVQ9S08yzkdrTTadCVbFofuxLgeLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471641178783-poa1lb0fjdv7amnvh5ntftepaskgohh2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "471641178783-8qhbb1gghj6u59h1c0hdgog8ivk1ea7f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "club.refr.app",
+                "app_store_id": "962194608"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

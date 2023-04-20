@@ -1,0 +1,22 @@
+<h3 mat-dialog-title class="textC">Add Balance</h3>
+<div mat-dialog-content class="textC">
+  <p>Explain exchange rate here {{refrCut}}%</p>
+
+
+  <mat-form-field appearance="outline" class="fullWidth">
+    <mat-label>Enter Amount</mat-label>
+    <input matInput [(ngModel)]="payX" type="number" min="1000" max="9999999" [disabled]="makingChanges">
+    <mat-hint>How much you get explain here {{ getCut() }}</mat-hint>
+  </mat-form-field>
+
+  <p><span>Suggested: </span>
+  <button mat-button [disabled]="makingChanges" (click)="choosePay(1000)">₹1000</button>
+  <button mat-button [disabled]="makingChanges" (click)="choosePay(5000)">₹5000</button>
+  <button mat-button [disabled]="makingChanges" (click)="choosePay(10000)">₹10000</button></p>
+
+  
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial [disabled]="makingChanges" >Later</button>
+  <button mat-raised-button color="primary" [disabled]="makingChanges" (click)="startPay()" >Start Payment</button>
+</div>

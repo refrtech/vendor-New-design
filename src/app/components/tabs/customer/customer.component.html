@@ -1,0 +1,261 @@
+<div class="container">
+    <div class="row" style="margin-top: -140px !important;">
+
+
+
+
+
+<!-- changes done in global scss bottomsheet -->
+<div class="col col-100" style="margin-bottom: -56px !important; z-index: 1;">
+    <header>
+        <!--div class="head">
+            <div>
+                <button mat-icon-button>
+                    <mat-icon>
+                        arrow_back
+                    </mat-icon>
+                </button>
+            </div>
+            <div class='logo_svg'>
+                <svg width="97" height="43" viewBox="0 0 97 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M87.735 5.70471L88.4834 6.45286L90.6492 8.61771C90.6881 8.6474 90.7357 8.66349 90.7846 8.66349C90.8335 8.66349 90.8811 8.6474 90.92 8.61771L91.4773 8.06058C91.507 8.02172 91.5231 7.97418 91.5231 7.92528C91.5231 7.87638 91.507 7.82883 91.4773 7.78997L90.0759 6.38918C90.3198 6.31745 90.5463 6.19661 90.7417 6.03409C90.9371 5.87158 91.0971 5.67082 91.2119 5.44419C91.3268 5.21755 91.3941 4.96982 91.4096 4.71623C91.4251 4.46265 91.3885 4.20857 91.3022 3.96964H92.4488C92.4738 3.96964 92.4987 3.9647 92.5219 3.9551C92.5451 3.9455 92.5661 3.93143 92.5839 3.91369C92.6016 3.89595 92.6157 3.87489 92.6253 3.85172C92.6349 3.82854 92.6398 3.80371 92.6398 3.77862V2.99864C92.6398 2.94797 92.6197 2.89939 92.5839 2.86356C92.548 2.82774 92.4994 2.80762 92.4488 2.80762H87.4802C87.4295 2.80762 87.3809 2.82774 87.345 2.86356C87.3092 2.89939 87.2891 2.94797 87.2891 2.99864V3.73087C87.2891 3.78153 87.3092 3.83011 87.345 3.86593C87.3809 3.90176 87.4295 3.92188 87.4802 3.92188H89.5982C89.7558 3.94642 89.8995 4.02648 90.0033 4.14762C90.1071 4.26876 90.1641 4.42299 90.1641 4.58248C90.1641 4.74197 90.1071 4.8962 90.0033 5.01734C89.8995 5.13848 89.7558 5.21855 89.5982 5.24308H87.9261C87.8726 5.24321 87.8204 5.25916 87.776 5.2889C87.7316 5.31864 87.697 5.36086 87.6766 5.41022C87.6561 5.45959 87.6508 5.5139 87.6612 5.5663C87.6716 5.61871 87.6972 5.66686 87.735 5.70471Z"
+                        fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M95.4051 12.5753L94.6407 13.2757L94.5292 13.3871L95.4051 12.5753ZM82.9677 1.70324L83.3499 1.17794L83.5888 0.84366L82.9677 1.70324ZM96.0421 12.4479L91.9494 16.1728H89.5129L85.8661 20.9482L86.8853 16.1728H80.8975C80.6637 16.1728 80.4392 16.0811 80.2724 15.9173C80.1057 15.7536 80.0099 15.5309 80.0057 15.2973V5.58725C79.9809 5.37279 80.0377 5.15685 80.1649 4.98236L83.6684 0.206937C83.7137 0.143459 83.7734 0.0916099 83.8426 0.0556402C83.9118 0.0196705 83.9886 0.000602395 84.0666 0H95.6918C95.8227 0 95.9483 0.0519903 96.0408 0.144532C96.1334 0.237074 96.1854 0.362586 96.1854 0.49346V12.1137C96.1887 12.179 96.1776 12.2442 96.1528 12.3047C96.128 12.3652 96.0902 12.4196 96.0421 12.4639V12.4479ZM89.8951 12.5753L90.0066 12.2251H84.0825C84.0402 12.2251 83.9997 12.2083 83.9699 12.1785C83.94 12.1486 83.9232 12.1081 83.9232 12.0659V0.477545C83.9232 0.456641 83.9273 0.43594 83.9353 0.416628C83.9434 0.397315 83.9551 0.379767 83.9699 0.364986C83.9847 0.350205 84.0022 0.33848 84.0215 0.33048C84.0408 0.322481 84.0616 0.318363 84.0825 0.318363H95.6758C95.6981 0.316131 95.7205 0.318592 95.7417 0.325586C95.7629 0.33258 95.7824 0.343952 95.7989 0.358962C95.8154 0.373972 95.8286 0.392285 95.8376 0.412714C95.8465 0.433143 95.8511 0.455231 95.851 0.477545V12.0659C95.8511 12.0882 95.8465 12.1103 95.8376 12.1307C95.8286 12.1512 95.8154 12.1695 95.7989 12.1845C95.7824 12.1995 95.7629 12.2109 95.7417 12.2179C95.7205 12.2249 95.6981 12.2273 95.6758 12.2251H91.408L91.1372 12.5753L90.6595 13.1802L89.067 15.1063L89.6562 13.1802L89.8951 12.5753Z"
+                        fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M6.01963 31.0856V42.9605H0V13.1618H10.9723C13.8585 12.9733 16.7075 13.8959 18.9348 15.7405C19.832 16.5384 20.5468 17.5201 21.0304 18.6188C21.5141 19.7175 21.7552 20.9075 21.7375 22.1078C21.7344 23.9965 21.1323 25.8356 20.0176 27.3607C18.6978 29.0981 16.7797 30.2836 14.635 30.6876L22.2471 42.9446H15.1128L7.9784 31.0697L6.01963 31.0856ZM6.01963 17.7621V26.5489H10.9723C12.2326 26.6334 13.4751 26.2156 14.428 25.3869C15.2114 24.5114 15.6445 23.3779 15.6445 22.2033C15.6445 21.0286 15.2114 19.8952 14.428 19.0197C13.4775 18.1852 12.2348 17.7616 10.9723 17.8417L6.01963 17.7621Z"
+                        fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M33.2677 42.9928C31.8962 43.0452 30.5288 42.8103 29.2535 42.3031C27.9783 41.796 26.8232 41.0278 25.8626 40.0479C24.8947 39.0043 24.1442 37.7786 23.6549 36.4423C23.1655 35.1059 22.9469 33.6856 23.012 32.264C22.9443 30.8456 23.1633 29.4282 23.6558 28.0963C24.1483 26.7644 24.9042 25.5453 25.8785 24.5119C26.8514 23.5416 28.0138 22.7822 29.2934 22.281C30.5729 21.7798 31.9421 21.5476 33.3154 21.5989C34.6915 21.5479 36.0638 21.7723 37.3519 22.2589C38.6399 22.7455 39.8177 23.4844 40.8161 24.4323C41.8018 25.421 42.5712 26.6036 43.0757 27.9052C43.5801 29.2068 43.8084 30.599 43.7463 31.9934C43.7524 32.6759 43.6991 33.3576 43.587 34.0309H28.4265C28.5113 35.2415 29.0451 36.3768 29.9234 37.2145C30.8296 38.0548 32.0324 38.5014 33.2677 38.4561C34.0862 38.4971 34.8998 38.3068 35.6151 37.9071C36.3305 37.5073 36.9188 36.9142 37.3126 36.1958H43.0933C42.4913 38.1294 41.2648 39.8089 39.6058 40.9712C37.7718 42.2576 35.5708 42.9165 33.3314 42.8495L33.2677 42.9928ZM38.3159 30.6085C38.2988 29.9779 38.1481 29.3581 37.8735 28.7901C37.599 28.2221 37.207 27.7188 36.7234 27.3135C35.7845 26.4851 34.5674 26.0417 33.3154 26.0719C32.0913 26.0368 30.9022 26.4825 30.003 27.3135C29.0895 28.1821 28.5235 29.3533 28.4106 30.6085H38.3159Z"
+                        fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M54.0029 27.3031V42.9665H48.0311V17.991C47.9291 16.8489 48.0787 15.6984 48.4694 14.6204C48.8601 13.5423 49.4824 12.5629 50.2925 11.7511C52.3639 10.2752 54.8918 9.58146 57.4268 9.79319H60.7392V14.8074H57.4268C56.4853 14.7161 55.5434 14.977 54.7833 15.5396C54.4918 15.8696 54.272 16.2564 54.1377 16.6756C54.0034 17.0948 53.9575 17.5373 54.0029 17.9751V22.3844H57.7612V27.2872L54.0029 27.3031Z"
+                        fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M69.1915 22.5215V24.1133C70.4974 22.7603 73.0453 22.5215 75.657 22.5215V27.3924C73.539 27.3924 69.2871 28.0132 69.2871 30.8307V42.9603H64V22.5215H69.1915Z"
+                        fill="white" />
+                </svg>
+            </div>
+        </div-->
+        <!-- toggle -->
+        <!-- toggle -->
+
+        <div class="normal-container">
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <div class="segment-container">
+                        <button mat-button (click)="activate(1)"
+                            [ngClass]="activated == 1 ? 'active' : ''">
+                            All contacts
+                        </button>
+                        <button mat-button (click)="activate(2)"
+                            [ngClass]="activated == 2 ? 'active' : ''">
+                            Refr customers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+<!-- no contcact's -->
+<!-- <div class="col col-50 col-sm-100" >
+    <div class="dont">
+        <div>
+            <div class="img-container">
+                <img src="../../../assets/roshan/image 2042.png" alt="">
+            </div>
+            <div>
+                <p>You don't have any customers yet</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="col col-20 col-sm-none"></div>
+
+
+<div class="col col-60 col-sm-100 col-card">
+    <div class="card-box" style="overflow: hidden;">
+        <div class="seachcontact textC">
+        <mat-form-field class="searchBar" appearance="outline">
+            <mat-label>Search by name or number</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input
+                autocomplete="off">
+            <span matSuffix>
+                <mat-icon class="trans_btn">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M17.5549 16.213L14.3449 13.013C15.3823 11.6939 15.9459 10.0642 15.9449 8.38603C15.9449 6.89199 15.5019 5.43151 14.6718 4.18926C13.8418 2.94701 12.662 1.97879 11.2817 1.40705C9.90139 0.835304 8.38254 0.68571 6.91721 0.977183C5.45187 1.26866 4.10588 1.9881 3.04943 3.04455C1.99299 4.101 1.27354 5.44699 0.982065 6.91232C0.690593 8.37766 0.840187 9.89651 1.41193 11.2768C1.98368 12.6571 2.95189 13.8369 4.19414 14.667C5.43639 15.497 6.89688 15.94 8.39092 15.94C10.0691 15.941 11.6988 15.3774 13.0179 14.34L16.2179 17.55C16.3957 17.7279 16.6369 17.8278 16.8884 17.8278C17.1399 17.8278 17.3811 17.7279 17.5589 17.55C17.7367 17.3722 17.8366 17.131 17.8366 16.8795C17.8366 16.628 17.7367 16.3869 17.5589 16.209L17.5549 16.213ZM2.72092 8.38603C2.72092 7.2656 3.05316 6.17033 3.67564 5.23873C4.29812 4.30712 5.18287 3.58103 6.21802 3.15226C7.25316 2.72349 8.3922 2.6113 9.4911 2.82989C10.59 3.04847 11.5994 3.58801 12.3917 4.38027C13.1839 5.17254 13.7235 6.18195 13.9421 7.28085C14.1607 8.37975 14.0485 9.51879 13.6197 10.5539C13.1909 11.5891 12.4648 12.4738 11.5332 13.0963C10.6016 13.7188 9.50635 14.051 8.38592 14.051C6.88347 14.051 5.44255 13.4542 4.38016 12.3918C3.31776 11.3294 2.72092 9.88849 2.72092 8.38603Z"
+                            fill="#929292" />
+                    </svg>
+                </mat-icon>
+            </span>
+        </mat-form-field>
+        </div>
+        <div class="title textL" *ngIf="Eusercontacts">Invite To Refr</div>
+
+
+
+        <table *ngIf="Eusercontactlist.length > 0" class="customers b_persist textL" mat-table [dataSource]="Eusercontacts" matSort>
+            <ng-container matColumnDef="check">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textC">#</th>
+                <td mat-cell *matCellDef="let row" class="textC initial_cont">
+                    <div class="initial">{{row.name | slice:0:1}}</div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}}
+                    <br *ngIf="row.phone">
+                    <span class="number">{{row.phone}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action1">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textR">
+                </th>
+                <td mat-cell *matCellDef="let row" class="textC" (click)="whatappshare(row)">
+                    <svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M21.6805 4.31021C20.548 3.17712 19.2025 2.27924 17.7216 1.66823C16.2406 1.05723 14.6534 0.745184 13.0514 0.750056C6.32812 0.750056 0.855 6.19584 0.852266 12.8907C0.849291 15.0225 1.41122 17.117 2.48086 18.961L0.75 25.2501L7.2168 23.5619C9.00684 24.5316 11.0106 25.0391 13.0465 25.0384H13.0514C19.7741 25.0384 25.2467 19.5921 25.25 12.8978C25.2541 11.3012 24.9406 9.71978 24.3278 8.24549C23.715 6.7712 22.8151 5.4335 21.6805 4.31021ZM13.0514 22.9893H13.047C11.2322 22.9898 9.45029 22.5041 7.88672 21.5827L7.51648 21.364L3.67906 22.3658L4.70336 18.6422L4.46219 18.2594C3.4474 16.6527 2.90974 14.791 2.9118 12.8907C2.9118 7.32732 7.46234 2.80084 13.0552 2.80084C15.7382 2.79605 18.3132 3.85715 20.2139 5.75075C22.1146 7.64435 23.1853 10.2154 23.1905 12.8983C23.1883 18.4622 18.6399 22.9893 13.0514 22.9893ZM18.6126 15.432C18.308 15.28 16.8079 14.5461 16.5301 14.4449C16.2523 14.3437 16.0472 14.2929 15.8443 14.5969C15.6414 14.901 15.0568 15.5813 14.8791 15.7864C14.7013 15.9915 14.5236 16.0139 14.219 15.8619C13.9144 15.7098 12.9316 15.3899 11.7673 14.3563C10.8612 13.5519 10.2498 12.5587 10.072 12.2552C9.8943 11.9517 10.0529 11.7871 10.2055 11.6362C10.3427 11.5 10.5101 11.2818 10.6627 11.1046C10.8152 10.9274 10.8661 10.8005 10.9673 10.5982C11.0684 10.3958 11.0181 10.2186 10.9421 10.0672C10.8661 9.91568 10.2563 8.42217 10.0026 7.81459C9.75484 7.22287 9.50383 7.30326 9.3168 7.29396C9.13906 7.28521 8.93398 7.28303 8.73219 7.28303C8.57792 7.28704 8.42614 7.32282 8.28631 7.38812C8.14649 7.45342 8.02163 7.54684 7.91953 7.66256C7.64008 7.96662 6.85258 8.70162 6.85258 10.1935C6.85258 11.6854 7.94633 13.1291 8.09727 13.3315C8.2482 13.5338 10.2465 16.5979 13.3041 17.9121C13.8718 18.1552 14.4519 18.3684 15.042 18.5508C15.7721 18.7816 16.4366 18.7494 16.9616 18.6712C17.5473 18.5842 18.7663 17.9372 19.0195 17.2285C19.2727 16.5197 19.2732 15.9127 19.1972 15.7864C19.1212 15.6601 18.9177 15.5835 18.6126 15.432Z"
+                            fill="#00C013" />
+                    </svg>
+                    <div class="subtext">Whatapp</div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action2">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textR">
+                </th>
+                <td mat-cell *matCellDef="let row" class="textC" (click)="invitesmsuser(row)">
+                        <svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 17C25 17.7072 24.719 18.3855 24.219 18.8856C23.7189 19.3857 23.0406 19.6667 22.3333 19.6667H6.33333L1 25V3.66667C1 2.95942 1.28095 2.28115 1.78105 1.78105C2.28115 1.28095 2.95942 1 3.66667 1H22.3333C23.0406 1 23.7189 1.28095 24.219 1.78105C24.719 2.28115 25 2.95942 25 3.66667V17Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.46143 6.53906H19.4614M7.46143 10.6929H19.4614M7.46143 14.3852H19.4614" stroke="#575757"/>
+                            </svg>
+                        <div class="subtext">SMS</div>
+                </td>
+            </ng-container>
+            <tr mat-row class="rowdata" *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="3">
+                    <!-- {{showData ? "You have no users":"No contacts matching the filter " + input.value}} -->
+                </td>
+            </tr>
+        </table>
+        <!-- <app-content *ngIf="!showData"></app-content> -->
+        <!-- <div style="margin: 0 -16px;"> -->
+            <!-- <mat-paginator class="b_persist" [pageSizeOptions]="[ 25, 50, 75, 100]" aria-label="Select page of users"></mat-paginator> -->
+        <!-- </div> -->
+        <app-content *ngIf="!Eusercontacts"></app-content>
+        <p class="textC" *ngIf="Eusercontacts && Eusercontactlist.length == 0">You have no contacts to invite</p>
+    </div>
+</div>
+
+
+<div class="col col-20 col-sm-none"></div>
+
+<div class="col col-100" style=" padding: 0; margin: 0; min-height: 0; ">
+<!--div class="divider"></div-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col col-20 col-sm-none"></div>
+
+<div class="col col-60 col-sm-100 col-card">
+    <div class="card-box" style="overflow: hidden;">
+        <div class="title textL" *ngIf="newusercontacts">Your Contact's on Refr</div>
+        <span class="subtext textL" *ngIf="newusercontacts">Share Your Store Campaigns with Refr users & keep them coming back to make repeat purchase.</span>
+
+        
+        <table *ngIf="newusercontactlist.length > 0" class="customers b_persist textL" mat-table [dataSource]="newusercontacts" matSort>
+            <ng-container matColumnDef="check">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textC">#</th>
+                <td mat-cell *matCellDef="let row" class="textC initial_cont">
+                    <div class="initial">{{row.name | slice:0:1}}</div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}}
+                    <br *ngIf="row.phone">
+                    <span class="number">{{row.phone}}</span>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action1">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textR">
+                </th>
+                <td mat-cell *matCellDef="let row" class="textC">
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action2">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="textR">
+                </th>
+                <td mat-cell *matCellDef="let row" class="textC initial_cont" (click)="invitesmsuser(row)">
+                    <button class="send">
+                        send
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-row class="rowdata" *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="3">
+                    <!-- {{showData ? "You have no users":"No contacts matching the filter " + input.value}} -->
+                </td>
+            </tr>
+        </table>
+        <!-- <app-content *ngIf="!showData"></app-content> -->
+        <!-- <div style="margin: 0 -16px;"> -->
+            <!-- <mat-paginator class="b_persist" [pageSizeOptions]="[ 25, 50, 75, 100]" aria-label="Select page of users"></mat-paginator> -->
+        <!-- </div> -->
+        <app-content *ngIf="!newusercontacts"></app-content>
+        <p class="textC" *ngIf="newusercontacts && newusercontactlist.length == 0">You have no contacts for referal</p>
+    </div>
+</div>
+
+
+<div class="col col-20 col-sm-none"></div>
+
+
+
+<div class="col col-100" style=" padding: 0; margin: 0; min-height: 0; "></div>
+
+
+
+<div class="col col-20 col-sm-none"></div>
+
+<div class="col col-60">
+    <div class="add_contact">
+        <button mat-button (click)="addcontact()">Add contacts</button>
+    </div>
+</div>
+
+<div class="col col-20 col-sm-none"></div>
+
+
+        
+</div>
+</div>

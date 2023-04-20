@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-100 lucky">
+            <div class="main-content b_accent">
+                <div class="active-campaigns">
+                    <div class="active-campaigns mat-card b_persist">
+                        <div class="heading"> <b> Store Campaigns </b>
+                            <a class="ml-auto view-details c_primary" (click)="createNew()">Create Campaign</a>
+                        </div>
+                        <hr>
+                        <ng-container *ngIf="campaign$ | async as campaign">
+                            <div class="d-flex-row-md  d-flex-column-sm flex-wrap">
+                                <div class="col-50 col-md-100 col-sm-100" *ngFor="let x of campaign">
+                                    <div class="campaign-item c_black">
+                                        <div class="d-flex-column">
+                                            <div class="d-flex-row mt-md-10 mt-sm-5">
+                                                <h3 class="mr-5 col-70 col-sm-60">
+                                                    <b> {{x.name}} </b>
+                                                    <button mat-button class="active-chip c_white b_black"
+                                                        *ngIf="x.tX == 'tC' && !x.customAct">{{!x.ban ?
+                                                        'Pending':'Rejected'}}</button>
+                                                    <button class="active-chip c_white"
+                                                        [class.b_green]=" auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        [class.b_red]=" x.stoped || x.paused || !auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        mat-button
+                                                        *ngIf=" x.tX !== 'tC' || x.tX == 'tC' && x.customAct ">
+                                                        {{ !auth.resource.compareDates( x.dateE.toDate() ) ?
+                                                        'Expired':''}}
+                                                        {{ !x.stoped && !x.paused && auth.resource.compareDates(
+                                                        x.dateE.toDate() ) ? 'Active':''}}
+                                                        {{ x.stoped && !x.paused && auth.resource.compareDates(
+                                                        x.dateE.toDate() ) ? 'Stopped':''}}
+                                                        {{ !x.stoped && x.paused && auth.resource.compareDates(
+                                                        x.dateE.toDate() ) ? 'Paused':''}}</button>
+                                                </h3>
+                                                <div class="col-5 col-sm-5"> </div>
+                                            </div>
+                                            <div class="dash-border align-items-center d-flex-row">
+                                                <div class="col-65  col-sm-50">
+                                                    <h5> <b> On Direct Sale</b>
+                                                    </h5>
+                                                    <div> <img src="assets/foreign/lucky/percent.svg" alt="" width="15"
+                                                            height="15"> <span> You give:
+                                                            {{ x.type == 'flat' ? '₹':''}}{{x.cbDir}}{{ x.type ==
+                                                            'percent' ? '%':''}}</span></div>
+                                                    <div class="mt-5"></div>
+                                                    <h5> <b>Sale Via Recommendation </b> </h5>
+                                                    <div> <img src="assets/foreign/lucky/customerpinknew.svg" alt="">
+                                                        <span> New Customer : {{ x.type == 'flat' ?
+                                                            '₹':''}}{{x.cbNew}}{{ x.type == 'percent' ? '%':''}}</span>
+                                                    </div>
+                                                    <div class="mt-3"> <img src="assets/foreign/lucky/customerpink.svg"
+                                                            alt="">
+                                                        <span> Existing Customer : {{ x.type == 'flat' ?
+                                                            '₹':''}}{{x.cbExi}}{{ x.type == 'percent' ? '%':''}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-35  col-sm-50">
+                                                    <div class="padding-grd ">
+                                                        <div class="bg-gradient b_gradient c_white">
+                                                            <h6 *ngIf="x.type == 'flat'">Cashback ₹{{x.cbDir}}/-</h6>
+                                                            <h6 *ngIf="x.type == 'percent'">{{x.cbDir}}% Cashback upto
+                                                                ₹{{x.max}}/-</h6>
+                                                            <h6>Minimum order value ₹{{x.min}}/-</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex-row mt-5">
+                                                <div class="col-50">
+                                                    <p> Expiry Date <br> <b> {{x.dateE.toDate() | date:'MMM dd, yyyy'}}
+
+                                                        </b> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p *ngIf="campaign.length == 0"><br>You have no recent orders.</p>
+                            </div>
+                        </ng-container>
+                        <app-content *ngIf="!(campaign$ | async)"></app-content>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

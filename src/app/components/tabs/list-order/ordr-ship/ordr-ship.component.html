@@ -1,0 +1,102 @@
+<div class="container" *ngIf="payment">
+    <div class="row">
+
+        <div class="col col-100">
+            <header style="display: flex; align-items: center;">
+                <h3>Create Shipment</h3>
+                <span class="divide"></span>
+                <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+            </header>
+            <app-content *ngIf="!(auth.user$ | async)"></app-content>
+            <form (submit)="true" *ngIf="auth.user$ | async as mine">
+
+                <mat-form-field appearance="legacy" class="fullWidth">
+                    <mat-label>Pickup From</mat-label>
+                    <input matInput placeholder="store name here" [(ngModel)]="shipment.name" type="text" name="storename" [disabled]="makingChanges">
+                    <mat-hint>use A-Z a-z 0-9</mat-hint>
+                    <mat-error>Understandable store name required.</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>Shipment Length</mat-label>
+                    <input matInput placeholder="store name here" min="0.5" type="number" [(ngModel)]="shipment.O_length" name="shipLength" [disabled]="makingChanges">
+                    <span matSuffix>cm</span>
+                    <mat-hint>Charged for minimum 0.5 cm</mat-hint>
+                    <mat-error>Shipment Length is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>Shipment Breath</mat-label>
+                    <input matInput placeholder="store name here" min="0.5" type="number" [(ngModel)]="shipment.O_breadth" name="shipBreath" [disabled]="makingChanges">
+                    <span matSuffix>cm</span>
+                    <mat-hint>Charged for minimum 0.5 cm</mat-hint>
+                    <mat-error>Shipment Breath is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>Shipment Height</mat-label>
+                    <input matInput placeholder="store name here" min="0.5" type="number" [(ngModel)]="shipment.O_height" name="shipHeight" [disabled]="makingChanges">
+                    <span matSuffix>cm</span>
+                    <mat-hint>Charged for minimum 0.5 cm</mat-hint>
+                    <mat-error>Shipment Height is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>Shipment Weight</mat-label>
+                    <input matInput placeholder="store name here" min="0.5" type="number" [(ngModel)]="shipment.O_weight" name="shipWeight" [disabled]="makingChanges">
+                    <span matSuffix>kg</span>
+                    <mat-hint>Charged for minimum 0.5 kg</mat-hint>
+                    <mat-error>Shipment Weight is required.</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="legacy" class="fullWidth">
+                    <mat-label>Address Line 1</mat-label>
+                    <input matInput placeholder="store address here" [(ngModel)]="shipment.address" type="text" name="address1" [disabled]="makingChanges">
+                    <mat-icon matSuffix>choose</mat-icon>
+                    <mat-hint>use A-Z a-z 0-9</mat-hint>
+                    <mat-error>Proper address is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="fullWidth">
+                    <mat-label>Address Line 2</mat-label>
+                    <input matInput placeholder="store area here" [(ngModel)]="shipment.address_2" type="text" name="address2" [disabled]="makingChanges">
+                    <mat-hint>use A-Z a-z 0-9</mat-hint>
+                    <mat-error>Proper area is required..</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>Pincode</mat-label>
+                    <input matInput placeholder="store postal code here" [(ngModel)]="shipment.pin_code" name="pin_code" min="1000000" max="999999" minlength="6" maxlength="6" type="tel" [disabled]="makingChanges">
+                    <mat-hint>use 0-9</mat-hint>
+                    <mat-error>Zip code is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="halfWidth">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="store city here" [(ngModel)]="shipment.city" name="city" type="text" [disabled]="makingChanges">
+                    <mat-hint>use A-Z a-z 0-9</mat-hint>
+                    <mat-error>City is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="fullWidth">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="store state here" [(ngModel)]="shipment.state" type="text" name="state" [disabled]="makingChanges">
+                    <mat-hint>use A-Z a-z 0-9</mat-hint>
+                    <mat-error>State is required.</mat-error>
+                </mat-form-field>
+
+            <footer style="display: flex; align-items: center; margin: 30px 2% 0 2%;">
+                <h3 *ngIf="makingChanges">Please Wait...</h3>
+                <span class="divide"></span>
+                <button mat-raised-button color="primary" 
+                (click)="submitShipment(mine.uid, payment.sin )" 
+                [disabled]="makingChanges" >Request Pickup</button>
+                <!-- ( (payment?.sin?.toDate() | date:'YYYY-MM-DD mm:ss'))  -->
+            </footer>
+            </form>
+        </div>
+
+    </div>
+</div>

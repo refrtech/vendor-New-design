@@ -1,0 +1,151 @@
+<div class="container b_primary" style="min-height: 100vh; width: 100%; overflow: hidden;">
+
+    <div class="row">
+        <div class="col col-100 textL" style="z-index: 1000;">
+            <img style="margin: 0 0 0 16px; height: 60px;" src="assets/brand/logo_color.png" />
+            <button mat-flat-button class="c_primary" (click)="auth.signOut()" style="
+            float: right;
+            margin: 8px 16px 0 0;">Sign Out</button>
+        </div>
+
+
+        <div class="col col-25 col-sm-75 col-card c_white">
+            <h4>A platform to<br>Multiply your Sales</h4>
+        </div>
+
+        <div class="col col-25 col-right" style="z-index: 1;">
+            <div class="clouds">
+                <div class="cloud-circle b_persist"></div>
+            </div>
+        </div>
+
+        <div class="col col-50 col-sm-100 col-card" style=" z-index: 2;">
+            <div class="card-box" style="padding: 0 !important; overflow: hidden;">
+                <!--
+
+
+            -->
+                <!--app-content *ngIf="!(auth.user$ | async)"></app-content-->
+
+                <mat-stepper [selectedIndex]="selectedIndex" #stepper class="b_persist" [linear]="stepLin" [disableRipple]="true" labelPosition="bottom" [orientation]="auth.resource.getWidth > 767  ? 'horizontal' : 'vertical'">
+
+
+
+
+
+                    <!--
+                [completed]="false" 
+                -->
+                    <mat-step [completed]="completed1" completedLabel="step complete" [editable]="stepEdit" label="Create Store" state="local_mall">
+
+                        <ng-container *ngIf=" activeNow == 'createLocation' || activeNow == 'addLocation' ">
+                            <router-outlet></router-outlet>
+                        </ng-container>
+                        <!--ng-container *ngIf=" mine.storeLoc.length == 0 ">
+        <app-new-store></app-new-store>
+    </ng-container>
+
+    <ng-container *ngIf=" mine.storeLoc.length > 0 ">
+        <app-new-location></app-new-location>
+    </ng-container-->
+
+
+                    </mat-step>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!--
+                -->
+                    <mat-step [completed]="completed2" completedLabel="step complete" [editable]="stepEdit" label="Start Campaign" state="local_offer">
+
+                        <ng-container *ngIf=" activeNow == 'createCampaign' ">
+                            <router-outlet></router-outlet>
+                        </ng-container>
+                        <!--p>Socialize with each other.</p>
+                    <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                    </div-->
+                    </mat-step>
+
+
+
+
+
+                    <!--
+                -->
+                    <mat-step [completed]="completed3" completedLabel="step complete" [editable]="stepEdit" label="Fund Wallet" state="account_balance_wallet">
+
+                        <ng-container *ngIf=" activeNow == 'fundWallet' ">
+                            <router-outlet></router-outlet>
+                        </ng-container>
+                        <!--p>Socialize with each other.</p>
+                    <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                    </div-->
+                    </mat-step>
+
+
+
+
+
+
+
+                    <!--
+                [completed]="false" 
+                -->
+                    <mat-step [completed]="completed4" completedLabel="step complete" [editable]="stepEdit" label="Add Products" state="shopping_cart" *ngIf=" 
+                !auth.resource.storeTypeNow || 
+                auth.resource.storeTypeNow == 'Both' || 
+                auth.resource.storeTypeNow == 'Onli' ">
+
+                        <ng-container *ngIf=" activeNow == 'addProduct' ">
+                            <router-outlet></router-outlet>
+                        </ng-container>
+                        <!--p>You're welcome.</p-->
+                    </mat-step>
+
+
+
+
+
+
+                    <!-- Icon overrides. -->
+                    <ng-template matStepperIcon="local_mall">
+                        <mat-icon>local_mall</mat-icon>
+                    </ng-template>
+                    <ng-template matStepperIcon="shopping_cart">
+                        <mat-icon>shopping_cart</mat-icon>
+                    </ng-template>
+                    <ng-template matStepperIcon="local_offer">
+                        <mat-icon>local_offer</mat-icon>
+                    </ng-template>
+                    <ng-template matStepperIcon="account_balance_wallet">
+                        <mat-icon>account_balance_wallet</mat-icon>
+                    </ng-template>
+                </mat-stepper>
+            </div>
+
+
+        </div>
+
+
+        <!--div class="col col-100">
+            <button mat-button (click)="completed1 = !completed1">TEST:{{completed1}}</button>
+            <button mat-button (click)="completed2 = !completed2">TEST:{{completed2}}</button>
+            <button mat-button (click)="completed3 = !completed3">TEST:{{completed3}}</button>
+            <button mat-button (click)="completed4 = !completed4">TEST:{{completed4}}</button>
+        </div-->
+    </div>
+
+</div>

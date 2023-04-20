@@ -1,0 +1,15 @@
+.otpHold{
+    width: -webkit-fill-available; width: -moz-available;
+    max-width: 480px;min-height: 44vh;
+}
+form .fullWidth{
+    width: -webkit-fill-available; width: -moz-available;
+    line-height: 26px; font-size: 18px;
+    a svg{height: 20px; line-height: 20px; padding: 5px;}
+    a .loader{animation: loader 3s infinite;}
+    @keyframes loader {
+        0%{transform: rotate(0deg) scale(1);}
+        40%{transform: rotate(180deg) scale(1.2);}
+        100%{transform: rotate(360deg) scale(1);}
+    }
+}

@@ -1,0 +1,31 @@
+.main {
+    margin: 10% 5% 5% 5%;
+    header {
+      p {
+        display: flex;
+        align-items: center;
+        gap: 3%;
+        margin: 0 !important;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px !important;
+        line-height: 26px !important;
+        color: #000000;
+      }
+    }
+    .content {
+      display: flex;
+      gap: 5%;
+      margin: 4% 3%;
+      .content_section {
+        p {
+          margin: 0 !important;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 13px !important;
+          line-height: 19px !important;
+          color: #454545;
+        }
+      }
+    }
+  }

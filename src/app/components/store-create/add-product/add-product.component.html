@@ -1,0 +1,257 @@
+<div class="formHold textC">
+  <h3 class="textL c_primary" *ngIf="enableDirect" 
+  style="margin-bottom: 24px !important;" >Create product</h3>
+    <app-content *ngIf="!(store$ | async)"></app-content>
+
+<form *ngIf="store$ | async as store">
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Product name</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.productName" placeholder="Enter product name" autocomplete="off" name="productName" type="text" required>
+        <mat-error>Product name is required.</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <div class="imageUploader" [style]=" submitFirst && imageUrlLogo.length == 0 ? (''):('color:#eeeeee;') " [class.c_warn]="submitFirst && imageUrlLogo.length == 0">
+          <div *ngIf="imageUrlLogo.length == 0" class="svgHold c_persist"><svg class="f_accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l4.65-4.65c.2-.2.51-.2.71 0L17 13h-3z"/>
+          </svg></div>
+          <div class="gallery b_accent" *ngIf="imageUrlLogo.length > 0">
+            <img class="squareImage" *ngFor="let i of imageUrlLogo" [src]="i" />
+          </div>
+          <p class="c_invert">Product Photo 1:1 JPEG/PNG <sup [class.c_warn]="submitFirst && imageUrlLogo.length == 0">*</sup></p>
+          <a mat-button [disabled]="disableForm"
+          (click)="takePicture('logo')" color="primary"><mat-icon>photo_camera</mat-icon> Take Picture</a>
+          <a mat-button [disabled]="disableForm"
+          (click)="choosePhoto('logo')" color="primary"><mat-icon>image</mat-icon> Upload Photo</a>
+          <!--input type="file" #getFine style="display: block;" (change)="uploadFile(getFine.value)" -->
+      </div>
+
+      <br>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Description</mat-label>
+        <textarea [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.description" placeholder="Enter description" autocomplete="off" name="description" type="text" required></textarea>
+        <mat-error>Product description is required.</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="legacy" class="halfWidth">
+        <mat-label>Market rate</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.price" placeholder="without discount" autocomplete="off" name="price" type="number" required>
+        <mat-hint>Product MRP here.</mat-hint>
+        <mat-error>MRP is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="halfWidth">
+        <mat-label>Final price</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.cost" placeholder="with the discount" autocomplete="off" name="cost" type="number" required>
+        <mat-hint>MRP - discount here.</mat-hint>
+        <mat-error>Selling price is required.</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Category</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.category" placeholder="Create new category" [matAutocomplete]="autoCategory" name="category" type="text" required>
+        <mat-autocomplete autoActiveFirstOption #autoCategory="matAutocomplete">
+          <mat-option *ngFor="let pC of store.proCat" [value]="pC">{{pC}}</mat-option>
+        </mat-autocomplete>
+        <mat-hint align="end" *ngIf="store.proCat?.length > 0">{{store.proCat.length}} Available</mat-hint>
+        <mat-error>Product category is required.</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>HSN/SAC</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="storeProduct.code" placeholder="Enter code" autocomplete="off" name="code" type="text" required>
+        <mat-error>Product HSN/SAC is required.</mat-error>
+      </mat-form-field>
+
+    <br>
+    <br>
+    <p>Setup Variants<br><span style="font-size: 14px; color: rgba(0, 0, 0, 0.54);">(optional)</span></p>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Create size</mat-label>
+        <input [disabled]="disableForm" 
+        (keyUp.enter)="choose.size.length > 0 ? ( addNewVariant('size', choose.size, '') + choose.size = '' ) : true"
+        matInput [(ngModel)]="choose.size" name="size" placeholder="eg. XL (text) / 12 (number)" autocomplete="off" type="text">
+        <a mat-button matSuffix 
+        [disabled]="choose.size.length == 0" 
+        (click)="choose.size.length > 0 ? 
+        ( addNewVariant('size', choose.size, '') + choose.size = '' ) : true">{{ getVariant('size', choose.size).length == 0 ? 'Add':'Remove'}}</a>
+      </mat-form-field>
+      <br>
+      <div class="colorPalete b_white c_black" *ngIf="getVariants('size').length > 0">
+          <div class="paletescroll">
+          <a mat-button class="square" *ngFor="let s of getVariants('size')" (click)="addNewVariant(s.type, s.name, '')"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
+          </div>
+      </div>
+     
+    <br>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Create color</mat-label>
+        <input [disabled]="disableForm" 
+        (keyUp.enter)="choose.color.length > 0 ? ( addNewVariant('color', choose.color, '') + choose.color = '' ) : true"
+        matInput [(ngModel)]="choose.color" name="color" placeholder="eg. Martian Red (text)" autocomplete="off" type="text">
+        <a mat-button matSuffix 
+        [disabled]="choose.color.length == 0" 
+        (click)="choose.color.length > 0 ? 
+        ( addNewVariant('color', choose.color, '') + choose.color = '' ) : true">{{ getVariant('color', choose.color).length == 0 ? 'Add':'Remove'}}</a>
+      </mat-form-field>
+    <br>
+      <div class="colorPalete b_white c_black">
+          <div class="paletescroll">
+          <a mat-icon-button class="circle"><mat-icon>palette</mat-icon></a>
+          <a mat-icon-button 
+          (click)="addNewVariant('palete', x, '')" 
+          [style.background]="x + (getVariant('palete', x).length == 0 ? 99: '')" [class.c_accent]="getVariant('palete', x).length !== 0"
+          class="circle picker" *ngFor="let x of [ '#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee', '#ffffff', '#000000' ]"><mat-icon [class.active]="getVariant('palete', x).length !== 0">{{ getVariant('palete', x).length !== 0 ? 'lens' : 'colorize' }}</mat-icon></a>
+          </div>
+          <div class="paletescroll" *ngIf="getVariants('color').length > 0">
+          <a mat-button class="square" *ngFor="let s of getVariants('color')" (click)="addNewVariant(s.type, s.name, '')"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
+          </div>
+      </div>
+
+      <br>
+
+      <mat-form-field appearance="legacy" class="fullWidth">
+        <mat-label>Create material</mat-label>
+        <input [disabled]="disableForm" 
+        (keyUp.enter)="choose.material.length > 0 ? ( addNewVariant('material', choose.material, '') + choose.material = '' ) : true"
+        matInput [(ngModel)]="choose.material" name="material" placeholder="eg. Cotton / Linen" autocomplete="off" type="text">
+        <a mat-button matSuffix 
+        [disabled]="choose.material.length == 0" 
+        (click)="choose.material.length > 0 ? 
+        ( addNewVariant('material', choose.material, '') + choose.material = '' ) : true">{{ getVariant('material', choose.material).length == 0 ? 'Add':'Remove'}}</a>
+      </mat-form-field>
+      <br>
+      <div class="colorPalete b_white c_black" *ngIf="getVariants('material').length > 0">
+          <div class="paletescroll">
+          <a mat-button class="square" *ngFor="let s of getVariants('material')" (click)="addNewVariant(s.type, s.name, '')"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
+          </div>
+      </div>
+     
+    <br>
+
+      <mat-form-field appearance="legacy" class="halfWidth">
+        <mat-label>Variant group</mat-label>
+        <input [disabled]="disableForm"
+        matInput [(ngModel)]="choose.title" name="title" placeholder="Custom Title" [matAutocomplete]="autoTitle" type="text">
+        <mat-autocomplete autoActiveFirstOption #autoTitle="matAutocomplete">
+          <mat-option *ngFor="let t of choose.titles" [value]="t">{{t}}</mat-option>
+        </mat-autocomplete>
+        <!--a mat-button matSuffix>Choose</a-->
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="halfWidth">
+        <mat-label>Create variant</mat-label>
+        <input [disabled]="disableForm" 
+        (keyUp.enter)="choose.title.length > 0  && choose.about.length > 0 ? ( addNewVariant('variant', choose.about, choose.title) + choose.about = '' ) : true"
+        matInput [(ngModel)]="choose.about" name="about" placeholder="Variant name" autocomplete="off" type="text">
+        <a mat-button matSuffix 
+        [disabled]="choose.title.length == 0 || choose.about.length == 0" 
+        (click)="
+        choose.title.length > 0  && choose.about.length > 0 ? 
+        ( addNewVariant('variant', choose.about, choose.title) + choose.about = '' ) : true">{{ getVariant('variant', choose.about).length == 0 ? 'Add':'Remove'}}</a>
+      </mat-form-field>
+      <br>
+      <div class="colorPalete b_white c_black" *ngIf="choose.titles.length > 0">
+          <div class="paletescroll" *ngFor="let t of choose.titles">
+          <a mat-icon-button class="circle" (click)="removeVariantBulk('variant', t)"><mat-icon>remove</mat-icon></a>
+          <ng-container *ngFor="let s of getVariants('variant')">
+            <a mat-button class="square" *ngIf="s.title == t"
+            (click)="addNewVariant(s.type, s.name, s.title)"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
+          </ng-container>
+          </div>
+      </div>
+ 
+    <br>
+
+<div class="variants">
+<table class="textL b_accent">
+  <tr *ngIf="getVariants('size').length > 0">
+    <td>Sizes</td>
+    <td colspan="2">
+      <div class="heldVarients">
+        <span *ngFor="let s of getVariants('size')"><span class="optList c_primary">{{s.name}}</span></span>
+      </div>
+    </td>
+  </tr>
+  <tr *ngIf="getVariants('color').length > 0 || getVariants('palete').length > 0">
+    <td>Colors</td>
+    <td colspan="2">
+      <div class="heldVarients">
+        <span *ngFor="let s of getVariants('color')"><span class="optList c_primary">{{s.name}}</span></span>
+        <br *ngIf="getVariants('color').length > 0">
+        <span *ngFor="let s of getVariants('palete')"><span class="optList c_primary">{{s.name | uppercase}}</span></span>
+      </div>
+    </td>
+  </tr>
+  <tr *ngIf="getVariants('material').length > 0">
+    <td>Materials</td>
+    <td colspan="2">
+      <div class="heldVarients">
+      <span *ngFor="let s of getVariants('material')"><span class="optList c_primary">{{s.name}}</span></span>
+      </div>
+    </td>
+  </tr>
+  <tr class="heldCustom" *ngFor="let t of choose.titles">
+    <td>{{t}}</td>
+    <td colspan="2">
+      <div class="heldVarients">
+        <span *ngFor="let s of getVariants('variant');"><span class="optList c_primary" *ngIf="s.title == t">{{s.name}}</span></span>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">Warranty</td>
+    <td class="textR">
+      <mat-slide-toggle class="togglePad" color="primary" labelPosition="before" [(ngModel)]="storeProduct.warranty" name="warranty">{{storeProduct.warranty ? 'Available':'No'}}</mat-slide-toggle>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">Cuisine</td>
+    <td class="textR">
+      <mat-slide-toggle class="togglePad" color="primary" labelPosition="before" [(ngModel)]="storeProduct.content" name="content">{{storeProduct.content ? 'Pure Veg':'Non Veg'}}</mat-slide-toggle>
+    </td>
+  </tr>
+</table>
+
+<!--table class="textL b_accent">
+  <tr>
+    <td colspan="2">Exchange / Return / Refund</td>
+    <td class="textR">
+      <mat-slide-toggle class="togglePad" color="primary" labelPosition="before" [(ngModel)]="storeProduct.exchange" name="exchange">{{storeProduct.exchange ? 'Yes':'No'}}</mat-slide-toggle>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">Setup COD<br>Cash on Delivery</td>
+    <td class="textR">
+      <mat-slide-toggle class="togglePad" color="primary" labelPosition="before" [(ngModel)]="choose.COD" name="COD">{{choose.COD ? 'Yes':'No'}}</mat-slide-toggle>
+    </td>
+  </tr>
+</table-->
+</div>
+
+      <div class="formFoot textC">
+        <a mat-button [disabled]="disableForm" routerLink="/dash" *ngIf="!enableDirect" >Skip</a>
+        <a mat-button class="c_invert" mat-dialog-close *ngIf="enableDirect">Later</a>
+        &nbsp;
+        <button [disabled]="disableForm" type="button" (click)="createStoreProduct()" 
+        mat-stroked-button color="primary">Create product</button>
+    </div>
+</form>
+    </div>

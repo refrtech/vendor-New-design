@@ -1,0 +1,24 @@
+<header class="textR" style=" display: flex; align-items: center;   margin: -10px -10px 0 -10px;">
+    <span style="line-height: 30px; font-size: 22px;">Bulk Upload</span>
+    <span class="divide"></span>
+    <button mat-icon-button><mat-icon>close</mat-icon></button>
+</header>
+
+<button (click)="choose.click()" [disabled]="makeChanges" style="width: -webkit-fill-available;
+background: #ffffff;
+border: 3px dotted #eeeeee;
+line-height: 100%;
+height: 70%;">Choose a .xlsx file as per sample.</button>
+<input type="file" #choose (change)="onFileChange($event)" multiple="false" style="display: none;" />
+<!--table class="sjs-table">
+    <tbody>
+        <tr *ngFor="let row of data">
+            <td *ngFor="let val of row">
+                {{val}}
+            </td>
+        </tr>
+    </tbody>
+</table-->
+<div class="textC" *ngIf="auth.user$ | async as mine">
+    <button mat-raised-button style="margin: 24px 0 8px 0;" (click)="setUpFile(mine.uid)" [disabled]="makeChanges">Download Sample</button>
+</div>

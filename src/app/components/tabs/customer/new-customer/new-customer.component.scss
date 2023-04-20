@@ -1,0 +1,51 @@
+header {
+    margin: 10px 0;
+    .head {
+      display: flex;
+      align-items: center;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+    }
+  }
+  
+  //
+  
+  .form {
+    margin: 0 17px;
+    .fields {
+      width: 100%;
+    }
+  }
+  
+  .sync_contact {
+    margin: 5px 0;
+    a {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      text-decoration-line: underline;
+  
+      color: #8000ff;
+    }
+  }
+  
+  .add_contact {
+    margin: 8% 0;
+    text-align: center;
+    button {
+      background: #8000ff;
+      border-radius: 15px;
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px !important;
+      line-height: 19px !important;
+      color: #ffffff;
+      padding: 4% 11%;
+      border: none;
+    }
+  }

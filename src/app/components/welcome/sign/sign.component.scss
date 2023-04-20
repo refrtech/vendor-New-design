@@ -1,0 +1,83 @@
+table,tr,td,th{padding: 0;margin: 0;border: 0px solid;border-spacing: 0px;overflow: hidden;}
+table{
+    width: -webkit-fill-available; width: -moz-available; cursor: default;
+    tr th{line-height: 40px;font-size: 24px;font-weight: 500;
+        img{height: 40px; display: inline-block; vertical-align: middle;}
+        .invertC{filter: invert(1);}
+    }
+    tr td{
+        padding: 4px 0 6px 0;
+        form{
+            p{font-size: 20px !important;line-height: 50px !important; height: 50px;margin: 0 16px 8px 16px !important;
+                .inputPhone{
+                    font-size: 20px;line-height: 40px;
+                    display: inline-block; text-align: center;
+                    outline: none; vertical-align: baseline;
+                    transition-duration: 0.3s;padding: 0;
+                }
+                .inputPhone1{width: 3em;
+                }
+                .inputPhone2{width: 1.7em; border-radius: 20px 0 0 20px; padding: 0 0 0 16px; 
+                }
+                .inputPhone3{width: 1.8em; 
+                }
+                .inputPhone4{width: 3em; border-radius: 0 20px 20px 0; 
+                }
+                .fullPhoneInput{ 
+                    border-radius: 0; padding: 0 0 0 20px; width: 9em;
+                }
+            }
+        }
+        form .fullWidth{
+            width: -webkit-fill-available; width: -moz-available;line-height: 26px; font-size: 18px; 
+            a svg{height: 20px; line-height: 20px; padding: 5px;}
+            a .loader{animation: loader 3s infinite;}
+            @keyframes loader {
+                0%{transform: rotate(0deg) scale(1);}
+                40%{transform: rotate(180deg) scale(1.2);}
+                100%{transform: rotate(360deg) scale(1);}
+            }
+        }
+        form .halfWidth{width: 50%;line-height: 26px; font-size: 18px; 
+        }
+
+        hr{
+            padding: 0;
+            margin: 12px 0 14px 0;
+            width: 40px;
+            border: 2px solid;
+            border-radius: 4px;
+            animation: signHR 1.2s;
+        }
+        @keyframes signHR {
+            0%{width: 0px;}
+            50%{width: 0px;}
+            75%{width: 90px;}
+            100%{width: 40px;}
+        }
+
+    }
+}
+
+.social-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    gap: 1rem;
+
+    a {
+       padding: 8px 16px 4px 8px;
+       border-radius: 4px; min-width: 180px;  
+       max-width: 280px;
+       svg{width: 30px; height: 30px;}
+    }
+ }
+ @media only screen and (max-width: 767px) {//MOBILE
+    .social-buttons{
+        flex-direction: column;
+        a{  
+            width: -webkit-fill-available;
+        }
+    }   
+}

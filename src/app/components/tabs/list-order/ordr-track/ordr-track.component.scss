@@ -1,0 +1,130 @@
+$melorraOrange: #f05a00;
+$melorraGrey: #eeeeee;
+$blueShade1: #2c3e50;
+$blueShade2: #34495e;
+$boxShadowLight1: 0 2rem 5rem rgba(0,0,0,0.06);
+$boxShadwoDark1: 0 2rem 6rem rgba(0,0,0,0.3);
+
+
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h2, h4, h6, p {
+    padding: initial !important;
+    margin: initial !important;
+}
+
+h2, h4, h6 {
+  display: inline-block;
+}
+
+.rootX {
+  padding: 16px 1.5rem 0 1.5rem;
+  border-radius: 5px;
+  box-shadow: $boxShadwoDark1;
+}
+
+figure {
+  display: flex;
+  & svg {
+    width: 8rem;
+    border-radius: 8%;
+    margin-right: 1.5rem;
+    fill: $melorraOrange;
+  }
+  
+  & figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    & h4 {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+    
+    & h6 {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+    
+    & h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.order-track {
+  margin-top: 1rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  
+  &-step {
+    display: flex;
+    height: 7rem;
+    
+    &:last-child {
+      overflow: hidden;
+      height: 4rem;
+      & .order-track-status span:last-of-type {
+        display: none;
+      }
+    }
+  }
+  
+  &-status {
+    margin-right: 1.5rem;
+    position: relative;
+    &-dotPrevious {
+      display: block;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: $melorraGrey;
+    }
+    &-linePrevious {
+      display: block;
+      margin: 0 auto;
+      width: 2px;
+      height: 7rem;
+      background: $melorraGrey;
+    }
+    &-dot {
+      display: block;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: $melorraOrange;
+    }
+    &-line {
+      display: block;
+      margin: 0 auto;
+      width: 2px;
+      height: 7rem;
+      background: $melorraOrange;
+    }
+  }
+  
+  &-text {
+    &-stat {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    
+    &-sub {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+}
+
+.order-track {
+  transition: all .3s height 0.3s;
+  transform-origin: top center;
+}

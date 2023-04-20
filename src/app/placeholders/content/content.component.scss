@@ -1,0 +1,67 @@
+.placeholder-content {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    
+    // Animation
+    animation-duration: 1.7s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: placeholderAnimate;
+    background-size: 1300px; // Animation Area
+    width: -webkit-fill-available;
+    margin: 0 16px 16px 16px;
+
+    &_item {
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        
+        
+        &:after,
+        &:before {
+            width: inherit;
+            height: inherit;
+            content: '';
+            position: absolute;
+        }
+        
+        &:nth-child(1) {
+            top: 20px;
+            left: 120px;
+        }
+        &:nth-child(2) {
+            top: 0;
+            width: 20px;
+            left: 100px;
+            height: 100px;
+        }
+        &:nth-child(3) {
+            top: 60px;
+            left: 120px;
+            height: 20px;
+        }
+        &:nth-child(4) {
+            top: 100px;
+            left: 0;
+            height: 20px;
+        }
+        &:nth-child(5) {
+            top: 0;
+            right: 0;
+            width: 25%;
+            height: 20px;
+        }
+        &:nth-child(6) {
+            top: 140px;
+            height: 20px;
+            left: 0;
+        }
+    }
+}
+
+@keyframes placeholderAnimate {
+    0%{ background-position: -650px 0; }
+    100%{ background-position: 650px 0; }
+}

@@ -1,0 +1,6 @@
+<router-outlet></router-outlet>
+
+<p class="onlineStatus c_white"
+[class.showWarn]="showWarn" [class.hideWarn]="!showWarn || auth.resource.router.url == '/'"
+[class.b_red]="!auth.resource.currentNet" [class.b_green]="auth.resource.currentNet "
+><mat-icon style="vertical-align: middle;">info</mat-icon>&nbsp;{{ !auth.resource.currentNet ? 'You are now offline.' : 'You are now online' }}</p>

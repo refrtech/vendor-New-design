@@ -1,0 +1,44 @@
+<div class="otpHold">
+  <h4 class="textL" style="margin-left: 0 !important;">Please validate your phone number.</h4>
+  <hr class="c_primary" style="
+    border: 3px solid;
+    margin: -8px 80% 24px 4%;
+    border-radius: 8px;
+  ">
+  <app-content *ngIf="!(auth.user$| async)"></app-content>
+  
+  <form *ngIf="auth.user$| async as mine" (submit)="verifyOtp()">
+  
+              <mat-form-field class="fullWidth">
+                <mat-label>One Time Password</mat-label>
+                <input matInput placeholder="Enter OTP" name="code" [(ngModel)]="verificationCode" [disabled]="stepDisable" [type]=" auth.lock ? 'password' : 'text' " required>
+                <a mat-icon-button matSuffix disabled *ngIf="otpSent"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="loader c_primary">
+                  <path d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z"/>
+              </svg></a>
+              <a mat-icon-button matSuffix (click)=" auth.lock = !auth.lock "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path *ngIf="auth.lock" d="M17 9.761v-4.761c0-2.761-2.238-5-5-5-2.763 0-5 2.239-5 5v4.761c-1.827 1.466-3 3.714-3 6.239 0 4.418 3.582 8 8 8s8-3.582 8-8c0-2.525-1.173-4.773-3-6.239zm-5 8.239c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2zm3-9.413c-.927-.376-1.938-.587-3-.587s-2.073.211-3 .587v-3.587c0-1.654 1.346-3 3-3s3 1.346 3 3v3.587z"/>
+                  <path *ngIf="!auth.lock" d="M12 8c-1.062 0-2.073.211-3 .587v-3.587c0-1.654 1.346-3 3-3s3 1.346 3 3v1h2v-1c0-2.761-2.238-5-5-5-2.763 0-5 2.239-5 5v4.761c-1.827 1.466-3 3.714-3 6.239 0 4.418 3.582 8 8 8s8-3.582 8-8-3.582-8-8-8zm0 10c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2z"/>
+              </svg></a>
+                <!--a mat-icon-button matSuffix (click)=" auth.lock = !auth.lock "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path *ngIf="auth.lock" d="M17 9.761v-4.761c0-2.761-2.238-5-5-5-2.763 0-5 2.239-5 5v4.761c-1.827 1.466-3 3.714-3 6.239 0 4.418 3.582 8 8 8s8-3.582 8-8c0-2.525-1.173-4.773-3-6.239zm-5 8.239c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2zm3-9.413c-.927-.376-1.938-.587-3-.587s-2.073.211-3 .587v-3.587c0-1.654 1.346-3 3-3s3 1.346 3 3v3.587z"/>
+                  <path *ngIf="!auth.lock" d="M12 8c-1.062 0-2.073.211-3 .587v-3.587c0-1.654 1.346-3 3-3s3 1.346 3 3v1h2v-1c0-2.761-2.238-5-5-5-2.763 0-5 2.239-5 5v4.761c-1.827 1.466-3 3.714-3 6.239 0 4.418 3.582 8 8 8s8-3.582 8-8-3.582-8-8-8zm0 10c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2z"/>
+              </svg></a-->
+              <mat-error align="end">OTP sent on {{ phoneNumber.e164 }} is required!</mat-error>
+              <mat-hint align="end">OTP sent on {{ phoneNumber.e164 }}</mat-hint>
+              </mat-form-field>
+  
+              <div style="display: flex;margin: 20px 0 0 0;">
+                <a mat-button (click)="changeNumber()">Change number</a>
+                  <span class="divide"></span>
+                  <span class="progress" *ngIf="stepDisable || !otpSent">
+                    <span class="progress1">|</span>
+                    <span class="progress2">|</span>
+                    <span class="progress3">|</span>
+                  </span>
+        
+                <!--a mat-button color="primary" [disabled]=" stepDisable " *ngIf="showOtpSend && !showOtpSend">Send OTP</a-->
+                <button mat-raised-button color="primary" type="submit" [disabled]=" stepDisable || !verificationCode ">Confirm</button>
+              </div>
+  </form>
+</div>
+<div id="recaptcha-container"></div>

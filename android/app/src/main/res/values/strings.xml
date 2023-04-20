@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Refr Business</string>
+    <string name="title_activity_main">Refr Business</string>
+    <string name="package_name">club.refr.biz</string>
+    <string name="custom_url_scheme">club.refr.biz</string>
+
+  <string name="server_client_id">471641178783-poa1lb0fjdv7amnvh5ntftepaskgohh2.apps.googleusercontent.com</string>
+
+  <string name="facebook_app_id">281177787451050</string>
+  <string name="fb_app_name">Refr Tech</string>
+</resources>

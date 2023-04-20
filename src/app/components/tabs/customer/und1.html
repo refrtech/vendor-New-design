@@ -1,0 +1,123 @@
+<div class="container">
+    
+    <!--div class="row searchBar" >
+
+        <div class="col col-30 col-sm-100">
+            <h2 class="c_white">Customers</h2>
+        </div>
+
+        <div class="col col-40 col-sm-100">
+            <input style="
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid #eeeeee;
+    width: -webkit-fill-available;
+    padding: 0 0 0 8px;
+    margin: 0 16px;
+            "/>
+        </div>
+
+        <div class="col col-30 col-sm-100">
+            Add items
+        </div>
+
+    </div-->
+
+    <div class="row" style="transform:translateY(-140px);">
+        <div class="col col-100 textC">
+            <button mat-flat-button color="primary" disabled>Sync Contacts</button>
+            &nbsp;
+            <!--button mat-flat-button color="primary">Import CSV</button-->
+            <button mat-flat-button color="primary" disabled>Add New User</button>
+        </div>
+    </div>
+
+    <div class="row" style="transform:translateY(-140px);">
+        <div class="col col-20 col-sm-none textC" style="visibility: hidden;">
+            <a mat-button class="c_warn">Read Docs</a>
+        </div>
+
+        <div class="col col-60 col-sm-100 col-card">
+            <div class="card-box" style="overflow: hidden;">
+                <mat-form-field class="fullWidth" appearance="legacy">
+                    <mat-label>Search customers</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="name / email / phone" #input autocomplete="off">
+                    <span matSuffix><button mat-icon-button color="primary" ><mat-icon>filter_list</mat-icon></button></span>
+                    <!--button mat-button matSuffix color="primary">Bulk {{0}}</button-->
+                </mat-form-field>
+
+                  <table class="customers b_persist" *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort>
+                
+                
+                    <!-- Fruit Column -->
+                    <ng-container matColumnDef="check">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="textC">#</th>
+                        <td mat-cell *matCellDef="let row" class="textC"><mat-icon>{{ false ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+                      <td mat-cell *matCellDef="let row"> {{row.name}}
+                          <br *ngIf="row.phone || row.email">{{row.phone}} {{row.email}}
+                          <div class="info"><!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                            </svg--> Refered Via:
+                              <span *ngIf="true"> Direct</span>
+                              <span *ngIf="false"> F2F</span>
+                              <span *ngIf="false"> M2U</span>
+                              <span *ngIf="true"> Burn</span>
+                              <br><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M16.85 17.15l1.44-1.44-4.88-4.88-3.29 3.29c-.39.39-1.02.39-1.41 0l-6-6.01c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L9.41 12l3.29-3.29c.39-.39 1.02-.39 1.41 0l5.59 5.58 1.44-1.44c.31-.31.85-.09.85.35v4.29c0 .28-.22.5-.5.5H17.2c-.44.01-.66-.53-.35-.84z"/>
+                              </svg> Cashback Given: {{0}} &nbsp; <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M16.85 6.85l1.44 1.44-4.88 4.88-3.29-3.29c-.39-.39-1.02-.39-1.41 0l-6 6.01c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L9.41 12l3.29 3.29c.39.39 1.02.39 1.41 0l5.59-5.58 1.44 1.44c.31.31.85.09.85-.35V6.5c.01-.28-.21-.5-.49-.5h-4.29c-.45 0-.67.54-.36.85z"/>
+                              </svg> Order Total: {{0}}
+                          </div>
+                    </td>
+                    </ng-container>
+                
+
+                    <!-- Fruit Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="textR"> 
+                            <!--button mat-button color="primary">Bulk Send {{0}}</button-->
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="textR">
+                            <button mat-button *ngIf="row.exist" color="primary">Send</button>
+                            <button mat-button *ngIf="!row.exist" color="primary">Invite</button>
+                        </td>
+                    </ng-container>
+                
+                    <!--tr mat-header-row *matHeaderRowDef="displayedColumns"></tr-->
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </tr>
+                
+                    <!--tr class="mat-row">
+                        <td class="mat-cell" colspan="3">xxx
+                        </td>
+                    </tr-->
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="3">
+                          {{showData ? "You have no users":"No contacts matching the filter " + input.value}}
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                  <app-content *ngIf="!showData"></app-content>
+                  <div style="margin: 0 -16px;">
+                    <mat-paginator class="b_persist" [pageSizeOptions]="[ 25, 50, 75, 100]" aria-label="Select page of users"></mat-paginator>
+                  </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col col-100">
+            <h1 class="c_persist">Refr</h1>
+        </div>
+    </div>
+
+</div>

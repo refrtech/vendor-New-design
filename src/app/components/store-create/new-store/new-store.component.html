@@ -1,0 +1,474 @@
+<div class="formHold textC">
+  <app-content *ngIf="!(auth.user$ | async)"></app-content>
+
+  <form (submit)="true" *ngIf="auth.user$ | async as mine">
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Choose type</mat-label>
+      <mat-select [disabled]="disableForm" [(ngModel)]="storeLoc.storeType"
+        (selectionChange)="auth.resource.storeTypeNow = storeLoc.storeType" placeholder="Your store type"
+        name="storeType" required>
+        <mat-option *ngFor="let sT of auth.resource.env.storeTyp" [value]="sT.id">{{sT.name}} Store</mat-option>
+      </mat-select>
+      <mat-error>Store type is required.</mat-error>
+    </mat-form-field>
+
+
+    <br>
+
+    <div class="imageUploader" [style]=" submitFirst && !imageUrlLogo ? (''):('color:#eeeeee;') "
+      [class.c_warn]="submitFirst && !imageUrlLogo">
+      <div *ngIf="!imageUrlLogo" class="svgHold c_persist"><svg class="f_accent" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24">
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l4.65-4.65c.2-.2.51-.2.71 0L17 13h-3z" />
+        </svg></div>
+      <img class="squareImage" *ngIf="imageUrlLogo" [src]="imageUrlLogo" />
+      <p class="c_invert">Store Logo 1:1 JPEG/PNG <sup [class.c_warn]="submitFirst && !imageUrlLogo">*</sup></p>
+      <a mat-button [disabled]="disableForm" (click)="takePicture('logo')"
+        color="primary"><mat-icon>photo_camera</mat-icon> Take Picture</a>
+      <a mat-button [disabled]="disableForm" (click)="choosePhoto('logo')" color="primary"><mat-icon>image</mat-icon>
+        Upload Logo</a>
+      <!--input type="file" #getFine style="display: block;" (change)="uploadFile(getFine.value)" -->
+    </div>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Store name</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.storeName" placeholder="Enter store name"
+        autocomplete="off" name="storeName" required>
+      <mat-error>Store name is required.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Short intro</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.storeAbout" placeholder="Enter store intro"
+        autocomplete="off" name="storeAbout" required>
+      <mat-error>Store intro is required.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Category</mat-label>
+      <mat-select [disabled]="disableForm" (selectionChange)="storeLoc.storeSubCat = ''" [(ngModel)]="storeLoc.storeCat"
+        placeholder="Your store category" name="storeCat" required>
+        <mat-option *ngFor="let sT of auth.resource.categoryList" [value]="sT.id">{{sT.title}}</mat-option>
+      </mat-select>
+      <mat-error>Store category is required.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Sub Category</mat-label>
+      <mat-select [disabled]="disableForm" [(ngModel)]="storeLoc.storeSubCat" placeholder="Your store sub-category"
+        name="storeSubCat" required>
+        <ng-container *ngFor="let sT of auth.resource.categoryList">
+          <ng-container *ngFor="let scT of sT.items">
+            <mat-option *ngIf="scT.type == storeLoc.storeCat" [value]="scT.id">{{scT.name}}</mat-option>
+          </ng-container>
+        </ng-container>
+      </mat-select>
+      <mat-error>Store sub-category is required.</mat-error>
+    </mat-form-field>
+
+
+    <br>
+
+    <!--mat-form-field appearance="legacy" class="fullWidth">
+          <mat-label>Owners name</mat-label>
+          <input matInput placeholder="Enter owners name" [(ngModel)]="storeLoc.fullname" autocomplete="off" name="fullname" required>
+        </mat-form-field>    
+
+        <br-->
+
+
+    <div class="imageUploader" [style]=" submitFirst && !imageUrlBanner ? (''):('color:#eeeeee;') "
+      [class.c_warn]="submitFirst && !imageUrlBanner">
+      <div *ngIf="!imageUrlBanner" class="svgHold c_persist"><svg class="f_accent" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24">
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l4.65-4.65c.2-.2.51-.2.71 0L17 13h-3z" />
+        </svg></div>
+      <img class="fullImage" *ngIf="imageUrlBanner" [src]="imageUrlBanner" />
+      <p class="c_invert">Store Banner 16:9 JPEG/PNG <sup [class.c_warn]="submitFirst && !imageUrlBanner">*</sup></p>
+      <a mat-button (click)="takePicture('banner')" color="primary"><mat-icon>photo_camera</mat-icon> Take Picture</a>
+      <a mat-button (click)="choosePhoto('banner')" color="primary"><mat-icon>image</mat-icon> Upload Banner</a>
+      <!--input type="file" #getFine style="display: block;" (change)="uploadFile(getFine.value)" -->
+      <!--a mat-button (click)="imageUrlBanner = ''" *ngIf="imageUrlBanner" class="c_red"><mat-icon>close</mat-icon> Clear</a>
+          <a mat-button (click)="true" *ngIf="imageUrlBanner" class="c_green"><mat-icon>done</mat-icon> Crop</a-->
+    </div>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth" *ngIf="!mine.phone ? true: false">
+      <mat-label>Contact number for Invoice</mat-label>
+      <input [disabled]="disableForm || (mine.phone ? true: false)" matInput #phone placeholder="Enter mobile number"
+        [(ngModel)]="storeLoc.phone" autocomplete="off" name="phone" required>
+      <span matPrefix *ngIf="phone.value">+91&nbsp;</span>
+      <mat-error>Store contact is required.</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="legacy" class="fullWidth" *ngIf="!mine.email ? true: false">
+      <mat-label>Email address for Invoice</mat-label>
+      <input [disabled]="disableForm || (mine.email ? true : false)" matInput placeholder="Enter email address"
+        [(ngModel)]="storeLoc.email" autocomplete="off" name="email" required>
+      <mat-error>Store email is required.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <div class="timetable">
+      <table>
+        <ng-container *ngIf=" !storeLoc.storeType || storeLoc.storeType == 'Both' || storeLoc.storeType == 'Onli' ">
+          <tr>
+            <td colspan="3">Set delivery distance</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <a mat-button color="primary" (click)="storeLoc.delivery = 'Citywide'"><mat-icon>{{storeLoc.delivery ==
+                  'Citywide' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Citywide</a>
+              <a mat-button color="primary" (click)="storeLoc.delivery = 'Nationwide'"><mat-icon>{{storeLoc.delivery ==
+                  'Nationwide' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Nationwide</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="3">Set transactions</td>
+          </tr>
+          <tr style="font-size: 14px;">
+            <td colspan="2">Cash On Delivery</td>
+            <td class="textR">
+              <mat-slide-toggle color="primary" labelPosition="before" [(ngModel)]="storeLoc.COD"
+                name="COD">{{storeLoc.COD ? 'Yes':'No'}}</mat-slide-toggle>
+            </td>
+          </tr>
+          <tr style="font-size: 14px;">
+            <td colspan="2">Exchange / Return / Refund</td>
+            <td class="textR">
+              <mat-slide-toggle color="primary" labelPosition="before" [(ngModel)]="storeLoc.exchange"
+                name="exchange">{{storeLoc.exchange ? 'Yes':'No'}}</mat-slide-toggle>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="3">Require logistics partner</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <a mat-button color="primary"
+                (click)="storeLoc.logistics = !storeLoc.logistics"><mat-icon>{{storeLoc.logistics ?
+                  'check_box':'check_box_outline_blank'}}</mat-icon> Yes, provide me with one.</a>
+              <a mat-button color="primary"
+                (click)="storeLoc.logistics = !storeLoc.logistics"><mat-icon>{{!storeLoc.logistics ?
+                  'check_box':'check_box_outline_blank'}}</mat-icon> No, we have our logistics network.</a>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf=" !storeLoc.storeType || storeLoc.storeType == 'Both' || storeLoc.storeType == 'Offl' ">
+          <tr>
+            <td colspan="3">Set opening hours</td>
+          </tr>
+          <tr>
+            <td [attr.colspan]="storeLoc.opensDaily ? 1 : 3"><mat-slide-toggle class="togglePad" color="primary"
+                [(ngModel)]="storeLoc.opensDaily" name="daily">{{storeLoc.opensDaily ? 'Daily':'Choose by
+                Weekdays'}}</mat-slide-toggle></td>
+            <td *ngIf="storeLoc.opensDaily">
+              <mat-form-field appearance="legacy" class="fullWidth">
+                <mat-label>From</mat-label>
+                <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.opensDailyS" name="opensDailyS"
+                  placeholder="07:00 AM" autocomplete="off" type="time" required>
+                <mat-error>from is required.</mat-error>
+              </mat-form-field>
+            </td>
+            <td *ngIf="storeLoc.opensDaily">
+              <mat-form-field appearance="legacy" class="fullWidth">
+                <mat-label>Until</mat-label>
+                <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.opensDailyE" name="opensDailyE"
+                  placeholder="11:00 PM" autocomplete="off" type="time" required>
+                <mat-error>until is required.</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </ng-container>
+
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openMon"
+              name="monday">MON</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openMon" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openMon">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openMonS" name="openMonS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openMon">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openMonE" name="openMonE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openTue"
+              name="tuesday">TUE</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openTue" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openTue">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openTueS" name="openTueS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openTue">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openTueE" name="openTueE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openWed"
+              name="wednesday">WED</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openWed" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openWed">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openWedS" name="openWedS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openWed">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openWedE" name="openWedE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openThu"
+              name="thursday">THU</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openThu" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openThu">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openThuS" name="openThuS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openThu">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openThuE" name="openThuE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openFri"
+              name="friday">FRI</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openFri" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openFri">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openFriS" name="openFriS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openFri">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openFriE" name="openFriE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openSat"
+              name="saturday">SAT</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openSat" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openSat">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openSatS" name="openSatS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openSat">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openSatE" name="openSatE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="!storeLoc.opensDaily">
+          <td><mat-slide-toggle class="togglePad" color="primary" [(ngModel)]="storeLoc.openSun"
+              name="sunday">SUN</mat-slide-toggle></td>
+          <td *ngIf="!storeLoc.openSun" colspan="2">Closed</td>
+          <td *ngIf="storeLoc.openSun">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>From</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openSunS" name="openSunS"
+                placeholder="07:00 AM" autocomplete="off" type="time" required>
+              <mat-error>from is required.</mat-error>
+            </mat-form-field>
+          </td>
+          <td *ngIf="storeLoc.openSun">
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Until</mat-label>
+              <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.openSunE" name="openSunE"
+                placeholder="11:00 PM" autocomplete="off" type="time" required>
+              <mat-error>until is required.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td colspan="3">Set address</td>
+        </tr>
+      </table>
+    </div>
+
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Pick locality on map</mat-label>
+      <input [disabled]="disableForm" matInput placeholder="Search your landmark" #mapSearchField
+        [(ngModel)]="storeLoc.locSearch" type="text" name="locSearch" class="my-map-search-field" required>
+      <!--[matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions" [value]="option.formatted_address" (click)="inputClicked(option)">{{option.formatted_address}}</mat-option>
+          </mat-autocomplete-->
+      <a mat-icon-button matSuffix *ngIf="startScan"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="loader">
+          <path
+            d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z" />
+        </svg></a>
+      <a mat-icon-button color="primary" (click)="getCurrentPosition()" *ngIf="!disableForm" matTooltip="Auto locate"
+        matSuffix><mat-icon>my_location</mat-icon></a>
+      <mat-error>Address locality is required.</mat-error>
+    </mat-form-field>
+
+    <div class="mapsHold" *ngIf="apiLoaded$ | async"
+      style="width: -webkit-fill-available; margin: -6px -20px 20px -20px; padding: 0; overflow: hidden; border-radius: 8px;">
+      <google-map (mapClick)="addMarker($event)" [options]="options" [center]="initialCordinates" [zoom]="initialZoom">
+
+        <!--map-info-window>Info Window content</map-info-window-->
+        <!--
+              (mapDrag)="markerDragLocation($event)" 
+              [position]="marker.position" 
+              [title]="marker.title"
+              [options]="marker.options"
+              (dragEnd)="markerDragEnd($event)"
+          -->
+        <map-marker [options]="markOptions" [position]="initialMark" title="Refr here">
+        </map-marker>
+      </google-map>
+    </div>
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Store address</mat-label>
+      <input [disabled]="disableForm" matInput placeholder="Shop No./Bldg Name" [(ngModel)]="storeLoc.locAddress"
+        autocomplete="off" name="address" required>
+      <mat-error>Store address is required.</mat-error>
+    </mat-form-field>
+
+
+    <br>
+    <!--br>
+
+        <mat-form-field appearance="legacy" class="halfWidth">
+          <mat-label>Latitude</mat-label>
+          <input matInput placeholder="auto fetch" [value]=" storeLoc.loc.latitude ? storeLoc.loc.latitude:'' " autocomplete="off" readonly required>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="halfWidth">
+          <mat-label>Longitude</mat-label>
+          <input matInput placeholder="auto fetch" [value]=" storeLoc.loc.longitude ? storeLoc.loc.longitude:'' " autocomplete="off" readonly required>
+        </mat-form-field-->
+
+    <br>
+
+    <!--mat-form-field appearance="legacy" class="halfWidth">
+          <mat-label>Country</mat-label>
+          <mat-select [(value)]="storeLoc.nationISO" name="iso">
+            <mat-option *ngFor="let nation of auth.resource.foreignMarks" [value]="nation.iso" required>
+              {{nation.nat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field-->
+
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>State</mat-label>
+      <mat-select [disabled]="disableForm" [(ngModel)]="storeLoc.stateISO" name="state" required>
+        <mat-option *ngFor="let state of indStates" [value]="state.isos">
+          {{state.name}}
+        </mat-option>
+      </mat-select>
+      <a mat-icon-button matSuffix *ngIf="loadPlacesAPI"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="loader">
+          <path
+            d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z" />
+        </svg></a>
+      <mat-error>Address state is required.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="legacy" class="halfWidth">
+      <mat-label>City</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.administrative_area_level_2"
+        name="administrative_area_level_2" placeholder="your city" autocomplete="off" required>
+      <a mat-icon-button matSuffix *ngIf="loadPlacesAPI"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="loader">
+          <path
+            d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z" />
+        </svg></a>
+      <mat-error>Address city is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" class="halfWidth">
+      <mat-label>Pincode</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeLoc.postal_code" name="postal_code"
+        placeholder="your zip code" autocomplete="off" required>
+      <a mat-icon-button matSuffix *ngIf="loadPlacesAPI"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="loader">
+          <path
+            d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z" />
+        </svg></a>
+      <mat-error>Address pincode is required.</mat-error>
+    </mat-form-field>
+
+
+    <div class="formFoot">
+      <button mat-button [disabled]="disableForm" type="button" (click)="createStore(true)"
+        style="padding-left: 4px;"><mat-icon>add</mat-icon> Locations</button>
+      <span class="divide"></span><!-- type="submit" -->
+      <button [disabled]="disableForm" (click)="createStore(false)" mat-stroked-button matStepperNext
+        color="primary">Create Store</button>
+    </div>
+  </form>
+</div>
