@@ -156,7 +156,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'setupdetails',
+    path: 'storedetails',
     loadChildren: () =>
       import(
         './components/newDesignScreens/store-details/store-details-module/store-details-module.module'

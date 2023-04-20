@@ -24,7 +24,9 @@
                         </svg>
                     </div>
                     <div class="progressbar">
-                        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                        <div class="pb_border">
+                            <div class="pb_yellow"></div>
+                        </div>
                     </div>
                     <div class="flex_2">
                         <div class="setup_heading">
@@ -35,7 +37,7 @@
                             <div class="h1">Store type</div>
                             <div class="p">Select a store type that best defines what your store offers to your
                                 customers</div>
-                            <mat-form-field appearance="outline" class="vendorInput">
+                            <mat-form-field appearance="outline" class="vendorSelect">
                                 <mat-label>Select an option</mat-label>
                                 <mat-select>
                                     <mat-option value="offlineStore">Offline Store</mat-option>
@@ -49,7 +51,7 @@
                             <div class="h1">Store category</div>
                             <div class="p">Select a category that best defines what your store offers to your customers
                             </div>
-                            <mat-form-field appearance="outline" class="vendorInput">
+                            <mat-form-field appearance="outline" class="vendorSelect">
                                 <mat-label>Select an option</mat-label>
                                 <mat-select>
                                     <mat-option value="offlineStore">Offline Store</mat-option>
@@ -59,7 +61,7 @@
                         </div>
                         <div class="store_section">
                             <div class="h1">Enter subcategory name</div>
-                            <mat-form-field appearance="outline" class="vendorInput">
+                            <mat-form-field appearance="outline" class="vendorSelect">
                                 <mat-label>Select an option</mat-label>
                                 <mat-select>
                                     <mat-option value="offlineStore">Offline Store</mat-option>

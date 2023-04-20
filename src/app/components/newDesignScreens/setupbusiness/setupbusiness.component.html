@@ -31,24 +31,23 @@
                     <div class="flex_2">
                         <div class="setup_heading">
                             <div class="h1">Let’s setup your business</div>
-                            <div class="p">Start with adding your name and your business name</div>
+                            <!-- <div class="p">Start with adding your name and your business name</div> -->
                         </div>
                         <form>
                             <div class="storedetails">
                                 <div class="details">
-                                    <div class="label">Store name</div>
+                                    <div class="label">Enter your store name</div>
                                     <mat-form-field appearance="outline" class="vendorInput fullWidth">
                                         <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
                                             required>
-                                        <mat-error>Product name is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="details">
-                                    <div class="label">Owner name</div>
+                                    <div class="label">Enter owner’s name <span
+                                            class="optional c_gray ld_xs_size">(optional)</span> </div>
                                     <mat-form-field appearance="outline" class="vendorInput fullWidth">
                                         <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
                                             required>
-                                        <mat-error>Product name is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -61,19 +60,17 @@
                             <div *ngIf="toggle">
                                 <div class="storedetails">
                                     <div class="details">
-                                        <div class="label">Manager name</div>
+                                        <div class="label">Manager’s name</div>
                                         <mat-form-field appearance="outline" class="vendorInput fullWidth">
                                             <input matInput placeholder="Eg. The Cake House" autocomplete="off"
                                                 type="text" required>
-                                            <mat-error>Product name is required.</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="details">
-                                        <div class="label">Manager contact no</div>
+                                        <div class="label">Manager’s number</div>
                                         <mat-form-field appearance="outline" class="vendorInput fullWidth">
                                             <input matInput placeholder="Eg. 1234567890" autocomplete="off" type="text"
                                                 required>
-                                            <mat-error>Product name is required.</mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>

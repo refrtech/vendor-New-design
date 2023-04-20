@@ -72,7 +72,7 @@
   .contents {
     min-height: 80vh;
     height: auto;
-    width: 45rem;
+    width: 50rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -110,8 +110,8 @@
     row-gap: 1.2rem;
     grid-template-columns: repeat(2, 1fr);
     .c1 {
-      max-height: 6.5rem;
-      min-height: 6.5rem;
+      // max-height: 6.5rem;
+      // min-height: 6.5rem;
       background: #ffffff;
       border: 1px solid #e7e7e7;
       box-shadow: 0px 4px 10px rgba(164, 164, 164, 0.25);
@@ -135,8 +135,15 @@
           }
           .p {
             padding-top: 5px;
-            font-size: 14px;
+            font-size: 12px;
             color: #8b8b8b;
+          }
+          .lg_enterprise {
+            background: #f0f0f0;
+            border-radius: 3px;
+            padding: 4px 9px;
+            margin-top: 10px;
+            width: max-content;
           }
         }
         .img_container {
@@ -209,8 +216,8 @@
     row-gap: 1.2rem;
     grid-template-columns: repeat(2, 1fr);
     .c1 {
-      max-height: 6.5rem;
-      min-height: 6.5rem;
+      // max-height: 6.5rem;
+      // min-height: 6.5rem;
       background: #ffffff;
       border: 1px solid #e7e7e7;
       box-shadow: 0px 4px 10px rgba(164, 164, 164, 0.25);
@@ -308,8 +315,8 @@
     row-gap: 1.2rem;
     grid-template-columns: repeat(1, 1fr);
     .c1 {
-      max-height: 6.5rem;
-      min-height: 6.5rem;
+      // max-height: 6.5rem;
+      // min-height: 6.5rem;
       background: #ffffff;
       border: 1px solid #e7e7e7;
       box-shadow: 0px 4px 10px rgba(164, 164, 164, 0.25);
