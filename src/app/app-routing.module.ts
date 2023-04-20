@@ -113,12 +113,14 @@ const routes: Routes = [
 
   // new design
 
-   {
+  {
     path: 'choosestoretype',
     loadChildren: () =>
       import(
         './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
-      ).then((m) => {return m.ChooseStoreTypeModuleModule}),
+      ).then((m) => {
+        return m.ChooseStoreTypeModuleModule;
+      }),
   },
   {
     path: 'chooseprofile',
@@ -188,13 +190,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'recommendation_CPC',
+    path: 'loyaltyform',
     loadChildren: () =>
       import(
-        './components/newDesignScreens/recommendation-cpc/recommendation-cpc-module/recommendation-cpc-module.module'
-      ).then((m) => m.RecommendationCPCModuleModule),
+        './components/newDesignScreens/loyaltyform/loyal-form-modules/loyal-form-modules.module'
+      ).then((m) => m.LoyalFormModulesModule),
   },
-
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },

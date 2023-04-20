@@ -114,9 +114,6 @@ import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanth
 import { NotificationorderpopupComponent } from './components/tabs/dashboard/notificationorderpopup/notificationorderpopup.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-
-
-
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
 
