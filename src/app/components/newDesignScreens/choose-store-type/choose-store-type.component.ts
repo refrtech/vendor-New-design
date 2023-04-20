@@ -10,7 +10,10 @@ export class ChooseStoreTypeComponent implements OnInit {
     { value: '0', viewValue: 'Offline Store' },
     { value: '1', viewValue: 'Hybrid' },
   ];
-  constructor() {}
+  constructor() {
+    console.log("1111");
+
+  }
 
   ngOnInit(): void {}
 }

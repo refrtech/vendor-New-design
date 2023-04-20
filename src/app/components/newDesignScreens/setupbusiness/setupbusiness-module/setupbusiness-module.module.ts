@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SetupbusinessModuleRoutingModule } from './setupbusiness-module-routing.module';
+import { SetupbusinessComponent } from '../setupbusiness.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+
+@NgModule({
+  declarations: [SetupbusinessComponent],
+  imports: [
+    CommonModule,
+    SetupbusinessModuleRoutingModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatSlideToggleModule,
+  ]
+})
+export class SetupbusinessModuleModule { }

@@ -114,16 +114,10 @@ import { TestComponent } from './placeholders/test/test.component';
 import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
 import { NotificationorderpopupComponent } from './components/tabs/dashboard/notificationorderpopup/notificationorderpopup.component';
-import { SetupbusinessComponent } from './components/newDesignScreens/setupbusiness/setupbusiness.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ChooseprofileComponent } from './components/newDesignScreens/chooseprofile/chooseprofile.component';
-import { ChooseStoreTypeComponent } from './components/newDesignScreens/choose-store-type/choose-store-type.component';
-import { StoreDetailsComponent } from './components/newDesignScreens/store-details/store-details.component';
-import { SetupAddressComponent } from './components/newDesignScreens/setup-address/setup-address.component';
-import { StoreTimingComponent } from './components/newDesignScreens/store-timing/store-timing.component';
-import { CongratulationpageComponent } from './components/newDesignScreens/congratulationpage/congratulationpage.component';
-import { SetupguideComponent } from './components/newDesignScreens/setupguide/setupguide.component';
-import { AddsuperpowerstoresComponent } from './components/newDesignScreens/addsuperpowerstores/addsuperpowerstores.component';
+
+
+
 
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
@@ -169,15 +163,11 @@ import { AddsuperpowerstoresComponent } from './components/newDesignScreens/adds
     DrawBalanceComponent,
     TestComponent,
     NotificationorderpopupComponent,
-    SetupbusinessComponent,
-    ChooseprofileComponent,
-    ChooseStoreTypeComponent,
-    StoreDetailsComponent,
-    SetupAddressComponent,
-    StoreTimingComponent,
-    CongratulationpageComponent,
-    SetupguideComponent,
-    AddsuperpowerstoresComponent,
+    // SetupbusinessComponent,
+    // ChooseprofileComponent,
+    // ChooseStoreTypeComponent,
+    // StoreDetailsComponent,
+    // SetupAddressComponent,
   ],
   imports: [
     BrowserModule,
@@ -186,10 +176,8 @@ import { AddsuperpowerstoresComponent } from './components/newDesignScreens/adds
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-
     FormsModule,
     ReactiveFormsModule,
-
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

@@ -7,7 +7,6 @@ import { WalletComponent } from './components/tabs/wallet/wallet.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { InsightComponent } from './components/tabs/insight/insight.component';
 import { CampaignComponent } from './components/tabs/campaign/campaign.component';
-
 import { AuthGuard } from './guards/auth.guard';
 import { CustomerComponent } from './components/tabs/customer/customer.component';
 import { StoreCreateComponent } from './components/store-create/store-create.component';
@@ -21,20 +20,10 @@ import { ListProductComponent } from './components/tabs/list-product/list-produc
 import { TestComponent } from './placeholders/test/test.component';
 import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
-import { SetupbusinessComponent } from './components/newDesignScreens/setupbusiness/setupbusiness.component';
-import { ChooseprofileComponent } from './components/newDesignScreens/chooseprofile/chooseprofile.component';
-import { ChooseStoreTypeComponent } from './components/newDesignScreens/choose-store-type/choose-store-type.component';
-import { StoreDetailsComponent } from './components/newDesignScreens/store-details/store-details.component';
-import { SetupAddressComponent } from './components/newDesignScreens/setup-address/setup-address.component';
-import { StoreTimingComponent } from './components/newDesignScreens/store-timing/store-timing.component';
-import { CongratulationpageComponent } from './components/newDesignScreens/congratulationpage/congratulationpage.component';
-import { SetupguideComponent } from './components/newDesignScreens/setupguide/setupguide.component';
-import { AddsuperpowerstoresComponent } from './components/newDesignScreens/addsuperpowerstores/addsuperpowerstores.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'test', component: TestComponent },
-
   {
     path: '',
     component: TabsComponent,
@@ -124,51 +113,80 @@ const routes: Routes = [
 
   // new design
 
-  {
-    path: 'setupbusiness',
-    component: SetupbusinessComponent,
-    canActivate: [AuthGuard],
+   {
+    path: 'choosestoretype',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
+      ).then((m) => {return m.ChooseStoreTypeModuleModule}),
   },
   {
     path: 'chooseprofile',
-    component: ChooseprofileComponent,
-    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/chooseprofile/chooseprofile-module/chooseprofile-module.module'
+      ).then((m) => m.ChooseprofileModuleModule),
   },
   {
-    path: 'choosestore',
-    component: ChooseStoreTypeComponent,
-    canActivate: [AuthGuard],
+    path: 'CPC',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/cpc/cpc-module/cpc-module.module'
+      ).then((m) => m.CPCModuleModule),
   },
   {
-    path: 'storedetails',
-    component: StoreDetailsComponent,
-    canActivate: [AuthGuard],
+    path: 'Setupaddress',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/setup-address/setup-address-module/setup-address-module.module'
+      ).then((m) => m.SetupAddressModuleModule),
   },
   {
-    path: 'setupaddress',
-    component: SetupAddressComponent,
-    canActivate: [AuthGuard],
+    path: 'setupbusiness',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
+      ).then((m) => m.SetupbusinessModuleModule),
   },
   {
-    path: 'storetime',
-    component: StoreTimingComponent,
-    canActivate: [AuthGuard],
+    path: 'setupdetails',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/store-details/store-details-module/store-details-module.module'
+      ).then((m) => m.StoreDetailsModuleModule),
   },
   {
-    path: 'congratspage',
-    component: CongratulationpageComponent,
-    canActivate: [AuthGuard],
+    path: 'storetiming',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/store-timing/store-timing-module/store-timing-module.module'
+      ).then((m) => m.StoreTimingModuleModule),
   },
+
   {
     path: 'setupguide',
-    component: SetupguideComponent,
-    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/setupguide/setupguide-module/setupguide-module.module'
+      ).then((m) => m.SetupguideModuleModule),
   },
+
   {
-    path: 'addsuperpower',
-    component: AddsuperpowerstoresComponent,
-    canActivate: [AuthGuard],
+    path: 'congratulation',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/congratulationpage/congratulation-module/congratulation-module.module'
+      ).then((m) => m.CongratulationModuleModule),
   },
+
+  {
+    path: 'addsuperpowerstore',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/addsuperpowerstores/addsuperpowerstores-module/addsuperpowerstores-module.module'
+      ).then((m) => m.AddsuperpowerstoresModuleModule),
+  },
+
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
