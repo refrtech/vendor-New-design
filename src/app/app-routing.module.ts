@@ -20,6 +20,7 @@ import { ListProductComponent } from './components/tabs/list-product/list-produc
 import { TestComponent } from './placeholders/test/test.component';
 import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
+import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -114,6 +115,22 @@ const routes: Routes = [
   // new design
 
   {
+    path: 'setupbusiness',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
+      ).then((m) => m.SetupbusinessModuleModule),
+  },
+
+  {
+    path: 'chooseprofile',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/chooseprofile/chooseprofile-module/chooseprofile-module.module'
+      ).then((m) => m.ChooseprofileModuleModule),
+  },
+
+  {
     path: 'choosestoretype',
     loadChildren: () =>
       import(
@@ -122,13 +139,7 @@ const routes: Routes = [
         return m.ChooseStoreTypeModuleModule;
       }),
   },
-  {
-    path: 'chooseprofile',
-    loadChildren: () =>
-      import(
-        './components/newDesignScreens/chooseprofile/chooseprofile-module/chooseprofile-module.module'
-      ).then((m) => m.ChooseprofileModuleModule),
-  },
+
   {
     path: 'CPC',
     loadChildren: () =>
@@ -143,13 +154,7 @@ const routes: Routes = [
         './components/newDesignScreens/setup-address/setup-address-module/setup-address-module.module'
       ).then((m) => m.SetupAddressModuleModule),
   },
-  {
-    path: 'setupbusiness',
-    loadChildren: () =>
-      import(
-        './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
-      ).then((m) => m.SetupbusinessModuleModule),
-  },
+
   {
     path: 'setupdetails',
     loadChildren: () =>
@@ -196,6 +201,8 @@ const routes: Routes = [
         './components/newDesignScreens/loyaltyform/loyal-form-modules/loyal-form-modules.module'
       ).then((m) => m.LoyalFormModulesModule),
   },
+
+  { path: 'loyaltysteps', component: LoyaltystepawayComponent },
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },

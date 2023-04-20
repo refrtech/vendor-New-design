@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChooseprofileModuleRoutingModule } from './chooseprofile-module-routing.module';
 import { ChooseprofileComponent } from '../chooseprofile.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ChooseprofileComponent],
@@ -11,6 +11,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommonModule,
     ChooseprofileModuleRoutingModule,
     MatProgressBarModule,
-  ]
+    MatButtonModule,
+  ],
 })
-export class ChooseprofileModuleModule { }
+export class ChooseprofileModuleModule {}
