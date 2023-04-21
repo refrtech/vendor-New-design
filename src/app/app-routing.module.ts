@@ -196,6 +196,15 @@ const routes: Routes = [
   },
 
 
+  {
+    path: 'recommendationMsg_CPC',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/cpc-message-preview/cpcmessagepreview-model/cpcmessagepreview-model.module'
+      ).then((m) => m.CpcmessagepreviewModelModule),
+  },
+
+
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
   { path: '**', redirectTo: '/404' },

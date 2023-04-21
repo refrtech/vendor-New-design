@@ -173,7 +173,24 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   text-align: center !important;
 }
 
+textarea {
+  resize: none !important;
+}
+
 @media (min-width: 1270px) {
+
+  .gradient_svg {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
+    background-position: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .ld_xxxl_size {
     font-size: 32px !important;
   }
@@ -877,6 +894,10 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
 
   .ld_JCspaceA {
     justify-content: space-around !important;
+  }
+
+  .ld_boldText{
+    font-weight: bold !important;
   }
 }
 
@@ -2326,14 +2347,4 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   }
 }
 
-.gradient_svg {
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
-  background-position: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
