@@ -24,7 +24,9 @@
                         </svg>
                     </div>
                     <div class="progressbar">
-                        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                        <div class="pb_border">
+                            <div class="pb_yellow"></div>
+                        </div>
                     </div>
                     <div class="flex_2">
                         <div class="setup_heading">
@@ -32,8 +34,29 @@
                             <div class="p">This is the first step to growing your business</div>
                         </div>
                         <div class="flex">
-                            <div class="c1 {{active_index==1?'border_purple':''}}"
+                            <div routerLink="/choosestoretype" class="c1 {{active_index==1?'border_purple':''}}"
                                 (click)="active_index==1 ? active_index = 0 : (active_index=1)">
+                                <div class="float_right">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_2504_566)">
+                                            <path
+                                                d="M10.0001 18.3327C14.6025 18.3327 18.3334 14.6017 18.3334 9.99935C18.3334 5.39698 14.6025 1.66602 10.0001 1.66602C5.39771 1.66602 1.66675 5.39698 1.66675 9.99935C1.66675 14.6017 5.39771 18.3327 10.0001 18.3327Z"
+                                                stroke="black" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 13.3333V10" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10 6.66602H10.0083" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2504_566">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </div>
                                 <div class="svg">
                                     <svg class="{{active_index==1?'svgColorActive':''}}" width=" 25" height="25"
                                         viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +93,8 @@
                                     <div class="c1_text">
                                         <div class="h5 {{active_index==1?'purpleText':''}}">Create your store</div>
                                         <div class="p {{active_index==1?'purpleText':''}}">Get listed on the Refr
-                                            Marketplace</div>
+                                            marketplace, boost your online & in-store sales when you reach potential new
+                                            customers</div>
                                     </div>
                                     <div class="img_container">
                                         <img src="../../../../assets/onboarding/profilesection/linkWebsite.png" alt="">
@@ -81,6 +105,27 @@
                             </div>
                             <div class="c1 {{active_index==2?'border_purple':''}}"
                                 (click)="active_index==2 ? active_index = 0 : (active_index=2)">
+                                <div class="float_right">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_2504_566)">
+                                            <path
+                                                d="M10.0001 18.3327C14.6025 18.3327 18.3334 14.6017 18.3334 9.99935C18.3334 5.39698 14.6025 1.66602 10.0001 1.66602C5.39771 1.66602 1.66675 5.39698 1.66675 9.99935C1.66675 14.6017 5.39771 18.3327 10.0001 18.3327Z"
+                                                stroke="black" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 13.3333V10" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10 6.66602H10.0083" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2504_566">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </div>
                                 <div class="svg">
                                     <svg class="{{active_index==2?'svgColorActive':''}}" width="19" height="29"
                                         viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +167,8 @@
                                         <div class="p {{active_index==2?'purpleText':''}}">Link an existing website to
                                             drive
                                             traffic</div>
+                                        <div class="lg_enterprise ld_xxs_size md_xxs_size sd_xxs_size">Only for large
+                                            enterprises</div>
                                     </div>
                                     <div class="img_container">
                                         <img src="../../../../assets/onboarding/profilesection/linkWebsite.png" alt="">
@@ -132,6 +179,27 @@
                             </div>
                             <div class="c1 {{active_index==3?'border_purple':''}}"
                                 (click)="active_index==3 ? active_index = 0 : (active_index=3)">
+                                <div class="float_right">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_2504_566)">
+                                            <path
+                                                d="M10.0001 18.3327C14.6025 18.3327 18.3334 14.6017 18.3334 9.99935C18.3334 5.39698 14.6025 1.66602 10.0001 1.66602C5.39771 1.66602 1.66675 5.39698 1.66675 9.99935C1.66675 14.6017 5.39771 18.3327 10.0001 18.3327Z"
+                                                stroke="black" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 13.3333V10" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10 6.66602H10.0083" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2504_566">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </div>
                                 <div class="svg">
                                     <svg class="{{active_index==3?'svgColorActive':''}}" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +230,27 @@
                             </div>
                             <div class="c1 {{active_index==4?'border_purple':''}}"
                                 (click)="active_index==4 ? active_index = 0 : (active_index=4)">
+                                <div class="float_right">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_2504_566)">
+                                            <path
+                                                d="M10.0001 18.3327C14.6025 18.3327 18.3334 14.6017 18.3334 9.99935C18.3334 5.39698 14.6025 1.66602 10.0001 1.66602C5.39771 1.66602 1.66675 5.39698 1.66675 9.99935C1.66675 14.6017 5.39771 18.3327 10.0001 18.3327Z"
+                                                stroke="black" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 13.3333V10" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10 6.66602H10.0083" stroke="black" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_2504_566">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </div>
                                 <div class="svg">
                                     <svg class="{{active_index==4?'svgColorActive':''}}" width=" 25" height="25"
                                         viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -197,8 +286,9 @@
                                 <div class="flex_content">
                                     <div class="c1_text">
                                         <div class="h5 {{active_index==4?'purpleText':''}}">For Professionals</div>
-                                        <div class="p {{active_index==4?'purpleText':''}}">Let people talk about your
-                                            services</div>
+                                        <div class="p {{active_index==4?'purpleText':''}}">For the talented
+                                            professionals who don't work out of a physical store, let people discover
+                                            your services through Refr</div>
                                     </div>
                                     <div class="img_container">
                                         <img src="../../../../assets/onboarding/profilesection/linkWebsite.png" alt="">
@@ -219,7 +309,7 @@
                             </svg>
                             Back
                         </a>
-                        <button mat-button routerLink="/choosestore">Continue</button>
+                        <!-- <button mat-button routerLink="/choosestoretype">Continue</button> -->
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ import { ListProductComponent } from './components/tabs/list-product/list-produc
 import { TestComponent } from './placeholders/test/test.component';
 import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
+import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -113,13 +114,14 @@ const routes: Routes = [
 
   // new design
 
-   {
-    path: 'choosestoretype',
+  {
+    path: 'setupbusiness',
     loadChildren: () =>
       import(
-        './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
-      ).then((m) => {return m.ChooseStoreTypeModuleModule}),
+        './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
+      ).then((m) => m.SetupbusinessModuleModule),
   },
+
   {
     path: 'chooseprofile',
     loadChildren: () =>
@@ -127,6 +129,17 @@ const routes: Routes = [
         './components/newDesignScreens/chooseprofile/chooseprofile-module/chooseprofile-module.module'
       ).then((m) => m.ChooseprofileModuleModule),
   },
+
+  {
+    path: 'choosestoretype',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
+      ).then((m) => {
+        return m.ChooseStoreTypeModuleModule;
+      }),
+  },
+
   {
     path: 'CPC',
     loadChildren: () =>
@@ -141,15 +154,9 @@ const routes: Routes = [
         './components/newDesignScreens/setup-address/setup-address-module/setup-address-module.module'
       ).then((m) => m.SetupAddressModuleModule),
   },
+
   {
-    path: 'setupbusiness',
-    loadChildren: () =>
-      import(
-        './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
-      ).then((m) => m.SetupbusinessModuleModule),
-  },
-  {
-    path: 'setupdetails',
+    path: 'storedetails',
     loadChildren: () =>
       import(
         './components/newDesignScreens/store-details/store-details-module/store-details-module.module'
@@ -188,13 +195,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'recommendation_CPC',
+    path: 'loyaltyform',
     loadChildren: () =>
       import(
-        './components/newDesignScreens/recommendation-cpc/recommendation-cpc-module/recommendation-cpc-module.module'
-      ).then((m) => m.RecommendationCPCModuleModule),
+        './components/newDesignScreens/loyaltyform/loyal-form-modules/loyal-form-modules.module'
+      ).then((m) => m.LoyalFormModulesModule),
   },
 
+  { path: 'loyaltysteps', component: LoyaltystepawayComponent },
 
   {
     path: 'recommendationMsg_CPC',

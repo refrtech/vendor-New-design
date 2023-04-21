@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main m_20-lg m_20-md m_20-sm">
     <div class="gradient_svg"></div>
     <div class="box">
         <div class="section">
@@ -30,58 +30,40 @@
                     </div>
                     <div class="flex_2">
                         <div class="setup_heading">
-                            <div class="h1">Let’s setup your business</div>
-                            <!-- <div class="p">Start with adding your name and your business name</div> -->
+                            <div class="h1 purple_text">You are one step away</div>
                         </div>
-                        <form>
-                            <div class="storedetails">
-                                <div class="details">
-                                    <div class="label">Enter your store name</div>
-                                    <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                        <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
-                                            required>
-                                    </mat-form-field>
+
+                        <div class="campaign_section_bg">
+                            <div class="camp_sec ld_t30margin md_t20margin sd_t10margin">
+                                <div class="sec">
+                                    <div class="h1">Campaign type</div>
+                                    <div class="p">Loyalty</div>
                                 </div>
-                                <div class="details">
-                                    <div class="label">Enter owner’s name <span
-                                            class="optional c_gray ld_xs_size">(optional)</span> </div>
-                                    <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                        <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
-                                            required>
-                                    </mat-form-field>
+                                <div class="sec">
+                                    <div class="h1">Campaign type</div>
+                                    <div class="p">Loyalty</div>
+                                </div>
+                                <div class="sec">
+                                    <div class="h1">Campaign type</div>
+                                    <div class="p">Loyalty</div>
                                 </div>
                             </div>
 
-                            <div class="switch">
-                                <div class="store_m">Does your store have a manager</div>
-                                <mat-slide-toggle color="primary" (click)="toggle = !toggle"></mat-slide-toggle>
-                            </div>
-
-                            <div *ngIf="toggle">
-                                <div class="storedetails">
-                                    <div class="details">
-                                        <div class="label">Manager’s name</div>
-                                        <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                            <input matInput placeholder="Eg. The Cake House" autocomplete="off"
-                                                type="text" required>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="details">
-                                        <div class="label">Manager’s number</div>
-                                        <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                            <input matInput placeholder="Eg. 1234567890" autocomplete="off" type="text"
-                                                required>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </form>
+                        </div>
                     </div>
+
                     <div class="btn">
-                        <button mat-button routerLink="/chooseprofile">Continue</button>
+                        <a routerLink="/setupbusiness">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 12L5 12" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 19L5 12L12 5" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Back
+                        </a>
+                        <button mat-button routerLink="/choosestore">Continue</button>
                     </div>
                 </div>
             </div>

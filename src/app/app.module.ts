@@ -113,9 +113,7 @@ import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchan
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
 import { NotificationorderpopupComponent } from './components/tabs/dashboard/notificationorderpopup/notificationorderpopup.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
-
-
+import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
 
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
@@ -161,6 +159,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     DrawBalanceComponent,
     TestComponent,
     NotificationorderpopupComponent,
+    LoyaltystepawayComponent,
   ],
   imports: [
     BrowserModule,
