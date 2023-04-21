@@ -893,7 +893,85 @@ img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"]
 
 textarea {
   resize: none !important;
+  height:170px
 }
+
+.overflow_hidden{
+  overflow: hidden !important;
+}
+
+
+// borderradius
+.br40P {
+  border-radius: 40px !important;
+}
+
+.br20 {
+  border-radius: 20px;
+}
+
+.br14 {
+  border-radius: 14px;
+}
+
+.br10 {
+  border-radius: 10px !important;
+}
+
+.br8 {
+  border-radius: 8px !important;
+}
+
+.br6 {
+  border-radius: 6px !important;
+}
+
+.br4 {
+  border-radius: 4px !important;
+}
+
+.br2 {
+  border-radius: 2px !important;
+}
+
+.br0 {
+  border-radius: 0px !important;
+}
+
+.br50 {
+  border-radius: 50% !important;
+}
+
+.br_tl20 {
+  border-top-left-radius: 20px;
+}
+
+.br_tr20 {
+  border-top-right-radius: 20px;
+}
+
+.br_bl20 {
+  border-bottom-left-radius: 20px;
+}
+
+.br_br20 {
+  border-bottom-right-radius: 20px;
+}
+
+.boldText{
+  font-weight: bold !important;
+}
+
+.normalText{
+  font-weight: normal !important;
+}
+
+.whitespace {
+  white-space: break-spaces !important;
+}
+
+
+
 
 @media (min-width: 1270px) {
 
@@ -1178,7 +1256,7 @@ textarea {
   }
 
   .ld_t40padding {
-    padding-top: 30px !important;
+    padding-top: 40px !important;
   }
 
   .ld_t50padding {
@@ -1565,8 +1643,12 @@ textarea {
     display: flex !important;
   }
 
-  .ld_dflex_dir {
+  .ld_dflex_dir_column {
     flex-direction: column !important;
+  }
+
+  .ld_dflex_dir_column_rev {
+    flex-direction: column-reverse !important;
   }
 
   .ld_flex11auto {
@@ -1888,7 +1970,7 @@ textarea {
   }
 
   .md_t40padding {
-    padding-top: 30px !important;
+    padding-top: 40px !important;
   }
 
   .md_t50padding {
@@ -2275,8 +2357,12 @@ textarea {
     display: flex;
   }
 
-  .md_dflex_dir {
+  .md_dflex_dir_column {
     flex-direction: column !important;
+  }
+
+  .md_dflex_dir_column_rev {
+    flex-direction: column-reverse !important;
   }
 
   .md_flex11auto {
@@ -2322,6 +2408,11 @@ textarea {
   .md_JCspaceA {
     justify-content: space-around !important;
   }
+
+  .md_boldText{
+    font-weight: bold !important;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -2594,7 +2685,7 @@ textarea {
   }
 
   .sd_t40padding {
-    padding-top: 30px !important;
+    padding-top: 40px !important;
   }
 
   .sd_t50padding {
@@ -2981,8 +3072,12 @@ textarea {
     display: flex;
   }
 
-  .sd_dflex_dir {
+  .sd_dflex_dir_column {
     flex-direction: column !important;
+  }
+
+  .sd_dflex_dir_column_rev {
+    flex-direction: column-reverse !important;
   }
 
   .sd_flex11auto {
@@ -3028,6 +3123,10 @@ textarea {
   .sd_JCspaceA {
     justify-content: space-around !important;
   }
+
+  .sd_boldText{
+    font-weight: bold !important;
+  }
 }
 
 .purple_text {
@@ -3049,14 +3148,13 @@ textarea {
   }
 }
 
-.gradient_svg {
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
-  background-position: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
+.vendorSelect {
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    .mat-form-field-flex .mat-form-field-infix {
+      border-top: none !important;
+      padding-top: 1.4em !important;
+    }
+  }
 }

@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CPCModuleRoutingModule } from './cpc-module-routing.module';
-import { CPCComponent } from '../cpc.component';
+
+import { CpcConversionModuleRoutingModule } from './cpc-conversion-module-routing.module';
+import { CpcConversionComponent } from '../cpc-conversion.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 
+
 @NgModule({
-  declarations: [CPCComponent],
+  declarations: [CpcConversionComponent],
   imports: [
     CommonModule,
-    CPCModuleRoutingModule,
+    CpcConversionModuleRoutingModule,
     MatFormFieldModule,
     MatProgressBarModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule
-  ],
+  ]
 })
-export class CPCModuleModule {}
+export class CpcConversionModuleModule { }

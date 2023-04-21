@@ -3,13 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cpc-message-preview',
   templateUrl: './cpc-message-preview.component.html',
-  styleUrls: ['./cpc-message-preview.component.scss']
+  styleUrls: ['./cpc-message-preview.component.scss'],
 })
 export class CpcMessagePreviewComponent implements OnInit {
+  message:string = `
+Hey 👋
+I highly recommend 'Store Name' for its highlights.
 
-  constructor() { }
+Click the link below to use my recommendation & get rewarded on your purchase!
 
-  ngOnInit(): void {
-  }
+ https://refrclub.com/yourstore 
+REFR- Discover the best through friends`;
+  constructor() {}
 
+  ngOnInit(): void {}
 }

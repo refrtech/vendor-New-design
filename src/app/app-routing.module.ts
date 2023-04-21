@@ -147,6 +147,14 @@ const routes: Routes = [
         './components/newDesignScreens/cpc/cpc-module/cpc-module.module'
       ).then((m) => m.CPCModuleModule),
   },
+
+  {
+    path: 'CPC_Conversion',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/cpc-conversion/cpc-conversion-module/cpc-conversion-module.module'
+      ).then((m) => m.CpcConversionModuleModule),
+  },
   {
     path: 'Setupaddress',
     loadChildren: () =>
@@ -206,6 +214,13 @@ const routes: Routes = [
 
   {
     path: 'recommendationMsg_CPC',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/recommendation-cpc/recommendation-cpc-module/recommendation-cpc-module.module'
+      ).then((m) => m.RecommendationCPCModuleModule),
+  },
+  {
+    path: 'recommendationMsgPreview_CPC',
     loadChildren: () =>
       import(
         './components/newDesignScreens/cpc-message-preview/cpcmessagepreview-model/cpcmessagepreview-model.module'
