@@ -319,6 +319,18 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   -webkit-text-fill-color: transparent;
 }
 
+.fw_400 {
+  font-weight: 400;
+}
+
+.fw_600 {
+  font-weight: 600;
+}
+
+.fw_700 {
+  font-weight: 700;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -893,13 +905,12 @@ img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"]
 
 textarea {
   resize: none !important;
-  height:170px
+  height: 170px;
 }
 
-.overflow_hidden{
+.overflow_hidden {
   overflow: hidden !important;
 }
-
 
 // borderradius
 .br40P {
@@ -958,11 +969,11 @@ textarea {
   border-bottom-right-radius: 20px;
 }
 
-.boldText{
+.boldText {
   font-weight: bold !important;
 }
 
-.normalText{
+.normalText {
   font-weight: normal !important;
 }
 
@@ -970,11 +981,19 @@ textarea {
   white-space: break-spaces !important;
 }
 
+.textDecoration_underline {
+  text-decoration: underline;
+}
 
+.d_block {
+  display: block;
+}
 
+.d_none {
+  display: none;
+}
 
 @media (min-width: 1270px) {
-
   .gradient_svg {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
     background-position: 50%;
@@ -1695,7 +1714,7 @@ textarea {
     justify-content: space-around !important;
   }
 
-  .ld_boldText{
+  .ld_boldText {
     font-weight: bold !important;
   }
 }
@@ -2409,10 +2428,9 @@ textarea {
     justify-content: space-around !important;
   }
 
-  .md_boldText{
+  .md_boldText {
     font-weight: bold !important;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -3124,7 +3142,7 @@ textarea {
     justify-content: space-around !important;
   }
 
-  .sd_boldText{
+  .sd_boldText {
     font-weight: bold !important;
   }
 }

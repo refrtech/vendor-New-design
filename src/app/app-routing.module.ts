@@ -21,6 +21,8 @@ import { TestComponent } from './placeholders/test/test.component';
 import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
 import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
 import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
+import { LoyaltycongratComponent } from './components/newDesignScreens/loyaltycongrat/loyaltycongrat.component';
+import { StudentoffersComponent } from './components/newDesignScreens/studentoffers/studentoffers.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -227,6 +229,9 @@ const routes: Routes = [
       ).then((m) => m.CpcmessagepreviewModelModule),
   },
 
+  { path: 'loyaltycongrats', component: LoyaltycongratComponent },
+
+  { path: 'studentoffers', component: StudentoffersComponent },
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },

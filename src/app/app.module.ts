@@ -114,6 +114,8 @@ import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanth
 import { NotificationorderpopupComponent } from './components/tabs/dashboard/notificationorderpopup/notificationorderpopup.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
+import { LoyaltycongratComponent } from './components/newDesignScreens/loyaltycongrat/loyaltycongrat.component';
+import { StudentoffersComponent } from './components/newDesignScreens/studentoffers/studentoffers.component';
 
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
@@ -160,6 +162,8 @@ import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltys
     TestComponent,
     NotificationorderpopupComponent,
     LoyaltystepawayComponent,
+    LoyaltycongratComponent,
+    StudentoffersComponent,
   ],
   imports: [
     BrowserModule,
