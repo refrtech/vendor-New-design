@@ -23,6 +23,11 @@ import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanth
 import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
 import { LoyaltycongratComponent } from './components/newDesignScreens/loyaltycongrat/loyaltycongrat.component';
 import { StudentoffersComponent } from './components/newDesignScreens/studentoffers/studentoffers.component';
+import { DocumentsfieldsComponent } from './components/newDesignScreens/documentsfields/documentsfields.component';
+import { StudentofferSectionComponent } from './components/newDesignScreens/studentoffer-section/studentoffer-section.component';
+import { DailydropsComponent } from './components/newDesignScreens/dailydrops/dailydrops.component';
+import { DailydropsSectionComponent } from './components/newDesignScreens/dailydrops-section/dailydrops-section.component';
+import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -232,6 +237,14 @@ const routes: Routes = [
   { path: 'loyaltycongrats', component: LoyaltycongratComponent },
 
   { path: 'studentoffers', component: StudentoffersComponent },
+  { path: 'studentofferssection', component: StudentofferSectionComponent },
+
+  { path: 'documents', component: DocumentsfieldsComponent },
+
+  { path: 'dailydrops', component: DailydropsComponent },
+  { path: 'dailydropssection', component: DailydropsSectionComponent },
+
+  { path: 'paymentsummary', component: PaymentSummmaryComponent },
 
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
