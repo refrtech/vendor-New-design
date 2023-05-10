@@ -100,7 +100,7 @@
   .setup_heading {
     padding: 1rem 0 2rem 0;
     .h1 {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 600;
       padding-bottom: 10px;
     }
@@ -113,7 +113,7 @@
   .mainDiv {
     .mainD {
       width: 95%;
-      border-bottom: 1px solid #dddddd;
+      // border-bottom: 1px solid #dddddd;
       padding-bottom: 3rem;
       .svg {
         display: flex;
@@ -134,7 +134,7 @@
       justify-content: space-between;
       padding-top: 1rem;
       .custom_width {
-        width: 30%;
+        width: 50%;
         .h1 {
           font-weight: 600;
           font-size: 22px;
@@ -155,10 +155,23 @@
     .high_select {
       display: flex;
       justify-content: space-between;
+      padding: 1rem 0;
       .highlighted {
         display: flex;
         align-items: center;
         color: #8111e8;
+      }
+      .benefits_content{
+        padding: 0.5rem 0;
+        .tick_content{
+          display: flex;
+          gap: .5rem;
+          align-items: center;
+          padding: 0 0 0.5rem 0;
+        }
+        .tick_content:last-child{
+          padding: 0;
+        }
       }
       .select_cta {
         button {
@@ -233,7 +246,7 @@
     padding: 1rem 0 2rem 0;
   }
   .setup_heading .h1 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     padding-bottom: 10px;
   }
@@ -245,7 +258,7 @@
   .mainDiv {
     .mainD {
       width: 100%;
-      border-bottom: 1px solid #dddddd;
+      // border-bottom: 1px solid #dddddd;
       padding-bottom: 3rem;
       .svg {
         display: flex;
@@ -266,7 +279,7 @@
       justify-content: space-between;
       padding-top: 1rem;
       .custom_width {
-        width: 30%;
+        width: 50%;
         .h1 {
           font-weight: 600;
           font-size: 22px;
@@ -291,6 +304,18 @@
         display: flex;
         align-items: center;
         color: #8111e8;
+      }
+      .benefits_content{
+        padding: 0.5rem 0;
+        .tick_content{
+          display: flex;
+          gap: .5rem;
+          align-items: center;
+          padding: 0 0 0.5rem 0;
+        }
+        .tick_content:last-child{
+          padding: 0;
+        }
       }
       .select_cta {
         button {
@@ -383,7 +408,7 @@
   .mainDiv {
     .mainD {
       width: 95%;
-      border-bottom: 1px solid #dddddd;
+      // border-bottom: 1px solid #dddddd;
       padding-bottom: 3rem;
       .svg {
         display: flex;
@@ -405,9 +430,9 @@
       justify-content: space-between;
       padding-top: 1rem;
       .custom_width {
-        width: 50%;
+        width: 80%;
         .h1 {
-          font-size: 20px;
+          font-size: 18px;
         }
         .p {
           font-weight: 400;
@@ -425,10 +450,23 @@
     .high_select {
       display: flex;
       justify-content: space-between;
+      padding: 1rem 0 0 0;
       .highlighted {
         display: flex;
         align-items: center;
         color: #8111e8;
+      }
+      .benefits_content{
+        padding: 0.5rem 0;
+        .tick_content{
+          display: flex;
+          gap: .5rem;
+          align-items: center;
+          padding: 0 0 0.5rem 0;
+        }
+        .tick_content:last-child{
+          padding: 0;
+        }
       }
       .select_cta {
         button {

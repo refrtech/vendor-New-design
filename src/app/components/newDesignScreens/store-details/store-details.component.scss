@@ -15,7 +15,7 @@
         width: 0;
       }
       100% {
-        width: 68%;
+        width: 20%;
       }
     }
   }
@@ -188,6 +188,9 @@
   }
   .section_w {
     width: 45%;
+    .h1{
+      padding: 0 0 0.5rem 0;
+    }
   }
 
   .social_links {
@@ -196,7 +199,7 @@
       font-weight: 600;
       font-size: 18px;
       color: #1e1e1e;
-      padding-bottom: 1rem;
+      padding-bottom: 2rem;
     }
     .otherlinks {
       .links {
@@ -346,6 +349,9 @@
   }
   .section_w {
     width: 45%;
+    .h1{
+      padding: 0 0 0.5rem 0;
+    }
   }
 
   .social_links {
@@ -354,7 +360,7 @@
       font-weight: 600;
       font-size: 18px;
       color: #1e1e1e;
-      padding-bottom: 1rem;
+      padding-bottom: 2rem;
     }
     .otherlinks {
       .links {
@@ -503,6 +509,9 @@
   .section_type {
     width: 100%;
     flex-direction: column;
+  }
+  .otherlinks{
+    gap: 1rem;
   }
   .section_w {
     width: 100%;

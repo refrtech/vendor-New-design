@@ -331,6 +331,10 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 700;
 }
 
+.cursor_pointer{
+  cursor: pointer;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -3171,8 +3175,12 @@ textarea {
     padding-bottom: 0 !important;
     margin: 0 !important;
     .mat-form-field-flex .mat-form-field-infix {
-      border-top: none !important;
-      padding-top: 1.4em !important;
+      // border-top: none !important;
+      // padding-top: 1.4em !important;
     }
   }
+}
+
+.mat-form-field-flex{
+  align-items: center !important;
 }

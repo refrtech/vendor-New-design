@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addsuperpowerstores.component.scss']
 })
 export class AddsuperpowerstoresComponent implements OnInit {
-
+  showMore:boolean=false;
   constructor() { }
 
   ngOnInit(): void {

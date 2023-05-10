@@ -32,7 +32,7 @@
 
                     <div class="flex_2">
                         <div class="setup_heading">
-                            <div class="h1">Now lets add superpowers <br> to your store</div>
+                            <div class="h1">Now lets add superpowers to your store</div>
                         </div>
 
                         <div class="mainDiv">
@@ -53,19 +53,85 @@
                                         <div class="p">Set a reward structure to give your customers for recommendations
                                             & successful conversions.</div>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <div class="starts_frm">Starts from <br> ₹2000</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="high_select">
-                                    <div class="highlighted">See all benefits <mat-icon>expand_more</mat-icon></div>
+                                    <div>
+                                        <div class="highlighted">Benefits</div>
+                                        <div class="benefits_content">
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Increased brand awareness
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Increased brand reach
+                                            </div>
+                                            <ng-container *ngIf="showMore">
+
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Increased customer loyalty
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Higher customer acquisition
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Higher conversion rates
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Cost-effective & wherein all spends can be tracked
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Valuable customer insights
+                                            </div>
+                                            <div class="tick_content"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.6654 3.5L5.2487 9.91667L2.33203 7" stroke="black"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>Drive sales & growth for your business
+                                            </div>
+
+                                            </ng-container>
+                                            <span (click)="showMore= !showMore" class="see_text purple_text ld_dflex md_dflex sd_dflex ld_align-items-center md_align-items-center sd_align-items-center">see&nbsp;<span>{{showMore?'less':'more'}}</span> <mat-icon>{{showMore?'expand_less':'expand_more'}}</mat-icon></span>
+
+                                        </div>
+                                    </div>
                                     <div class="select_cta">
-                                        <button mat-button class="bg_purple">Select</button>
+                                        <button mat-button class="bg_purple">Create</button>
                                     </div>
                                 </div>
                             </div>
                             <!--  -->
-                            <div class="mainD">
+                            <!-- <div class="mainD">
                                 <div class="svg">
                                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -94,10 +160,10 @@
                                         <button disabled mat-button class="bg_purple">Select</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div class="btn">
+                    <!-- <div class="btn">
                         <a routerLink="/setupbusiness">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +178,7 @@
                             <a href="">Skip</a>
                             <button mat-button routerLink="/choosestore">Continue</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
