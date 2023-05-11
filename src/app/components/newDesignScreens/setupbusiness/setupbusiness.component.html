@@ -31,20 +31,21 @@
                     <div class="flex_2">
                         <div class="setup_heading">
                             <div class="h1">Let’s setup your business</div>
+                            <div class="p">Start with adding your name and business details</div>
                         </div>
                         <form>
                             <div class="storedetails">
                                 <div class="details">
-                                    <div class="label">Business name</div>
+                                    <div class="label">Business name*</div>
                                     <mat-form-field appearance="outline" class="vendorInput fullWidth">
                                         <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
                                             required>
                                     </mat-form-field>
                                 </div>
                                 <div class="details">
-                                    <div class="label">Owner name</div>
+                                    <div class="label">Owner’s name*</div>
                                     <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                        <input matInput placeholder="Eg. The Cake House" autocomplete="off" type="text"
+                                        <input matInput placeholder="" autocomplete="off" type="text"
                                             required>
                                     </mat-form-field>
                                 </div>
@@ -74,10 +75,10 @@
                             </div>
 
                             <div *ngIf="toggle">
-                                <div class="storedetails">
+                                <div class="storedetails ld_tb15padding md_tb15padding sd_tb15padding">
                                     <div class="details">
-                                        <mat-form-field appearance="outline" class="vendorInput fullWidth">
-                                            <input matInput placeholder="Eg. The Cake House" autocomplete="off"
+                                        <mat-form-field appearance="outline" class="vendorInput fullWidth ">
+                                            <input matInput placeholder="" autocomplete="off"
                                                 type="text" required>
                                         </mat-form-field>
                                     </div>

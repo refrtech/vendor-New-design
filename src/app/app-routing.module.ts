@@ -233,6 +233,13 @@ const routes: Routes = [
         './components/newDesignScreens/cpc-message-preview/cpcmessagepreview-model/cpcmessagepreview-model.module'
       ).then((m) => m.CpcmessagepreviewModelModule),
   },
+  {
+    path: 'addProducts',
+    loadChildren: () =>
+      import(
+        './components/newDesignScreens/add-products-section/products-module/products-module.module'
+      ).then((m) => m.ProductsModuleModule),
+  },
 
   { path: 'loyaltycongrats', component: LoyaltycongratComponent },
 

@@ -4,7 +4,7 @@
     border: 1px solid #8111e8;
     border-radius: 4px;
     .pb_yellow {
-      height: 10px;
+      height: 6px;
       width: 20%;
       background: #ceff00;
       border-radius: 4px 0px 0px 4px;
@@ -128,6 +128,7 @@
         .c1_text {
           padding-top: 0.5rem;
           flex: 2 1;
+          max-width: 70%;
           .h5 {
             color: #1e1e1e;
             font-size: 16px;
@@ -234,6 +235,7 @@
         .c1_text {
           padding-top: 0.5rem;
           flex: 2 1;
+          max-width: 70%;
           .h5 {
             color: #1e1e1e;
             font-size: 16px;

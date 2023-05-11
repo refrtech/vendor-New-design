@@ -24,13 +24,15 @@
             </svg>
           </div>
           <div class="progressbar">
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <div class="pb_border">
+              <div class="pb_yellow"></div>
+            </div>
           </div>
 
           <div class="flex_2">
             <div class="setup_heading">
-              <div class="h1">Recommendations</div>
-              <div class="p">Higher Savings on Higher refill amounts</div>
+              <div class="h1">Curate your recommendation message</div>
+              <div class="p">This is how your store’s recommendation will be shared by customers</div>
             </div>
             <div class="section_type">
               <div class="store_section">
@@ -119,7 +121,14 @@
             </div> -->
           </div>
           <div class="btn">
-            <button mat-button routerLink="setupaddress">Continue</button>
+            <a routerLink="/CPC">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12L5 12" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 19L5 12L12 5" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Back
+            </a>
+            <button mat-button routerLink="/recommendationMsgPreview_CPC">Continue</button>
           </div>
         </div>
       </div>

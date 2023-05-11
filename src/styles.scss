@@ -327,6 +327,10 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 600;
 }
 
+.fw_500{
+  font-weight: 500;
+}
+
 .fw_700 {
   font-weight: 700;
 }
@@ -1016,6 +1020,10 @@ textarea {
 
   .ld_xxl_size {
     font-size: 27px !important;
+  }
+
+  .ld_fs_24{
+    font-size: 24px !important;
   }
 
   .ld_xl_size {
@@ -1732,6 +1740,10 @@ textarea {
     font-size: 27px !important;
   }
 
+     .ld_fs_24 {
+       font-size: 24px !important;
+     }
+
   .md_xl_size {
     font-size: 22px !important;
   }
@@ -2445,6 +2457,11 @@ textarea {
   .sd_xxl_size {
     font-size: 27px !important;
   }
+
+     .ld_fs_24 {
+       font-size: 24px !important;
+     }
+
 
   .sd_xl_size {
     font-size: 22px !important;
@@ -3183,4 +3200,28 @@ textarea {
 
 .mat-form-field-flex{
   align-items: center !important;
+}
+
+::ng-deep .mat-tooltip {
+  /* your own custom styles here */ 
+  /* e.g. */
+  color: yellow !important;
+}
+
+
+.tooltip_c{
+  padding: 0 !important;
+  box-shadow: none !important;
+  min-width: 0 !important;
+  line-height: 0 !important;
+  background: transparent !important;
+  vertical-align: -webkit-baseline-middle !important;
+}
+
+.custom_tooltip{
+  color: #000000 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0px -1px 5px rgba(190, 190, 190, 0.25), 0px 4px 4px rgba(100, 100, 100, 0.25) !important;
+  border-radius: 5px !important;
+  padding: 8px !important;
 }

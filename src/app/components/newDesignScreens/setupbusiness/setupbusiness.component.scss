@@ -1,25 +1,30 @@
 .progressbar {
   margin: 2rem 0;
+
   .pb_border {
     border: 1px solid #8111e8;
     border-radius: 4px;
+
     .pb_yellow {
-      height: 10px;
+      height: 6px;
       width: 20%;
       background: #ceff00;
       border-radius: 4px 0px 0px 4px;
       animation: load 3s normal forwards;
     }
+
     @keyframes load {
       0% {
         width: 0;
       }
+
       100% {
         width: 5%;
       }
     }
   }
 }
+
 @media (min-width: 1270px) {
   .main {
     display: flex;
@@ -83,39 +88,47 @@
   .progressbar {
     margin: 2rem 0;
   }
+
   .flex_2 {
     flex: 2 1;
   }
+
   .setup_heading {
     padding: 1rem 0 0 0;
   }
+
   .setup_heading .h1 {
     font-size: 24px;
     font-weight: 600;
     padding-bottom: 10px;
   }
+
   .setup_heading .p {
-    font-size: 18px;
+    font-size: 14px;
     color: #6d7075;
   }
+
   .storedetails {
     padding: 2rem 0;
     display: flex;
+
     .details {
       width: 50%;
+
       .label {
         font-weight: 600;
         font-size: 16px;
         padding-bottom: 10px;
         color: #1e1e1e;
       }
+
       .fullWidth {
         width: 90%;
       }
     }
   }
 
-  .storedetails:nth-child(2){
+  .storedetails:nth-child(2) {
     padding: 0 0 2rem 0;
   }
 
@@ -124,8 +137,10 @@
     align-items: center;
     gap: 1.2rem;
   }
+
   .btn {
     text-align: right;
+
     button {
       background: #8111e8;
       box-shadow: 0px 0px 4px rgba(181, 181, 181, 0.25);
@@ -143,32 +158,40 @@
   .contents {
     padding: 4rem;
   }
+
   .progressbar {
     margin: 2rem 0;
   }
+
   .setup_heading {
     padding: 1rem 0;
   }
+
   .setup_heading .h1 {
     font-size: 20px;
     font-weight: 600;
     padding-bottom: 10px;
   }
+
   .setup_heading .p {
     font-size: 16px;
     color: #6d7075;
   }
+
   .storedetails {
     padding: 2rem 0;
     display: flex;
+
     .details {
       width: 50%;
+
       .label {
         font-weight: 600;
         font-size: 16px;
         padding-bottom: 10px;
         color: #1e1e1e;
       }
+
       .fullWidth {
         width: 90%;
       }
@@ -180,6 +203,7 @@
     align-items: center;
     gap: 1.2rem;
   }
+
   .btn {
     text-align: right;
 
@@ -202,34 +226,42 @@
   .contents {
     padding: 1rem;
   }
+
   .progressbar {
     margin: 2rem 0;
   }
+
   .setup_heading {
     padding: 1rem 0;
   }
+
   .setup_heading .h1 {
     font-size: 20px;
     font-weight: 600;
     padding-bottom: 10px;
   }
+
   .setup_heading .p {
     font-size: 16px;
     color: #6d7075;
   }
+
   .storedetails {
     display: flex;
     flex-direction: column;
     padding: 0;
+
     .details {
       width: 100%;
       padding-top: 2rem;
+
       .label {
         font-weight: 600;
         font-size: 16px;
         padding-bottom: 10px;
         color: #1e1e1e;
       }
+
       .fullWidth {
         width: 100%;
       }
@@ -241,11 +273,13 @@
     align-items: center;
     gap: 1.2rem;
     padding-top: 2rem;
+
     .store_m {
       font-size: 16px;
       font-weight: 500;
     }
   }
+
   .btn {
     text-align: right;
 

@@ -4,7 +4,7 @@
     border: 1px solid #8111e8;
     border-radius: 4px;
     .pb_yellow {
-      height: 10px;
+      height: 6px;
       width: 20%;
       background: #ceff00;
       border-radius: 4px 0px 0px 4px;
@@ -143,10 +143,11 @@
           width: 100%;
           height: 100%;
         }
-        .uploadLogo_text {
-          font-weight: 400;
-          font-size: 14px;
-        }
+      }
+      .uploadLogo_text {
+        font-weight: 400;
+        font-size: 14px;
+        width: 20%;
       }
     }
 
@@ -159,7 +160,7 @@
       cursor: pointer;
       .uploadBanner {
         text-align: center;
-        width: 60%;
+        width: 40%;
         margin: auto;
         font-weight: 400;
         font-size: 14px;
@@ -297,6 +298,7 @@
         border-radius: 5px;
         padding: 10px;
         cursor: pointer;
+
         svg {
           display: flex;
           justify-content: center;
@@ -304,10 +306,11 @@
           width: 100%;
           height: 100%;
         }
-        .uploadLogo_text {
-          font-weight: 400;
-          font-size: 14px;
-        }
+      }
+      .uploadLogo_text {
+        font-weight: 400;
+        font-size: 14px;
+        width: 20%;
       }
     }
 
@@ -320,7 +323,7 @@
       cursor: pointer;
       .uploadBanner {
         text-align: center;
-        width: 60%;
+        width: 40%;
         margin: auto;
         font-weight: 400;
         font-size: 14px;
@@ -484,7 +487,7 @@
       cursor: pointer;
       .uploadBanner {
         text-align: center;
-        width: 60%;
+        width: 40%;
         margin: auto;
         font-weight: 400;
         font-size: 14px;

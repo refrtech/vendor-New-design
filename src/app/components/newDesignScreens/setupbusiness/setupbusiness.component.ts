@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setupbusiness.component.scss'],
 })
 export class SetupbusinessComponent implements OnInit {
+
+  storeType:boolean=true
+
   constructor() {}
 
   ngOnInit(): void {}

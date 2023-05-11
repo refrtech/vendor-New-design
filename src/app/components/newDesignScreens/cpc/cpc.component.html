@@ -24,16 +24,20 @@
             </svg>
           </div>
           <div class="progressbar">
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <div class="pb_border">
+              <div class="pb_yellow"></div>
+          </div>
           </div>
           <div class="flex_2">
             <div class="setup_heading">
-              <div class="h1">Recommendations</div>
-              <div class="p">Higher Savings on Higher refill amounts</div>
+              <div class="h1">Recommendation campaign</div>
+              <div class="p">Let your customers recommend your store</div>
             </div>
             <div class="section_type">
               <div class="store_section section_w">
-                <div class="h1">Date of creation</div>
+                <div class="h1">Date of creation <button class="tooltip_c" mat-raised-button 
+                  matTooltipClass='custom_tooltip' matTooltip="When you pause the campaign, your customers will still be able to recommend your store & get rewarded."
+                  aria-label="Button that displays a tooltip when focused or hovered over"><mat-icon class="ld_l_size">info</mat-icon></button></div>
                 <mat-form-field appearance="outline" class="section_width vendorInput">
                   <input matInput>
                 </mat-form-field>
@@ -55,7 +59,7 @@
                 <mat-form-field appearance="outline" class="section_width vendorInput">
                   <mat-select>
                     <mat-option value="abc">
-                      abc <span class="c_gray xs_size normalText"> (you get ₹1660) </span>
+                      Tier 1 - ₹2000 <span class="c_gray xs_size normalText"> (you get ₹1660) </span>
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -68,22 +72,26 @@
 
 
             <div class="store_section">
-              <div class="ld_m_size boldText">Brand Reach</div>
+              <div class="h1 ld_m_size boldText">Brand Reach<button mat-raised-button class="tooltip_c"
+                matTooltipClass='custom_tooltip' matTooltip="When you pause the campaign, your customers will still be able to recommend your store & get rewarded."
+                aria-label="Button that displays a tooltip when focused or hovered over"><mat-icon class="ld_l_size">info</mat-icon></button></div>
               <div class="c_gray xs_size">Reward your customers for successful recommendation </div>
             </div>
             <div class="green_background">
               <div class="section_type">
                 <div class="ld_t10padding section_w">
-                  <div class="h1 ld_b10padding md_b10padding sd_b10padding">Cost per recommendation</div>
+                  <div class="h1 ld_b10padding md_b10padding sd_b10padding">Cost per recommendation (CPC)</div>
                   <mat-form-field appearance="outline" class="ld_M100width vendorInput b_white">
                     <input matInput placeholder="Eg : ₹10/click">
                   </mat-form-field>
+                  <div class="ld_xs_size md_xs_size sd_xs_size ld_t10padding ld_t10padding ld_t10padding">Amount to be paid for every recommendation clicked</div>
                 </div>
                 <div class="ld_t10padding section_w">
-                  <div class="h1 ld_b10padding md_b10padding sd_b10padding sd_t10padding">Approx reach</div>
+                  <div class="h1 ld_b10padding md_b10padding sd_b10padding sd_t10padding">Estimated reach</div>
                   <mat-form-field appearance="outline" class="ld_M100width vendorInput b_white">
                     <input matInput>
                   </mat-form-field>
+                  <div class="ld_xs_size md_xs_size sd_xs_size ld_t10padding ld_t10padding ld_t10padding">Upgrade tier to increase reach</div>
                 </div>
               </div>
             </div>
@@ -124,8 +132,18 @@
 
           </div>
           <div class="btn">
-            <button mat-button routerLink="setupaddress">Continue</button>
-          </div>
+            <a routerLink="/addsuperpowerstore">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12L5 12" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M12 19L5 12L12 5" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Back
+            </a>
+            <button mat-button routerLink="/CPC_Conversion">Continue</button>
+        </div>
         </div>
       </div>
     </div>

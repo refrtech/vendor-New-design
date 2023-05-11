@@ -1,3 +1,30 @@
+.progressbar {
+  margin: 2rem 0;
+
+  .pb_border {
+    border: 1px solid #8111e8;
+    border-radius: 4px;
+
+    .pb_yellow {
+      height: 6px;
+      width: 20%;
+      background: #ceff00;
+      border-radius: 4px 0px 0px 4px;
+      animation: load 3s normal forwards;
+    }
+
+    @keyframes load {
+      0% {
+        width: 0;
+      }
+
+      100% {
+        width: 5%;
+      }
+    }
+  }
+}
+
 @media (min-width: 1270px) {
   .main {
     display: flex;
@@ -65,10 +92,6 @@
     padding: 2rem 4rem;
   }
 
-  .progressbar {
-    margin: 2rem 0 1rem 0;
-  }
-
   .flex_2 {
     height: 380px;
     overflow-y: scroll;
@@ -86,12 +109,12 @@
   .setup_heading {
     padding: 1rem 0 0 0;
     .h1 {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 600;
       padding-bottom: 10px;
     }
     .p {
-      font-size: 16px;
+      font-size: 14px;
       color: #6d7075;
     }
   }
@@ -102,6 +125,15 @@
       font-weight: 600;
       font-size: 16px;
       padding: 0.2rem 0 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      button{
+        padding: 0;
+        box-shadow: none;
+        min-width: 0;
+        line-height: 0;
+      }
       span {
         color: #8b8b8b;
         font-size: 10px;
@@ -236,19 +268,16 @@
   .contents {
     padding: 4rem;
   }
-  .progressbar {
-    margin: 2rem 0;
-  }
   .setup_heading {
     padding: 1rem 0 0 0;
   }
   .setup_heading .h1 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     padding-bottom: 10px;
   }
   .setup_heading .p {
-    font-size: 16px;
+    font-size: 18px;
     color: #6d7075;
   }
 
@@ -285,6 +314,15 @@
       font-weight: 600;
       font-size: 16px;
       padding: 0.2rem 0 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      button{
+        padding: 0;
+        box-shadow: none;
+        min-width: 0;
+        line-height: 0;
+      }
       span {
         color: #8b8b8b;
         font-size: 10px;
@@ -413,9 +451,6 @@
     border-radius: 10px;
   }
 
-  .progressbar {
-    margin: 2rem 0;
-  }
   .setup_heading {
     padding: 1rem 0 0 0;
   }
@@ -453,6 +488,15 @@
       font-weight: 600;
       font-size: 16px;
       padding: 0.2rem 0 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      button{
+        padding: 0;
+        box-shadow: none;
+        min-width: 0;
+        line-height: 0;
+      }
       span {
         color: #8b8b8b;
         font-size: 10px;
@@ -568,3 +612,4 @@
     }
   }
 }
+

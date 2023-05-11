@@ -8,6 +8,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatProgressBarModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule,
+    MatIconModule
   ]
 })
 export class CpcConversionModuleModule { }
