@@ -2,6 +2,10 @@ p {
     margin: 0 !important;
 }
 
+.c_custom_gray {
+    color: #474747;
+}
+
 .gradient {
     background: linear-gradient(90deg, #F6FFCF 0%, #ECD8FF 100%);
 
@@ -10,6 +14,18 @@ p {
         padding: 15px 100px 15px 15px;
     }
 }
+
+table {
+    margin: 30px 0 0 0;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25) !important;
+    border-radius: 5px;
+
+    th {
+        background: #F7F7F7;
+    }
+}
+
 
 .section {
     padding: 30px 0;
@@ -33,7 +49,6 @@ p {
     }
 
     .redeem_card {
-        .heading {}
 
         .redeem_item_table {
             margin: 30px 0 0 0;
@@ -82,7 +97,116 @@ p {
             }
         }
     }
+
+    .loyalty_offer {
+        display: flex;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+        border-radius: 10px;
+
+        .avail_disc {
+            border-left: 1px solid #dddddd;
+
+            span {
+                background-color: #faf5ff;
+                padding: 8px 20px;
+            }
+        }
+    }
+
+    .order_section {
+        margin: 30px 0 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        .col-49 {
+            width: 49%;
+            display: inline-block;
+                .card {
+                    background: #FFFFFF;
+                    border: 1px solid #F2F2F2;
+                    box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
+                    border-radius: 10px;
+
+                    .download_invoice {
+                        border: 1px solid #874BF9
+                    }
+
+                    .bg_grayish {
+                        background: #FBF6FF;
+                        border: 1px solid #F1F1F1;
+                        border-radius: 5px;
+                        padding: 10px;
+                        display: flex;
+                        align-items: center;
+                        width: max-content;
+                    }
+
+                    .bg_grayish2 {
+                        margin-left: auto;
+                    }
+
+                    .totalSection {
+                        background: #FBF7FF;
+                    }
+
+                    .orderPlaced {
+                        button {
+                            border-radius: 20px;
+                            padding: 8px 25px;
+                            line-height: 0;
+                        }
+                    }
+                }
+        }
+
+    }
+
+    .camp {
+
+        margin: 30px 0 0 0;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+        border-radius: 10px;
+
+        .camp_header {
+            border-bottom: 1px solid #EBEBEB;
+            padding: 0 0 16px 0;
+        }
+
+        .anchor {
+            border-bottom: 1px solid #d7d7d7;
+        }
+    }
 }
+
+
+.complete_btn {
+    background: #2755AE;
+}
+
+.pending_btn {
+    background: #FFC500;
+}
+
+.Shipped_btn {
+    background: #336DB1;
+}
+
+.refund_btn {
+    background: #CE7712;
+}
+
+.reject_btn {
+    background: #D43B26;
+}
+
+.delivered_btn {
+    background: #27AE60;
+}
+
 
 .cta_button {
     padding: 0px 30px;
@@ -136,11 +260,58 @@ p {
             box-shadow: 0px 1px 9px rgba(199, 199, 199, 0.25);
             border-radius: 10px;
             margin: 30px 0 0 0;
-            padding: 20px;
-            .name_reward{
-                display: flex;
-                justify-content: space-between;
+
+            .border {
+                padding: 20px;
+                border-bottom: 1px solid #EEEEEE;
+
+                .name_reward {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .bill_amount {
+                    padding: 1rem 0;
+
+                    .vendorInput {
+                        width: 100% !important;
+                    }
+                }
+
+                .accept_cancel_ctas {
+                    text-align: end;
+
+                    button:nth-child(1) {
+                        background-color: red;
+                        background: #FFEAEE;
+                        border: 1px solid #FF1744;
+                        border-radius: 3px;
+                        margin: 0 1rem 0 0;
+                    }
+
+                    button:nth-child(2) {
+                        color: #27AE60;
+                        background: #F0FFF6;
+                        border: 1px solid #27AE60;
+                        border-radius: 3px;
+                        padding: 0 50px;
+                    }
+                }
             }
+
+            .border:last-child {
+                border-bottom: none;
+            }
+        }
+
+
+    }
+
+    .table {
+        overflow: scroll;
+
+        table {
+            min-width: max-content;
         }
     }
 

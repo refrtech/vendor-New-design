@@ -123,6 +123,8 @@ import { DailydropsSectionComponent } from './components/newDesignScreens/dailyd
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
+import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
+import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
 
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
@@ -178,6 +180,8 @@ import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/
     PaymentSummmaryComponent,
     NewDashboardComponent,
     SidenavtabsComponent,
+    RecommendationComponent,
+    RecommendationsettingpageComponent,
   ],
   imports: [
     BrowserModule,

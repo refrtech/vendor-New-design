@@ -27,10 +27,23 @@
                             fill="#874BF9" />
                     </svg>
                 </div>
-                <button mat-button class="side-nav-item " *ngFor="let nR of navRoutes" (click)="showMenu = false"
-                    [routerLink]=" nR.link " routerLinkActive="f_primary b_accent c_primary">
-                    <span class="title fw_400"> {{nR.tit}}</span>
-                </button>
+                <ng-container *ngFor="let nR of navRoutes;let i = index" >
+                    <button mat-button class="side-nav-item " (click)="expand(i)"
+                        [routerLink]=" nR.link " routerLinkActive="f_primary b_accent c_primary">
+                        <span class="title fw_400 ld_dflex md_dflex"> {{nR.tit}}
+
+                            <mat-icon [class.rotate]="nR.isexpanded">
+                                {{nR.iconName}}
+                            </mat-icon>
+                        </span>
+                    </button>
+                    <div *ngFor="let child of nR.childern">
+                        <button *ngIf="nR.isexpanded" mat-button class="side-nav-item " [routerLink]="child.link"
+                            routerLinkActive="Ab_primaryLight br0radious c_primary">
+                            <span class="title fw_400 ld_s_size sd_s_size">{{child.tit}}</span>
+                        </button>
+                    </div>
+                </ng-container>
             </div>
         </mat-sidenav>
         <!-- !mobileQuery.matches-->

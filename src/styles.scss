@@ -137,6 +137,10 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   }
 }
 
+.bg_white{
+  background: #ffffff !important;
+}
+
 .color-scheme-light {
   $grey: #fafafa;
 
@@ -330,6 +334,35 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
 .cursor_pointer {
   cursor: pointer;
 }
+
+.border_none{
+  border: none !important;
+}
+
+
+.outline_none{
+  outline: none !important;
+}
+
+
+.vendorTable {
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 10px;
+
+  .mat-header-row {
+    background: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tr td,
+  th {
+    text-align: center !important;
+  }
+}
+
+
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -976,6 +1009,10 @@ textarea {
   font-weight: normal !important;
 }
 
+.lineheight_normal{
+  line-height: normal;
+}
+
 .whitespace {
   white-space: break-spaces !important;
 }
@@ -990,6 +1027,10 @@ textarea {
 
 .d_none {
   display: none;
+}
+
+.text_capitalize{
+  text-transform: capitalize;
 }
 
 @media (min-width: 1270px) {
@@ -1291,6 +1332,9 @@ textarea {
 
   .ld_b30padding {
     padding-bottom: 30px !important;
+  }
+  .ld_b40padding {
+    padding-bottom: 40px !important;
   }
 
   .ld_b60padding {
@@ -1705,6 +1749,10 @@ textarea {
     align-self: center !important;
   }
 
+  .ld_JCend{
+    justify-content: end !important;
+  }
+
   .ld_JCcenter {
     justify-content: center !important;
   }
@@ -2009,6 +2057,10 @@ textarea {
 
   .md_b30padding {
     padding-bottom: 30px !important;
+  }
+
+  .md_b40padding {
+    padding-bottom: 40px !important;
   }
 
   .md_b60padding {
@@ -2422,6 +2474,12 @@ textarea {
   .md_AScenter {
     align-self: center !important;
   }
+
+
+  .md_JCend{
+    justify-content: end !important;
+  }
+  
 
   .md_JCcenter {
     justify-content: center !important;
@@ -3142,6 +3200,10 @@ textarea {
     align-self: center !important;
   }
 
+  .sd_JCend{
+    justify-content: end !important;
+  }
+
   .sd_JCcenter {
     justify-content: center !important;
   }
@@ -3159,6 +3221,11 @@ textarea {
   }
 }
 
+
+.Aborder_purple{
+  border: 1px solid #874BF9 !important;
+}
+
 .purple_text {
   color: #8000ff !important;
 }
@@ -3169,24 +3236,55 @@ textarea {
 
 .vendorInput {
   .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-    margin: 0 !important;
+    padding-bottom: 0px !important;
 
-    .mat-form-field-flex .mat-form-field-infix {
-      border-top: none !important;
-      padding-top: 1.4em !important;
+    .mat-form-field-infix {
+      padding: 10px 0 !important;
+      border-top: none;
+      height: 20px;
+      line-height: 24px;
+    }
+  }
+  
+}
+
+@media (max-width:900px) {
+
+  .vendorInput {
+    .mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+      margin: 0 !important;
+
+      .mat-form-field-flex .mat-form-field-infix {
+        border-top: none !important;
+        padding-top: 1em !important;
+      }
     }
   }
 }
 
 .vendorSelect {
   .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-    margin: 0 !important;
+    padding-bottom: 0px !important;
 
-    .mat-form-field-flex .mat-form-field-infix {}
+    .mat-form-field-infix {
+      padding: 10px 0 !important;
+      border-top: none;
+      height: 20px;
+      line-height: 24px;
+    }
   }
 }
+
+
+.mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: 0px !important;
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+  transform: none !important;
+}
+
 
 .mat-form-field-flex {
   align-items: center !important;
@@ -3224,3 +3322,14 @@ textarea {
 .color-scheme-light .mat-drawer-backdrop.mat-drawer-shown {
   background-color: white;
 }
+
+
+.rotate {
+  transform: rotate(180deg);
+  transition: 5ms ease-in;
+}
+
+.color-scheme-light .mat-tab-group.mat-primary .mat-ink-bar, .color-scheme-light .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background-color: #874BF9 !important;
+}
+

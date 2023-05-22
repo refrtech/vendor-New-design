@@ -30,6 +30,8 @@ import { DailydropsSectionComponent } from './components/newDesignScreens/dailyd
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
+import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
+import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -91,7 +93,9 @@ const routes: Routes = [
     path: '', component: SidenavtabsComponent, children: [
       { path: "", redirectTo: '/dash', pathMatch: 'full' },
 
-      { path: 'dash', component: NewDashboardComponent }
+      { path: 'dash', component: NewDashboardComponent },
+      { path: 'recommend', component: RecommendationComponent },
+      { path: 'recommendsetting', component: RecommendationsettingpageComponent },
     ]
   },
 

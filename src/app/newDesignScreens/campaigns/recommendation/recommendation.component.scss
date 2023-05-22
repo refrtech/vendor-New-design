@@ -1,0 +1,131 @@
+p {
+    margin: 0 !important;
+}
+
+.c_custom_gray {
+    color: #474747;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #F6FFCF 0%, #ECD8FF 100%);
+
+    .h1 {
+        font-size: 16px;
+        padding: 15px 100px 15px 15px;
+    }
+}
+
+.row {
+    .section {
+        padding: 30px 0;
+        width: 90%;
+        margin: auto;
+
+        .total_lists {
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+            padding: 30px 0px;
+
+            .total_section {
+                display: grid;
+                align-items: center;
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .total_section:nth-child(2) {
+                border-top: 1px solid #e7e7e7;
+            }
+        }
+
+        .tab_section {
+
+            .search_field {
+                background: #FCFCFC;
+                border: 1px solid #E4E4E4;
+                border-radius: 5px;
+                position: relative;
+                width: 50%;
+
+                input {
+                    height: 40px;
+                }
+
+                mat-icon {
+                    position: absolute;
+                    z-index: 100;
+                    top: 0;
+                    right: 0;
+                    padding: 6px 16px 9px 0px;
+                    background: transparent;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+@media (max-width:900px) {
+    .gradient {
+        .h1 {
+            padding: 15px;
+        }
+    }
+
+    .mat-form-field {
+        width: 120px !important;
+    }
+
+    .row{
+        .section{
+            .total_lists {
+                border-top: 1px solid #e7e7e7;
+                border-bottom: 1px solid #e7e7e7;
+                padding: 30px 0px;
+    
+                .total_section {
+                    display: grid;
+                    align-items: center;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-columns: repeat( auto-fit, minmax(140px, 1fr) );
+                    gap: 2rem;
+                    .total_section_item{
+                        width: 100%;
+                    }
+                }
+    
+                .total_section:nth-child(2) {
+                    border-top: 1px solid #e7e7e7;
+                }
+            }
+
+            // 
+
+            .tab_section {
+                .search_field {
+                    width: 99%;
+    
+                    input {
+                        height: 40px;
+                    }
+    
+                    mat-icon {
+                        position: absolute;
+                        z-index: 100;
+                        top: 0;
+                        right: 0;
+                        padding: 6px 16px 9px 0px;
+                        background: transparent;
+                    }
+                }
+                table{
+                    width: 300%;
+                    overflow: scroll;
+                }
+    
+            }
+        }
+    }
+
+}

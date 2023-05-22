@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { log } from 'console';
 import { AuthService } from 'src/app/services/auth.service';
 import { DependencyService } from 'src/app/services/dependency.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -19,8 +20,13 @@ export class SidenavtabsComponent implements OnInit {
     { tit: "Dashboard", link: "/dash" },
     { tit: "Orders", link: "/" },
     { tit: "Wallets", link: "/" },
-    { tit: "Campaign", link: "/" },
-    { tit: "Recommendation", link: "/" },
+    { tit: "Campaign", 
+    iconName: 'expand_more',
+      isexpanded: false,
+      childern:[
+        {tit:"Recommendation",link:'/recommend'},
+      ]
+  },
     { tit: "Loyalty", link: "/" },
     { tit: "Offers", link: "/" },
     { tit: "Customers", link: "/" },
@@ -48,6 +54,13 @@ export class SidenavtabsComponent implements OnInit {
     if (this.auth.resource.getWidth > 900)
     {
       this.showMenu = true;
+    }
+  }
+  expand(index: any) {
+    if (index == 3) {
+      console.log("click",index);
+      
+      this.navRoutes[index].isexpanded = !this.navRoutes[index].isexpanded;
     }
   }
 

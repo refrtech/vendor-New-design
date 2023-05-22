@@ -75,19 +75,20 @@
             <div class="redeem_card">
                 <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Redeem Request</div>
                 <div class="redeem_item_table" *ngIf="auth.resource.getWidth >= 900">
-                    <div class="redeem_item_heading" >
+                    <div class="redeem_item_heading">
                         <div class="table_header">
                             <div class="col-20">
-                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Name</p>
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size fw_500">Name</p>
                             </div>
                             <div class="col-30">
-                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Bill Amount</p>
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size fw_500">Bill Amount</p>
                             </div>
                             <div class="col-20">
-                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Instant Refr Token</p>
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size fw_500">Instant Refr Token
+                                </p>
                             </div>
                             <div class="col-30">
-                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Action</p>
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size fw_500">Action</p>
                             </div>
                         </div>
                         <div class="redeem_users" *ngFor="let x of redeemUser">
@@ -99,7 +100,7 @@
                                 <div class="textC">
                                     <mat-form-field class="vendorInput" appearance="outline">
                                         <input matInput placeholder="Enter Bill amount">
-                                      </mat-form-field>
+                                    </mat-form-field>
                                 </div>
                             </div>
                             <div class="col-20">
@@ -108,10 +109,13 @@
                             <div class="col-30">
                                 <div class="accept_cancel_ctas">
                                     <button mat-button>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 6L6 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M6 6L18 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>                                            
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 6L6 18" stroke="#FF1744" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M6 6L18 18" stroke="#FF1744" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </button>
                                     <button mat-button>Accept</button>
                                 </div>
@@ -123,33 +127,370 @@
                 </div>
                 <!-- moblie -->
                 <div class="redeem_item_moblie" *ngIf="auth.resource.getWidth <= 900">
-                    <div class="name_reward col-100">
-                        <div class="col-35">
-                            <div class="heading fw_600 sd_m_size">Vishal Pise</div>
-                            <div class="date c_gray sd_xs_size">Jan 23, 2023 04:30</div>
+                    <ng-container *ngFor="let x of redeemUser">
+                        <div class="border">
+                            <div class="name_reward col-100">
+                                <div class="col-35">
+                                    <div class="heading fw_600 sd_m_size">{{x.name}}</div>
+                                    <div class="date c_gray sd_xs_size">Jan 23, 2023 04:30</div>
+                                </div>
+                                <div class="col-30"></div>
+                                <div class="col-35">
+                                    <div class="heading fw_600 sd_m_size textR">Reward</div>
+                                    <div class="token sd_xs_size sd_dflex sd_align-items-center textR"><svg
+                                            class="sd_r8margin" width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M7.07322 11.6745C10.2562 11.3721 12.5844 8.61989 12.2732 5.5271C11.962 2.4343 9.12957 0.171988 5.94664 0.474371C2.7637 0.776753 0.435449 3.52898 0.746645 6.62177C1.05784 9.71457 3.89028 11.9769 7.07322 11.6745Z"
+                                                fill="#FECC08" />
+                                            <path
+                                                d="M6.83118 10.4217C9.28643 10.1886 11.0823 8.06567 10.8424 5.67995C10.6025 3.29424 8.41766 1.54948 5.96241 1.78261C3.50716 2.01574 1.71126 4.13868 1.95118 6.5244C2.19111 8.91012 4.37593 10.6552 6.83118 10.422V10.4217Z"
+                                                fill="#EEAA1F" />
+                                            <path
+                                                d="M4.0252 4.48454L6.20856 4.27734L6.72976 9.4606L3.25 6.00301L4.0252 4.48454Z"
+                                                fill="#DF9226" />
+                                            <path
+                                                d="M8.59742 4.00391L6.41406 4.2111L6.93556 9.39492L9.66065 5.34767L8.59742 4.00391Z"
+                                                fill="#DF9226" />
+                                            <path
+                                                d="M4.01574 4.35954L6.1991 4.15234L6.69742 9.10589L3.23438 5.81474L4.01603 4.35954H4.01574Z"
+                                                fill="#FECC08" />
+                                            <path
+                                                d="M8.59713 3.9707L6.41406 4.17847L6.91239 9.13201L9.6542 5.25148L8.59713 3.9707Z"
+                                                fill="#FECC08" />
+                                            <path
+                                                d="M7.37917 2.90039L6.55469 3.82065L8.39312 3.6488L7.37946 2.90068L7.37917 2.90039Z"
+                                                fill="#DF9226" />
+                                            <path
+                                                d="M5.08229 3.12109L4.25781 4.04135L6.09624 3.8695L5.08258 3.12138L5.08229 3.12109Z"
+                                                fill="#DF9226" />
+                                            <path d="M7.38669 2.72852L6.5625 3.64849L8.40034 3.47663L7.38669 2.72852Z"
+                                                fill="#FECC08" />
+                                            <path
+                                                d="M5.06667 2.95117L4.24219 3.87143L6.08062 3.69958L5.06696 2.95146L5.06667 2.95117Z"
+                                                fill="#FECC08" />
+                                        </svg>
+                                        25 token</div>
+                                </div>
+                            </div>
+                            <div class="bill_amount">
+                                <mat-form-field class="vendorInput" appearance="outline">
+                                    <input matInput placeholder="Enter bill amount">
+                                </mat-form-field>
+                            </div>
+                            <div class="accept_cancel_ctas">
+                                <button mat-button>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18 6L6 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M6 6L18 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button mat-button>Accept</button>
+                            </div>
                         </div>
-                        <div class="col-30"></div>
-                        <div class="col-35">
-                            <div class="heading fw_600 sd_m_size textR">Reward</div>
-                            <div class="token sd_xs_size sd_dflex sd_align-items-center textR"><svg class="sd_r8margin" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.07322 11.6745C10.2562 11.3721 12.5844 8.61989 12.2732 5.5271C11.962 2.4343 9.12957 0.171988 5.94664 0.474371C2.7637 0.776753 0.435449 3.52898 0.746645 6.62177C1.05784 9.71457 3.89028 11.9769 7.07322 11.6745Z" fill="#FECC08"/>
-                                <path d="M6.83118 10.4217C9.28643 10.1886 11.0823 8.06567 10.8424 5.67995C10.6025 3.29424 8.41766 1.54948 5.96241 1.78261C3.50716 2.01574 1.71126 4.13868 1.95118 6.5244C2.19111 8.91012 4.37593 10.6552 6.83118 10.422V10.4217Z" fill="#EEAA1F"/>
-                                <path d="M4.0252 4.48454L6.20856 4.27734L6.72976 9.4606L3.25 6.00301L4.0252 4.48454Z" fill="#DF9226"/>
-                                <path d="M8.59742 4.00391L6.41406 4.2111L6.93556 9.39492L9.66065 5.34767L8.59742 4.00391Z" fill="#DF9226"/>
-                                <path d="M4.01574 4.35954L6.1991 4.15234L6.69742 9.10589L3.23438 5.81474L4.01603 4.35954H4.01574Z" fill="#FECC08"/>
-                                <path d="M8.59713 3.9707L6.41406 4.17847L6.91239 9.13201L9.6542 5.25148L8.59713 3.9707Z" fill="#FECC08"/>
-                                <path d="M7.37917 2.90039L6.55469 3.82065L8.39312 3.6488L7.37946 2.90068L7.37917 2.90039Z" fill="#DF9226"/>
-                                <path d="M5.08229 3.12109L4.25781 4.04135L6.09624 3.8695L5.08258 3.12138L5.08229 3.12109Z" fill="#DF9226"/>
-                                <path d="M7.38669 2.72852L6.5625 3.64849L8.40034 3.47663L7.38669 2.72852Z" fill="#FECC08"/>
-                                <path d="M5.06667 2.95117L4.24219 3.87143L6.08062 3.69958L5.06696 2.95146L5.06667 2.95117Z" fill="#FECC08"/>
-                                </svg>
-                                25 token</div>
-                        </div>
+                    </ng-container>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="brand_reach">
+                <div class="ld_dflex md_dflex">
+                    <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Brand Reach</div>
+                    <span class="divide"></span>
+                    <a class="purple_text fw_400 ld_m_size md_m_size">See all</a>
+                </div>
+                <div class="table">
+                    <div class="asd">
+
+                        <table mat-table [dataSource]="element" class="mat-elevation-z8">
+
+                            <!--- Note that these columns can be defined in any order.
+                                  The actual rendered columns are set as a property on the row definition" -->
+
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef
+                                    class="ld_l_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Name </th>
+                                <td mat-cell *matCellDef="let element"
+                                    class="ld_m_size md_m_size text_capitalize textC ld_A20padding md_A20padding">
+                                    {{element.name}}
+
+                                    <div class="textC ld_s_size md_s_size c_gray">23/03/23 4:30pm</div>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="contact">
+                                <th mat-header-cell *matHeaderCellDef
+                                    class="ld_l_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Contact no. </th>
+                                <td mat-cell *matCellDef="let element"
+                                    class="ld_m_size md_m_size textC ld_A20padding md_A20padding"> {{element.contact}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="interaction">
+                                <th mat-header-cell *matHeaderCellDef
+                                    class="ld_l_size md_l_size sd_l_size fw_500 textC c_black"> Interaction </th>
+                                <td mat-cell *matCellDef="let element"
+                                    class="ld_m_size md_m_size textC ld_A20padding md_A20padding">
+                                    {{element.interaction}}
+                                    <div class="textC ld_s_size md_s_size c_custom_gray">Clicks</div>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="token">
+                                <th mat-header-cell *matHeaderCellDef
+                                    class="ld_l_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Refr Token given </th>
+                                <td mat-cell *matCellDef="let element"
+                                    class="ld_m_size md_m_size textC ld_A20padding md_A20padding"> {{element.token}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef
+                                    class="ld_l_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding">Action</th>
+                                <td mat-cell *matCellDef="let element" class="textC">
+                                    <a>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
+                                                stroke="#A4A4A4" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                                stroke="#A4A4A4" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </ng-container>
+
+
+
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="">
+                
+                <div class="loyalty_offer col-100">
+                    <div class="col-25 ld_dflex md_dflex ld_align-items-center md_align-items-center ld_A20padding">
+                        <svg class="ld_r20margin" width="28" height="32" viewBox="0 0 28 32" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 17.875L20.4615 1L14.9231 12.25H26L7.53846 31L14.9231 17.875H2Z" fill="#CEFF00"
+                                stroke="black" />
+                        </svg>
+                        <span class="fw_600">Loyalty & Offer campaigns</span>
+                    </div>
+                    <div
+                        class="avail_disc col-50 ld_dflex md_dflex ld_align-items-center md_align-items-center ld_A20padding">
+                        <span class="purple_text ld_r20margin ld_l20margin">Avail 50% Discount</span>
+                        <span class="purple_text">Pay for 6 months & get 12 month</span>
+                    </div>
+                    <div
+                        class="col-25 ld_dflex md_dflex ld_align-items-center md_align-items-center ld_JCend md_JCend ld_A20padding">
+                        <button mat-button class="bg_purple c_white cta_button">Get now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="ld_dflex md_dflex">
+                <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Orders</div>
+                <span class="divide"></span>
+                <a class="purple_text fw_400 ld_m_size md_m_size">See all</a>
+            </div>
+            <div class="order_section col-100">
+
+                    <div class="col-49 labc" *ngFor="let x of orders">
+                        <div class="card col-100">
+                            <div class="ld_A20padding md_A20padding">
+                                <div class=" ld_dflex md_dflex ld_align-items-center md_align-items-center">
+                                    <div class="col-50 ">
+                                        <div class="order_name ld_m_size md_m_size">{{x.name}}</div>
+                                        <div class="date_time c_gray ld_s_size md_s_size">23/03/23 4:30pm</div>
+                                    </div>
+                                    <div class="col-50 textR">
+                                        <button mat-button class="purple_text download_invoice ld_s_size">Download
+                                            Invoice&nbsp;<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M4.125 15C3.825 15 3.5625 14.8875 3.3375 14.6625C3.1125 14.4375 3 14.175 3 13.875V11.1937H4.125V13.875H13.875V11.1937H15V13.875C15 14.175 14.8875 14.4375 14.6625 14.6625C14.4375 14.8875 14.175 15 13.875 15H4.125ZM9 12.1312L5.38125 8.5125L6.1875 7.70625L8.4375 9.95625V3H9.5625V9.95625L11.8125 7.70625L12.6187 8.5125L9 12.1312Z"
+                                                    fill="#874BF9" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="ld_t20margin ld_dflex md_dflex ld_align-items-center md_align-items-center">
+                                    <div class="col-50">
+                                        <div class="fw_500 ld_s_size">Payment method : <span class="fw_400">Refr
+                                                Cash</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-50 ld_s_size fw_400 textR">
+                                        Online Order
+                                    </div>
+                                </div>
+                                <div class="ld_t10margin ld_dflex md_dflex ld_align-items-center md_align-items-center">
+                                    <div class="col-50">
+                                        <div class="fw_500 ld_s_size">Refr Token Given : <span class="fw_400">25</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-50 ld_s_size fw_400 textR">
+                                        Direct Sale
+                                    </div>
+                                </div>
+                                <div class="ld_t20margin ld_dflex md_dflex ld_align-items-center md_align-items-center">
+                                    <div class="col-50">
+                                        <span class="bg_grayish ld_s_size fw_500">
+                                            Payment Recieved&nbsp;&nbsp;<svg width="16" height="16" viewBox="0 0 22 22"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="11.2646" cy="11.2665" r="10.7333" fill="#27AE60" />
+                                                <path d="M15.3155 9.16602L9.75434 14.7271L7.22656 12.1993"
+                                                    stroke="white" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="col-50 textR">
+                                        <span class="bg_grayish bg_grayish2 ld_s_size fw_500">
+                                            Order details&nbsp;&nbsp;<svg width="16" height="16" viewBox="0 0 22 22"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="11.2646" cy="11.2665" r="10.7333" fill="#27AE60" />
+                                                <path d="M15.3155 9.16602L9.75434 14.7271L7.22656 12.1993"
+                                                    stroke="white" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="totalSection ld_A20padding">
+                                <div class="col-50 fw_500 ld_m_size">
+                                    Total Bill : ₹<span class="fw_400">2323</span>
+                                </div>
+                                <div class="col-50 textR orderPlaced">
+                                    <button mat-button class="pending_btn ld_m_size fw_400">Pending&nbsp;<svg width="20"
+                                            height="20" viewBox="0 0 22 22" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.53906 8.66602L10.8724 13.9993L16.2057 8.66602" fill="black" />
+                                            <path d="M5.53906 8.66602L10.8724 13.9993L16.2057 8.66602" stroke="black"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            <line x1="5.53906" y1="8.16602" x2="16.2057" y2="8.16602" stroke="black" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="col-100">
+
+            <div class="section">
+                <div class="col-55">
+                    <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Campaign</div>
+                    <div class="camp">
+
+                        <div class="ld_A20padding md_A20padding">
+                            <div class="camp_header ld_dflex md_dflex">
+                                <div>
+                                    <div class="fw_500 ld_l_size md_l_size">Recommendation campaign - 1</div>
+                                    <div class="fw_400 ld_s_size md_s_size">Created at 23/03/23 4:30pm</div>
+                                </div>
+                                <span class="divide"></span>
+                                <div>
+                                    <a class="textDecoration_underline purple_text ld_s_size md_s_size">Go to campaign
+                                        setting</a>
+                                </div>
+                            </div>
+                            <div class="col-100 ld_t20padding md_t20padding">
+                                <div class="col-50">
+                                    <div class="camp_heading ld_A10padding md_A10padding ld_m_size md_m_size">
+                                        Cost per recommendation
+                                    </div>
+                                    <div class="number ld_A10padding md_A10padding ld_fs_24 md_fs_24">
+                                        ₹20
+                                    </div>
+                                </div>
+                                <div class="col-50">
+                                    <div class="camp_heading ld_A10padding md_A10padding ld_m_size md_m_size">
+                                        Total Clicks
+                                    </div>
+                                    <div class="number ld_A10padding md_A10padding ld_fs_24 md_fs_24">
+                                        19800
+                                    </div>
+                                </div>
+                                <div class="col-50">
+                                    <div class="camp_heading ld_A10padding md_A10padding ld_m_size md_m_size">
+                                        Cost per conversion
+                                    </div>
+                                    <div class="number ld_A10padding md_A10padding ld_fs_24 md_fs_24">
+                                        ₹20
+                                    </div>
+                                </div>
+                                <div class="col-50">
+                                    <div class="camp_heading ld_A10padding md_A10padding ld_m_size md_m_size">
+                                        Total conversion
+                                    </div>
+                                    <div class="number ld_A10padding md_A10padding ld_fs_24 md_fs_24">
+                                        14K
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5"></div>
+                <div class="col-40">
+                    <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Billing</div>
+                    <div class="camp">
+                        <div class="ld_A20padding md_A20padding">
+                            <div class="ld_l_size md_l_size ld_b10padding md_b10padding ld_dflex md_dflex"> 
+                                Available campaign wallet balance&nbsp;<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.90938 14.875H11.2219V9.625H9.90938V14.875ZM10.4996 8.00625C10.704 8.00625 10.8755 7.93917 11.0141 7.805C11.1526 7.67083 11.2219 7.50458 11.2219 7.30625C11.2219 7.09552 11.1527 6.91888 11.0145 6.77633C10.8762 6.63378 10.7048 6.5625 10.5004 6.5625C10.296 6.5625 10.1245 6.63378 9.98594 6.77633C9.8474 6.91888 9.77812 7.09552 9.77812 7.30625C9.77812 7.50458 9.84726 7.67083 9.98554 7.805C10.1238 7.93917 10.2952 8.00625 10.4996 8.00625ZM10.5058 19.25C9.29928 19.25 8.16543 19.0203 7.10426 18.5609C6.04309 18.1016 5.1151 17.4745 4.32031 16.6797C3.52552 15.8849 2.89844 14.9564 2.43906 13.8941C1.97969 12.8319 1.75 11.6968 1.75 10.4891C1.75 9.28129 1.97969 8.14627 2.43906 7.08402C2.89844 6.02176 3.52552 5.09687 4.32031 4.30938C5.1151 3.52188 6.04363 2.89844 7.1059 2.43906C8.16815 1.97969 9.30316 1.75 10.5109 1.75C11.7187 1.75 12.8537 1.97969 13.916 2.43906C14.9782 2.89844 15.9031 3.52188 16.6906 4.30938C17.4781 5.09687 18.1016 6.02292 18.5609 7.0875C19.0203 8.15208 19.25 9.28764 19.25 10.4942C19.25 11.7007 19.0203 12.8346 18.5609 13.8957C18.1016 14.9569 17.4781 15.8836 16.6906 16.6757C15.9031 17.4678 14.9771 18.0949 13.9125 18.5569C12.8479 19.019 11.7124 19.25 10.5058 19.25ZM10.5109 17.9375C12.5745 17.9375 14.3281 17.212 15.7719 15.7609C17.2156 14.3099 17.9375 12.5526 17.9375 10.4891C17.9375 8.42552 17.217 6.67188 15.776 5.22812C14.335 3.78437 12.5763 3.0625 10.5 3.0625C8.44375 3.0625 6.6901 3.783 5.23906 5.22401C3.78802 6.66504 3.0625 8.4237 3.0625 10.5C3.0625 12.5562 3.78802 14.3099 5.23906 15.7609C6.6901 17.212 8.4474 17.9375 10.5109 17.9375Z" fill="black"/>
+                                    </svg>
+                                    
+                            </div>
+                            <div class="ld_fs_24 md_fs_24">
+                                ₹2323
+                            </div>
+                            <div class="anchor ld_dflex md_dflex ld_align-items-end  md_align-items-end ld_tb15padding md_tb15padding"> 
+                                <button mat-button class="cta_button bg_purple c_white ">Add Funds</button>
+                                <span class="divide"></span>
+                                <a class="purple_text textDecoration_underline ld_s_size md_s_size">Go to wallet</a>
+                            </div>
+                            <div class="ld_l_size md_l_size ld_t15padding md_t15padding ld_b10padding md_b10padding ld_dflex md_dflex"> 
+                                Last wallet refill
+                            </div>
+                            <div class=" ld_fs_24 md_fs_24">
+                                ₹2323
+                            </div>
+                            <div class=" ld_t10padding md_At10padding ld_s_size md_s_size">
+                                on 23/04/2023
+                            </div>
+                            <div class="ld_dflex md_dflex ld_align-items-end  md_align-items-end"> 
+                                <div class="ld_s_size md_s_size">Netbanking</div>
+                                <span class="divide"></span>
+                                <a class="purple_text textDecoration_underline ld_s_size md_s_size">Go to wallet</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>
