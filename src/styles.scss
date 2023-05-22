@@ -17,24 +17,16 @@ $client-accent-dark: mat.define-palette(mat.$grey-palette, 900);
 $client-warn: mat.define-palette(mat.$orange-palette, 400);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$client-theme-dark: mat.define-dark-theme(
-  (
-    color: (
-      primary: $client-primary,
-      accent: $client-accent-dark,
-      warn: $client-warn,
-    ),
-  )
-);
-$client-theme-light: mat.define-light-theme(
-  (
-    color: (
-      primary: $client-primary,
-      accent: $client-accent-light,
-      warn: $client-warn,
-    ),
-  )
-);
+$client-theme-dark: mat.define-dark-theme((color: (primary: $client-primary,
+        accent: $client-accent-dark,
+        warn: $client-warn,
+      ),
+    ));
+$client-theme-light: mat.define-light-theme((color: (primary: $client-primary,
+        accent: $client-accent-light,
+        warn: $client-warn,
+      ),
+    ));
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -327,7 +319,7 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 600;
 }
 
-.fw_500{
+.fw_500 {
   font-weight: 500;
 }
 
@@ -335,7 +327,7 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 700;
 }
 
-.cursor_pointer{
+.cursor_pointer {
   cursor: pointer;
 }
 
@@ -578,6 +570,7 @@ body {
       }
 
       @media only screen and (max-width: 991px) {
+
         //Tablet
         .col-md-none {
           display: none;
@@ -677,6 +670,7 @@ body {
       }
 
       @media only screen and (max-width: 767px) {
+
         //MOBILE
         .col-sm-none {
           display: none;
@@ -832,9 +826,7 @@ body {
   pointer-events: none !important;
 }
 
-.color-scheme-light
-  .mat-stepper-label-position-bottom
-  .mat-horizontal-stepper-header,
+.color-scheme-light .mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
 .color-scheme-light .mat-vertical-stepper-header {
   padding: 24px 8px !important;
   background: transparent !important;
@@ -862,8 +854,7 @@ body {
 }
 
 img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png"],
-img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"]
-{
+img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"] {
   display: none;
 }
 
@@ -1022,7 +1013,7 @@ textarea {
     font-size: 27px !important;
   }
 
-  .ld_fs_24{
+  .ld_fs_24 {
     font-size: 24px !important;
   }
 
@@ -1740,9 +1731,9 @@ textarea {
     font-size: 27px !important;
   }
 
-     .ld_fs_24 {
-       font-size: 24px !important;
-     }
+  .ld_fs_24 {
+    font-size: 24px !important;
+  }
 
   .md_xl_size {
     font-size: 22px !important;
@@ -2458,9 +2449,9 @@ textarea {
     font-size: 27px !important;
   }
 
-     .ld_fs_24 {
-       font-size: 24px !important;
-     }
+  .ld_fs_24 {
+    font-size: 24px !important;
+  }
 
 
   .sd_xl_size {
@@ -3180,6 +3171,7 @@ textarea {
   .mat-form-field-wrapper {
     padding-bottom: 0 !important;
     margin: 0 !important;
+
     .mat-form-field-flex .mat-form-field-infix {
       border-top: none !important;
       padding-top: 1.4em !important;
@@ -3191,25 +3183,23 @@ textarea {
   .mat-form-field-wrapper {
     padding-bottom: 0 !important;
     margin: 0 !important;
-    .mat-form-field-flex .mat-form-field-infix {
-      // border-top: none !important;
-      // padding-top: 1.4em !important;
-    }
+
+    .mat-form-field-flex .mat-form-field-infix {}
   }
 }
 
-.mat-form-field-flex{
+.mat-form-field-flex {
   align-items: center !important;
 }
 
 ::ng-deep .mat-tooltip {
-  /* your own custom styles here */ 
+  /* your own custom styles here */
   /* e.g. */
   color: yellow !important;
 }
 
 
-.tooltip_c{
+.tooltip_c {
   padding: 0 !important;
   box-shadow: none !important;
   min-width: 0 !important;
@@ -3218,10 +3208,19 @@ textarea {
   vertical-align: -webkit-baseline-middle !important;
 }
 
-.custom_tooltip{
+.custom_tooltip {
   color: #000000 !important;
   background: #FFFFFF !important;
   box-shadow: 0px -1px 5px rgba(190, 190, 190, 0.25), 0px 4px 4px rgba(100, 100, 100, 0.25) !important;
   border-radius: 5px !important;
   padding: 8px !important;
+}
+
+
+.md-sidenav-backdrop.md-sidenav-shown[_ngcontent-xyh-65] {
+  background-color: rgba(0, 0, 0, .6) !important;
+}
+
+.color-scheme-light .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: white;
 }

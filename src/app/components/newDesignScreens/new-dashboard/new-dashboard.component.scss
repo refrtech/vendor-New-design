@@ -1,0 +1,149 @@
+p {
+    margin: 0 !important;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #F6FFCF 0%, #ECD8FF 100%);
+
+    .h1 {
+        font-size: 16px;
+        padding: 15px 100px 15px 15px;
+    }
+}
+
+.section {
+    padding: 30px 0;
+    width: 90%;
+    margin: auto;
+
+    .dashOverviewSection {
+        margin: 30px 0 0 0;
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            background: #F5F5F5;
+            box-shadow: 0px 2px 9px rgba(117, 117, 117, 0.25);
+            border-radius: 10px;
+
+            .overviewContent {
+                border-right: 1px solid #EEEEEE;
+            }
+        }
+    }
+
+    .redeem_card {
+        .heading {}
+
+        .redeem_item_table {
+            margin: 30px 0 0 0;
+            border: 1px solid #EEEEEE;
+            box-shadow: 0px 2px 4px rgba(230, 230, 230, 0.25);
+            border-radius: 5px;
+
+            .redeem_item_heading {
+                background-color: #ffffff;
+
+                .table_header {
+                    border-bottom: 1px solid #EEEEEE;
+                    padding: 20px 0;
+                }
+
+                .redeem_users {
+                    padding: 20px 0;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #EEEEEE;
+
+                    .accept_cancel_ctas {
+                        text-align: center;
+
+                        button:nth-child(1) {
+                            background-color: red;
+                            background: #FFEAEE;
+                            border: 1px solid #FF1744;
+                            border-radius: 3px;
+                            margin: 0 1rem 0 0;
+                        }
+
+                        button:nth-child(2) {
+                            color: #27AE60;
+                            background: #F0FFF6;
+                            border: 1px solid #27AE60;
+                            border-radius: 3px;
+                            padding: 0 50px;
+                        }
+                    }
+                }
+
+                .redeem_users:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+.cta_button {
+    padding: 0px 30px;
+    height: 35px;
+    line-height: 0;
+}
+
+
+@media (max-width:900px) {
+    .gradient {
+        .h1 {
+            padding: 15px;
+        }
+    }
+
+    .mat-form-field {
+        width: 210px !important;
+    }
+
+
+    .section {
+        padding: 30px 0 40px 0;
+        width: 90%;
+        margin: auto;
+
+        .dashOverviewSection {
+            margin: 30px 0 0 0;
+
+            .overview {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                background: #F5F5F5;
+                box-shadow: 0px 2px 9px rgba(117, 117, 117, 0.25);
+                border-radius: 10px;
+
+                .overviewContent {
+                    border-right: 1px solid #EEEEEE;
+                    display: flex;
+                    flex-direction: column;
+
+                    .h6 {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+
+        .redeem_item_moblie {
+            background: #FFFFFF;
+            border: 1px solid #FAFAFA;
+            box-shadow: 0px 1px 9px rgba(199, 199, 199, 0.25);
+            border-radius: 10px;
+            margin: 30px 0 0 0;
+            padding: 20px;
+            .name_reward{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+
+
+}

@@ -28,61 +28,71 @@ import { StudentofferSectionComponent } from './components/newDesignScreens/stud
 import { DailydropsComponent } from './components/newDesignScreens/dailydrops/dailydrops.component';
 import { DailydropsSectionComponent } from './components/newDesignScreens/dailydrops-section/dailydrops-section.component';
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
+import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
+import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'test', component: TestComponent },
+  // {
+  //   path: '',
+  //   component: TabsComponent,
+  //   canActivate: [AuthGuard],
+  //   children: [
+  //     { path: '', redirectTo: '/dash', pathMatch: 'full' },
+  //     { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
+  //     {
+  //       path: 'dashHIW',
+  //       component: MerchanthowitworksComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'knowmore/:id', component: KnowmoremerchantComponent },
+  //     {
+  //       path: 'customer',
+  //       component: CustomerComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'campaign',
+  //       component: CampaignComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
+  //     {
+  //       path: 'wallet/:campID',
+  //       component: WalletComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'insight',
+  //       component: InsightComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'profile',
+  //       component: ProfileComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'my-order-list',
+  //       component: ListOrderComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'my-inventory',
+  //       component: ListProductComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'dash', redirectTo: '', pathMatch: 'full' },
+  //   ],
+  // },
+
   {
-    path: '',
-    component: TabsComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: '/dash', pathMatch: 'full' },
-      { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
-      {
-        path: 'dashHIW',
-        component: MerchanthowitworksComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'knowmore/:id', component: KnowmoremerchantComponent },
-      {
-        path: 'customer',
-        component: CustomerComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'campaign',
-        component: CampaignComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
-      {
-        path: 'wallet/:campID',
-        component: WalletComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'insight',
-        component: InsightComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'my-order-list',
-        component: ListOrderComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'my-inventory',
-        component: ListProductComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'dash', redirectTo: '', pathMatch: 'full' },
-    ],
+    path: '', component: SidenavtabsComponent, children: [
+      { path: "", redirectTo: '/dash', pathMatch: 'full' },
+
+      { path: 'dash', component: NewDashboardComponent }
+    ]
   },
 
   {
@@ -142,7 +152,8 @@ const routes: Routes = [
     loadChildren: () =>
       import(
         './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
-      ).then((m) => {
+      ).then((m) =>
+      {
         return m.ChooseStoreTypeModuleModule;
       }),
   },
@@ -253,6 +264,8 @@ const routes: Routes = [
 
   { path: 'paymentsummary', component: PaymentSummmaryComponent },
 
+
+
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
   { path: '**', redirectTo: '/404' },
@@ -262,4 +275,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

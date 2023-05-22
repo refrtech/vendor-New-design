@@ -1,0 +1,156 @@
+<div class="gradient">
+    <div class="h1 fw_500 textR">Campaign Wallet Balance : <span class="fw_400">₹1660</span></div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="section">
+
+            <div
+                class="dashboard_area ld_dflex md_dflex sd_dflex ld_align-items-center md_align-items-center sd_align-items-center ld_JCspace md_JCspace sd_JCspace">
+                <div>
+                    <div class="dashboardOverview ld_xml_size md_l_size md_m_size fw_600 ">
+                        Overview
+                    </div>
+                </div>
+                <div class="matDate">
+                    <mat-form-field appearance="outline" class="vendorSelect">
+                        <mat-label>Enter Start and End date</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate placeholder="Start date">
+                            <input matEndDate placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="dashOverviewSection">
+                <div class="overview">
+                    <div class="overviewContent ld_A30padding md_A30padding sd_A20padding">
+                        <div
+                            class="h6 ld_b20padding md_b20padding sd_b10padding ld_l_size ld_l_size sd_s_size fw_500 cursor_pointer">
+                            Your Customers</div>
+                        <div class="h1 ld_xxxl_size md_xxxl_size ld_fs_24 fw_500">0</div>
+                    </div>
+                    <div class="overviewContent ld_A30padding md_A30padding sd_A20padding">
+                        <div
+                            class="h6 ld_b20padding md_b20padding sd_b10padding ld_l_size ld_l_size sd_s_size fw_500 cursor_pointer">
+                            Recommendation count</div>
+                        <div class="h1 ld_xxxl_size md_xxxl_size ld_fs_24 fw_500">0</div>
+                    </div>
+                    <div class="overviewContent ld_A30padding md_A30padding sd_A20padding">
+                        <div
+                            class="h6 ld_b20padding md_b20padding sd_b10padding ld_l_size ld_l_size sd_s_size fw_500 textDecoration_underline cursor_pointer">
+                            Total clicks <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="black" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="h1 ld_xxxl_size md_xxxl_size ld_fs_24 fw_500">0</div>
+                    </div>
+                    <div class="overviewContent ld_A30padding md_A30padding sd_A20padding">
+                        <div
+                            class="h6 ld_b20padding md_b20padding sd_b10padding ld_l_size ld_l_size sd_s_size fw_500 cursor_pointer">
+                            Earning</div>
+                        <div class="h1 ld_xxxl_size md_xxxl_size ld_fs_24 fw_500">0</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div
+                class="gradient ld_A15padding md_A15padding sd_A10padding ld_dflex md_dflex sd_dflex ld_JCspace md_JCspace sd_JCspace ld_align-items-center md_align-items-center sd_align-items-center">
+                <div class="h1 fw_400 ld_nopadding md_nopadding sd_nopadding">Add your customers directly to your
+                    directory</div>
+                <button mat-button class="bg_purple c_white cta_button">Add</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="redeem_card">
+                <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Redeem Request</div>
+                <div class="redeem_item_table" *ngIf="auth.resource.getWidth >= 900">
+                    <div class="redeem_item_heading" >
+                        <div class="table_header">
+                            <div class="col-20">
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Name</p>
+                            </div>
+                            <div class="col-30">
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Bill Amount</p>
+                            </div>
+                            <div class="col-20">
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Instant Refr Token</p>
+                            </div>
+                            <div class="col-30">
+                                <p class="text-primary textC ld_l_size md_l_size sd_l_size">Action</p>
+                            </div>
+                        </div>
+                        <div class="redeem_users" *ngFor="let x of redeemUser">
+                            <div class="col-20">
+                                <p class="textC ld_m_size md_m_size sd_m_size">{{x.name}}</p>
+                                <p class="textC c_gray ld_s_size md_s_size sd_s_size">23/03/23 4:30pm</p>
+                            </div>
+                            <div class="col-30">
+                                <div class="textC">
+                                    <mat-form-field class="vendorInput" appearance="outline">
+                                        <input matInput placeholder="Enter Bill amount">
+                                      </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-20">
+                                <p class="textC ld_m_size md_m_size sd_m_size fw_600">25</p>
+                            </div>
+                            <div class="col-30">
+                                <div class="accept_cancel_ctas">
+                                    <button mat-button>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 6L6 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6 6L18 18" stroke="#FF1744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>                                            
+                                    </button>
+                                    <button mat-button>Accept</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- moblie -->
+                <div class="redeem_item_moblie" *ngIf="auth.resource.getWidth <= 900">
+                    <div class="name_reward col-100">
+                        <div class="col-35">
+                            <div class="heading fw_600 sd_m_size">Vishal Pise</div>
+                            <div class="date c_gray sd_xs_size">Jan 23, 2023 04:30</div>
+                        </div>
+                        <div class="col-30"></div>
+                        <div class="col-35">
+                            <div class="heading fw_600 sd_m_size textR">Reward</div>
+                            <div class="token sd_xs_size sd_dflex sd_align-items-center textR"><svg class="sd_r8margin" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.07322 11.6745C10.2562 11.3721 12.5844 8.61989 12.2732 5.5271C11.962 2.4343 9.12957 0.171988 5.94664 0.474371C2.7637 0.776753 0.435449 3.52898 0.746645 6.62177C1.05784 9.71457 3.89028 11.9769 7.07322 11.6745Z" fill="#FECC08"/>
+                                <path d="M6.83118 10.4217C9.28643 10.1886 11.0823 8.06567 10.8424 5.67995C10.6025 3.29424 8.41766 1.54948 5.96241 1.78261C3.50716 2.01574 1.71126 4.13868 1.95118 6.5244C2.19111 8.91012 4.37593 10.6552 6.83118 10.422V10.4217Z" fill="#EEAA1F"/>
+                                <path d="M4.0252 4.48454L6.20856 4.27734L6.72976 9.4606L3.25 6.00301L4.0252 4.48454Z" fill="#DF9226"/>
+                                <path d="M8.59742 4.00391L6.41406 4.2111L6.93556 9.39492L9.66065 5.34767L8.59742 4.00391Z" fill="#DF9226"/>
+                                <path d="M4.01574 4.35954L6.1991 4.15234L6.69742 9.10589L3.23438 5.81474L4.01603 4.35954H4.01574Z" fill="#FECC08"/>
+                                <path d="M8.59713 3.9707L6.41406 4.17847L6.91239 9.13201L9.6542 5.25148L8.59713 3.9707Z" fill="#FECC08"/>
+                                <path d="M7.37917 2.90039L6.55469 3.82065L8.39312 3.6488L7.37946 2.90068L7.37917 2.90039Z" fill="#DF9226"/>
+                                <path d="M5.08229 3.12109L4.25781 4.04135L6.09624 3.8695L5.08258 3.12138L5.08229 3.12109Z" fill="#DF9226"/>
+                                <path d="M7.38669 2.72852L6.5625 3.64849L8.40034 3.47663L7.38669 2.72852Z" fill="#FECC08"/>
+                                <path d="M5.06667 2.95117L4.24219 3.87143L6.08062 3.69958L5.06696 2.95146L5.06667 2.95117Z" fill="#FECC08"/>
+                                </svg>
+                                25 token</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
