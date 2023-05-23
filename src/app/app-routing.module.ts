@@ -32,6 +32,7 @@ import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
 import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
 import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
+import { CustomattributescreenComponent } from './newDesignScreens/campaigns/recommendation/customattributescreen/customattributescreen.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -96,6 +97,7 @@ const routes: Routes = [
       { path: 'dash', component: NewDashboardComponent },
       { path: 'recommend', component: RecommendationComponent },
       { path: 'recommendsetting', component: RecommendationsettingpageComponent },
+      { path: 'customattribute', component: CustomattributescreenComponent },
     ]
   },
 

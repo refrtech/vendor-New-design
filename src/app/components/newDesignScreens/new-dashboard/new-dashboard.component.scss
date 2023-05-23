@@ -98,20 +98,31 @@ table {
         }
     }
 
-    .loyalty_offer {
-        display: flex;
-        align-items: center;
-        background: #FFFFFF;
-        border: 1px solid #F2F2F2;
-        box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
-        border-radius: 10px;
-
-        .avail_disc {
-            border-left: 1px solid #dddddd;
-
-            span {
-                background-color: #faf5ff;
-                padding: 8px 20px;
+    .loyalty_offer_camp{
+        position: relative;
+        .loyalty_camp_svg{
+            position: absolute;
+            top: -21px;
+            left: 20px;
+            svg{
+                width: 100%;
+            }
+        }
+        .loyalty_offer {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1px solid #F2F2F2;
+            box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+            border-radius: 10px;
+    
+            .avail_disc {
+                border-left: 1px solid #dddddd;
+    
+                span {
+                    background-color: #faf5ff;
+                    padding: 8px 20px;
+                }
             }
         }
     }
@@ -121,64 +132,73 @@ table {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+
         .col-49 {
             width: 49%;
             display: inline-block;
-                .card {
-                    background: #FFFFFF;
-                    border: 1px solid #F2F2F2;
-                    box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
-                    border-radius: 10px;
 
-                    .download_invoice {
-                        border: 1px solid #874BF9
-                    }
+            .card {
+                background: #FFFFFF;
+                border: 1px solid #F2F2F2;
+                box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
+                border-radius: 10px;
 
-                    .bg_grayish {
-                        background: #FBF6FF;
-                        border: 1px solid #F1F1F1;
-                        border-radius: 5px;
-                        padding: 10px;
-                        display: flex;
-                        align-items: center;
-                        width: max-content;
-                    }
+                .download_invoice {
+                    border: 1px solid #874BF9
+                }
 
-                    .bg_grayish2 {
-                        margin-left: auto;
-                    }
+                .bg_grayish {
+                    background: #FBF6FF;
+                    border: 1px solid #F1F1F1;
+                    border-radius: 5px;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                }
 
-                    .totalSection {
-                        background: #FBF7FF;
-                    }
+                .bg_grayish2 {
+                    margin-left: auto;
+                }
 
-                    .orderPlaced {
-                        button {
-                            border-radius: 20px;
-                            padding: 8px 25px;
-                            line-height: 0;
-                        }
+                .totalSection {
+                    background: #FBF7FF;
+                }
+
+                .orderPlaced {
+                    button {
+                        border-radius: 20px;
+                        padding: 8px 25px;
+                        line-height: 0;
                     }
                 }
+            }
         }
 
     }
 
-    .camp {
-
-        margin: 30px 0 0 0;
-        background: #FFFFFF;
-        box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
-        border-radius: 10px;
-
-        .camp_header {
-            border-bottom: 1px solid #EBEBEB;
-            padding: 0 0 16px 0;
+    .activeCamp_billing{
+        display: flex;
+        .camp {
+    
+            margin: 30px 0 0 0;
+            background: #FFFFFF;
+            box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+            border-radius: 10px;
+    
+            .camp_header {
+                border-bottom: 1px solid #EBEBEB;
+                padding: 0 0 16px 0;
+            }
+    
+            .anchor {
+                border-bottom: 1px solid #d7d7d7;
+            }
         }
+    }
 
-        .anchor {
-            border-bottom: 1px solid #d7d7d7;
-        }
+    .ld_loyalty_offer_camp_section{
+        display: none;
     }
 }
 
@@ -228,7 +248,7 @@ table {
 
 
     .section {
-        padding: 30px 0 40px 0;
+        padding: 40px 0;
         width: 90%;
         margin: auto;
 
@@ -304,9 +324,91 @@ table {
             }
         }
 
+        .order_section {
+            margin: 30px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            .col-49 {
+                width: 100%;
+                display: inline-block;
+                    .card {
+                        background: #FFFFFF;
+                        border: 1px solid #F2F2F2;
+                        box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
+                        border-radius: 10px;
+    
+                        .download_invoice {
+                            border: 1px solid #874BF9;
+                            font-size: 0.7rem;
+                        }
+    
+                        .bg_grayish {
+                            background: #FBF6FF;
+                            border: 1px solid #F1F1F1;
+                            border-radius: 5px;
+                            padding: 10px;
+                            display: flex;
+                            align-items: center;
+                            width: max-content;
+                        }
+    
+                        .bg_grayish2 {
+                            margin-left: auto;
+                        }
+    
+                        .totalSection {
+                            background: #FBF7FF;
+                        }
+    
+                        .orderPlaced {
+                            button {
+                                border-radius: 20px;
+                                padding: 8px 25px;
+                                line-height: 0;
+                            }
+                        }
+                    }
+            }
+    
+        }
+
+
+        .activeCamp_billing{
+            flex-direction: column;
+        }
+
+        .camp {
+    
+            .camp_header {
+                gap: 0.4rem;
+                flex-direction: column;
+            }
+            .anchor {
+                border-bottom: 1px solid #d7d7d7;
+            }
+        }
 
     }
 
+    .section:nth-child(2){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(3){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(4){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(5){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(6){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(7){
+        padding: 0 0 40px 0;
+    }
     .table {
         overflow: scroll;
 
@@ -315,6 +417,32 @@ table {
         }
     }
 
+
+    // .loyalty_offer_camp{
+    //     display: none;
+    // }
+
+    .ld_loyalty_offer_camp_section{
+        display: block !important;
+        border: 1px solid #DDDDDD;
+        position: relative;
+        .ess_svg{
+            position: absolute;
+            top: -22px;
+        }
+        .loyalty_cuss{
+            padding: 40px 20px 20px 20px;
+            background-color: white;
+            button{
+                border: none;
+                outline: none;
+                padding: 15px;
+                width: 100%;
+                font-size: 14px;
+                border-radius: 8px;
+            }
+        }
+    }
 
 
 }

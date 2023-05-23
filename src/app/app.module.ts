@@ -125,7 +125,8 @@ import { NewDashboardComponent } from './components/newDesignScreens/new-dashboa
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
 import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
 import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
-
+import { CustomattributescreenComponent } from './newDesignScreens/campaigns/recommendation/customattributescreen/customattributescreen.component';
+import {MatChipsModule} from '@angular/material/chips';
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
 
@@ -182,6 +183,7 @@ import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns
     SidenavtabsComponent,
     RecommendationComponent,
     RecommendationsettingpageComponent,
+    CustomattributescreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -192,6 +194,7 @@ import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns
     HttpClientJsonpModule,
     FormsModule,
     ReactiveFormsModule,
+    MatChipsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,

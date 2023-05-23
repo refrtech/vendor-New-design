@@ -1070,6 +1070,10 @@ textarea {
     font-size: 18px !important;
   }
 
+  .ld_fs_17{
+    font-size: 17px !important;
+  }
+
   .ld_m_size {
     font-size: 16px !important;
   }
@@ -1292,6 +1296,10 @@ textarea {
 
   .ld_A20padding {
     padding: 20px !important;
+  }
+
+  .ld_A25padding {
+    padding: 25px !important;
   }
 
   .ld_A30padding {
@@ -1575,6 +1583,19 @@ textarea {
     margin-bottom: 5px;
   }
 
+  .ld_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ld_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .ld_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .ld_M4width {
     max-width: 4% !important;
     min-width: 4% !important;
@@ -1793,6 +1814,10 @@ textarea {
 
   .md_l_size {
     font-size: 18px !important;
+  }
+
+  .md_fs_17{
+    font-size: 17px !important;
   }
 
   .md_m_size {
@@ -2017,6 +2042,10 @@ textarea {
 
   .md_A20padding {
     padding: 20px !important;
+  }
+
+  .md_A25padding {
+    padding: 25px !important;
   }
 
   .md_A30padding {
@@ -2301,6 +2330,19 @@ textarea {
     margin-bottom: 5px;
   }
 
+  .md_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .md_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .md_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .md_M4width {
     max-width: 4% !important;
     min-width: 4% !important;
@@ -2522,6 +2564,10 @@ textarea {
 
   .sd_l_size {
     font-size: 18px !important;
+  }
+
+  .sd_fs_17{
+    font-size: 17px !important;
   }
 
   .sd_m_size {
@@ -2746,6 +2792,10 @@ textarea {
 
   .sd_A20padding {
     padding: 20px !important;
+  }
+
+  .sd_A25padding {
+    padding: 25px !important;
   }
 
   .sd_A30padding {
@@ -3024,6 +3074,18 @@ textarea {
   .sd_tb5margin {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+  .sd_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .sd_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .sd_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .sd_M4width {
@@ -3333,3 +3395,13 @@ textarea {
   background-color: #874BF9 !important;
 }
 
+
+.chips,.chips .mat-form-field-flex{
+    background-color: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    .mat-form-field-underline{
+      display: none !important;
+    }
+  
+}
