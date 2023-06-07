@@ -18,9 +18,9 @@ export class SidenavtabsComponent implements OnInit {
 
   navRoutes = [
     { tit: "Dashboard", link: "/dash" },
-    { tit: "Orders", link: "/" },
-    { tit: "Wallets", link: "/" },
-    { tit: "Campaign", 
+    { tit: "Orders", link: "/New_orders" },
+    { tit: "Wallets", link: "/New_wallet" },
+    { tit: "Campaign",
     iconName: 'expand_more',
       isexpanded: false,
       childern:[
@@ -59,12 +59,12 @@ export class SidenavtabsComponent implements OnInit {
   expand(index: any) {
     if (index == 3) {
       console.log("click",index);
-      
+
       this.navRoutes[index].isexpanded = !this.navRoutes[index].isexpanded;
     }
   }
 
-  
+
 
 
 }

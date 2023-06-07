@@ -98,7 +98,7 @@ export class NotifyService {
         const messaging = getMessaging(initializeApp(environment.firebase));
         //const messaging = getMessaging();
 
-        getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
+        getToken(messaging, { vapidKey: environment.firebase.apiKey }).then((currentToken) => {
           if (currentToken) {
             console.log("Hurraaa!!! we got the token.....")
             console.log(currentToken);

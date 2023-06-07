@@ -16,12 +16,12 @@
                                             <div class="d-flex-row mt-md-10 mt-sm-5">
                                                 <h3 class="mr-5 col-70 col-sm-60">
                                                     <b> {{x.name}} </b>
-                                                    <button mat-button class="active-chip c_white b_black"
+                                                    <button mat-button class="active-chip c_white bg_black"
                                                         *ngIf="x.tX == 'tC' && !x.customAct">{{!x.ban ?
                                                         'Pending':'Rejected'}}</button>
                                                     <button class="active-chip c_white"
-                                                        [class.b_green]=" auth.resource.compareDates( x.dateE.toDate() ) "
-                                                        [class.b_red]=" x.stoped || x.paused || !auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        [class.bg_green]=" auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        [class.bg_red]=" x.stoped || x.paused || !auth.resource.compareDates( x.dateE.toDate() ) "
                                                         mat-button
                                                         *ngIf=" x.tX !== 'tC' || x.tX == 'tC' && x.customAct ">
                                                         {{ !auth.resource.compareDates( x.dateE.toDate() ) ?
@@ -56,8 +56,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-35  col-sm-50">
-                                                    <div class="padding-grd ">
-                                                        <div class="bg-gradient b_gradient c_white">
+                                                    <div class="padding-grd">
+                                                        <div class="bg-gradient bg_gradient c_white">
                                                             <h6 *ngIf="x.type == 'flat'">Cashback ₹{{x.cbDir}}/-</h6>
                                                             <h6 *ngIf="x.type == 'percent'">{{x.cbDir}}% Cashback upto
                                                                 ₹{{x.max}}/-</h6>

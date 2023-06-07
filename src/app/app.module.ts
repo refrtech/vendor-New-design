@@ -127,6 +127,8 @@ import { RecommendationComponent } from './newDesignScreens/campaigns/recommenda
 import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
 import { CustomattributescreenComponent } from './newDesignScreens/campaigns/recommendation/customattributescreen/customattributescreen.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { NewWalletComponent } from './components/newDesignScreens/new-wallet/new-wallet.component';
+import { OrdersComponent } from './components/newDesignScreens/orders/orders.component';
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
 
@@ -184,6 +186,8 @@ import {MatChipsModule} from '@angular/material/chips';
     RecommendationComponent,
     RecommendationsettingpageComponent,
     CustomattributescreenComponent,
+    NewWalletComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

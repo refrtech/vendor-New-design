@@ -1,25 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/tabs/dashboard/dashboard.component';
-import { ProfileComponent } from './components/tabs/profile/profile.component';
-import { TabsComponent } from './components/tabs/tabs.component';
-import { WalletComponent } from './components/tabs/wallet/wallet.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { InsightComponent } from './components/tabs/insight/insight.component';
-import { CampaignComponent } from './components/tabs/campaign/campaign.component';
 import { AuthGuard } from './guards/auth.guard';
-import { CustomerComponent } from './components/tabs/customer/customer.component';
 import { StoreCreateComponent } from './components/store-create/store-create.component';
 import { NewLocationComponent } from './components/store-create/new-location/new-location.component';
 import { NewStoreComponent } from './components/store-create/new-store/new-store.component';
 import { NewCampaignComponent } from './components/store-create/new-campaign/new-campaign.component';
 import { FundWalletComponent } from './components/store-create/fund-wallet/fund-wallet.component';
 import { AddProductComponent } from './components/store-create/add-product/add-product.component';
-import { ListOrderComponent } from './components/tabs/list-order/list-order.component';
-import { ListProductComponent } from './components/tabs/list-product/list-product.component';
 import { TestComponent } from './placeholders/test/test.component';
-import { MerchanthowitworksComponent } from './components/tabs/dashboard/merchanthowitworks/merchanthowitworks.component';
-import { KnowmoremerchantComponent } from './components/tabs/dashboard/merchanthowitworks/knowmoremerchant/knowmoremerchant.component';
 import { LoyaltystepawayComponent } from './components/newDesignScreens/loyaltystepaway/loyaltystepaway.component';
 import { LoyaltycongratComponent } from './components/newDesignScreens/loyaltycongrat/loyaltycongrat.component';
 import { StudentoffersComponent } from './components/newDesignScreens/studentoffers/studentoffers.component';
@@ -95,6 +84,20 @@ const routes: Routes = [
       { path: "", redirectTo: '/dash', pathMatch: 'full' },
 
       { path: 'dash', component: NewDashboardComponent },
+      {
+        path:'New_wallet',
+        loadChildren: ()=>
+        import('./components/newDesignScreens/new-wallet/newwalletmodules/newwalletmodules.module')
+        .then((m) => m.NewwalletmodulesModule)
+      },
+
+      {
+        path:'New_orders',
+        loadChildren: ()=>
+        import('./components/newDesignScreens/orders/orders/orders-routing.module')
+        .then((m) => m.OrdersRoutingModule)
+      },
+
       { path: 'recommend', component: RecommendationComponent },
       { path: 'recommendsetting', component: RecommendationsettingpageComponent },
       { path: 'customattribute', component: CustomattributescreenComponent },
@@ -144,6 +147,8 @@ const routes: Routes = [
         './components/newDesignScreens/setupbusiness/setupbusiness-module/setupbusiness-module.module'
       ).then((m) => m.SetupbusinessModuleModule),
   },
+
+
 
   {
     path: 'chooseprofile',

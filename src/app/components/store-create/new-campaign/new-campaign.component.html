@@ -1,5 +1,5 @@
 <div class="formHold textC">
-  <h3 class="textL c_primary" *ngIf="enableDirect" 
+  <h3 class="textL c_primary" *ngIf="enableDirect"
   style="margin-bottom: 24px !important;" >Create campaign</h3>
 
     <app-content *ngIf="!(store$ | async)"></app-content>
@@ -41,7 +41,7 @@
       </mat-form-field>
 
       <br>
-      
+
 
       <div class="timetable">
         <table>
@@ -51,13 +51,13 @@
             <tr>
                 <td colspan="3">
                   <a mat-button color="primary" [disabled]="disableForm" (click)="
-                  storeCamp.type = 'flat'; 
-                  defualtCamp.nowCB = 100; 
+                  storeCamp.type = 'flat';
+                  defualtCamp.nowCB = 100;
                   defualtCamp.minCB = 100;  storeCamp.max = 0;
                   storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4);"><mat-icon>{{storeCamp.type == 'flat' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Flat</a>
                   <a mat-button color="primary" [disabled]="disableForm" (click)="
-                  storeCamp.type = 'percent'; 
-                  defualtCamp.nowCB = 30;  
+                  storeCamp.type = 'percent';
+                  defualtCamp.nowCB = 30;
                   defualtCamp.minCB = 10;  storeCamp.max = 100;
                   storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4); "><mat-icon>{{storeCamp.type == 'percent' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Percentage</a>
                 </td>
@@ -68,12 +68,12 @@
 
       <mat-form-field appearance="legacy" class="fullWidth">
         <mat-label>Cashback amount</mat-label>
-        <input [disabled]="disableForm" [min]="defualtCamp.minCB" [max]=" 
+        <input [disabled]="disableForm" [min]="defualtCamp.minCB" [max]="
         (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
         (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
         0
-        " matInput 
-        [(ngModel)]="storeCamp.cbNew" 
+        " matInput
+        [(ngModel)]="storeCamp.cbNew"
         (ngModelChange)="setUpCashback(storeCamp.cbNew)" placeholder="Set cashback amount" autocomplete="off" type="number" name="cashback" required>
         <span matPrefix *ngIf=" storeCamp.type == 'flat' ">₹ &nbsp;</span>
         <span matSuffix *ngIf=" storeCamp.type == 'percent' ">&nbsp; %</span>
@@ -142,7 +142,7 @@
         <span matPrefix>₹ &nbsp;</span>
         <mat-error>Minimum order value is required.</mat-error>
       </mat-form-field>
-      
+
       <br>
 
       <mat-form-field appearance="legacy" class="fullWidth" *ngIf=" storeCamp.type == 'percent' ">
@@ -158,10 +158,10 @@
       <table class="tierTable"  cellspacing="0" cellpadding="0">
 <ng-container *ngIf="!enableDirect">
 
-  
+
         <tr class="c_persist">
             <th class="textL" colspan="2"><span class="tit">Tier</span></th>
-            <th class="b_primaryLight"><span class="c_primary">No of Sales</span></th>
+            <th class="bg_primaryLight"><span class="c_primary">No of Sales</span></th>
             <th>Payment</th>
         </tr>
 <ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
@@ -173,15 +173,15 @@
           <tr class="c_primaryLight" [class]=" 'tier' + (i + 1) ">
               <!--td class="textL">{{i+1 == 1 ? 'I':''}}{{i+1 == 2 ? 'II':''}}{{i+1 == 3 ? 'III':''}}{{i+1 == 4 ? 'IV':''}}</td-->
               <td class="textL" colspan="2"><p class="c_white">₹ {{t.cost}}<br><span style="font-size: 12px;">You get ₹ {{t.refill}}</span></p></td>
-              <td class="b_primaryLight"><p class="c_white scaleIT">{{(t.refill/(1.5 * 
-                  ( 
+              <td class="bg_primaryLight"><p class="c_white scaleIT">{{(t.refill/(1.5 *
+                  (
                       (storeCamp.type !== 'flat' ? 0 : (storeCamp.cbNew || defualtCamp.nowCB) ) +
                       (storeCamp.type !== 'percent' ? 0 : (storeCamp.max) || defualtCamp.maxCB) +
                       0
                   )
                   ) | number:'1.0-0' )}}</p></td>
-              <td class="textR"><button mat-raised-button color="primary" 
-                [disabled]="disableForm || 
+              <td class="textR"><button mat-raised-button color="primary"
+                [disabled]="disableForm ||
                 storeCamp.cbNew > t.refill ||
                 storeCamp.type !== 'percent' && storeCamp.max > t.refill " (click)="createStoreCampaign( t.tX, false )">Pay</button></td>
           </tr>
@@ -208,7 +208,7 @@
               </div>
           </td></tr>
       </table>
-    
+
         <!--div class="formFoot">
             <span class="divide"></span>
             <button [disabled]="disableForm" type="submit"

@@ -31,7 +31,6 @@
                     <button mat-button class="side-nav-item " (click)="expand(i)"
                         [routerLink]=" nR.link " routerLinkActive="f_primary b_accent c_primary">
                         <span class="title fw_400 ld_dflex md_dflex"> {{nR.tit}}
-
                             <mat-icon [class.rotate]="nR.isexpanded">
                                 {{nR.iconName}}
                             </mat-icon>
@@ -112,7 +111,7 @@
                                 <path d="M18 7.99609C18 6.40479 17.3679 4.87867 16.2426 3.75345C15.1174 2.62823 13.5913 1.99609 12 1.99609C10.4087 1.99609 8.88258 2.62823 7.75736 3.75345C6.63214 4.87867 6 6.40479 6 7.99609C6 14.9961 3 16.9961 3 16.9961H21C21 16.9961 18 14.9961 18 7.99609Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13.7334 21C13.5576 21.3031 13.3053 21.5547 13.0017 21.7295C12.698 21.9044 12.3538 21.9965 12.0034 21.9965C11.6531 21.9965 11.3088 21.9044 11.0052 21.7295C10.7016 21.5547 10.4492 21.3031 10.2734 21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                
+
                         </div>
                         <div class="store_img" *ngIf="auth.resource.getWidth >= 900">
                             <img src="../../../../assets/foreign/lucky/dp.png" alt="">

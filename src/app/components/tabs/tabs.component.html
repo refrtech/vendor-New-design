@@ -65,11 +65,11 @@
     <mat-sidenav-content [class.ml-130]="false">
       <div #container class="main">
         <div class="header">
-          <div class="superHead b_primary c_white" [class.swNormal]=" 
-      router.url == '/dash' || 
-      router.url == '/campaign' || 
-      router.url == '/my-order-list' || 
-      router.url == '/my-inventory' || 
+          <div class="superHead b_primary c_white" [class.swNormal]="
+      router.url == '/dash' ||
+      router.url == '/campaign' ||
+      router.url == '/my-order-list' ||
+      router.url == '/my-inventory' ||
       router.url == '/insight' || router.url == '/dashHIW' || router.url == '/knowmore/0' || router.url == '/knowmore/1' || router.url == '/knowmore/2' || router.url == '/knowmore/3' || router.url == '/knowmore/4' || router.url == '/knowmore/5' || router.url == '/knowmore/6' || router.url == '/knowmore/7' || router.url == '/knowmore/8' || router.url == '/knowmore/9'
       " [class.swDash]=" router.url == '/dash'  ">
 
@@ -139,14 +139,14 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-<!--div class="c_black sc-bottom-bar" [class.b_white]="
-router.url !== '/dash' && 
-router.url !== '/wallet' && 
-router.url !== '/campaign' && 
-router.url !== '/customer' && 
+<!--div class="c_black sc-bottom-bar" [class.bg_white]="
+router.url !== '/dash' &&
+router.url !== '/wallet' &&
+router.url !== '/campaign' &&
+router.url !== '/customer' &&
 router.url !== '/insight' "
- [style]=" 
-'background-position:' + 
+ [style]="
+'background-position:' +
 ( router.url == '/dash' ? (0):'') +
 ( router.url == '/wallet' ? (getIndiWidth() * 1):'') +
 ( router.url == '/campaign' ? (getIndiWidth() * 2):'') +
@@ -168,14 +168,14 @@ router.url !== '/insight' "
     <a [class]="router.url == '/insight' ? 'sc-menu-item sc-current c_white' : 'sc-menu-item' " [routerLink]="'/insight'" [style.width]="getIndiWidth() + 'px' " >
         <mat-icon>leaderboard</mat-icon>
     </a>
-    <a class="sc-nav-indicator b_gradient" *ngIf="
-    router.url == '/dash' || 
-    router.url == '/wallet' || 
-    router.url == '/campaign' || 
-    router.url == '/customer' || 
+    <a class="sc-nav-indicator bg_gradient" *ngIf="
+    router.url == '/dash' ||
+    router.url == '/wallet' ||
+    router.url == '/campaign' ||
+    router.url == '/customer' ||
     router.url == '/insight'
     "
-    [style]=" 'left:' + 
+    [style]=" 'left:' +
     ( router.url == '/dash' ? '0' + 7 :'') +
     ( router.url == '/wallet' ? (getIndiWidth() * 1) + 7 :'') +
     ( router.url == '/campaign' ? (getIndiWidth() * 2) + 7:'') +

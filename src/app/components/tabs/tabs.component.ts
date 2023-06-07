@@ -71,7 +71,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    
+
     // let menu_bar:any = document.querySelector('.sc-bottom-bar');
     // let menu_item = document.querySelectorAll('.sc-menu-item');
     // let menu_indicator:any = document.querySelector('.sc-nav-indicator');
@@ -179,7 +179,7 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
             return true;
           }
         };
-        
+
         const proxy = new Proxy(this.notificationList$, handler);
       }
     })
@@ -204,7 +204,7 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
       this.notificationList$ =  this.auth
       .getNotify(30, '+91'+phone);
     }
- 
+
       // .pipe(take(1))
       // .subscribe((d: any) => {
       //   if (d.length == 0 && phone.includes("+91") == true) {

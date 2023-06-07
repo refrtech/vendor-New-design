@@ -1,5 +1,5 @@
 <div class="formHold textC">
-  <h3 class="textL c_primary" *ngIf="enableDirect" 
+  <h3 class="textL c_primary" *ngIf="enableDirect"
   style="margin-bottom: 24px !important;" >Create product</h3>
     <app-content *ngIf="!(store$ | async)"></app-content>
 
@@ -84,39 +84,39 @@
 
       <mat-form-field appearance="legacy" class="fullWidth">
         <mat-label>Create size</mat-label>
-        <input [disabled]="disableForm" 
+        <input [disabled]="disableForm"
         (keyUp.enter)="choose.size.length > 0 ? ( addNewVariant('size', choose.size, '') + choose.size = '' ) : true"
         matInput [(ngModel)]="choose.size" name="size" placeholder="eg. XL (text) / 12 (number)" autocomplete="off" type="text">
-        <a mat-button matSuffix 
-        [disabled]="choose.size.length == 0" 
-        (click)="choose.size.length > 0 ? 
+        <a mat-button matSuffix
+        [disabled]="choose.size.length == 0"
+        (click)="choose.size.length > 0 ?
         ( addNewVariant('size', choose.size, '') + choose.size = '' ) : true">{{ getVariant('size', choose.size).length == 0 ? 'Add':'Remove'}}</a>
       </mat-form-field>
       <br>
-      <div class="colorPalete b_white c_black" *ngIf="getVariants('size').length > 0">
+      <div class="colorPalete bg_white c_black" *ngIf="getVariants('size').length > 0">
           <div class="paletescroll">
           <a mat-button class="square" *ngFor="let s of getVariants('size')" (click)="addNewVariant(s.type, s.name, '')"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
           </div>
       </div>
-     
+
     <br>
 
       <mat-form-field appearance="legacy" class="fullWidth">
         <mat-label>Create color</mat-label>
-        <input [disabled]="disableForm" 
+        <input [disabled]="disableForm"
         (keyUp.enter)="choose.color.length > 0 ? ( addNewVariant('color', choose.color, '') + choose.color = '' ) : true"
         matInput [(ngModel)]="choose.color" name="color" placeholder="eg. Martian Red (text)" autocomplete="off" type="text">
-        <a mat-button matSuffix 
-        [disabled]="choose.color.length == 0" 
-        (click)="choose.color.length > 0 ? 
+        <a mat-button matSuffix
+        [disabled]="choose.color.length == 0"
+        (click)="choose.color.length > 0 ?
         ( addNewVariant('color', choose.color, '') + choose.color = '' ) : true">{{ getVariant('color', choose.color).length == 0 ? 'Add':'Remove'}}</a>
       </mat-form-field>
     <br>
-      <div class="colorPalete b_white c_black">
+      <div class="colorPalete bg_white c_black">
           <div class="paletescroll">
           <a mat-icon-button class="circle"><mat-icon>palette</mat-icon></a>
-          <a mat-icon-button 
-          (click)="addNewVariant('palete', x, '')" 
+          <a mat-icon-button
+          (click)="addNewVariant('palete', x, '')"
           [style.background]="x + (getVariant('palete', x).length == 0 ? 99: '')" [class.c_accent]="getVariant('palete', x).length !== 0"
           class="circle picker" *ngFor="let x of [ '#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee', '#ffffff', '#000000' ]"><mat-icon [class.active]="getVariant('palete', x).length !== 0">{{ getVariant('palete', x).length !== 0 ? 'lens' : 'colorize' }}</mat-icon></a>
           </div>
@@ -129,21 +129,21 @@
 
       <mat-form-field appearance="legacy" class="fullWidth">
         <mat-label>Create material</mat-label>
-        <input [disabled]="disableForm" 
+        <input [disabled]="disableForm"
         (keyUp.enter)="choose.material.length > 0 ? ( addNewVariant('material', choose.material, '') + choose.material = '' ) : true"
         matInput [(ngModel)]="choose.material" name="material" placeholder="eg. Cotton / Linen" autocomplete="off" type="text">
-        <a mat-button matSuffix 
-        [disabled]="choose.material.length == 0" 
-        (click)="choose.material.length > 0 ? 
+        <a mat-button matSuffix
+        [disabled]="choose.material.length == 0"
+        (click)="choose.material.length > 0 ?
         ( addNewVariant('material', choose.material, '') + choose.material = '' ) : true">{{ getVariant('material', choose.material).length == 0 ? 'Add':'Remove'}}</a>
       </mat-form-field>
       <br>
-      <div class="colorPalete b_white c_black" *ngIf="getVariants('material').length > 0">
+      <div class="colorPalete bg_white c_black" *ngIf="getVariants('material').length > 0">
           <div class="paletescroll">
           <a mat-button class="square" *ngFor="let s of getVariants('material')" (click)="addNewVariant(s.type, s.name, '')"><mat-icon>remove_circle_outline</mat-icon><span class="c_primary"> {{s.name}}</span></a>
           </div>
       </div>
-     
+
     <br>
 
       <mat-form-field appearance="legacy" class="halfWidth">
@@ -157,17 +157,17 @@
       </mat-form-field>
       <mat-form-field appearance="legacy" class="halfWidth">
         <mat-label>Create variant</mat-label>
-        <input [disabled]="disableForm" 
+        <input [disabled]="disableForm"
         (keyUp.enter)="choose.title.length > 0  && choose.about.length > 0 ? ( addNewVariant('variant', choose.about, choose.title) + choose.about = '' ) : true"
         matInput [(ngModel)]="choose.about" name="about" placeholder="Variant name" autocomplete="off" type="text">
-        <a mat-button matSuffix 
-        [disabled]="choose.title.length == 0 || choose.about.length == 0" 
+        <a mat-button matSuffix
+        [disabled]="choose.title.length == 0 || choose.about.length == 0"
         (click)="
-        choose.title.length > 0  && choose.about.length > 0 ? 
+        choose.title.length > 0  && choose.about.length > 0 ?
         ( addNewVariant('variant', choose.about, choose.title) + choose.about = '' ) : true">{{ getVariant('variant', choose.about).length == 0 ? 'Add':'Remove'}}</a>
       </mat-form-field>
       <br>
-      <div class="colorPalete b_white c_black" *ngIf="choose.titles.length > 0">
+      <div class="colorPalete bg_white c_black" *ngIf="choose.titles.length > 0">
           <div class="paletescroll" *ngFor="let t of choose.titles">
           <a mat-icon-button class="circle" (click)="removeVariantBulk('variant', t)"><mat-icon>remove</mat-icon></a>
           <ng-container *ngFor="let s of getVariants('variant')">
@@ -176,7 +176,7 @@
           </ng-container>
           </div>
       </div>
- 
+
     <br>
 
 <div class="variants">
@@ -250,7 +250,7 @@
         <a mat-button [disabled]="disableForm" routerLink="/dash" *ngIf="!enableDirect" >Skip</a>
         <a mat-button class="c_invert" mat-dialog-close *ngIf="enableDirect">Later</a>
         &nbsp;
-        <button [disabled]="disableForm" type="button" (click)="createStoreProduct()" 
+        <button [disabled]="disableForm" type="button" (click)="createStoreProduct()"
         mat-stroked-button color="primary">Create product</button>
     </div>
 </form>

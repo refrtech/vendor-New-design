@@ -1,0 +1,198 @@
+<div class="container">
+  <div class="row">
+
+
+    <div class="section r_align bg_white">
+      <div class="matDate">
+        <mat-form-field appearance="outline" class="vendorSelect">
+          <mat-label>Enter Start and End date</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="section bg_white ld_b40padding">
+      <div class="order_section col-100 ld_dflex">
+        <div class="ld_M60width br10 ld_dflex c_align ld_JCspace">
+          <div class="ld_M15width">
+            <div class="ld_s_size fw_400">
+              Total orders
+            </div>
+            <div class="ld_xl_size ld_boldText ld_t10padding">
+              100
+            </div>
+          </div>
+          <div class="ld_M15width">
+            <div class="ld_s_size fw_400">
+              To be shipped
+            </div>
+            <div class="ld_xl_size ld_boldText ld_t10padding">
+              100
+            </div>
+          </div>
+          <div class="ld_M15width">
+            <div class="ld_s_size fw_400">
+              To be delivered
+            </div>
+            <div class="ld_xl_size ld_boldText ld_t10padding">
+              100
+            </div>
+          </div>
+          <div class="ld_M15width">
+            <div class="ld_s_size fw_400">
+              Total sales
+            </div>
+            <div class="ld_xl_size ld_boldText ld_t10padding">
+              100
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="section ld_t30padding ld_b30padding">
+      <div class="ld_boldText ld_m_size ld_dflex">
+        <div class="ld_M25width">
+          Most ordered product
+        </div>
+        <div class="ld_M15width">
+          No of orders
+        </div>
+        <div class="ld_M15width">
+          Total sales
+        </div>
+      </div>
+
+      <div class="ld_t10padding fw_400 ld_xs_size ld_dflex">
+        <div class="ld_M25width">
+          F'iT 15g Whey Protein Bar - Chocolate with Hazelnut (Pack of 6)
+        </div>
+        <div class="ld_M15width">
+          16
+        </div>
+        <div class="ld_M15width">
+          ₹1660
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section bg_white ld_t30padding">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="All Orders">
+          <table class="ld_M100width ld_t30margin" mat-table [dataSource]="TransationdataSource" matSort>
+            <ng-container matColumnDef="Order_details">
+              <th class="M40width" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Order details
+              </th>
+              <td mat-cell *matCellDef="let row" class="A10padding">
+                <div class="dflex">
+                  <div class="l_align AScenter overFlow_dotted l10padding">
+                    <div class="s_size boldtext">
+                      {{row.tranID}}
+                    </div>
+                    <div class="ld_xxs_size c_gray">
+                      {{row.tranDate}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Customer_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Customer name
+              </th>
+              <td mat-cell *matCellDef="let row" class="line_throughtxt A10padding s_size">{{row.User_details}}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Payment_type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Payment type
+              </th>
+              <td mat-cell class="A10padding s_size" *matCellDef="let row">
+                {{row.Payment_type}}
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Sale_Type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Sale Type
+              </th>
+              <td mat-cell class="A10padding s_size" *matCellDef="let row">
+                Recommendation Redeemed
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Bill_Amount">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Bill Amount
+              </th>
+              <td mat-cell class="A10padding s_size" *matCellDef="let row">
+                {{row.Bill_Amount}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Payment_status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Payment status
+              </th>
+              <td mat-cell class="A10padding s_size" *matCellDef="let row">
+                {{row.Bill_Amount}}
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="show">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+              <td mat-cell class="A10padding" *matCellDef="let row">
+                <a>
+                  <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.125" y="0.125" width="24.75" height="24.75" fill="#DCCE8D" />
+                    <g clip-path="url(#clip0_1979_8859)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13.0083 18.378C8.7875 18.378 5.02 15.1388 3 11.898C5.015 8.74185 8.78583 6.07031 13.0083 6.07031C17.2875 6.07031 21.0375 8.72647 23.0075 11.8888C21.14 15.2965 17.4025 18.378 13.0083 18.378ZM3.97333 11.9042C4.67583 12.928 8.155 17.6088 13.0083 17.6088C18.2625 17.6088 21.435 12.9142 22.0508 11.9126C21.4075 10.9911 18.2125 6.83954 13.0083 6.83954C7.91167 6.83954 4.65417 10.9588 3.97333 11.9042ZM13 8.378C15.3 8.378 17.1667 10.1011 17.1667 12.2242C17.1667 14.3472 15.3 16.0703 13 16.0703C10.7 16.0703 8.83333 14.3472 8.83333 12.2242C8.83333 10.1011 10.7 8.378 13 8.378ZM13 9.14724C14.84 9.14724 16.3333 10.5257 16.3333 12.2242C16.3333 13.9226 14.84 15.3011 13 15.3011C11.16 15.3011 9.66667 13.9226 9.66667 12.2242C9.66667 10.5257 11.16 9.14724 13 9.14724Z"
+                        fill="black" />
+                    </g>
+                    <rect x="0.125" y="0.125" width="24.75" height="24.75" stroke="black" stroke-width="0.25" />
+                    <defs>
+                      <clipPath id="clip0_1979_8859">
+                        <rect width="20" height="18.4615" fill="white" transform="translate(3 3)" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="OrderColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: OrderColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+        </mat-tab>
+        <mat-tab label="Pending">Refr Token given</mat-tab>
+        <mat-tab label="Delivered">Refund</mat-tab>
+        <mat-tab label="Shipped">Withdrawals</mat-tab>
+        <mat-tab label="Refund">Wallet Refill</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

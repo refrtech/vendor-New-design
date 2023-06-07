@@ -124,13 +124,13 @@
                     <input cdkFocusInitial type="tel" name="phone" [(ngModel)]="phoneNumFull" placeholder="phone number" [title]=" phoneNumber.digits + ' digit phone number'"
                     class="b_accent c_invert inputPhone fullPhoneInput textL" [disabled]="auth.stepDisable"
                     [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)"
-                    [maxlength]=" phoneNumber.digits " 
+                    [maxlength]=" phoneNumber.digits "
                     [minlength]=" phoneNumber.digits "
                     (keydown)=" setContactNumber() "
                     (keyup)=" setContactNumber() ">
                 </p>
                 <div class="textC" style="margin: 20px 0 0 0;">
-                <button mat-raised-button color="primary" type="submit" 
+                <button mat-raised-button color="primary" type="submit"
                 style="width: -webkit-fill-available; max-width: 90px;"
                 [disabled]=" auth.stepDisable || phoneNumber.country?.length == 0 || phoneNumber.area?.length !== 3 || phoneNumber.prefix?.length !== 3 || phoneNumber.line?.length !== (phoneNumber.digits - 6) ">Send OTP</button>
                 </div>
@@ -142,20 +142,20 @@
         </tr-->
             <!--label for="phone" class="labelPhone c_primary">Enter Phone Number*</label-->
             <!--input cdkFocusInitial matInput type="tel" [(ngModel)]="phoneNumber.area" autocomplete="off"
-                    class="b_accent c_invert inputPhone inputPhone2 textL" 
-                    [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)" 
+                    class="b_accent c_invert inputPhone inputPhone2 textL"
+                    [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)"
                     name="area" [disabled]="auth.stepDisable" placeholder="000"  maxlength="3" (keyup)=" phoneNumber.area?.length == 3 && !auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line) ? prefix.focus() : null ">
                     <input matInput type="tel" [(ngModel)]="phoneNumber.prefix" autocomplete="off"
                     class="b_accent c_invert inputPhone inputPhone3 textC"
                     [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)" name="prefix" [disabled]="auth.stepDisable" placeholder="000"  maxlength="3" #prefix (keyup)=" phoneNumber.prefix?.length == 3 && !auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line) ? line.focus() : null ">
                     <input matInput type="tel" [(ngModel)]="phoneNumber.line" autocomplete="off"
                     class="b_accent c_invert inputPhone inputPhone4 textL"
-                    [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)" name="line" [disabled]="auth.stepDisable" 
-                    [placeholder]=" ( (phoneNumber.digits - 6) == 1 ? '0':'' ) + ( (phoneNumber.digits - 6) == 2 ? '00':'' ) + ( (phoneNumber.digits - 6) == 3 ? '000':'' ) + ( (phoneNumber.digits - 6) == 4 ? '0000':'' ) + ( (phoneNumber.digits - 6) == 5 ? '00000':'' ) + ( (phoneNumber.digits - 6) == 6 ? '000000':'' ) + ( (phoneNumber.digits - 6) == 7 ? '0000000':'' ) " 
+                    [class.inputPhoneError]="auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line)" name="line" [disabled]="auth.stepDisable"
+                    [placeholder]=" ( (phoneNumber.digits - 6) == 1 ? '0':'' ) + ( (phoneNumber.digits - 6) == 2 ? '00':'' ) + ( (phoneNumber.digits - 6) == 3 ? '000':'' ) + ( (phoneNumber.digits - 6) == 4 ? '0000':'' ) + ( (phoneNumber.digits - 6) == 5 ? '00000':'' ) + ( (phoneNumber.digits - 6) == 6 ? '000000':'' ) + ( (phoneNumber.digits - 6) == 7 ? '0000000':'' ) "
                     [maxlength]=" phoneNumber.digits - 6 " #line-->
-            <!--h6 class="textR" style="color: rgba(0,0,0,.6);" 
+            <!--h6 class="textR" style="color: rgba(0,0,0,.6);"
                 *ngIf=" !auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line) ">Use* 0-9</h6>
-                <h6 class="c_warn" 
+                <h6 class="c_warn"
                 *ngIf=" auth.resource.invalidPhone(phoneNumber.country + phoneNumber.area + phoneNumber.prefix + phoneNumber.line) ">Use* 0-9</h6-->
             <!--span class="divide"></span>
                   <span class="progress" *ngIf="auth.stepDisable">
@@ -247,7 +247,7 @@
           <!--h3>Store information</h3-->
           <div class="textC">
             <div style="margin: 0 5% 0 5%; padding: 0;">
-              <img class="c_accent b_white" style="
+              <img class="c_accent bg_white" style="
             margin: 0;padding: 0; display: inline-block;
             border-radius: 50%; border: 3px solid;
             width: 110px;
@@ -262,8 +262,8 @@
               <mat-label>Store name</mat-label>
               <input matInput maxlength="30" placeholder="Store Name" name="storename"
                 [formControl]="auth.resource.last" autocomplete="off" required>
-              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges || 
-              auth.resource.last.value == storeName || 
+              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges ||
+              auth.resource.last.value == storeName ||
               auth.resource.last.invalid "><mat-icon>{{storeName == auth.resource.last.value ?
                   'edit':'save'}}</mat-icon></button>
               <mat-error>issue: {{ auth.resource.last.value?.length < 2 ? 'min 2 & max 30' : 'Use* A-Za-z'
@@ -275,7 +275,7 @@
             <mat-form-field appearance="legacy" class="fullWidth">
               <mat-label>Email Address</mat-label>
               <input matInput [(ngModel)]="currentEmail" placeholder="Your email address" name="emailMine" required>
-              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges || 
+              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges ||
             currentEmail == dataCurrent.email "><mat-icon>{{currentEmail == dataCurrent.email ?
                   'edit':'save'}}</mat-icon></button>
               <mat-icon matSuffix class="c_primary"
@@ -285,7 +285,7 @@
           </form>
           <!--h3>Contact information</h3-->
           <div class="textC">
-            <div class="c_accent b_white" style="margin: 22px 5% 0 5%; padding: 0;border-radius: 16px;">
+            <div class="c_accent bg_white" style="margin: 22px 5% 0 5%; padding: 0;border-radius: 16px;">
               <img style="
             width: -webkit-fill-available;
             margin: 0;padding: 0;
@@ -301,8 +301,8 @@
               <mat-label>Merchant name</mat-label>
               <input matInput maxlength="30" placeholder="Your Name" name="firstname"
                 [formControl]="auth.resource.first" autocomplete="off" required>
-              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges || 
-              auth.resource.first.value == dataCurrent.name || 
+              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges ||
+              auth.resource.first.value == dataCurrent.name ||
               auth.resource.first.invalid "><mat-icon>{{dataCurrent.name == auth.resource.first.value ?
                   'edit':'save'}}</mat-icon></button>
               <mat-error>issue: {{ auth.resource.first.value?.length < 2 ? 'min 2 & max 30' : 'Use* A-Za-z'
@@ -322,8 +322,8 @@
                   <span class="progress2">|</span>
                   <span class="progress3">|</span>
                 </span>
-                <button mat-raised-button color="primary" type="submit" [disabled]=" makingChanges || 
-                  auth.resource.first.value == dataCurrent.name || 
+                <button mat-raised-button color="primary" type="submit" [disabled]=" makingChanges ||
+                  auth.resource.first.value == dataCurrent.name ||
                   auth.resource.first.invalid ">Update</button>
             </div-->
           </form>
@@ -347,8 +347,8 @@
               <mat-label>Merchant GST</mat-label>
               <input matInput maxlength="15" placeholder="Your GST Number" name="GSTNO"
                 [formControl]="auth.resource.GST" autocomplete="off" required>
-              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges || 
-            auth.resource.GST.value == dataCurrent.GST || 
+              <button mat-icon-button color="primary" type="submit" matSuffix [disabled]=" makingChanges ||
+            auth.resource.GST.value == dataCurrent.GST ||
             auth.resource.GST.invalid "><mat-icon>{{dataCurrent.GST == auth.resource.GST.value ?
                   'edit':'save'}}</mat-icon></button>
               <mat-error>issue: {{ auth.resource.GST.value?.length == 0 ? 'Please Enter the GST NO' : 'Please Enter the
@@ -376,7 +376,7 @@
       <div class="col col-100 textC" style="margin-top: 0; padding-top: 0;">
         <div class="container-next b_persist c_invert">
           <div class="textC">
-            <div class="c_accent b_white" style="margin: 0 5% 0 5%; padding: 0;border-radius: 16px; height: 186px;">
+            <div class="c_accent bg_white" style="margin: 0 5% 0 5%; padding: 0;border-radius: 16px; height: 186px;">
               <img style="
             width: -webkit-fill-available;
             margin: 0;padding: 0;
@@ -493,7 +493,7 @@
                 </tr>
                 <tr style="font-size: 14px;">
                   <td>
-                    <button mat-button *ngIf="freeParcel" (click)="updateCharges(true, 
+                    <button mat-button *ngIf="freeParcel" (click)="updateCharges(true,
                 freeStart, cityCharge, nationCharge,
                 typeORDER.freeParcel, typeORDER.freeStart, typeORDER.cityCharge, typeORDER.nationCharge
                 )">Update Charges</button>
@@ -884,5 +884,5 @@
   </button>
   <button mat-icon-button (click)="auth.signOut()" aria-label="">
     <mat-icon>logout</mat-icon>
-  </button>  
+  </button>
 <p>profile works!</p-->
