@@ -29,7 +29,7 @@ export class StoreCreateComponent implements OnInit  {
   completed2 = false;
   completed3 = false;
   completed4 = false;
- 
+
 
   constructor(
     public auth: AuthService,
@@ -69,17 +69,17 @@ export class StoreCreateComponent implements OnInit  {
 if(!what){
   console.log("I AM Here")
 
-    
+
 }else{
     if(
       what !== "create-location" &&
       what !== "add-location" &&
       what !== "create-campaign" &&
       !what.includes("fund-wallet/") &&
-      what !== "add-product" 
+      what !== "add-product"
       ){ this.auth.resource.router.navigate(["/"]) }else{
 
-      if(what == "create-location" || what == "add-location"){ 
+      if(what == "create-location" || what == "add-location"){
         // this.completed1 = false;
         // this.completed2 = false;
         // this.completed3 = false;
@@ -105,7 +105,7 @@ if(!what){
             }
           })
       }
-      if(what == "create-campaign"){ 
+      if(what == "create-campaign"){
         // this.completed1 = true;
         // this.completed2 = false;
         // this.completed3 = false;
@@ -113,8 +113,8 @@ if(!what){
         // this.activeIndex = 1;
         this.activeNow = "createCampaign";
         this.nextClick(); }
-      
-      if(what.includes("fund-wallet/")){ 
+
+      if(what.includes("fund-wallet/")){
         // this.completed1 = true;
         // this.completed2 = true;
         // this.completed3 = false;
@@ -122,7 +122,7 @@ if(!what){
         // this.activeIndex = 2;
         this.activeNow = "fundWallet";
         this.nextClick(); }
-      if(what == "add-product"){ 
+      if(what == "add-product"){
         // this.completed1 = true;
         // this.completed2 = true;
         // this.completed3 = true;
@@ -137,17 +137,17 @@ if(!what){
 
   // getRoute(){
   //   //const activeNow = this.auth.resource.router.url.split("store/")[1];
-  //   return  of(( this.activeNow == "createLocation" ? 0 : 0 ) + ( this.activeNow == "addLocation" ? 0 : 0 ) + 
-  //           ( this.activeNow == "createCampaign" ? 1 : 0 ) + 
-  //           ( this.activeNow == "fundWallet" ? 2 : 0 ) + 
-  //           ( this.activeNow == "addProduct" ? 3 : 0 ) + 
+  //   return  of(( this.activeNow == "createLocation" ? 0 : 0 ) + ( this.activeNow == "addLocation" ? 0 : 0 ) +
+  //           ( this.activeNow == "createCampaign" ? 1 : 0 ) +
+  //           ( this.activeNow == "fundWallet" ? 2 : 0 ) +
+  //           ( this.activeNow == "addProduct" ? 3 : 0 ) +
   //           ( 0 ));
   // }
-  
+
   nextClick(): void {
     //this.stepLin = false;
     this.stepEdit = true;
-    
+
     this.completed1 = (this.activeNow == 'createCampaign' || this.activeNow == 'fundWallet' || this.activeNow == 'addProduct' ) ? true:false;
     this.completed2 = (this.activeNow == 'fundWallet' || this.activeNow == 'addProduct') ? true:false;
     this.completed3 = (this.activeNow == 'addProduct') ? true:false;
@@ -156,10 +156,10 @@ if(!what){
     //this.stepper.selectedIndex = this.selectedIndex;
     setTimeout(() => {
     this.selectedIndex = ( 0 ) +
-    ( this.activeNow == 'createLocation' ? 0 : 0 ) + ( this.activeNow == 'addLocation' ? 0 : 0 ) + 
-    ( this.activeNow == 'createCampaign' ? 1 : 0 ) + 
-    ( this.activeNow == 'fundWallet' ? 2 : 0 ) + 
-    ( this.activeNow == 'addProduct' ? 3 : 0 ) + 
+    ( this.activeNow == 'createLocation' ? 0 : 0 ) + ( this.activeNow == 'addLocation' ? 0 : 0 ) +
+    ( this.activeNow == 'createCampaign' ? 1 : 0 ) +
+    ( this.activeNow == 'fundWallet' ? 2 : 0 ) +
+    ( this.activeNow == 'addProduct' ? 3 : 0 ) +
     ( 0 );
        //this.stepLin = true;
        this.stepEdit = false;

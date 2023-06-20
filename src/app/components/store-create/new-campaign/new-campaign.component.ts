@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 //import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, of, take } from 'rxjs';
@@ -20,7 +21,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   - start date
   - end date
   Min duration span 1 month
-  
+
   Reward structure inputs
   - New customer = x
   - Existing customer = x/2
@@ -28,7 +29,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   -->*/
   store$: Observable<any> = of();
   campTiar$: Observable<any> = of();
-  
+
   defualtCamp = {
     nowCB: 100, // 100Fl & 20Pe
     minCB: 8, // 8Fl & 1Pe
@@ -42,17 +43,17 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     type:"flat", storeTyp:"",
     // x | x/2 | x/4
     cbNew: 100, cbExi: 50, cbDir: 25,
-    min: 999, 
-    max: 0, // 0Fl & 100Pe 
+    min: 999,
+    max: 0, // 0Fl & 100Pe
     expiry:false,
     dateS:"", dateE:"", //Min duration span 1 month
 
     stage: 0
   }
   payCustom:number | undefined;
-  
+
   disableForm = false;
-  
+
   startDate = new Date();
   get maxStaDate(){
     const year = this.startDate.getFullYear();
@@ -85,6 +86,13 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
 
   enableDirect = false;
 
+
+
+
+
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+
   constructor(
     public auth: AuthService,
     private dialogRef: MatDialogRef<NewCampaignComponent>,
@@ -95,6 +103,8 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     const urlX = this.auth.resource.router.url;
     console.log("urlX", urlX)
+    console.log("campaignPlans = ",this.auth.resource.campaignPlans);
+
     if(urlX == '/campaign'){ this.enableDirect = true; }
   }
 
@@ -117,7 +127,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
         }else{
           this.storeCamp.storeID = store[0].id;
           this.storeCamp.storeTyp = store[0].type;
-          
+
           this.store$ = of(store[0]);
           this.auth.user$.pipe(take(1)).subscribe(mine => {
             if(!mine){}else{
@@ -133,7 +143,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   }
 
   setUpCashback(cbNew:number){
-    if(!cbNew || 
+    if(!cbNew ||
       cbNew < this.defualtCamp.minCB ||
       (
         (this.storeCamp.type == 'flat' ? this.defualtCamp.maxFl : 0) +
@@ -147,7 +157,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
       this.storeCamp.cbDir =  cbNew / 4;
     }
   }
-  
+
   createStoreCampaign(tX:string, kind:boolean){
     console.log(this.storeCamp)
     //this.submitFirst = true;
@@ -164,17 +174,17 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
         (this.storeCamp.type == 'percent' ? this.defualtCamp.maxPe : 0) +
         0 ) < this.storeCamp.cbNew ) ||
 
-      !this.storeCamp.cbExi || 
+      !this.storeCamp.cbExi ||
       this.storeCamp.cbExi < 4 ||
       this.storeCamp.cbExi > (this.storeCamp.cbNew)  ||
-      !this.storeCamp.cbDir || 
+      !this.storeCamp.cbDir ||
       this.storeCamp.cbDir < 2 ||
       this.storeCamp.cbDir > (this.storeCamp.cbNew/2) ||
 
       !this.storeCamp.min ||
       this.storeCamp.type == 'percent' && !this.storeCamp.max ||
 
-      !this.storeCamp.storeID 
+      !this.storeCamp.storeID
     ){
       if( !this.storeCamp.campaignName ){
         this.auth.resource.startSnackBar("Campaign name is required");
@@ -192,11 +202,11 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
             ){
               this.auth.resource.startSnackBar("Proper cashback value is required");
             }else{
-              if( 
-                !this.storeCamp.cbExi || 
+              if(
+                !this.storeCamp.cbExi ||
                 this.storeCamp.cbExi < 4 ||
                 this.storeCamp.cbExi > (this.storeCamp.cbNew)  ||
-                !this.storeCamp.cbDir || 
+                !this.storeCamp.cbDir ||
                 this.storeCamp.cbDir < 2 ||
                 this.storeCamp.cbDir > (this.storeCamp.cbNew/2)
               ){
@@ -226,9 +236,9 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
 
   addNewCampaign(tX:string, kind:boolean){
     console.log(tX)
-    if( 
-      tX == "t1" || tX == "t2" || tX == "t3" || tX == "t4" || 
-      tX == "t11" || tX == "t12" || tX == "t13" || tX == "t14" ||  tX == "t15" ||  tX == "t16" || 
+    if(
+      tX == "t1" || tX == "t2" || tX == "t3" || tX == "t4" ||
+      tX == "t11" || tX == "t12" || tX == "t13" || tX == "t14" ||  tX == "t15" ||  tX == "t16" ||
       tX == "tC" && (this.payCustom && this.payCustom >= 1)){
       this.auth.addNewCampaign(tX, this.storeCamp, (this.payCustom || 0)).then(res => {
         this.auth.resource.startSnackBar("The Campaign has been created.");
@@ -270,4 +280,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   }
 
 
+  print(){
+    console.log(this.auth.resource.campaignPlans);
+  }
 }

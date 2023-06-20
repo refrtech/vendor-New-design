@@ -183,7 +183,7 @@ import { NewRecommendationComponent } from './components/newDesignScreens/new-re
     NewWalletComponent,
     OrdersComponent,
     OrderDetailsComponent,
-    NewRecommendationComponent
+    NewRecommendationComponent,
   ],
   imports: [
     BrowserModule,

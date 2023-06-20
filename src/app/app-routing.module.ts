@@ -78,36 +78,37 @@ const routes: Routes = [
   // },
 
   {
-    path: '', component: SidenavtabsComponent, children: [
-      { path: "", redirectTo: '/dash', pathMatch: 'full' },
-
+    path: '',
+    component: SidenavtabsComponent,
+    children: [
+      { path: '', redirectTo: '/dash', pathMatch: 'full' },
       { path: 'dash', component: NewDashboardComponent },
       {
-        path:'New_wallet',
-        loadChildren: ()=>
-        import('./components/newDesignScreens/new-wallet/newwalletmodules/newwalletmodules.module')
-        .then((m) => m.NewwalletmodulesModule)
+        path: 'New_wallet',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/new-wallet/newwalletmodules/newwalletmodules.module'
+          ).then((m) => m.NewwalletmodulesModule),
       },
-
       {
-        path:'New_recomm',
-        loadChildren:()=>
-        import('./components/newDesignScreens/new-recommendation/newrecommendationmodule/newrecommendationmodule.module')
-        .then((m) => m.NewrecommendationmoduleModule)
+        path: 'New_recomm',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/new-recommendation/newrecommendationmodule/newrecommendationmodule.module'
+          ).then((m) => m.NewrecommendationmoduleModule),
       },
-
       {
-        path:'New_orders',
-        loadChildren: ()=>
-        import('./components/newDesignScreens/orders/orders/orders-routing.module')
-        .then((m) => m.OrdersRoutingModule)
+        path: 'New_orders',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/orders/orders/orders-routing.module'
+          ).then((m) => m.OrdersRoutingModule),
       },
-
       {
-        path:'New_cust',
-        component:NewCustomerComponent
+        path: 'New_cust',
+        component: NewCustomerComponent,
       },
-    ]
+    ],
   },
 
   {
@@ -154,8 +155,6 @@ const routes: Routes = [
       ).then((m) => m.SetupbusinessModuleModule),
   },
 
-
-
   {
     path: 'chooseprofile',
     loadChildren: () =>
@@ -169,8 +168,7 @@ const routes: Routes = [
     loadChildren: () =>
       import(
         './components/newDesignScreens/choose-store-type/choose-store-type-module/choose-store-type-module.module'
-      ).then((m) =>
-      {
+      ).then((m) => {
         return m.ChooseStoreTypeModuleModule;
       }),
   },
@@ -281,8 +279,6 @@ const routes: Routes = [
 
   { path: 'paymentsummary', component: PaymentSummmaryComponent },
 
-
-
   { path: 'welcome', component: WelcomeComponent },
   { path: '404', component: WelcomeComponent },
   { path: '**', redirectTo: '/404' },
@@ -292,4 +288,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

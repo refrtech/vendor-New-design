@@ -1085,11 +1085,15 @@ textarea {
     background-size: cover;
   }
 
-  .ld_c_align{
+  .ld_d_none{
+    display: none !important;
+  }
+
+  .ld_c_align {
     text-align: center !important;
   }
 
-  .ld_r_align{
+  .ld_r_align {
     text-align: right !important;
   }
 
@@ -1379,6 +1383,11 @@ textarea {
 
   .ld_t50padding {
     padding-top: 50px !important;
+  }
+
+  .ld_lr50padding {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
   }
 
   .ld_r30padding {
@@ -1861,8 +1870,7 @@ textarea {
 }
 
 @media (max-width: 1270px) {
-
-  .md_c_align{
+  .md_c_align {
     text-align: center !important;
   }
 
@@ -2625,7 +2633,11 @@ textarea {
 }
 
 @media (max-width: 768px) {
-  .sd_c_align{
+
+  .sd_d_none{
+    display: none !important;
+  }
+  .sd_c_align {
     text-align: center !important;
   }
 
@@ -3531,11 +3543,11 @@ th.mat-header-cell {
   position: relative !important;
 }
 
-.position_sticky{
+.position_sticky {
   position: sticky !important;
 }
 
-.position_relative{
+.position_relative {
   position: relative !important;
 }
 
@@ -3547,6 +3559,24 @@ th.mat-header-cell {
   top: 0 !important;
 }
 
-.noshadow{
+.noshadow {
   box-shadow: none !important;
+}
+
+.mat-form-field-flex {
+  background-color: transparent !important;
+  padding-top: 0px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  border-top: 0;
+}
+
+.mat-form-field-appearance-outline {
+  .mat-form-field-wrapper {
+    padding-bottom: 0px;
+    .mat-form-field-infix {
+      border-top: 0px !important;
+    }
+  }
 }
