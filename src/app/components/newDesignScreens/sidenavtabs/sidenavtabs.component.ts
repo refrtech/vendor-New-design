@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { log } from 'console';
 import { AuthService } from 'src/app/services/auth.service';
 import { DependencyService } from 'src/app/services/dependency.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -24,12 +23,12 @@ export class SidenavtabsComponent implements OnInit {
     iconName: 'expand_more',
       isexpanded: false,
       childern:[
-        {tit:"Recommendation",link:'/recommend'},
+        {tit:"Recommendation",link:'/New_recomm'},
       ]
   },
     { tit: "Loyalty", link: "/" },
     { tit: "Offers", link: "/" },
-    { tit: "Customers", link: "/" },
+    { tit: "Customers", link: "/New_cust" },
     { tit: "Billing", link: "/" },
     { tit: "Inventory Management", link: "/" },
     { tit: "Influencer support", link: "/" },

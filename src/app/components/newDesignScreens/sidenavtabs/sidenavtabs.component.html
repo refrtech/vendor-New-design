@@ -50,8 +50,7 @@
             <div #container class="main">
                 <div class="header">
                     <div class="superHoldL" title="more" *ngIf="auth.resource.getWidth <= 900">
-                        <a mat-icon-button class="c_white" (click)="showMenu = !showMenu"
-                            >
+                        <a mat-icon-button class="c_white" (click)="showMenu = !showMenu">
                             <mat-icon>menu</mat-icon>
                         </a>
                     </div>
@@ -81,7 +80,6 @@
                                     d="M57.773 21.6328V23.1621C59.0404 21.8622 61.5133 21.6328 64.0481 21.6328V26.3125C61.9924 26.3125 57.8657 26.909 57.8657 29.6159V41.2693H52.7344V21.6328H57.773Z"
                                     fill="white" />
                             </svg>
-
                         </div>
                     </div>
                     <div class="rightPart">
@@ -117,6 +115,9 @@
                             <img src="../../../../assets/foreign/lucky/dp.png" alt="">
                         </div>
                     </div>
+                </div>
+                <div class="r_align grad_back ld_tb10padding ld_lr20padding sd_A10padding">
+                  Campaign Wallet Balance : ₹1660
                 </div>
                 <router-outlet></router-outlet>
             </div>

@@ -22,7 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -123,14 +123,11 @@ import { DailydropsSectionComponent } from './components/newDesignScreens/dailyd
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
-import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
-import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
-import { CustomattributescreenComponent } from './newDesignScreens/campaigns/recommendation/customattributescreen/customattributescreen.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { NewWalletComponent } from './components/newDesignScreens/new-wallet/new-wallet.component';
 import { OrdersComponent } from './components/newDesignScreens/orders/orders.component';
-// import { Capacitor } from '@capacitor/core';
-// import { getApp } from '@firebase/app';
+import { OrderDetailsComponent } from './components/newDesignScreens/orders/order-details/order-details.component';
+import { NewRecommendationComponent } from './components/newDesignScreens/new-recommendation/new-recommendation.component';
 
 @NgModule({
   declarations: [
@@ -183,11 +180,10 @@ import { OrdersComponent } from './components/newDesignScreens/orders/orders.com
     PaymentSummmaryComponent,
     NewDashboardComponent,
     SidenavtabsComponent,
-    RecommendationComponent,
-    RecommendationsettingpageComponent,
-    CustomattributescreenComponent,
     NewWalletComponent,
     OrdersComponent,
+    OrderDetailsComponent,
+    NewRecommendationComponent
   ],
   imports: [
     BrowserModule,
@@ -221,6 +217,7 @@ import { OrdersComponent } from './components/newDesignScreens/orders/orders.com
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
 
     // 3. Initialize
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -272,6 +269,7 @@ import { OrdersComponent } from './components/newDesignScreens/orders/orders.com
       provide: MatDialogRef,
       useValue: {},
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     SocialSharing,
   ],
   bootstrap: [AppComponent],

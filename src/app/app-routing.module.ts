@@ -19,9 +19,7 @@ import { DailydropsSectionComponent } from './components/newDesignScreens/dailyd
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
-import { RecommendationComponent } from './newDesignScreens/campaigns/recommendation/recommendation.component';
-import { RecommendationsettingpageComponent } from './newDesignScreens/campaigns/recommendation/recommendationsettingpage/recommendationsettingpage.component';
-import { CustomattributescreenComponent } from './newDesignScreens/campaigns/recommendation/customattributescreen/customattributescreen.component';
+import { NewCustomerComponent } from './components/newDesignScreens/new-customer/new-customer.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -92,15 +90,23 @@ const routes: Routes = [
       },
 
       {
+        path:'New_recomm',
+        loadChildren:()=>
+        import('./components/newDesignScreens/new-recommendation/newrecommendationmodule/newrecommendationmodule.module')
+        .then((m) => m.NewrecommendationmoduleModule)
+      },
+
+      {
         path:'New_orders',
         loadChildren: ()=>
         import('./components/newDesignScreens/orders/orders/orders-routing.module')
         .then((m) => m.OrdersRoutingModule)
       },
 
-      { path: 'recommend', component: RecommendationComponent },
-      { path: 'recommendsetting', component: RecommendationsettingpageComponent },
-      { path: 'customattribute', component: CustomattributescreenComponent },
+      {
+        path:'New_cust',
+        component:NewCustomerComponent
+      },
     ]
   },
 

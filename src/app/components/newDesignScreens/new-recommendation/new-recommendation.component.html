@@ -3,7 +3,6 @@
     <div class="section r_align bg_white">
       <div class="matDate">
         <mat-form-field appearance="outline" class="vendorSelect orderdatepick">
-          <!-- <mat-label>Date Range</mat-label> -->
           <mat-date-range-input [rangePicker]="picker">
             <input matStartDate placeholder="Start date">
             <input matEndDate placeholder="End date">
@@ -15,10 +14,10 @@
     </div>
 
 
-    <div class="section bg_white ld_b40padding sd_tb20padding">
+    <div class="section bg_white ld_b20padding sd_t20padding">
       <div class="order_section col-100 ld_dflex">
-        <div class="ld_M70width br10 ld_dflex ld_c_align ld_JCspace">
-          <div class="ld_dflex sd_dflex ld_M50width">
+        <div class="ld_M100width br10 ld_dflex ld_c_align ld_JCspace">
+          <div class="ld_dflex sd_dflex ld_M35width">
             <div class="ld_M50width sd_M50width">
               <div class="ld_s_size sd_s_size fw_400">
                 Total orders
@@ -38,7 +37,7 @@
           </div>
 
 
-          <div class="ld_dflex sd_dflex ld_M50width sd_t20padding sd_b15padding">
+          <div class="ld_dflex sd_dflex ld_M35width sd_t20padding">
             <div class="ld_M50width sd_M50width">
               <div class="ld_s_size sd_s_size fw_400">
                 To be delivered
@@ -56,6 +55,7 @@
               </div>
             </div>
           </div>
+          <div class="ld_M30width"></div>
         </div>
       </div>
     </div>
@@ -68,42 +68,81 @@
 
 
 
-    <div class="section ld_t30padding ld_b30padding sd_tb20padding">
-      <div class="ld_dflex">
-        <div class="ld_M30width">
-          <div class="ld_boldText sd_boldText ld_m_size">
-            Most ordered product
-          </div>
-          <div class="ld_t5padding">
-            F'iT 15g Whey Protein Bar - Chocolate with Hazelnut (Pack of 6)
-          </div>
-        </div>
-        <div class="ld_M30width ld_dflex sd_dflex sd_JCspace sd_tb15padding">
-          <div class="ld_M50width sd_M50width">
-            <div class="ld_boldText sd_boldText ld_m_size">
-              No of orders
+
+    <div class="section bg_white ld_b40padding sd_tb20padding">
+      <div class="order_section col-100 ld_dflex">
+        <div class="ld_M100width br10 ld_dflex ld_c_align ld_JCspace">
+          <div class="ld_dflex sd_dflex ld_M35width">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Last Wallet Refill Date
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                12/03/23
+              </div>
             </div>
-            <div class="ld_t5padding">
-              16
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Wallet balance
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹4280
+              </div>
             </div>
           </div>
 
-          <div class="ld_M50width sd_M50width">
-            <div class="ld_boldText sd_boldText ld_m_size">
-              Total sales
+
+          <div class="ld_dflex sd_dflex ld_M35width sd_t15padding sd_b30padding">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Cost per recommendation
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹20
+              </div>
             </div>
-            <div class="ld_t5padding fw_400">
-              ₹1660
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Cost per conversion
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹20
+              </div>
             </div>
+          </div>
+
+
+          <div class="ld_M30width ld_AScenter">
+            <button mat-button class="Aborder_purple purple_text" routerLink="/recommendsetting">
+              Recommendation setting
+            </button>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="section bg_white ld_t30padding sd_M100width sd_lr0padding">
       <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="All Orders">
+        <mat-tab label="Reach">
           <table class="ld_M100width ld_t30margin sd_Maxwidth" mat-table [dataSource]="TransationdataSource" matSort>
-            <ng-container matColumnDef="Order_details">
+            <ng-container matColumnDef="Tran_details">
               <th class="M40width sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
                 Order details
               </th>
@@ -120,75 +159,34 @@
                 </div>
               </td>
             </ng-container>
-
-
-            <ng-container matColumnDef="Customer_name">
+            <ng-container matColumnDef="User_details">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
-                Customer name
+                User details
               </th>
               <td mat-cell *matCellDef="let row" class="line_throughtxt A10padding s_size sd_lr10padding">
-                {{row.User_details}}
+                {{row.User_Name}}
                 <div class="ld_xxs_size c_gray">
-                  9876543210
+                  {{row.user_No}}
                 </div>
               </td>
             </ng-container>
-
-
-            <ng-container matColumnDef="Payment_type">
+            <ng-container matColumnDef="Interaction">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
-                Payment type
+                Interaction
               </th>
               <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
-                {{row.Payment_type}}
+                {{row.clicks}}
+                <div class="c_gray">
+                  Clicks
+                </div>
               </td>
             </ng-container>
-
-
-            <ng-container matColumnDef="Sale_Type">
+            <ng-container matColumnDef="Refr_Token">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
-                Sale Type
+                Refr Token given
               </th>
               <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
-                Recommendation Redeemed
-              </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="Bill_Amount">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
-                Bill Amount
-              </th>
-              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
-                ₹{{row.Bill_Amount}}
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Payment_status">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
-                Payment status
-              </th>
-              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row;let i = index">
-                <span class="delivered" *ngIf="i == 0">
-                  Delivered
-                </span>
-                <span class="Shipped" *ngIf="i == 1">
-                  Shipped
-                </span>
-                <span class="Refunded" *ngIf="i == 2">
-                  Refunded
-                </span>
-                <span class="Pending" *ngIf="i == 3">
-                  Pending
-                </span>
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="show">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding"></th>
-              <td mat-cell class="A10padding sd_lr10padding" *matCellDef="let row">
-                <mat-icon (click)="orderDetails()">
-                  visibility
-                </mat-icon>
+                ₹{{row.Refrtoken}}
               </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="OrderColumns"></tr>
@@ -197,10 +195,7 @@
             </tr>
           </table>
         </mat-tab>
-        <mat-tab label="Pending">Refr Token given</mat-tab>
-        <mat-tab label="Delivered">Refund</mat-tab>
-        <mat-tab label="Shipped">Withdrawals</mat-tab>
-        <mat-tab label="Refund">Wallet Refill</mat-tab>
+        <mat-tab label="Conversions">Conversions</mat-tab>
       </mat-tab-group>
     </div>
   </div>

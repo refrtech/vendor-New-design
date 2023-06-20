@@ -31,6 +31,14 @@ export class NewWalletComponent implements OnInit {
     Payment_type:'Online',
     Bill_Amount:200,
     Status:1
+  },
+  {
+    tranID:'1234567890',
+    tranDate:'23/03/23 4:30pm',
+    User_details:'Vishal Pise',
+    Payment_type:'Online',
+    Bill_Amount:200,
+    Status:1
   }
 ];
 

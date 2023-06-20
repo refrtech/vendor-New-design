@@ -42,9 +42,9 @@ table {
             box-shadow: 0px 2px 9px rgba(117, 117, 117, 0.25);
             border-radius: 10px;
 
-            .overviewContent {
-                border-right: 1px solid #EEEEEE;
-            }
+            // .overviewContent {
+            //     border-right: 1px solid #EEEEEE;
+            // }
         }
     }
 
@@ -115,10 +115,10 @@ table {
             border: 1px solid #F2F2F2;
             box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
             border-radius: 10px;
-    
+
             .avail_disc {
                 border-left: 1px solid #dddddd;
-    
+
                 span {
                     background-color: #faf5ff;
                     padding: 8px 20px;
@@ -180,17 +180,17 @@ table {
     .activeCamp_billing{
         display: flex;
         .camp {
-    
+
             margin: 30px 0 0 0;
             background: #FFFFFF;
             box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
             border-radius: 10px;
-    
+
             .camp_header {
                 border-bottom: 1px solid #EBEBEB;
                 padding: 0 0 16px 0;
             }
-    
+
             .anchor {
                 border-bottom: 1px solid #d7d7d7;
             }
@@ -263,7 +263,7 @@ table {
                 border-radius: 10px;
 
                 .overviewContent {
-                    border-right: 1px solid #EEEEEE;
+                    // border-right: 1px solid #EEEEEE;
                     display: flex;
                     flex-direction: column;
 
@@ -337,12 +337,12 @@ table {
                         border: 1px solid #F2F2F2;
                         box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
                         border-radius: 10px;
-    
+
                         .download_invoice {
                             border: 1px solid #874BF9;
                             font-size: 0.7rem;
                         }
-    
+
                         .bg_grayish {
                             background: #FBF6FF;
                             border: 1px solid #F1F1F1;
@@ -352,15 +352,15 @@ table {
                             align-items: center;
                             width: max-content;
                         }
-    
+
                         .bg_grayish2 {
                             margin-left: auto;
                         }
-    
+
                         .totalSection {
                             background: #FBF7FF;
                         }
-    
+
                         .orderPlaced {
                             button {
                                 border-radius: 20px;
@@ -370,7 +370,7 @@ table {
                         }
                     }
             }
-    
+
         }
 
 
@@ -379,7 +379,7 @@ table {
         }
 
         .camp {
-    
+
             .camp_header {
                 gap: 0.4rem;
                 flex-direction: column;
