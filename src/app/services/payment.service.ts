@@ -174,7 +174,6 @@ export class PaymentService {
       amTotal:data.amTotal,
       sin: newTimestamp, upd: newTimestamp, com: newTimestamp
     }
-    console.log("dataSend",dataSend);
     const gWayRefC = collection(this.firestore, `${this.gWay}`);
     return addDoc(gWayRefC, dataSend).then(ref => {
       const gWayRef = doc(this.firestore,`${this.gWay}`, `${ref.id}`)
@@ -193,7 +192,6 @@ export class PaymentService {
       amTotal:data.amTotal,
       sin: newTimestamp, upd: newTimestamp, com: newTimestamp
     }
-    console.log("dataSend",dataSend);
     const gWayRefC = collection(this.firestore,`${this.gWay}`);
     return addDoc(gWayRefC, dataSend).then(ref => {
       const gWayRef = doc(this.firestore,`${this.gWay}`, `${ref.id}`)
@@ -212,7 +210,6 @@ export class PaymentService {
       amTotal:data.amTotal,
       sin: newTimestamp, upd: newTimestamp, com: newTimestamp
     }
-    console.log("dataSend",dataSend);
     const gWayRefC = collection(this.firestore,`${this.gWay}`);
     return addDoc(gWayRefC, dataSend).then(ref => {
       const gWayRef = doc(this.firestore,`${this.gWay}`, `${ref.id}`)
@@ -229,7 +226,6 @@ export class PaymentService {
       amTotal:data.amTotal,
       sin: newTimestamp, upd: newTimestamp, com: newTimestamp
     }
-    console.log("dataSend",dataSend);
     const gWayRefC = collection(this.firestore,`${this.gWay}`);
     return addDoc(gWayRefC, dataSend).then(ref => {
       const gWayRef = doc(this.firestore,`${this.gWay}`, `${ref.id}`)
@@ -256,7 +252,6 @@ export class PaymentService {
       theme: obj.theme,
       status:0
     }
-    console.log("send payment")
     return this.httpClient.post(`${environment.server}/api/payments/sendPayment/${ iso }`, body);
   }
 
@@ -280,7 +275,6 @@ export class PaymentService {
       status:0
       */
     }
-    console.log("send payment")
     return this.httpClient.post(`${environment.server}/api/payments/refundPayment/${ iso }`, body);
   }
 
@@ -291,7 +285,6 @@ export class PaymentService {
       amount:obj.amount, currency:obj.currency,
       gwID:obj.paymentId, gwSIGN:obj.signature, gwORDR:obj.order_id,
     }
-    console.log("verify payment")
     return this.httpClient.post(`${environment.server}/api/payments/verifyPayment/${ iso }`, body);
   }
 
@@ -512,7 +505,6 @@ export class PaymentService {
   }
 
   changeRefundOnlineDIRECT(ordrinfo:any, status:number, loStatus:any, razorRef:any ){
-    console.log(ordrinfo);
     this.dependancy.sendSMS("IN",ordrinfo.logistics.phone,"Dear Customer, your REFR order from "+ ordrinfo.storeName +" has been refunded.");
     const newTimestamp = this.getServerTimestamp();
     const gWayRef = doc(this.firestore,`${this.gWay}`, `${ordrinfo.id}`)
@@ -586,7 +578,6 @@ export class PaymentService {
       about: "Waiting for 14 days", //"done 14 days",
       what:"O-LINK", type:"DIRECT"
     }
-    console.log("dataSend", dataSend)
 
     // CREATE
     return addDoc(informRefC, dataSend).then(informRef => {// purchased by
@@ -624,7 +615,6 @@ export class PaymentService {
     //   about: "Waiting for 14 days", //"done 14 days",
     //   what:"O-LINK", type:"DIRECT"
     // }
-    // console.log("dataSend", dataSend)
 */
     // CREATE
     //return addDoc(informRefC, dataSend).then(informRef => {// purchased by
@@ -665,12 +655,11 @@ export class PaymentService {
 
       // //if( journey == "F2F_ONLINE" ){
       //   this.pay.updateVendorReserveF2F_ONLINE( mid, costUSER ) // added to vender reserve
-      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){ console.log("Add amount to pending in vendor as to be collected.") }
-      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){ console.log("Add amount to pending in vendor as paid.") }
+      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){  }
+      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){  }
 
       //   if(ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" || ordrTYPE == "RefrCASH+ONLINE" ){
       //     this.pay.updateClientF2F_ONLINE( uid, -transferRefrCash ) // deduct from refrcash
-      //     //console.log("Deduct amount from user refrcash.")
       //   }
       //   if(cashback > 0){// when cashback has to be given
       //     this.pay.updateVendorHypeF2F_ONLINE( mid, -(cashback + referalCashback) )
@@ -730,12 +719,11 @@ export class PaymentService {
 
       // //if( journey == "F2F_ONLINE" ){
       //   this.pay.updateVendorReserveF2F_ONLINE( mid, costUSER ) // added to vender reserve
-      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){ console.log("Add amount to pending in vendor as to be collected.") }
-      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){ console.log("Add amount to pending in vendor as paid.") }
+      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){ }
+      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){ }
 
       //   if(ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" || ordrTYPE == "RefrCASH+ONLINE" ){
       //     this.pay.updateClientF2F_ONLINE( uid, -transferRefrCash ) // deduct from refrcash
-      //     //console.log("Deduct amount from user refrcash.")
       //   }
       //   if(cashback > 0){// when cashback has to be given
       //     this.pay.updateVendorHypeF2F_ONLINE( mid, -(cashback + referalCashback) )
@@ -795,12 +783,11 @@ export class PaymentService {
 
       // //if( journey == "F2F_ONLINE" ){
       //   this.pay.updateVendorReserveF2F_ONLINE( mid, costUSER ) // added to vender reserve
-      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){ console.log("Add amount to pending in vendor as to be collected.") }
-      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){ console.log("Add amount to pending in vendor as paid.") }
+      //   //if(ordrTYPE == "COD" || ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" ){  }
+      //   //if(ordrTYPE == "ONLINE" || ordrTYPE == "RefrCASH+ONLINE"){ }
 
       //   if(ordrTYPE == "RefrCASH" || ordrTYPE == "RefrCASH+COD" || ordrTYPE == "RefrCASH+ONLINE" ){
       //     this.pay.updateClientF2F_ONLINE( uid, -transferRefrCash ) // deduct from refrcash
-      //     //console.log("Deduct amount from user refrcash.")
       //   }
       //   if(cashback > 0){// when cashback has to be given
       //     this.pay.updateVendorHypeF2F_ONLINE( mid, -(cashback + referalCashback) )

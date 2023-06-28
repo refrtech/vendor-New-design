@@ -31,7 +31,7 @@ export class OrdrShipComponent implements OnInit {
       billing_address: "", billing_address_2: "",
       billing_pincode: "", billing_city: "", billing_country: "", billing_state: "",
       billing_email: "", billing_phone: "",
-      
+
       order_items:<any[]>[
         // {
         //   name: "Product", sku: "chakra123",
@@ -56,9 +56,8 @@ export class OrdrShipComponent implements OnInit {
     public auth: AuthService,
     private dialogRef: MatDialogRef<OrdrShipComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { 
+  ) {
     this.payment = data.ordr;
-    console.log("ORDR", this.payment)
 
     const pickME = data.ordr.logistics.addressPick;
     const pickTyp = data.ordr.logistics.addressPickT
@@ -98,11 +97,11 @@ export class OrdrShipComponent implements OnInit {
       for (let p = 0; p < data.ordr.cart.length; p++) {
         const e = data.ordr.cart[p];
         const hsnCode = ""//(e.code ? e.code : "");
-        const element = { 
-          name: e.title, sku: e.id || "", 
-          units: e.Q, 
-          selling_price: e.cost, 
-          discount: "", tax: "", 
+        const element = {
+          name: e.title, sku: e.id || "",
+          units: e.Q,
+          selling_price: e.cost,
+          discount: "", tax: "",
           hsn: hsnCode
         }
         this.shipment.order_items.push(element)
@@ -125,14 +124,12 @@ export class OrdrShipComponent implements OnInit {
       m: (DateX.getMinutes().toString().length == 2 ? "" : "0") + DateX.getMinutes(),
     }
     const newDate = DateModel.Y +"-"+ DateModel.M +"-"+ DateModel.D +" "+ DateModel.h +":"+ DateModel.m;
-
     this.shipment.order_date = newDate;
-    console.log("whenX", newDate )
 
     if(
-      !this.shipment.uid || 
-      !this.shipment.name || !this.shipment.pin_code  || 
-      !this.shipment.address || 
+      !this.shipment.uid ||
+      !this.shipment.name || !this.shipment.pin_code  ||
+      !this.shipment.address ||
       !this.shipment.city || !this.shipment.state || !this.shipment.country ||
 
       !this.shipment.order_id ||
@@ -162,8 +159,8 @@ export class OrdrShipComponent implements OnInit {
     }else{
 
       if(
-        this.shipment.O_length < 0.5 || 
-        this.shipment.O_breadth < 0.5 || 
+        this.shipment.O_length < 0.5 ||
+        this.shipment.O_breadth < 0.5 ||
         this.shipment.O_height < 0.5 ||
         this.shipment.O_weight < 0.5
       ){
@@ -172,7 +169,6 @@ export class OrdrShipComponent implements OnInit {
       }else{
     this.depends.submitShipment("IN", this.shipment)//.pipe()
     .subscribe((res:any) => {
-      console.log(res)
       if(!res || !res.success){
         this.auth.resource.startSnackBar("Something went wrong.")
         this.makingChanges = false;
@@ -180,23 +176,19 @@ export class OrdrShipComponent implements OnInit {
 
         if(!res.data){
           if(res.info == "Low balance"){
-            console.log("Low balance")
             this.auth.resource.startSnackBar("Wait until we load our wallets.")
             this.makingChanges = false;
           }else{
             if(res.info == "No Providers"){
-              console.log("No Providers")
               this.auth.resource.startSnackBar("There are no providers at this time, try later!")
               this.makingChanges = false;
             }else{
-              console.log("NOT DONE")
               this.auth.resource.startSnackBar("We were unable to start pickup.")
               this.makingChanges = false;
             }
           }
 
         }else{
-          console.log("DONE")
           this.makingChanges = false;
           const payDataUpdate = {
             zEstimate: res.data.estimate,

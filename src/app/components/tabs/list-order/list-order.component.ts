@@ -34,7 +34,7 @@ export class ListOrderComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-  
+
     this.auth.user$.pipe(take(1)).subscribe((mine:any) => {
       if(!mine){
 
@@ -44,19 +44,17 @@ export class ListOrderComponent implements OnInit {
           if(mine.storeCam?.length > 0){
             this.execute(mine);
           }else{
-            console.log("CREATE CAMP")
             // GO TO CREATE CAMP
             //this.auth.resource.router.navigate(["/store/create-campaign"]);
           }
         }else{
-          console.log("CREATE STORE")
           // GO TO CREATE STORE
           //this.auth.resource.router.navigate(["/store/create-location"]);
         }
       }
-      
+
     })
-    
+
   }
 
 
@@ -80,8 +78,7 @@ export class ListOrderComponent implements OnInit {
 
  ordrStatus(journey:string, ordr:any, setStatus:any){
   this.makeChanges = true;
-  console.log(setStatus)
-  
+
 if(journey == "F2F"){
 
 if(setStatus == "Placed"){
@@ -103,7 +100,7 @@ if(setStatus == "Refund"){// goes to Refunded
   const referalCashback = ordr.refr.earn;
 
   this.pay.transferRefundF2F(
-    sid, uidV, uidC, uidR, 
+    sid, uidV, uidC, uidR,
     costUSER, transferRefrCash, cashback, referalCashback
     ).then(ref => {
       if(!ref.success){
@@ -113,22 +110,21 @@ if(setStatus == "Refund"){// goes to Refunded
           const paymentID = ordr.gwID;
           const paymentAmt = ordr.amCost;
           this.pay.onlinePaymentRefund("IN", ordr.id, paymentID, paymentAmt, "INR").pipe(take(1)).subscribe((razorRef:any) => {
-              console.log(razorRef)
             if(!razorRef || !razorRef.success){
               this.auth.resource.startSnackBar("Failed to refund.")
             }else{
               const newLO = ordr.logistics;
               newLO.status = -1000;
-              
+
               this.makeChanges = false;
               return this.pay.changeRefundOnlineF2F(ordr.id, -10, newLO, razorRef)
             }
           })
-  
+
         }else{
           const newLO = ordr.logistics;
           newLO.status = -1000;
-          
+
           this.makeChanges = false;
           return this.pay.changeRefundOnlineF2F(ordr.id, -10, newLO, {})
         }
@@ -144,14 +140,12 @@ if(setStatus == "Refund"){// goes to Refunded
   const amtC = ordr.earn;
   const amtR = ordr.refr.earn;
   if(!ordr.gwInfo){
-    console.log("GATEWAY INFO")
     this.pay.transferRefund(ordr.id, newLO, uidC, uidR, amtC, amtR).then(() => {
       this.makeChanges = false;
     })
   }else{
-    console.log("GATEWAY INFO", ordr.gwInfo)
   }
-*/      
+*/
 /*
   this.pay.changeStatusOnlineF2F(ordr.id, -10, newLO).then(() => {
     this.makeChanges = false;
@@ -201,7 +195,7 @@ if(setStatus == "Refund"){// goes to Refunded
   //const referalCashback = ordr.refr.earn;
 
   this.pay.transferRefundDIRECT(
-    sid, uidV, uidC, //uidR, 
+    sid, uidV, uidC, //uidR,
     costUSER, transferRefrCash //, cashback, referalCashback
     ).then(ref => {
       if(!ref.success){
@@ -211,22 +205,21 @@ if(setStatus == "Refund"){// goes to Refunded
           const paymentID = ordr.gwID;
           const paymentAmt = ordr.amCost;
           this.pay.onlinePaymentRefund("IN", ordr.id, paymentID, paymentAmt, "INR").pipe(take(1)).subscribe((razorRef:any) => {
-              console.log("razorRef", razorRef)
             if(!razorRef || !razorRef.success){
               this.auth.resource.startSnackBar("Failed to refund.")
             }else{
               const newLO = ordr.logistics;
               newLO.status = -1000;
-              
+
               this.makeChanges = false;
               return this.pay.changeRefundOnlineDIRECT(ordr.id, -10, newLO, razorRef)
             }
           })
-  
+
         }else{
           const newLO = ordr.logistics;
           newLO.status = -1000;
-          
+
           this.makeChanges = false;
           return this.pay.changeRefundOnlineDIRECT(ordr.id, -10, newLO, {})
         }
@@ -247,9 +240,8 @@ if(setStatus == "Delivered"){// goes to Delivered
   const amtC = ordr.earn;
   //const amtR = ordr.refr.earn;
   const sid = ordr.sid;
-  console.log("dataSend", ordr)
 
-  this.pay.transferDeliveredDIRECT(sid, ordr.id, newLO, uidC, //uidR, 
+  this.pay.transferDeliveredDIRECT(sid, ordr.id, newLO, uidC, //uidR,
     amtC //, amtR
     ).then(() => {
     // remove from reserved & add to permenent balance
@@ -280,7 +272,7 @@ if(setStatus == "Refund"){// goes to Refunded
   //const referalCashback = ordr.refr.earn;
 
   this.pay.transferRefundBURN(
-    sid, uidV, uidC, //uidR, 
+    sid, uidV, uidC, //uidR,
     costUSER, transferRefrCash //, cashback, referalCashback
     ).then(ref => {
       if(!ref.success){
@@ -291,13 +283,12 @@ if(setStatus == "Refund"){// goes to Refunded
           const paymentID = ordr.gwID;
           const paymentAmt = ordr.amCost;
           this.pay.onlinePaymentRefund("IN", ordr.id, paymentID, paymentAmt, "INR").pipe(take(1)).subscribe((razorRef:any) => {
-              console.log(razorRef)
             if(!razorRef || !razorRef.success){
               this.auth.resource.startSnackBar("Failed to refund.")
             }else{
               const newLO = ordr.logistics;
               newLO.status = -1000;
-              
+
               this.makeChanges = false;
               return this.pay.changeRefundOnlineBURN(ordr.id, -10, newLO, razorRef).then(() => {
 
@@ -311,11 +302,11 @@ if(setStatus == "Refund"){// goes to Refunded
               })
             }
           })
-  
+
         }else{
           const newLO = ordr.logistics;
           newLO.status = -1000;
-          
+
           this.makeChanges = false;
           return this.pay.changeRefundOnlineBURN(ordr.id, -10, newLO, {})
         }
@@ -355,7 +346,7 @@ if(setStatus == "Delivered"){// goes to Delivered
   const uidV = ordr.to;
   const amtRemoveReserveV = amTotal;
   const amtBurstV = require ? (amBurstBURN + amParcel) : amBurstBURN;
-  
+
   const uidC = ordr.by;
   //const uidR = ordr.refr.uid;
   const amtC = 0;
@@ -363,10 +354,10 @@ if(setStatus == "Delivered"){// goes to Delivered
   const sid = ordr.sid;
 
 
-  this.pay.transferDeliveredBURN(sid, ordr.id, newLO, 
-    //uidC, //uidR, 
+  this.pay.transferDeliveredBURN(sid, ordr.id, newLO,
+    //uidC, //uidR,
     //amtC //, amtR
-    uidC, amtC, 
+    uidC, amtC,
     uidV, amtRemoveReserveV, amtBurstV
     ).then(() => {
 
@@ -379,7 +370,7 @@ if(setStatus == "Delivered"){// goes to Delivered
         tcs: amTaxTCS,
         tds: amTaxTDS,
         refr: amRefr,
-        gateway: amGateway, 
+        gateway: amGateway,
 
         sales: amTotal,
         orders: 1,
@@ -401,7 +392,7 @@ newLO.status = 10;
 if(!ordr.logistics.require){
   this.pay.changeStatusOnlineStore(ordr.id, 10, newLO).then(() => {
     this.makeChanges = false;
-  }) 
+  })
 }else{
   //this.makeChanges = false;
   let w = (this.auth.resource.getWidth - 16) + 'px';
@@ -411,7 +402,7 @@ if(!ordr.logistics.require){
     width: w, minWidth: "320px", maxWidth: "480px",
     height:h,
     data:{ordr:ordr},
-    disableClose: true, 
+    disableClose: true,
     panelClass:"dialogClassShipment"//, autoFocus:false
   });
   refDialog.afterClosed().subscribe(result =>{
@@ -421,7 +412,7 @@ if(!ordr.logistics.require){
       this.pay.startShiping(ordr.id, result.payDataUpdate).then(() => {
         this.pay.changeStatusOnlineStore(ordr.id, 10, newLO).then(() => {
           this.makeChanges = false;
-        }) 
+        })
       })
     }
   })
@@ -435,10 +426,10 @@ let h = (this.auth.resource.getHeight - 16) + 'px';
 
 const refDialog = this.auth.resource.dialog.open(OrdrTrackComponent, {
   width: w, minWidth: "320px", maxWidth: "480px",
-  //height:h, 
+  //height:h,
   maxHeight: h,
   data:{ordr:ordr},
-  //disableClose: true, 
+  //disableClose: true,
   panelClass:"dialogClass"//, autoFocus:false
 });
 refDialog.afterClosed().subscribe(result =>{
@@ -451,9 +442,8 @@ refDialog.afterClosed().subscribe(result =>{
     // this.pay.updateShiping(ordr.id, result.payDataUpdate).then(() => {
     // })
     let status = result.status;
-    console.log("MARYADA", status)
     // STATUS CODE	DESCRIPTION
-    // 0	
+    // 0
     // 6	Shipped
     // 7	Delivered
     // 8	Cancelled
@@ -472,14 +462,12 @@ refDialog.afterClosed().subscribe(result =>{
     // 21	Undelivered
 
     if(status == 0 || status == 8 || status == 16){
-      // x.journey == 'F2F' && x.status == -10 && x.logistics.status == -1000 || 
-      // x.journey == 'DIRECT' && x.status == -10 && x.logistics.status == -1000 || 
+      // x.journey == 'F2F' && x.status == -10 && x.logistics.status == -1000 ||
+      // x.journey == 'DIRECT' && x.status == -10 && x.logistics.status == -1000 ||
       // x.journey == 'BURN' && x.status == -10 && x.logistics.status == -1000
       if(ordr.status == -10 && ordr.logistics.status == -1000){
-        console.log("already refunded")
       }else{
         this.ordrStatus(journey, ordr, "Refund")
-        console.log("Done refunded")
       }
     }else{
       if(status == 7){
@@ -499,12 +487,11 @@ refDialog.afterClosed().subscribe(result =>{
 }
 
   chargeVendor(ordr:any, weight:number){
-    
+
   }
 
   getVARIENT(v:any){
-    console.log("MANKIND", v)
     return v.type + ": " + v.name;
   }
-  
+
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthService } from 'src/app/services/auth.service';
+import { NewCampaignComponent } from '../../store-create/new-campaign/new-campaign.component';
 
 @Component({
   selector: 'app-new-recommendation',
@@ -61,6 +63,7 @@ export class NewRecommendationComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
+    private auth:AuthService
   ) { }
 
   ngOnInit(): void {
@@ -78,5 +81,40 @@ export class NewRecommendationComponent implements OnInit {
   //   });
 
   // }
+
+
+  createNew(){
+    let w = (this.auth.resource.getWidth - 16) + 'px';
+    let h = (this.auth.resource.getHeight - 16) + 'px';
+    const refDialog = this.auth.resource.dialog.open(NewCampaignComponent, {
+      width: w, minWidth: "320px", maxWidth: "480px",
+      height:h,
+      data:{enableDirect:true},
+      disableClose: true,
+      panelClass:"dialogLayout"//, autoFocus:false
+    });
+
+    refDialog.afterClosed().subscribe(ref =>{
+      if(!ref || !ref.id){}else{
+        // if(this.userData){
+          //this.execute(this.userData);
+          // const costX = (ref.tX !== 'tC') ? this.campCost(ref.tX) : ref.payCustom
+          // const amRate = this.auth.resource.campaignPlans;
+          // const amCamp = costX;
+          // //const amMerc = this.getMerchCost() || 0;
+          // const amSale = 0//(this.campCost(tX) + ( (oferOFF ? this.oferCost(oferOFF):0) + ( oferONL ? this.oferCost(oferONL):0) ));
+          // const amCost = costX;
+          // const amSave = 0;//(oferOFF ? this.oferCost(oferOFF):0) + ( oferONL ? this.oferCost(oferONL):0);
+          // const amTotal = costX;
+          // this.startPayment( this.userData.uid, ref.tX, amRate, amCamp,
+          //   //amMerc,
+          //   amSale,amCost,amSave,amTotal
+          //   //this.userData.uid, //ref.storeCamp
+          //   )
+        // }
+      }
+    })
+    //this.auth.resource.router.navigate(["/store/create-campaign"])
+  }
 
 }

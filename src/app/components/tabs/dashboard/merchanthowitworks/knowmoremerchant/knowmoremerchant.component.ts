@@ -16,7 +16,6 @@ export class KnowmoremerchantComponent implements OnInit {
 
     const aR = this.actRoute.snapshot.params;
     this.index = aR['id'] || null;
-    console.log('id', this.index);
   }
 
   ngOnInit(): void {}

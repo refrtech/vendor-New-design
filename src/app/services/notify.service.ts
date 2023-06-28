@@ -328,15 +328,10 @@ doWhat(){
   if (Notification.permission !== 'granted')
      Notification.requestPermission();
    });
-
-   console.log(Notification.permission)
   //  function notifyMe() {
     if (Notification.permission !== 'granted')
      Notification.requestPermission();
     else {
-      console.log("MYRA")
-
-
     new Notification('Notification title', {
       icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
       body: 'Hey there! You\'ve been notified!',

@@ -128,6 +128,7 @@ import { NewWalletComponent } from './components/newDesignScreens/new-wallet/new
 import { OrdersComponent } from './components/newDesignScreens/orders/orders.component';
 import { OrderDetailsComponent } from './components/newDesignScreens/orders/order-details/order-details.component';
 import { NewRecommendationComponent } from './components/newDesignScreens/new-recommendation/new-recommendation.component';
+import { RecommendationsettingpageComponent } from './components/newDesignScreens/new-recommendation/recommendationsettingpage/recommendationsettingpage.component';
 
 @NgModule({
   declarations: [
@@ -184,6 +185,7 @@ import { NewRecommendationComponent } from './components/newDesignScreens/new-re
     OrdersComponent,
     OrderDetailsComponent,
     NewRecommendationComponent,
+    RecommendationsettingpageComponent
   ],
   imports: [
     BrowserModule,

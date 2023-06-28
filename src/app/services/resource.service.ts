@@ -22,7 +22,7 @@ export class ResourceService {
 
   env = {
     company:"Refr Tech", brand:"Refr", slogan: "slogan",
-    companyLogo:"assets/company/logo_color_company.png", 
+    companyLogo:"assets/company/logo_color_company.png",
     brandLogo:"assets/brand/logo_color.png",
     brandOpenGraph:"https://firebasestorage.googleapis.com/v0/b/refr/o/opengraph.png?alt=media&token=87b5c5d3-f7a1-42d6-ab4e-65eb17deccf5",
 
@@ -31,7 +31,7 @@ export class ResourceService {
     avatarB: "assets/other/avatarB.svg",
     avatarW: "assets/other/avatarW.svg",
 
-    title:"REFR - Like, Share & Earn", 
+    title:"REFR - Like, Share & Earn",
     description:"REFR - Get Vocal for your favourite  Local businesses...Literally!! Discover & shop from online / offline stores on Refr, recommend them to your circle and get rewarded.Get genuine recommendations from friends and earn when you use them.This is Real Cash so.. Spend it across businesses or on the cool stuff listed on the app.Refr More. Earn More. Spend more",
     keywords:"refr, club",
     url:"https://biz.refr.club",
@@ -41,6 +41,7 @@ export class ResourceService {
       inform: "inform",
       contacts: "contacts",
       payouts: "payouts",
+      campaigns:"Campaigns",
       users: (!this.enablePRO ? "users" : "usersPRO"),
       shops: (!this.enablePRO ? "shops" : "shopsPRO"),
       hypes: (!this.enablePRO ? "hypes" : "hypesPRO"),
@@ -48,9 +49,9 @@ export class ResourceService {
       codes: (!this.enablePRO ? "codes" : "codesPRO")
     },
 
-    storeTyp: [ 
-      {id:"Onli", name:"Online"}, 
-      {id:"Offl", name:"Offline"}, 
+    storeTyp: [
+      {id:"Onli", name:"Online"},
+      {id:"Offl", name:"Offline"},
       {id:"Both", name:"Online + Offline"}
     ],
   }
@@ -59,7 +60,7 @@ export class ResourceService {
   foreignMarks:any = []
   categoryList:any = []
   merchandiseList:any[] = []
-  campaignPlans:any = []
+  campaignPlans:Array<any> = []
   vendorTaxes:any = null;
 
   currentNet = false;
@@ -78,7 +79,7 @@ export class ResourceService {
   get getWidth(){
     return window.innerWidth;
   }
-  
+
 
   actRoutes(){}
 
@@ -154,7 +155,7 @@ profession = new FormControl('', [
 
 startSnackBar(mes:any){
   this.snackBar.open(mes, "", {
-    duration: 2000, //panelClass:["b_accent","c_light"], 
+    duration: 2000, //panelClass:["b_accent","c_light"],
     verticalPosition:"bottom", horizontalPosition:"right"
   });
 }
@@ -191,7 +192,6 @@ compareDates(date1:any){
 //    );
   /*
   // Network.addListener('networkStatusChange', status => {
-  //   console.log('Network status changed', status);
   // });
   return of(
     this.internetConnected().then(res => {
@@ -219,16 +219,15 @@ compareDates(date1:any){
   //  );
    /*
    const { Network } = Plugins;
-   
+
    let handler = Network.addListener('networkStatusChange', (status) => {
-     console.log("Network status changed", status);
    });
    // To stop listening:
    // handler.remove();
-   
+
    // Get the current network status
    let status = await Network.getStatus();
-   
+
    // Example output:
    {
      "connected": true,
@@ -241,7 +240,6 @@ async internetConnected(){
   let x = false;
   try{
     const status = await Network.getStatus();
-    console.log(status.connected, status.connectionType)
     x = status.connected;
     return of(status.connected);
   // try{

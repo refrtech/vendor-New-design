@@ -18,7 +18,6 @@ import { keyframes, style } from '@angular/animations';
   animationState: string;
 
   startAnimation(state) {
-    console.log(state)
     if (!this.animationState) {
       this.animationState = state;
     }
@@ -29,7 +28,7 @@ import { keyframes, style } from '@angular/animations';
   }
 
 
-          [@cardAnimator]="animationState" 
+          [@cardAnimator]="animationState"
           (@cardAnimator.done)="resetAnimationState()"
           (swipeleft)="startAnimation('slideOutLeft')"
           (swiperight)="startAnimation('zoomOutRight')"

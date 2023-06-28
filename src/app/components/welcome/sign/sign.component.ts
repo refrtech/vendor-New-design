@@ -50,7 +50,6 @@ export class SignComponent implements OnInit {
   }
 
   setContactNumber(){
-    console.log(this.phoneNumFull)
     // if(!know){
     //   this.phoneNumber.area = "";
     //   this.phoneNumber.prefix = "";
@@ -70,14 +69,12 @@ export class SignComponent implements OnInit {
       const phone = this.phoneNumber.e164;
       const step0_CheckUserExist = this.auth.step0_userForward( phone, false );
       step0_CheckUserExist.then((data:any) =>{
-        console.log("Mega", data)
         if(!data.success){
-          //console.log("Dip Err")
           this.finalRESULT(data);
         }else{
           if(!data.exist){
             this.auth.verifyPhoneWithOTPX( phone, false ).then(dataV => {
-              //this.auth.stepDisable = false; 
+              //this.auth.stepDisable = false;
               //this.finalRESULT(dataV);
               if(!dataV.success){
                 this.finalRESULT(dataV);
@@ -90,13 +87,12 @@ export class SignComponent implements OnInit {
               }
             })
             // .catch(err => {
-            //   console.log("Dip Err")
             //   this.finalRESULT({"success":false,info:"401"});
             // });
 
           }else{
             this.auth.verifyPhoneWithOTPX( phone, false ).then(dataV => {
-              //this.auth.stepDisable = false; 
+              //this.auth.stepDisable = false;
               //this.finalRESULT(dataV);
               if(!dataV.success){
                 this.finalRESULT(dataV);
@@ -115,26 +111,24 @@ export class SignComponent implements OnInit {
         }
 
         /*
-        const step1_newUSER = this.auth.step1_newUSER( 
-          this.phoneNumber.e164, //validatePassword, name, 
-          //this.phoneNumber.iso, this.phoneNumber.coin 
+        const step1_newUSER = this.auth.step1_newUSER(
+          this.phoneNumber.e164, //validatePassword, name,
+          //this.phoneNumber.iso, this.phoneNumber.coin
           );
 
        step1_newUSER.then((ref:any) =>{
-         console.log(ref)
         if(ref.success){
           this.auth.verifyPhoneWithOTPX( ref.phone, false ).then(dataV => {
-            this.auth.stepDisable = false; 
+            this.auth.stepDisable = false;
             this.finalRESULT(dataV);
             this.auth.step = 1;
           });
           // this.auth.verifyPhoneWithOTP( ref.phone, false ).then(dataV => {
-          //   this.auth.stepDisable = false; 
+          //   this.auth.stepDisable = false;
           //   //this.finalRESULT(dataV);
           //   this.auth.step = 1;
           // });
         }else{
-          console.log("Something here...")
         }
         //this.finalRESULT(data);
        })
@@ -158,19 +152,17 @@ export class SignComponent implements OnInit {
         }else{
           const name = this.auth.resource.first?.value; //+" "+ this.auth.resource.last?.value;
           //const pass = this.auth.resource.pass.value;
-          
+
     if(this.verificationCode?.length < 6){
       this.auth.resource.startSnackBar("issue: verification code invalid.")
     }else{
       this.auth.confirmationResult.confirm(this.verificationCode).then((credential:any) => {
-        //console.log(credential.user)
-        this.auth.step2X_varifyCODE(credential, name, //pass, 
+        this.auth.step2X_varifyCODE(credential, name, //pass,
         this.phoneNumber.e164, this.phoneNumber.iso, this.phoneNumber.coin ).then(creUser => {
           this.finalRESULT(creUser);
           this.goToDash()
         })
         // .catch(err =>{
-        //   console.log("Err", err)
         //   this.auth.resource.startSnackBar(err);
         // })
       }).catch((err:any) => {
@@ -178,12 +170,10 @@ export class SignComponent implements OnInit {
         this.verificationCode = "";
         this.auth.resource.startSnackBar(err);
       })
-      // console.log(this.verificationCode, "", name, pass)
       // this.auth.step2X_varifyCODE(this.verificationCode, "", name, pass,
-      // this.phoneNumber.e164, //validatePassword, name, 
-      // this.phoneNumber.iso, this.phoneNumber.coin 
+      // this.phoneNumber.e164, //validatePassword, name,
+      // this.phoneNumber.iso, this.phoneNumber.coin
       // ).then(data => {
-      //   console.log(data)
       //   //this.auth.resource.playSound('beep')
       //   //this.finalRESULT(data);
       // })
@@ -197,14 +187,12 @@ export class SignComponent implements OnInit {
       this.auth.resource.startSnackBar("issue: verification code invalid.")
     }else{
       this.auth.confirmationResult.confirm(this.verificationCode).then((credential:any) => {
-        //console.log(credential.user)
-        //this.auth.step2X_varifyCODE(credential, //name, //pass, 
+        //this.auth.step2X_varifyCODE(credential, //name, //pass,
         //this.phoneNumber.e164, this.phoneNumber.iso, this.phoneNumber.coin ).then(creUser => {
           //this.finalRESULT(creUser);
         this.goToDash()
         //})
         // .catch(err =>{
-        //   console.log("Err", err)
         //   this.auth.resource.startSnackBar(err);
         // })
       }).catch((err:any) => {
@@ -238,7 +226,6 @@ export class SignComponent implements OnInit {
   //           this.finalRESULT(data);
   //         });
   //       }else{
-  //         console.log("Something here...")
   //       }
   //     })
   //   }
@@ -287,7 +274,7 @@ export class SignComponent implements OnInit {
         //       //this.notifyService.receiveMessages()
         //     //}
         //   //})
-          
+
         }
         // //UPDATE ALLOW NOTIFICATION SEND
       })
@@ -306,39 +293,33 @@ export class SignComponent implements OnInit {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential:any) => {
-      // Signed in 
+      // Signed in
       var user = userCredential.user;
-      
-      console.log('userCredential :'+user.uid)
 
       //this.finalRESULT(userCredential);
       this.auth.getFirestoreDocument("users", user.uid ).subscribe(userObj=>{
-        console.log('User Obj fetched :'+JSON.stringify(userObj));
         this.goToDashForEmailUser(userObj);
       });
-    
+
       // ...
-        
+
       // getAuth().currentUser.updateProfile({
       //     phone: +918454083097
       //   }).then(function() {
       //     // Update successful.
-      //     console.log('User Phone Updated Successfully');
       //   }).catch(function(error:any) {
-      //       console.log('Error update :'+error)
       //   });
 
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log('errorMessage :'+error);
       // ..
     });
   }
 
   step5(){//OLD USER FORGOT PASSWOZRD
-    
+
     this.auth.resource.pass.disable();
 
     let validatePassword = this.auth.resource.pass.value;
@@ -356,13 +337,12 @@ export class SignComponent implements OnInit {
   social(signFor:string){
     if(signFor == "google"){
       this.auth.googleSignin().then((data:any) => {
-        console.log(data)
         this.finalRESULT(data)
       }).catch(err => {
         this.credentialX = "Ve: " + err;
       })
         //this.auth.resource.playSound('beep');
-        
+
         //this.finalRESULT(data);
         //UPDATE ALLOW NOTIFICATION SEND
         //if(data.success && environment.production){
@@ -421,7 +401,7 @@ export class SignComponent implements OnInit {
             "appName": "[DEFAULT]"
         }
     }
-*/ 
+*/
 
 /*
 {
@@ -495,12 +475,10 @@ export class SignComponent implements OnInit {
   }
 
   signWithSocial(cred:any, medium:string){
-    //console.log("Maron 5", cred)
 
     const step0_CheckUserExist = this.auth.step0_socialForward( cred.uid, cred.email );
 
     step0_CheckUserExist.then(ref => {
-      console.log("MEGA", ref)
       if(!ref){
         const data = {"success":false, info:"401"}
         this.finalRESULT(data);
@@ -511,7 +489,6 @@ export class SignComponent implements OnInit {
              // create new user
              this.auth.socialCreate(cred, medium).then((x:any) => {
                this.goToDash()
-               //console.log("One",x)
                //this.auth.upgradeSocial();
              })
            }else{
@@ -523,7 +500,6 @@ export class SignComponent implements OnInit {
       }
       /*
       v.pipe(take(1)).subscribe((ref:any) => {
-        console.log("MEGA", ref)
         if(!ref){
           const data = {"success":false, info:"401"}
           this.finalRESULT(data);
@@ -532,10 +508,9 @@ export class SignComponent implements OnInit {
         }
         */
       })
-      
+
       /*
       v.pipe(take(1)).subscribe((ref:any) => {
-        console.log("Maddam", ref)
            if(!ref){
              const data = {"success":false, info:"401"}
              this.finalRESULT(data);
@@ -544,7 +519,6 @@ export class SignComponent implements OnInit {
                   // create new user
                   this.auth.socialCreate(cred, medium).then((x:any) => {
                     this.goToDash()
-                    //console.log("One",x)
                     //this.auth.upgradeSocial();
                   })
                 }else{
@@ -561,10 +535,10 @@ export class SignComponent implements OnInit {
     //step0_CheckUserExist.then((data:any) =>{
       //this.finalRESULT(data);
     //})
-    
+
   }
 
-  
+
   finalRESULT(data:any){
     if(!data.success){
       if(data.info !== "401"){
@@ -579,7 +553,7 @@ export class SignComponent implements OnInit {
         this.dialogRef.close();
       }
     }else{
-      this.auth.stepDisable = false; 
+      this.auth.stepDisable = false;
 
       if(data.complete){
         this.goToDash()
@@ -617,7 +591,7 @@ export class SignComponent implements OnInit {
   //       //this.notifyService.receiveMessages()
   //   // this.notifyService.requestPermission();
   //   // this.notifyService.listen();
-  
+
   //     }
   //   })
 
@@ -639,7 +613,6 @@ export class SignComponent implements OnInit {
           this.dialogRef.close();
         }, 500)
       } else {
-        console.log('mine :'+mine);
       }
     })
   }
@@ -659,12 +632,11 @@ export class SignComponent implements OnInit {
           this.dialogRef.close();
         }, 500)
       } else {
-        console.log('mine :'+mine);
       }
-  
+
   }
 
 
-  
+
 
 }

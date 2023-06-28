@@ -6,54 +6,50 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-add-balance',
   templateUrl: './add-balance.component.html',
-  styleUrls: ['./add-balance.component.scss']
+  styleUrls: ['./add-balance.component.scss'],
 })
 export class AddBalanceComponent implements OnInit {
-
   makingChanges = false;
-  payX:any|number|undefined = undefined;
+  payX: any | number | undefined = undefined;
   refrCut = 10; // 10% of any value
 
   constructor(
     public auth: AuthService,
     private dialogRef: MatDialogRef<AddBalanceComponent>
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  choosePay(amt:number){
+  choosePay(amt: number) {
     this.payX = amt;
   }
 
-  getCut(){
-    if(this.payX && this.payX > 999){
-      return ( this.payX * this.refrCut / 100 );
-    }else{
+  getCut() {
+    if (this.payX && this.payX > 999) {
+      return (this.payX * this.refrCut) / 100;
+    } else {
       return undefined;
     }
   }
 
-  startPay(){
-      this.makingChanges = true;
-      console.log(!this.payX , (this.payX < 1000) , this.invalidAMT(this.payX) )
-
-    if(!this.payX || this.payX < 1000 || this.invalidAMT(this.payX) ){
-      this.auth.resource.startSnackBar("Amount must be higher than ₹999")
+  startPay() {
+    this.makingChanges = true;
+    if (!this.payX || this.payX < 1000 || this.invalidAMT(this.payX)) {
+      this.auth.resource.startSnackBar('Amount must be higher than ₹999');
       this.makingChanges = false;
-    }else{
+    } else {
       const cut = this.getCut() || 0;
       const refill = this.payX - cut;
-      this.dialogRef.close({success:true,amt:this.payX, rate:{ cut:cut, refill:refill, cutRate: this.refrCut } });
+      this.dialogRef.close({
+        success: true,
+        amt: this.payX,
+        rate: { cut: cut, refill: refill, cutRate: this.refrCut },
+      });
     }
-
   }
 
-  invalidAMT(amt:number){
-    const newNum  = new FormControl(amt, [
-      Validators.pattern('^[0-9]+$')
-    ]);
+  invalidAMT(amt: number) {
+    const newNum = new FormControl(amt, [Validators.pattern('^[0-9]+$')]);
     return newNum.invalid;
   }
-
 }

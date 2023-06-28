@@ -69,7 +69,6 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     public router:Router,
     public dependancy:DependencyService
   ) {
-    console.log(" router  " + this.router.url);
     this.dependancy.activeroute = this.router.url;
   }
 
@@ -81,7 +80,6 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.syncContact();
       // this.roshaninput.nativeElement.focus();
-      // console.log("asdasdas",this.roshaninput)
     }, 3000);
     // setTimeout(() => {
     //   this.execute();
@@ -165,7 +163,6 @@ export class CustomerComponent implements OnInit, AfterViewInit {
         // this.newContacts = [];
         // this.loading = false;
         // this.errorContacts = true;
-        //console.log("newContacts", err)
         this.execute([])
         this.auth.resource.startSnackBar("Unable to Sync Contacts.")
       });
@@ -179,7 +176,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     for (let index = 0; index < gotIT.length; index++) {
       let element: any = {
         name: gotIT[index].displayName || "",
-        //email: gotIT[index].emails[0].address || "", 
+        //email: gotIT[index].emails[0].address || "",
         phone: gotIT[index].phoneNumbers[0].number || ""
       };
 
@@ -199,9 +196,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
           .subscribe((storeRef: any) => {
             if (storeRef[0]) {
               this.storename = storeRef[0].name;
-
               this.shareUrlB1 = storeRef[0].shareUrlB1;
-              console.log("shareUrlP1", storeRef[0].addedDynamicLinkP1, storeRef[0].shareUrlP1)
               if (storeRef[0].addedDynamicLinkP1) {
                 this.shareUrlP1 = storeRef[0].shareUrlP1;
               }
@@ -219,23 +214,15 @@ export class CustomerComponent implements OnInit, AfterViewInit {
             for (let c = 0; c < list.length; c++) {
               const element = list[c];
               let iX = newlist.findIndex(x => x.phone == element.phone);
-              //console.log("RAB", iX)
               if (iX == -1) {
                 newlist.push(element)
               }
             }
-
-
-
-            //console.log("Lek", newlist.length, newlist);
             for (let v = 0; v < newlist.length; v++) {
               const element = newlist[v];
 
               this.auth.checkContacts(element.phone).then(x => {
-                console.log("MARD", x)
                 if (x.success) {
-
-
                   let exist = x.exist;
                   if (!exist) {
                     element["exist"] = false;
@@ -248,39 +235,20 @@ export class CustomerComponent implements OnInit, AfterViewInit {
                   if (newlist.length == v + 1) {
                     this.Eusercontacts = new MatTableDataSource(this.Eusercontactlist);
                     this.newusercontacts = new MatTableDataSource(this.newusercontactlist);
-                    console.log("Lek", newlist);
-
                     if (newlist.length > 0) {
                       this.currentContacts = newlist;
                     }
                     if (newlist.length > 0 && data.list.length !== newlist) {
-                      this.auth.updateContacts(mine.uid, newlist).then(() => console.log("contacts updated!"))
+                      this.auth.updateContacts(mine.uid, newlist).then(() => {})
                     }
                   }
-
-
-
-
-
-
-
-
                 }
               })
-
-
             }
-
-
           }
         })
       }
-
     })
-
-
-
-
   }
 
 
@@ -306,10 +274,8 @@ ${data.url}`;
     } else {
       this.socialSharing.canShareVia("whatsapp").then((res) => {
         this.socialSharing.shareViaWhatsApp(textBODY, "", "").then(res => {
-          console.log("Success");
           //this.erz.push("res: " + res)
         }).catch(err => {
-          //console.log(err)
         })
       }).catch(e => {
         this.auth.resource.startSnackBar("Error: " + e)
@@ -354,24 +320,15 @@ ${data.url}`;
       panelClass: 'newcontact', data: {}
     });
     bsRef.afterDismissed().subscribe(ref => {
-      console.log("DARD", ref)
       if (!ref || !ref.success) {
-
       } else {
-        console.log("DARD", ref)
-
         if (ref.name && ref.phone) {
           let iX = this.currentContacts.findIndex(x => x.phone == ref.phone);
           if (iX == -1) {
             let element: any = { name: ref.name, phone: ref.phone }
-
-
             this.currentContacts.push(element)
             this.auth.checkContacts(element.phone).then(xC => {
-              console.log("MARD", xC)
               if (xC.success) {
-
-
                 let exist = xC.exist;
                 if (!exist) {
                   element["exist"] = false;
@@ -380,15 +337,10 @@ ${data.url}`;
                   element["exist"] = true;
                   this.Eusercontactlist.push(element);
                 }
-                console.log("contacts updated!")
                 this.auth.updateContacts(this.userID, this.currentContacts).then(() => {
-
                   this.Eusercontacts = new MatTableDataSource(this.Eusercontactlist);
                   this.newusercontacts = new MatTableDataSource(this.newusercontactlist);
-                  console.log("contacts updated!")
                 })
-              } else {
-                console.log("Fail updated!")
               }
 
             })

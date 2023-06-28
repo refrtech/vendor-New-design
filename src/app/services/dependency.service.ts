@@ -23,8 +23,6 @@ activeroute :string = "";
       phone,
       message,
     };
-    console.log('send Sms to ' + phone);
-
     return this.httpClient.post(
       `${environment.server}/api/SMS/sendSMS/${iso}`,
       body
@@ -46,9 +44,7 @@ activeroute :string = "";
       document,
       subject,
       templateID
-
     };
-    //console.log('before email :' + JSON.stringify(body))
     return this.httpClient.post(
       `${environment.server}/api/SES/sendSES/${iso}`,
       body
@@ -63,7 +59,6 @@ activeroute :string = "";
       title,
       message,
     };
-    // console.log('send notification');
     return this.httpClient.post(
       `${environment.server}/api/SNS/sendSNS/${iso}`,
       body
@@ -78,7 +73,6 @@ activeroute :string = "";
       message,
       user_type
     };
-    // console.log('send notification');
     return this.httpClient.post(
       `${environment.server}/api/SNS/sendSNS/save/${iso}`,
       body
@@ -88,7 +82,6 @@ activeroute :string = "";
     const body = {
       lat, lon
     }
-      console.log("get Location")
       return this.httpClient.post(`${environment.server}/api/locate/about/${ iso }`, body);
   }
 
@@ -107,7 +100,7 @@ activeroute :string = "";
       billing_address: data.billing_address, billing_address_2: data.billing_address_2,
       billing_pincode: data.billing_pincode, billing_city: data.billing_city, billing_country: data.billing_country, billing_state: data.billing_state,
       billing_email: data.billing_email, billing_phone: data.billing_phone,
-      
+
       order_items:data.order_items,
       payment_method: data.payment_method,
       shipping_charges: data.shipping_charges, giftwrap_charges: data.giftwrap_charges, transaction_charges: data.transaction_charges,
@@ -116,7 +109,6 @@ activeroute :string = "";
       O_length: data.O_length, O_breadth: data.O_breadth, O_height: data.O_height,
       O_weight: data.O_weight
     }
-      console.log("place order")
       return this.httpClient.post(`${environment.server}/api/shipping/newShipment/${ iso }`, body);
   }
 

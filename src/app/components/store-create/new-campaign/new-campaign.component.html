@@ -213,35 +213,30 @@
       [floatLabel]="floatLabelControl.value">
       <input [disabled]="disableForm" matInput [(ngModel)]="storeCamp.campaignName" placeholder="Enter campaign name"
         autocomplete="off" name="campaignName" required>
-      <mat-error>Campaign name is required.</mat-error>
     </mat-form-field>
     <br>
     <div class="ld_m_size boldText ld_b10padding">Starts From</div>
     <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
       [floatLabel]="floatLabelControl.value">
-      <input matInput color="primary" placeholder="Press icon to choose" [matDatepicker]="pickerS" name="dateS"
-        [(ngModel)]="storeCamp.dateS" [min]="startDate" [max]="maxStaDate" (ngModelChange)="storeCamp.dateE = ''"
-        readonly [disabled]="disableForm">
+      <input matInput color="primary" placeholder="Please select the start date." [matDatepicker]="pickerS"  name="dateS"
+        [(ngModel)]="storeCamp.dateS" [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm">
       <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
       <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
-      <mat-error>from is required.</mat-error>
     </mat-form-field>
     <br>
     <div class="ld_m_size boldText ld_b10padding">Tiers</div>
-    <div class="c_gray ld_xs_size" (click)="print()">
+    <div class="c_gray ld_xs_size">
       Higher savings on higher refill tiers
     </div>
     <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
       [floatLabel]="floatLabelControl.value">
-      <mat-select>
+      <mat-select [(ngModel)]="seltier" [disabled]="disableForm" (selectionChange)="CalESTreach()" name="tiers">
         <ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
           <mat-option [value]="t.tX">Tier {{i + 1}} - ₹{{t.cost}} (wallet credits ₹{{t.refill}}) </mat-option>
         </ng-container>
       </mat-select>
     </mat-form-field>
-
     <div class="ld_m_size boldText ld_b5padding">Brand Reach</div>
-
     <div class="caard ld_A15padding ld_t10margin sd_A10padding sd_t10margin br10">
       <div class="ld_s_size sd_s_size boldText">
         Instant reward for recommendation
@@ -251,18 +246,16 @@
       </div>
       <mat-form-field appearance="outline" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
         [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required>
-        <mat-error>Cost per recommendation is required.</mat-error>
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_instant" matInput autocomplete="off" maxlength="3"
+          type="number" name="costperrecomm" required>
       </mat-form-field>
-
-
       <div class="ld_s_size sd_s_size boldText">
         Cost per successful recommendation
       </div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required>
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_cpc" (change)="CalESTreach()" matInput
+          autocomplete="off" maxlength="3" type="number" name="costperclick" required>
       </mat-form-field>
 
       <div class="ld_s_size sd_s_size boldText">
@@ -270,11 +263,8 @@
       </div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required>
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input disabled="true" [(ngModel)]="ESTreach" matInput autocomplete="off" name="Estreach" required>
       </mat-form-field>
-
-
     </div>
 
 
@@ -289,68 +279,61 @@
 
     <div class="ld_m_size sd_M_size boldText sd_b5padding ld_b5padding sd_t20margin ld_t20margin">Conversion</div>
     <div class="caard ld_A15padding ld_t10margin sd_A15padding sd_t10margin br10">
-
       <div class="ld_s_size sd_s_size boldText ld_b10padding sd_b10padding">
         Cost per conversion
       </div>
-
-
-
       <div class="ld_dflex">
-        <div class="halfWidth ld_xs_size sd_xs_size c_gray">To new customer</div>
+        <div class="halfWidth ld_xs_size sd_xs_size c_gray">To new customer ( in % )</div>
         <div class="halfWidth ld_xs_size sd_xs_size c_gray sd_d_none">To existing customer</div>
       </div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required placeholder="% value">
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_CPCNew" matInput autocomplete="off" maxlength="2"
+          name="cpcNew" required placeholder="% value">
       </mat-form-field>
-      <div class="halfWidth sd_xs_size c_gray ld_d_none">To existing customer</div>
-
+      <div class="halfWidth sd_xs_size c_gray ld_d_none">To existing customer ( in % )</div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required placeholder="% value">
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_CPCExi" matInput autocomplete="off" maxlength="2"
+          name="cpcExi" required placeholder="% value">
       </mat-form-field>
-
-
-
-
-
       <div class="ld_s_size sd_s_size boldText">
         Estimated Conversions
       </div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required>
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="true" [(ngModel)]="ESTconv" matInput autocomplete="off" name="Estconv" required>
       </mat-form-field>
-
-
-      <div class="ld_dflex ">
+      <div class="ld_dflex">
         <div class="halfWidth ld_xs_size sd_xs_size boldText">Maximum cashback</div>
         <div class="halfWidth ld_xs_size boldText sd_d_none">Minimum order value</div>
       </div>
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required placeholder="Enter amount">
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="disableForm" type="number" [(ngModel)]="storeCamp.maxCashBack" matInput autocomplete="off"
+          name="Maxcashback" max-length="3" required placeholder="Enter amount">
       </mat-form-field>
       <div class="halfWidth ld_d_none sd_xs_size boldText">Minimum order value</div>
-
       <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
         [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
-        <input [disabled]="disableForm" matInput autocomplete="off" name="costperrecomm" required placeholder="Enter amount">
-        <mat-error>Estimated Reach is required.</mat-error>
+        <input [disabled]="disableForm" type="number" [(ngModel)]="storeCamp.minOrderValue" matInput autocomplete="off"
+          name="Minorder" max-length="3" required placeholder="Enter amount">
       </mat-form-field>
-
     </div>
-
-    <div class="r_align dflex ld_t20padding sd_t20padding">
-      <span class="purple_text textDecoration_underline">
+    <div class="r_align dflex ld_t20padding sd_t20padding" *ngIf="!enableDirect">
+      <span class="purple_text textDecoration_underline"  [routerLink]=" storeCamp.storeType !== 'Offl' ? '/store/add-product' : '/dash' ">
         Pay Later
       </span>
-      <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin">Pay Now ₹2000</button>
+      <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin"
+        (click)="createStoreCampaign(seltier,false)">Pay Now ₹{{auth.resource.campaignPlans[campplanindex].cost}}</button>
+    </div>
+
+    <div class="r_align dflex ld_t20padding sd_t20padding" *ngIf="enableDirect">
+      <span class="purple_text" (click)="dialogRef.close()">
+        Close
+      </span>
+      <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin"
+        (click)="createStoreCampaign(seltier,false)">Update Campaign</button>
     </div>
   </form>
 </div>

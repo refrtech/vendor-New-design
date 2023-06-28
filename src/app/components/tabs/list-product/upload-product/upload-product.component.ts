@@ -19,8 +19,8 @@ export class UploadProductComponent implements OnInit {
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
 
   storeData = {
-    uid:"", sid:"", 
-    // cat:"", 
+    uid:"", sid:"",
+    // cat:"",
     productCat:<string[]> [],
     // email:"", phone:""
   }
@@ -39,9 +39,9 @@ export class UploadProductComponent implements OnInit {
       // email: string;
       // phone: string;
     }
-  ) { 
+  ) {
     this.storeData = {
-      uid:data.userID, 
+      uid:data.userID,
       sid:data.storeID,
       productCat:data.productCat
     }
@@ -54,7 +54,7 @@ export class UploadProductComponent implements OnInit {
 
   invalidRate(rate:number){ const newNum  = new FormControl(rate, [ Validators.pattern('^[0-9]+$') ]); return newNum.invalid; }
   //invalidPhone(phone:string){ const newNum  = new FormControl(phone, [ Validators.pattern('^[0-9]+$') ]); return newNum.invalid; }
-  
+
   onFileChange(evt: any) {
     this.makeChanges = true;
 
@@ -76,7 +76,6 @@ export class UploadProductComponent implements OnInit {
       const productData: any[] = []
       //this.data = data;
       let isProper = true;
-      console.log("whone: ", data)
       const uid = data[0][2];
       const emailORphone = data[0][4];
       const sid = data[1][2];
@@ -84,7 +83,6 @@ export class UploadProductComponent implements OnInit {
 
     if(!uid || !emailORphone || !sid || !cat){
       isProper = false;
-      console.log("Invalid Fields");
       this.dialogRef.close()
     }else{
 
@@ -124,11 +122,9 @@ export class UploadProductComponent implements OnInit {
           if(variant.type && variant.name){
             if( !productData.includes((m:any) => storeProduct.productName == m.productName) ){
               // put varients in productData
-              console.log("NO INCLUDES")
               storeProduct.variants.push(variant)
             }else{
               // put varients in productData
-              console.log("INCLUDES")
               let c = productData.findIndex(z => z.productName == storeProduct.productName)
               if( c >= 0){
                 productData[c].variants.push(variant)
@@ -144,7 +140,7 @@ export class UploadProductComponent implements OnInit {
       !storeProduct.cost || this.invalidRate(storeProduct.cost) ||
       storeProduct.price < storeProduct.cost ||
       !storeProduct.category ||
-      !storeProduct.code 
+      !storeProduct.code
           ){
             console.log("Invalid: ", storeProduct)
             isProper = false;
@@ -178,7 +174,7 @@ export class UploadProductComponent implements OnInit {
                 }
               }
             }
-            
+
           }else{
             if( !productData.includes((m:any) => storeProduct.productName == m.productName) ){
               productData.push(storeProduct);
@@ -188,19 +184,17 @@ export class UploadProductComponent implements OnInit {
 
         }
 
-        if( data.length == (p+1) ){ 
+        if( data.length == (p+1) ){
           if(!isProper){
             let mes = "Document not proper.";
-            console.log(mes)
             this.dialogRef.close()
           }else{
-            this.dataX = productData; 
-            console.log(this.dataX);
+            this.dataX = productData;
             this.dialogRef.close( this.dataX )
           }
         }
       }
-      
+
     }
 
 
@@ -209,33 +203,30 @@ export class UploadProductComponent implements OnInit {
   }
 
   setUpFile(uid:string){
-    console.log("storeINFO")
     if(!this.storeData.sid){
       this.auth.resource.startSnackBar("No store id provided.")
     }else{
       this.auth.getStore(this.storeData.sid).pipe(take(1)).subscribe((storeINFO:any) => {
-        console.log("storeINFO: ", storeINFO)
         if(!storeINFO){
             this.auth.resource.startSnackBar("No store with such uid exist.")
           }else{
-          
+
           if(uid !== storeINFO.by){
             this.auth.resource.startSnackBar("Something went wrong..")
           }else{
 
             const storeX = {
-              uid:storeINFO.by, 
+              uid:storeINFO.by,
               sid:storeINFO.id,
               cat: storeINFO.cat,
               proCat: storeINFO.proCat, subCat: storeINFO.subCat,
 
-              //productCat: this.storeData.productCat, 
+              //productCat: this.storeData.productCat,
               email:storeINFO.email, phone:storeINFO.phone
             }
-            console.log(storeX)
             this.export(storeX.uid, storeX.sid, storeX.cat, storeX.email, storeX.phone)
           }
-          
+
         }
       })
     }
@@ -243,7 +234,7 @@ export class UploadProductComponent implements OnInit {
 
 
 
-  export(uid: string, sid: string, cat: string, email: string, phone: string): void {    
+  export(uid: string, sid: string, cat: string, email: string, phone: string): void {
     const sample: AOA = [
     [
         null,

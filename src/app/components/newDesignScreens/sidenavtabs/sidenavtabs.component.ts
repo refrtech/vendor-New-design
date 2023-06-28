@@ -43,7 +43,6 @@ export class SidenavtabsComponent implements OnInit {
     public dependancy: DependencyService,
   )
   {
-    console.log(" router  " + this.router.url);
   }
 
 
@@ -57,8 +56,6 @@ export class SidenavtabsComponent implements OnInit {
   }
   expand(index: any) {
     if (index == 3) {
-      console.log("click",index);
-
       this.navRoutes[index].isexpanded = !this.navRoutes[index].isexpanded;
     }
   }

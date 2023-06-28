@@ -51,7 +51,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
     public router: Router,
     public dependancy: DependencyService
   ) {
-    console.log(" router  " + this.router.url);
     this.dependancy.activeroute = this.router.url;
   }
 
@@ -69,12 +68,10 @@ export class WalletComponent implements OnInit, AfterViewInit {
             this.userData = mine;
             this.execute(mine);
           } else {
-            console.log("CREATE CAMP")
             // GO TO CREATE CAMP
             //this.auth.resource.router.navigate(["/store/create-campaign"]);
           }
         } else {
-          console.log("CREATE STORE")
           // GO TO CREATE STORE
           //this.auth.resource.router.navigate(["/store/create-location"]);
         }
@@ -176,7 +173,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
             this.showCode = true;
             //this.qrCode.append(this.canvasX?.nativeElement);
             const type: string[] = [];
-            // this.payments$ = this.pay.getAllPayments(mine.uid, 22, type) //.pipe(take(1));
+            this.payments$ = this.pay.getAllPayments(mine.uid, 22, type) //.pipe(take(1));
             // D5AJShva0AcA2KCXF9ZEkiH6kb12 LA CANE
             // ki6vTii6S2UHkqRpxujnzQujRcp1 Estate monkey
             // Csxq4c0L6pQjX5bLIqU0pogl5ry2 Jee Hukum
@@ -186,9 +183,8 @@ export class WalletComponent implements OnInit, AfterViewInit {
             // cB8lFziWJAeR3QV9LnoZtOhlIyH3 KUSUM Rolls
             // VRQqXCsm9wYn7OOdVNWWIgGIMj43 Snip n’ Scissors
             // UPQAXnNgMfUTjtqplaYIKDiqtoM2 En’creo
-            this.payments$ = this.pay.getAllPayments("UPQAXnNgMfUTjtqplaYIKDiqtoM2", 100, type) //.pipe(take(1));
+            // this.payments$ = this.pay.getAllPayments("UPQAXnNgMfUTjtqplaYIKDiqtoM2", 100, type) //.pipe(take(1));
             this.payments$.pipe(take(1)).subscribe(z => {
-              console.log("z", z)
             })
           }, 3000)
         }
@@ -222,7 +218,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
     });
 
     refDialog.afterClosed().subscribe((ref: { tX: any }) => {
-      console.log("Add Money", ref)
       if (!ref.tX) { } else {
         if (this.userData) {
           const costX = this.campCost(ref.tX)
@@ -234,10 +229,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
           const amCost = costX;
           const amSave = 0;//(oferOFF ? this.oferCost(oferOFF):0) + ( oferONL ? this.oferCost(oferONL):0);
           const amTotal = costX;
-
-          console.log(this.userData.uid, ref.tX, amRate, amCamp,
-            amSale, amCost, amSave, amTotal
-          )
           this.startPayment(this.userData.uid, ref.tX, amRate, amCamp,
             //amMerc,
             amSale, amCost, amSave, amTotal
@@ -248,7 +239,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
       /*
       if(!ref.id){}else{
         if(this.userData){
-          console.log("Add Money")
           this.execute(this.userData);
           const costX = (ref.tX !== 'tC') ? this.campCost(ref.tX) : ref.payCustom
 
@@ -302,12 +292,9 @@ export class WalletComponent implements OnInit, AfterViewInit {
     });
     refDialog.afterClosed().subscribe(ref => {
       if (!ref.success) {
-        console.log(ref)
         this.auth.resource.startSnackBar(ref.info)
         //this.disableForm = false;
       } else {
-        console.log("Payment Complete")
-
       }
     })
   }
@@ -383,7 +370,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
     });
     refDialog.afterClosed().subscribe(ref => {
       if (!ref.success) {
-        console.log(ref)
         this.auth.resource.startSnackBar(ref.info)
         //this.disableForm = false;
       } else {
@@ -410,8 +396,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
       if (!phone || !email) {
         this.auth.resource.startSnackBar("Please assign a phone & email to the account.")
       } else {
-        console.log(stateBANK)
-        console.log(stateUPI)
 
         if (!stateBANK && !stateUPI) {
           this.auth.resource.startSnackBar("The account is not associated with any banking service.")
@@ -444,7 +428,6 @@ export class WalletComponent implements OnInit, AfterViewInit {
     let doc = new jsPDF('p', 'pt', [1400, 1500]);
     doc.html(this.el.nativeElement, {
       callback: (pdf) => {
-        console.log("start downloading")
         pdf.save("Refr Invoice.pdf");
       }
     });

@@ -32,14 +32,14 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
   storeLoc:any = {
     nationISO: "IND",
     stateISO: "",
-    storeType:"", 
-    storeName:"", 
-    storeAbout:"", 
+    storeType:"",
+    storeName:"",
+    storeAbout:"",
     fullname:"",//mine.name
     phone:"", // mine.phone ? mine.phone.split('+91')[1] : ''
     email:"",// mine.email
-    storeCat:"", 
-    storeSubCat:"", 
+    storeCat:"",
+    storeSubCat:"",
     locAddress: "",
     locSearch:"",
     loc:{},
@@ -69,11 +69,11 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
     draggable: false
   };
   initialCordinates = {
-    lat: 19.0760, 
+    lat: 19.0760,
     lng: 72.8777
   };
   initialMark = {
-    lat: 19.0760, 
+    lat: 19.0760,
     lng: 72.8777
   }
   initialZoom = 11;
@@ -83,7 +83,7 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
   submitFirst = false;
   disableForm = false;
   loadPlacesAPI = false;
-  currentUser = {phone:"", email:""}; 
+  currentUser = {phone:"", email:""};
 
   constructor(
     public auth: AuthService,
@@ -102,15 +102,15 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
         phone:mine.phone,
         email:mine.email
       }
-      
+
     })
-    
-    
+
+
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.indStates = this.auth.resource.foreignMarks[this.auth.resource.foreignMarks.findIndex((n:any) => n.iso == "IND")].states;      
+      this.indStates = this.auth.resource.foreignMarks[this.auth.resource.foreignMarks.findIndex((n:any) => n.iso == "IND")].states;
     }, 3000);
     this.addSearchBox();
   }
@@ -129,7 +129,6 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
 
     searchBox.addListener("places_changed", () => {
       const places = searchBox.getPlaces();
-      console.log("PLACES", places);
       if(places?.length == 0){return;}
       const bounds = new google.maps.LatLngBounds();
       places?.forEach(place => {
@@ -138,7 +137,6 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
             this.loadPlacesAPI = true;
             bounds.union(place.geometry.viewport);
             this.inputClicked(place)
-            console.log("PLACES", place.geometry.location.lat(), place.geometry.location.lng())
             //vicinity
             let latX =place.geometry.location.lat();
             let lngX =place.geometry.location.lng();
@@ -162,11 +160,9 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
               timestamp: locX.timestamp,
             }
             */
-            console.log("union", place)
           }else{
             bounds.extend(place.geometry.location);
-            console.log("extend")
-          } 
+          }
         }
       })
       this.Gmap.fitBounds(bounds)
@@ -178,13 +174,10 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
   getInfoFromApi(latitude:number, longitude:number){
     this.loadPlacesAPI = true;
     this.depends.getLocationInfo("IND", latitude, longitude).pipe().subscribe((res:any) => {
-      console.log("HIT",res)
       if(!res || !res.success || !res.result || !res.result[0]){
-        console.log("No Api INFO");
         this.auth.resource.startSnackBar("Failed to Autofill data!")
         this.loadPlacesAPI = false;
       }else{
-        console.log("Api Clicked!")
         //this.filteredOptions = res.result;
         this.storeLoc.locSearch = res.result[0].formatted_address
         this.inputClicked(res.result[0])
@@ -198,12 +191,10 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
     this.startScan = true;
   try{
     const locX:Position = await Geolocation.getCurrentPosition();
-    console.log("Add Loc")
 
     if(!locX){
       this.startScan = false;
     }else{
-      console.log("Add Loc", locX.coords.latitude, locX.coords.longitude)
       this.storeLoc.loc = {
         //accuracy: locX.coords.accuracy,
         //altitude: locX.coords.altitude, altitudeAccuracy: locX.coords.altitudeAccuracy,
@@ -214,7 +205,7 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
       }
       this.initialCordinates = {
         //center: {
-          lat: this.storeLoc.loc?.latitude, 
+          lat: this.storeLoc.loc?.latitude,
           lng: this.storeLoc.loc?.longitude
         //},
         //zoom: 16
@@ -222,7 +213,6 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
       this.initialMark = this.initialCordinates;
       this.initialZoom = 16;
       //http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false
-      //console.log(this.storeLoc.loc )
       this.startScan = false;
       //let key = "AIzaSyABtVV28ilpCAlbhN-tEPe_t57QGwQ5WiM";
       //const newLocation = await this.httpClient.jsonp( `http://maps.googleapis.com/maps/api/geocode/json?key=${key}&latlng=${this.storeLoc.loc?.latitude},${this.storeLoc.loc?.longitude}&sensor=false`, 'callback');
@@ -239,11 +229,8 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
 
 
   inputClicked(result:any){
-    console.log("result", result)
     result.address_components.map((component:any) => {
-      const types = component.types
-      console.log("types", types)
-
+      const types = component.types;
       if (types.includes('postal_code')) {
         this.storeLoc.postal_code = component.long_name
       }
@@ -260,21 +247,17 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
         this.storeLoc.administrative_area_level_1 = component.long_name;
           const stateIndex = this.indStates.find((x:any) => {
             const z = this.storeLoc.administrative_area_level_1.toLowerCase() == x.name.toLowerCase();
-          console.log("state", z, this.storeLoc.administrative_area_level_1, x.name)
             return z
           })
           if(stateIndex?.isos){
-            console.log("stateIndex", stateIndex)
             this.storeLoc.stateISO = stateIndex.isos;
           }
         // const state = this.indStates[
         //   this.indStates.findIndex(x => {
         //     const z = x.name.toLowerCase() == this.storeLoc.administrative_area_level_1.toLowerCase();
-        //     console.log("z",z);
         //   })
         // ];
         // if(state){
-        //   console.log("state",state)
         //   this.storeLoc.indStateISO = state.isos;
         // }
       }
@@ -284,7 +267,6 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
       }
 
       if(types.includes('country')){
-        console.log("types", types, component.long_name)
         if(component.long_name.toLowerCase() !== "india"){
           this.storeLoc.postal_code = "";
           this.storeLoc.locality = "";
@@ -319,7 +301,7 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
       /*
       this.initialCordinates = {
         //center: {
-          lat: this.storeLoc.loc?.latitude, 
+          lat: this.storeLoc.loc?.latitude,
           lng: this.storeLoc.loc?.longitude
         //},
         //zoom: 16
@@ -376,13 +358,9 @@ inputClicked = (result) => {
         source:CameraSource.Camera,
         resultType: CameraResultType.Uri
       });
-      console.log("image", image)
       const imageUrl = image.webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
-      }else{
-        console.log("No image")
       }
     }
   }
@@ -397,9 +375,6 @@ inputClicked = (result) => {
       const imageUrl = image.photos[0].webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
-      }else{
-        console.log("No image")
       }
     }
   }
@@ -416,10 +391,8 @@ inputClicked = (result) => {
         disableClose: true, panelClass:"dialogLayout"//, autoFocus:false
       });
       refDialog.afterClosed().subscribe(result =>{
-        console.log("cropper closed")
         if(!result.success){
           if(result.info){
-            console.log(result.info);
             this.auth.resource.startSnackBar(result.info)
           }
         }else{
@@ -436,18 +409,17 @@ inputClicked = (result) => {
 
 
   createStore(addNewLoc:boolean){
-    console.log(this.storeLoc)
     this.submitFirst = true;
     this.disableForm = true;
     if(
-      !this.storeLoc.storeType || 
+      !this.storeLoc.storeType ||
       !this.storeLoc.storeName || !this.storeLoc.storeAbout ||
-      !this.storeLoc.storeCat || !this.storeLoc.storeSubCat || 
-      !this.storeLoc.phone || !this.storeLoc.email || 
-      !this.storeLoc.locAddress || !this.storeLoc.locSearch || //!this.storeLoc.locality || 
+      !this.storeLoc.storeCat || !this.storeLoc.storeSubCat ||
+      !this.storeLoc.phone || !this.storeLoc.email ||
+      !this.storeLoc.locAddress || !this.storeLoc.locSearch || //!this.storeLoc.locality ||
       !this.storeLoc.postal_code || !this.storeLoc.administrative_area_level_2 || !this.storeLoc.administrative_area_level_1 ||
 
-      !this.storeLoc.nationISO || !this.storeLoc.stateISO || !this.storeLoc.by 
+      !this.storeLoc.nationISO || !this.storeLoc.stateISO || !this.storeLoc.by
       ){
         if( !this.storeLoc.storeType ){
           this.auth.resource.startSnackBar("Store type is required");
@@ -509,7 +481,7 @@ inputClicked = (result) => {
               }
             }
           }
-          
+
           }
         }
         this.disableForm = false;
@@ -519,7 +491,7 @@ inputClicked = (result) => {
       if(
         !this.currentUser.phone && !this.auth.resource.invalidPhone( phone ) ||
         !this.currentUser.email && this.auth.resource.invalidEmail(this.storeLoc.email) ||
-        !this.currentUser.phone 
+        !this.currentUser.phone
         //!this.currentUser.email ||
       ){ // verify phone or email
         if(!this.currentUser.phone && !this.auth.resource.invalidPhone(phone)){
@@ -528,12 +500,11 @@ inputClicked = (result) => {
         }else{
           if(!this.currentUser.email && this.auth.resource.invalidEmail( email )){
             this.disableForm = false;
-            console.log("email", email)
             this.auth.resource.startSnackBar("Email address is invalid.")
           }else{
-          
+
             const bS = this.bottomSheet.open(BottomSheetOTP, {
-              data: {phone: this.storeLoc.phone, uid: this.storeLoc.by}, //panelClass:"bottomSheetClassUpdate", 
+              data: {phone: this.storeLoc.phone, uid: this.storeLoc.by}, //panelClass:"bottomSheetClassUpdate",
               hasBackdrop: true,
               disableClose: true
             });
@@ -546,19 +517,18 @@ inputClicked = (result) => {
                 //this.inputPhone.nativeElement.autoFocus();
                 this.inputPhone.nativeElement.select();
               }else{
-                console.log("OTP Checked")
                 this.createNewStore(addNewLoc);
               }
               // Restore focus to an appropriate element for the user's workflow here.
             });
-      
+
             //this.auth.resource.startSnackBar("Please verify phone number.")
           }
         }
       }else{
         this.createNewStore(addNewLoc);
       }
-      
+
     }
   }
 
@@ -573,12 +543,11 @@ inputClicked = (result) => {
             // go to next route (create campaign)
           }
         }).catch(err => {
-          console.log(err)
           this.disableForm = false;
           this.auth.resource.startSnackBar("The store has not been created.")
         })
   }
-  
+
 }
 
 
@@ -630,7 +599,7 @@ export class BottomSheetOTP implements AfterViewInit {
       //this.otpSent = true;
     }, 3000);
   }
-  
+
   setContactNumber(){
       this.phoneNumber.area = this.phoneNumFull.slice(0,3);
       this.phoneNumber.prefix = this.phoneNumFull.slice(3,6);
@@ -646,7 +615,6 @@ export class BottomSheetOTP implements AfterViewInit {
     //this.showOtpSend = false;
     this.auth.addPhoneWithOTP( phone ).then(dataV => {
       if(!dataV.success){
-        console.log("SMS not sent")
         this.auth.resource.startSnackBar(dataV.info);
       }else{
         this.otpSent = true;
@@ -664,20 +632,20 @@ export class BottomSheetOTP implements AfterViewInit {
     }else{
       this.auth.confirmationResult.confirm(this.verificationCode).then((credential:any) => {
         this.auth.addPhoneNumber(this.data.uid, this.phoneNumber.e164, this.phoneNumber.iso, this.phoneNumber.coin).then(() => {
-          this.bfRef.dismiss({success:true}); 
+          this.bfRef.dismiss({success:true});
         })
       }).catch((err:any) => {
         console.error(err);
         this.verificationCode = "";
         this.auth.resource.startSnackBar(err);
         this.stepDisable = false;
-        //this.bfRef.dismiss({success:false}); 
+        //this.bfRef.dismiss({success:false});
       })
     }
   }
 
   changeNumber(){
-    this.bfRef.dismiss({success:false}); 
+    this.bfRef.dismiss({success:false});
   }
 
 }

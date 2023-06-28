@@ -41,27 +41,22 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-  //   console.log("MINE", "mine0")
   //   this.wt1 = true;
   // this.auth.user$.subscribe(mine =>{
   //       this.wt2 = true;
   //   if(!mine){
   //     this.wt3 = true;
-  //     console.log("MINE1")
 
   //   }else{
   //     this.wt4 = true;
-  //     console.log("MINE2", mine)
   //   }
   // })
   // .pipe(finalize(() => {
   //     this.isLoading = false; this.wt4 = true;
-  //     console.log('complete!')
   //     return "444"
   // }))
   // .subscribe({
   //     next: (v) => {
-  //       console.log("nextZ ", v)
   //       this.isLoading = false; this.wt1 = true;
   //       return "111"
   //   },
@@ -71,20 +66,19 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
   //       return "222"
   //     },
   //     complete: () => {
-  //       console.info('completeZ') 
+  //       console.info('completeZ')
   //       this.isLoading = false; this.wt3 = true;
   //       return "333"
   //     }
   // })
-    // .pipe(finalize(() => 
-    // {this.isLoading = false; this.wt3 = true; console.log("Final Exam");}
+    // .pipe(finalize(() =>
+    // {this.isLoading = false; this.wt3 = true; }
     // ))/*.pipe(take(1))*/.subscribe(
-    //   success => {this.isLoading = false; this.wt1 = true; console.log("success",success);},
-    //   error => {this.isLoading = false; this.wt2 = true; console.log("error", error);},
-    //   //() => {this.isLoading = false; this.wt3 = true; console.log("Final Exam");}
+    //   success => {this.isLoading = false; this.wt1 = true;},
+    //   error => {this.isLoading = false; this.wt2 = true;},
+    //   //() => {this.isLoading = false; this.wt3 = true;}
     //   /*
     //   mine => {
-    //   console.log("MINE", mine)
     // }*/
     // )
   }
@@ -99,27 +93,24 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     // this.net1 = true;
     this.auth.resource.internetConnected().then(netX => {
       // this.net2 = true;
-      console.log("NetworkX T", netX)
       if( !netX ){
         // this.net3 = true;
-        console.log("No Internet")
         this.offlineSetup();
       }else{
         // this.net4 = true;
 
     //this.auth.resource.onlineOffline().pipe(take(1)).subscribe(net => {
-      //console.log("Network", net)
       //if( net ){
         /*
         this.depends.getState().pipe(take(1)).subscribe((getStateRes: any) => {
           // {
-          //   vr: 101.1, 
+          //   vr: 101.1,
           //   web:1.1, andi: 1.1, ios: 1.1,
           //   env: enviroment.prod,
           //   code:"Albatrosses", date: 1644195271637
           // }
           if(
-            !getStateRes || 
+            !getStateRes ||
             getStateRes.vr > environment.refrBot.vr ||
             getStateRes.web > environment.refrBot.web
             // getStateRes.andi > environment.andi
@@ -131,16 +122,14 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
             this.openBottomSheet(getStateRes)
           }else{
             this.auth.resource.foreignMarks = getStateRes.markets;*/
-            console.log("user2")
+
         setTimeout(() => {
           // this.net5 = true;
-          console.log("user1")
 
           // try{
             // this.net6 = true;
 
           this.auth.user$.pipe(take(1)).subscribe(mine => {
-            console.log("user", mine)
             // this.net7 = true;
             if(!mine){
               // this.net8 = true;
@@ -168,7 +157,6 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
           // }catch(errX){
           //   // this.net10 = true;
           //   // this.errX = errX;
-          //   console.log("errX",errX)
           //   this.offlineSetup();
           // }
 
@@ -177,8 +165,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
 
         });
     */
-      
-      
+
+
       //}else{
         //this.offlineSetup();
       //}
@@ -189,21 +177,19 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
 
       }
     }).catch(err => {
-      console.log("NetworkX C", err)
       this.offlineSetup();
     })
-    
+
   }
 
   offlineSetup(){
     const snackBarRef = this.snackBar.open("You are offline.", "Retry", {
-      //duration: 2000, //panelClass:["b_accent","c_light"], 
-      verticalPosition:"bottom", horizontalPosition:"center", 
+      //duration: 2000, //panelClass:["b_accent","c_light"],
+      verticalPosition:"bottom", horizontalPosition:"center",
     });
-    
+
     snackBarRef.onAction().subscribe(() => {
       this.execute()
-      console.log('The snackbar action was triggered!');
     });
   }
 
@@ -229,6 +215,6 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
       this.auth.resource.pass.enable();
     })
   }
-  
+
 
 }

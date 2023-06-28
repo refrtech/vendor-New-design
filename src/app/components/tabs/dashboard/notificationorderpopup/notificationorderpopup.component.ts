@@ -16,7 +16,6 @@ export class NotificationorderpopupComponent implements OnInit {
     public dialogRef: MatDialogRef<NotificationorderpopupComponent>,
     public router: Router
   ) {
-    console.log('notification', data);
   }
 
   orderData = {
