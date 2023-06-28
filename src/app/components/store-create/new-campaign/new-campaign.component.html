@@ -205,8 +205,11 @@
 
 
 <div class="formHold ld_lr50padding">
-  <h3 class="textL c_primary" *ngIf="enableDirect" style="margin-bottom: 24px !important;">Create campaign</h3>
+  <h3 class="textL c_primary" *ngIf="enableDirect" style="margin-bottom: 24px !important;">Update campaign</h3>
   <app-content *ngIf="!(store$ | async)"></app-content>
+
+
+
   <form (submit)="true" *ngIf="store$ | async as store">
     <div class="ld_m_size boldText ld_b10padding">Campaign name</div>
     <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
@@ -216,14 +219,18 @@
     </mat-form-field>
     <br>
     <div class="ld_m_size boldText ld_b10padding">Starts From</div>
-    <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
-      [floatLabel]="floatLabelControl.value">
-      <input matInput color="primary" placeholder="Please select the start date." [matDatepicker]="pickerS"  name="dateS"
-        [(ngModel)]="storeCamp.dateS" [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm">
-      <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
-      <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
-    </mat-form-field>
     <br>
+    <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
+    [floatLabel]="floatLabelControl.value">
+    <input matInput color="primary" placeholder="Please select the start date." [matDatepicker]="pickerS"
+     [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm" [formControl]="storeCamp.dateS">
+    <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
+    <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+
+
+
+
     <div class="ld_m_size boldText ld_b10padding">Tiers</div>
     <div class="c_gray ld_xs_size">
       Higher savings on higher refill tiers

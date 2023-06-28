@@ -66,15 +66,14 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     CashBack_CPCExi: 5,
     minOrderValue: 0,
     maxCashBack: 0, // 0Fl & 100Pe
-    dateS: '',
+    dateS: new FormControl(new Date()),
   };
-  selectededate:any;
+  selectededate: any;
   payCustom: number | undefined;
   disableForm = false;
   startDate = new Date();
   campwalBal?: number;
-  campid:string="";
-
+  campid: string = '';
 
   get maxStaDate() {
     const year = this.startDate.getFullYear();
@@ -326,9 +325,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
       .subscribe((Camp: any) => {
         this.campid = Camp[0].id;
         this.selectededate = new FormControl(Camp[0].dateS.toDate());
-        this.storeCamp.dateS = Camp[0].dateS;
-
-
+        this.storeCamp.dateS = new FormControl(Camp[0].dateS.toDate());
         this.storeCamp.campaignName = Camp[0].name;
         this.storeCamp.CashBack_cpc = Camp[0].CashBack_cpc;
         this.storeCamp.CashBack_instant = Camp[0].CashBack_instant;
@@ -344,7 +341,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     if (
       !this.storeCamp.storeID ||
       !this.storeCamp.campaignName ||
-      !this.storeCamp.dateS ||
+      !this.storeCamp.dateS.value ||
       !this.storeCamp.CashBack_instant ||
       !this.storeCamp.CashBack_cpc ||
       !this.storeCamp.CashBack_CPCNew ||
@@ -356,7 +353,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     ) {
       if (!this.storeCamp.campaignName) {
         this.auth.resource.startSnackBar('Campaign name is required');
-      } else if (!this.storeCamp.dateS) {
+      } else if (!this.storeCamp.dateS.value) {
         this.auth.resource.startSnackBar('Start date is required');
       } else if (!this.storeCamp.CashBack_instant) {
         this.auth.resource.startSnackBar(
@@ -391,13 +388,15 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   }
 
   updatecamp() {
-this.auth.updateCampaign(this.storeCamp,this.campid).then((res)=>{
-this.auth.resource.startSnackBar('Campaign updated.')
-})
-.catch((err) => {
-          this.disableForm = false;
-          this.auth.resource.startSnackBar('Failed to Update the Campaign.');
-        });
+    this.auth
+      .updateCampaign(this.storeCamp, this.campid)
+      .then((res) => {
+        this.auth.resource.startSnackBar('Campaign updated.');
+      })
+      .catch((err) => {
+        this.disableForm = false;
+        this.auth.resource.startSnackBar('Failed to Update the Campaign.');
+      });
   }
 
   addNewCampaign(tX: string, kind: boolean) {

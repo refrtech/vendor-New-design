@@ -1565,7 +1565,7 @@ export class AuthService {
       CashBack_CPCExi: data.CashBack_CPCExi,
       maxCashBack: data.maxCashBack,
       minOrderValue: data.minOrderValue,
-      dateS: data.dateS,
+      dateS: data.dateS.value,
     });
   }
 
