@@ -600,10 +600,15 @@ export class SignComponent implements OnInit {
   goToDash(){
     this.auth.user$.pipe(take(1)).subscribe((mine:any) => {
       if(mine){
+        console.log("Mine",mine);
+
         if(mine.storeLoc.length > 0){
-          if(mine.storeCam.length > 0){
+          if(mine.New_storeCam != undefined && mine.New_storeCam != ''){
+          // if(mine.storeCam.length > 0){
+
             this.auth.resource.router.navigate(['/dash']);
           }else{
+        console.log("entered in else condition");
             this.auth.resource.router.navigate(['/store/create-campaign']);
           }
         }else{

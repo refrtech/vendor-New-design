@@ -81,7 +81,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   storename = '';
   shareUrlB1 = '';
   shareUrlP1 = '';
-
+  displayedColumns: string[] = [
+    'name',
+    'contact',
+    'interaction',
+    'token',
+    'action',
+  ];
   constructor(
     public themeService: ThemeService,
     public auth: AuthService,
@@ -183,8 +189,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       //this.paymentRedeem$ = of([]);
       const typeO: string[] = ['addORDER'];
       this.paymentOrder$ = this.pay.getAllOrdersO(mine.uid, 6, typeO); //.pipe(take(1));
-      this.paymentOrder$.pipe(take(1)).subscribe((r) => {
-      });
+      this.paymentOrder$.pipe(take(1)).subscribe((r) => {});
       //this.paymentOrder$ = of([]);
       this.auth
         .getMyStore(mine.uid) //.pipe(take(1))
@@ -459,7 +464,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               this.auth.resource.startSnackBar('Reward is next to 0.');
             }
           } else {
-
             this.pay.setCampPOS(id, y, +amt, earn, null).then(() => {
               let amTotalNew = amt;
               // deduct money & add money

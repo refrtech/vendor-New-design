@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -66,7 +67,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     CashBack_CPCExi: 5,
     minOrderValue: 0,
     maxCashBack: 0, // 0Fl & 100Pe
-    dateS: new FormControl(new Date()),
+    dateS: '',
   };
   selectededate: any;
   payCustom: number | undefined;
@@ -117,6 +118,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
 
   constructor(
     public auth: AuthService,
+    private router: Router,
     public dialogRef: MatDialogRef<NewCampaignComponent>
   ) {}
 
@@ -325,7 +327,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
       .subscribe((Camp: any) => {
         this.campid = Camp[0].id;
         this.selectededate = new FormControl(Camp[0].dateS.toDate());
-        this.storeCamp.dateS = new FormControl(Camp[0].dateS.toDate());
+        // this.storeCamp.dateS = new FormControl(Camp[0].dateS.toDate());
         this.storeCamp.campaignName = Camp[0].name;
         this.storeCamp.CashBack_cpc = Camp[0].CashBack_cpc;
         this.storeCamp.CashBack_instant = Camp[0].CashBack_instant;
@@ -341,7 +343,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     if (
       !this.storeCamp.storeID ||
       !this.storeCamp.campaignName ||
-      !this.storeCamp.dateS.value ||
+      !this.storeCamp.dateS ||
       !this.storeCamp.CashBack_instant ||
       !this.storeCamp.CashBack_cpc ||
       !this.storeCamp.CashBack_CPCNew ||
@@ -353,7 +355,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     ) {
       if (!this.storeCamp.campaignName) {
         this.auth.resource.startSnackBar('Campaign name is required');
-      } else if (!this.storeCamp.dateS.value) {
+      } else if (!this.storeCamp.dateS) {
         this.auth.resource.startSnackBar('Start date is required');
       } else if (!this.storeCamp.CashBack_instant) {
         this.auth.resource.startSnackBar(
@@ -400,6 +402,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   }
 
   addNewCampaign(tX: string, kind: boolean) {
+    console.log(this.storeCamp)
     if (
       tX == 't1' ||
       tX == 't2' ||
@@ -423,7 +426,12 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
             ]);
             // go to next route (create campaign)
           } else {
-            this.dialogRef.close();
+            // this.dialogRef.close();
+            if (this.storeCamp.storeType !== 'Offl') {
+              this.router.navigateByUrl('/store/add-product');
+            } else {
+              this.router.navigateByUrl('/dash');
+            }
           }
         })
         .catch((err) => {

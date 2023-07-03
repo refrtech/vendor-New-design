@@ -19,14 +19,6 @@ export class NewDashboardComponent
   ]
 
   element:Array<any>=[
-    // {name:'aditya kirtane',contact:'1234567890',interaction:'10',token:'10',},
-    // {name:'Vishal pise',contact:'1234567890',interaction:'10',token:'10',},
-    // {name:'Roshan Shilimkar',contact:'1234567890',interaction:'10',token:'10',},
-    // {name:'aditya kirtane',contact:'1234567890',interaction:'10',token:'10',},
-    // {name:'aditya kirtane',contact:'1234567890',interaction:'10',token:'10',}
-
-
-
       {
           "amTaxTCS": 0.01,
           "setShortID": true,

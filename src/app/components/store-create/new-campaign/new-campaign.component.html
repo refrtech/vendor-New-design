@@ -223,14 +223,10 @@
     <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
     [floatLabel]="floatLabelControl.value">
     <input matInput color="primary" placeholder="Please select the start date." [matDatepicker]="pickerS"
-     [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm" [formControl]="storeCamp.dateS">
-    <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
+     [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm" [(ngModel)]="storeCamp.dateS" name="startdate">
+    <mat-datepicker-toggle matSuffix [for]="pickerS" ></mat-datepicker-toggle>
     <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
   </mat-form-field>
-
-
-
-
     <div class="ld_m_size boldText ld_b10padding">Tiers</div>
     <div class="c_gray ld_xs_size">
       Higher savings on higher refill tiers
@@ -328,7 +324,7 @@
       </mat-form-field>
     </div>
     <div class="r_align dflex ld_t20padding sd_t20padding" *ngIf="!enableDirect">
-      <span class="purple_text textDecoration_underline"  [routerLink]=" storeCamp.storeType !== 'Offl' ? '/store/add-product' : '/dash' ">
+      <span class="purple_text textDecoration_underline" (click)="createStoreCampaign(seltier,true)">
         Pay Later
       </span>
       <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin"
