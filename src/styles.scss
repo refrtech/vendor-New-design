@@ -211,6 +211,7 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
 
   .mat-dialog-container {
     background: $white;
+    // padding:0px !important
   }
 
   .mat-bottom-sheet-container {
@@ -231,6 +232,8 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
 .c_black {
   color: $black !important;
 }
+
+
 
 .f_black {
   fill: $black !important;
@@ -979,6 +982,14 @@ textarea {
 
 .boldText {
   font-weight: bold !important;
+}
+
+.semiBoldtext {
+ font-weight: 500 !important;
+}
+
+.text_underline {
+  text-decoration: underline;
 }
 
 .normalText {
@@ -3203,7 +3214,7 @@ textarea {
 }
 
 ::ng-deep .mat-tooltip {
-  /* your own custom styles here */ 
+  /* your own custom styles here */
   /* e.g. */
   color: yellow !important;
 }
@@ -3224,4 +3235,9 @@ textarea {
   box-shadow: 0px -1px 5px rgba(190, 190, 190, 0.25), 0px 4px 4px rgba(100, 100, 100, 0.25) !important;
   border-radius: 5px !important;
   padding: 8px !important;
+}
+
+
+.dialogLayout1 mat-dialog-container{
+  padding: 0px !important;
 }

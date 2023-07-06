@@ -121,6 +121,7 @@ import { StudentofferSectionComponent } from './components/newDesignScreens/stud
 import { DailydropsComponent } from './components/newDesignScreens/dailydrops/dailydrops.component';
 import { DailydropsSectionComponent } from './components/newDesignScreens/dailydrops-section/dailydrops-section.component';
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
+import { UserSettingsComponent } from './components/welcome/sign/user-settings/user-settings.component';
 
 // import { Capacitor } from '@capacitor/core';
 // import { getApp } from '@firebase/app';
@@ -154,6 +155,7 @@ import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-
     ListOrderComponent,
     ListProductComponent,
     AddBalanceComponent,
+    UserSettingsComponent,
     UploadProductComponent,
     OrdrPlacedComponent,
     PlanBalanceComponent,
