@@ -1,0 +1,175 @@
+<div class="container bg_white">
+  <div class="row">
+    <div class="section">
+      <div class="order_section col-100 ld_t30margin ld_dflex ld_JCspace">
+        <div class="ld_M48width bg_lightyellow popgreenborder br10 sd_tb15margin">
+          <div class="card col-100">
+            <div class="ld_A20padding md_A20padding">
+              <div class="ld_dflex md_dflex ld_align-items-center md_align-items-center sd_b20padding">
+                <div class="col-50">
+                  <div class="order_name ld_xl_size md_m_size sd_m_size boldText">Store wallet</div>
+                </div>
+                <div class="col-50 textR ld_xs_size">
+                  To be Credited<span class="purple_text">: ₹5998</span>
+                </div>
+              </div>
+              <div
+                class="ld_t20margin ld_t20padding ld_dflex md_dflex sd_dgrid ld_align-items-center md_align-items-center ">
+                <div class="ld_M30width sd_b10padding">
+                  <div class="ld_xl_size">
+                    ₹5998
+                  </div>
+                  <div class="ld_xs_size c_gray">
+                    Your balance
+                  </div>
+                </div>
+                <div class="col-70 sd_M100width ld_s_size fw_400 ld_r_align">
+                  <button mat-button class="br40 bg_white Aborder sd_r10margin">Add to campaign</button>
+                  <button mat-button class="br40 bg_white ld_l10margin Aborder">Withdraw</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ld_M48width bg_gray Aborder_purple br10 sd_b15margin">
+          <div class="card col-100">
+            <div class="ld_A20padding md_A20padding">
+              <div class="ld_dflex md_dflex ld_align-items-center md_align-items-center sd_b20padding">
+                <div class="col-50">
+                  <div class="order_name ld_xl_size md_m_size sd_m_size boldText">Campaign wallet</div>
+                </div>
+                <div class="col-50 textR ld_xs_size">
+                  Last refill date<span class="purple_text">: 11/11/2023</span>
+                </div>
+              </div>
+              <div
+                class="ld_t20margin ld_t20padding ld_dflex md_dflex ld_align-items-center md_align-items-center sd_b20padding">
+                <div class="col-50">
+                  <div class="ld_xl_size">
+                    ₹5998
+                  </div>
+                  <div class="ld_xs_size c_gray">
+                    Your balance
+                  </div>
+                </div>
+                <div class="col-50 ld_s_size fw_400 textR">
+                  <button mat-button class="br40 bg_white Aborder">Add Funds</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="section">
+      <div
+        class="bg_white shadow1 br10 ld_t20margin ld_A15padding md_A15padding sd_A10padding ld_dflex ld_JCspace md_JCspace sd_JCspace ld_align-items-center md_align-items-center sd_A15padding sd_align-items-center sd_b30margin">
+        <div>
+          <div class="h1 fw_400 ld_m_size ld_boldText ld_nopadding md_nopadding sd_nopadding sd_l_size sd_b10padding">
+            How payments works?
+          </div>
+          <div class="ld_xs_size c_gray">
+            Add funds to keep your campaigns active. When funds run out,
+            your campaigns will stop. We’ll email you when your funds are running low.
+          </div>
+        </div>
+        <span class="ld_xs_size purple_text textDecoration_underline">Learn more</span>
+      </div>
+    </div>
+
+
+    <div class="section sd_M100width sd_lr0padding">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Transaction">
+          <table class="ld_M100width ld_t30margin sd_Maxwidth" mat-table [dataSource]="TransationdataSource" matSort>
+            <ng-container matColumnDef="Transaction_info">
+              <th class="M40width sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Transaction details
+              </th>
+              <td mat-cell *matCellDef="let row" class="A10padding sd_lr10padding">
+                <div class="dflex">
+                  <div class="l_align AScenter overFlow_dotted l10padding">
+                    <div class="s_size boldtext">
+                      {{row.tranID}}
+                    </div>
+                    <div class="ld_xxs_size c_gray">
+                      {{row.tranDate}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="User_info">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                User details
+              </th>
+              <td mat-cell *matCellDef="let row" class="line_throughtxt A10padding s_size sd_lr10padding">{{row.User_details}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Pay_type">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Payment type
+              </th>
+              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
+                {{row.Payment_type}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Action
+              </th>
+              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
+                Recommendation Redeemed
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Bill_Amt">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Bill Amount
+              </th>
+              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
+                ₹{{row.Bill_Amount}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Status
+              </th>
+              <td mat-cell class="A10padding sd_lr10padding" *matCellDef="let row; let i = index">
+                <span class="delivered" *ngIf="i == 0">
+                  Delivered
+                </span>
+                <span class="Shipped" *ngIf="i == 1">
+                  Shipped
+                </span>
+                <span class="Refunded" *ngIf="i == 2">
+                  Refunded
+                </span>
+                <span class="Pending" *ngIf="i == 3">
+                  Pending
+                </span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="show">
+              <th class="sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header></th>
+              <td mat-cell class="A10padding sd_lr10padding" *matCellDef="let row">
+                <mat-icon>
+                  visibility
+                </mat-icon>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="TransactionColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: TransactionColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+        </mat-tab>
+        <mat-tab label="Refr Token given">Refr Token given</mat-tab>
+        <mat-tab label="Refund">Refund</mat-tab>
+        <mat-tab label="Withdrawals">Withdrawals</mat-tab>
+        <mat-tab label="Wallet Refill">Wallet Refill</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

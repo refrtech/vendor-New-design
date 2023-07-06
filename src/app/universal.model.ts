@@ -16,9 +16,9 @@ export interface User {
 
 export interface Shop {
     id: string;
-    email: string; phone: string; name:string; about:string; logo:string, 
+    email: string; phone: string; name:string; about:string; logo:string,
     banner:string; banners:string[];
-    type:string; cat:string; subCat: string; 
+    type:string; cat:string; subCat: string;
     proCat: string[]; products: number;
     loc:Locate[]; schedule:Schedule;
     by:string; typeORDER:{
@@ -47,7 +47,7 @@ export interface Product {
     sin: any, upd: any, by: string; sid: string;
 }
 
-export interface Hype {
+export interface Hype_old {
     id:string; tX:string; customAct:boolean, customPay:number;
     type: string; storeTyp: string;
     name: string;
@@ -57,6 +57,16 @@ export interface Hype {
     stage: number; paused: false, stoped:false, ban:false,
     countS:number; countP:number; countM:number;
     sin: any, upd: any, by: string; sid: string;
+}
+
+
+export interface Hype {
+  id:string; tX:string; storeType: string;
+  name: string;CashBack_instant:number;CashBack_cpc:number;
+  CashBack_CPCNew: number; CashBack_CPCExi: number; paid: boolean;
+  minOrderValue:number; maxCashBack:number;
+   dateS: any;
+  sin: any, upd: any, by: string; sid: string;
 }
 
 export interface Schedule {

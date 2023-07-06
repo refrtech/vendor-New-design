@@ -81,7 +81,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   storename = '';
   shareUrlB1 = '';
   shareUrlP1 = '';
-
+  displayedColumns: string[] = [
+    'name',
+    'contact',
+    'interaction',
+    'token',
+    'action',
+  ];
   constructor(
     public themeService: ThemeService,
     public auth: AuthService,
@@ -124,7 +130,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   goLink(selectedIndex: any) {
-    console.log('hii', selectedIndex);
     if (selectedIndex == 0) {
       this.auth.resource.router.navigate(['/store/add-location']);
     }
@@ -148,7 +153,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (!mine) {
       } else {
         this.execute(mine);
-        console.log('Mine Val888888888 :' + mine);
         // if(mine.storeLoc?.length > 0){
         //   if(mine.storeCam?.length > 0){
         //     this.execute(mine);
@@ -159,13 +163,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         //       this.selectedIndex = 2;
         //     }
         //   }else{
-        //     console.log("CREATE CAMP")
         //     this.selectedIndex = 1;
         //     // GO TO CREATE CAMP
         //     this.auth.resource.router.navigate(["/store/create-campaign"]);
         //   }
         // }else{
-        //   console.log("CREATE STORE")
         //   this.selectedIndex = 0;
         //   // GO TO CREATE STORE
         //   this.auth.resource.router.navigate(["/store/create-location"]);
@@ -187,18 +189,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       //this.paymentRedeem$ = of([]);
       const typeO: string[] = ['addORDER'];
       this.paymentOrder$ = this.pay.getAllOrdersO(mine.uid, 6, typeO); //.pipe(take(1));
-      this.paymentOrder$.pipe(take(1)).subscribe((r) => {
-        console.log('ORDR', r);
-      });
+      this.paymentOrder$.pipe(take(1)).subscribe((r) => {});
       //this.paymentOrder$ = of([]);
       this.auth
         .getMyStore(mine.uid) //.pipe(take(1))
         .subscribe((storeRef: any) => {
           if (storeRef[0]) {
-            console.log(storeRef);
             this.storeName = storeRef[0].name;
             this.storeNumber = storeRef[0].phone;
-            console.log('Store Number  :' + this.storeNumber);
             this.storeEmail = storeRef[0].email;
             this.store$ = of({
               name: storeRef[0].name,
@@ -224,13 +222,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
             if (storeRef[0].addedDynamicLink) {
               this.storename = storeRef[0].name;
-
               this.shareUrlB1 = storeRef[0].shareUrlB1;
-              console.log(
-                'shareUrlP1',
-                storeRef[0].addedDynamicLinkP1,
-                storeRef[0].shareUrlP1
-              );
               if (storeRef[0].addedDynamicLinkP1) {
                 this.shareUrlP1 = storeRef[0].shareUrlP1;
               }
@@ -273,7 +265,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       // this.campaign$ = this.auth.getMyCampaignByUID(mine.uid, 4) //.pipe(take(1));
       // this.campaign$.pipe(take(1)).subscribe(c => {
       //   this.campALL = c;
-      //   console.log("BEMAN", c)
       // })
     }, 3000);
   }
@@ -323,7 +314,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     campX: any,
     code: string
   ) {
-    console.log(id, journey, amt, camp, campX, code);
     if (journey == 'F2F') {
       this.makeChanges = true;
       if (!id || !journey || !amt || !camp) {
@@ -335,7 +325,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         }
       } else {
         const y = camp;
-        //console.log(x, y);
         if (!y) {
           this.auth.resource.startSnackBar('Something went wrong...');
         } else {
@@ -445,8 +434,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       } else {
         const x = this.campALL.findIndex((x) => x.id == campX);
         const y = this.campALL[x];
-
-        //console.log(x, y);
         if (!y) {
           this.auth.resource.startSnackBar('Something went wrong...');
         } else {
@@ -460,7 +447,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                     ? (amt * y.cbDir) / 100
                     : camp.max
                   : 0));
-          //console.log(x, y, ordr, id, journey, amt, camp, campX, earn);
           // set campaign
           if (earn > balance || y.min > +amt || earn == 0) {
             this.makeChanges = false;
@@ -478,8 +464,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               this.auth.resource.startSnackBar('Reward is next to 0.');
             }
           } else {
-            //console.log("MARKOS", ordr.sid, ordr.to, ordr.by, earn, ordr.amTotal)
-
             this.pay.setCampPOS(id, y, +amt, earn, null).then(() => {
               let amTotalNew = amt;
               // deduct money & add money
@@ -514,7 +498,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ordrStatus(journey: string, ordr: any, setStatus: any) {
     this.makeChanges = true;
-    console.log(setStatus);
     if (journey == 'F2F') {
       if (setStatus == 'Placed') {
         this.makeChanges = false;
@@ -560,7 +543,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                   )
                   .pipe(take(1))
                   .subscribe((razorRef: any) => {
-                    console.log(razorRef);
                     if (!razorRef || !razorRef.success) {
                       this.auth.resource.startSnackBar('Failed to refund.');
                     } else {
@@ -593,12 +575,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             const amtC = ordr.earn;
             const amtR = ordr.refr.earn;
             if(!ordr.gwInfo){
-              console.log("GATEWAY INFO")
               this.pay.transferRefund(ordr.id, newLO, uidC, uidR, amtC, amtR).then(() => {
                 this.makeChanges = false;
               })
             }else{
-              console.log("GATEWAY INFO", ordr.gwInfo)
             }
         */
         /*
@@ -680,7 +660,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                   )
                   .pipe(take(1))
                   .subscribe((razorRef: any) => {
-                    console.log('razorRef', razorRef);
                     if (!razorRef || !razorRef.success) {
                       this.auth.resource.startSnackBar('Failed to refund.');
                     } else {
@@ -718,7 +697,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         const amtC = ordr.earn;
         //const amtR = ordr.refr.earn;
         const sid = ordr.sid;
-        console.log('dataSend', ordr);
         this.pay
           .transferDeliveredDIRECT(
             sid,
@@ -785,7 +763,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                   )
                   .pipe(take(1))
                   .subscribe((razorRef: any) => {
-                    console.log(razorRef);
                     if (!razorRef || !razorRef.success) {
                       this.auth.resource.startSnackBar('Failed to refund.');
                     } else {
@@ -881,10 +858,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               orders: 1,
               products: ordr.cart?.length || 0,
             });
-            console.log(
-              'Before sending notifition :' + this.storeNumber,
-              this.storeName
-            );
             this.sendNotifications(
               ordr,
               'delivery',
@@ -973,7 +946,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             // this.pay.updateShiping(ordr.id, result.payDataUpdate).then(() => {
             // })
             let status = result.status;
-            console.log('MARYADA', status);
             // STATUS CODE	DESCRIPTION
             // 0
             // 6	Shipped
@@ -998,10 +970,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               // x.journey == 'DIRECT' && x.status == -10 && x.logistics.status == -1000 ||
               // x.journey == 'BURN' && x.status == -10 && x.logistics.status == -1000
               if (ordr.status == -10 && ordr.logistics.status == -1000) {
-                console.log('already refunded');
               } else {
                 this.ordrStatus(journey, ordr, 'Refund');
-                console.log('Done refunded');
               }
             } else {
               if (status == 7) {
@@ -1023,14 +993,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     shopPhoneNo: any,
     shopName: any
   ) {
-    console.log(
-      'Inside SendNotifications in ' + shopEmail,
-      shopPhoneNo,
-      shopName,
-      type,
-      document.logistics.email,
-      document.logistics.phone
-    );
     if (document.sid) {
       if (type) {
         document.maildata = {
@@ -1039,8 +1001,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             document.amSave - document.invoice.amtRefrCash + document.amBurst,
           onlinepaidAmt: document.amTotal - document.invoice.amtRefrCash,
         };
-        console.log('maildata', document);
-
         if (type == 'shipping') {
           //Customer
           const customer_text_mesage =
@@ -1189,18 +1149,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     //const date14 = new Date().setFullYear( fsDate.toDate() );
     let noteDate = Timestamp.fromDate(date);
     //const date14 = fsDate.toDate();
-    //console.log("date14: ",  fsDate, "dateNow: ", noteDate)
     return noteDate > fsDateS && noteDate < fsDateE;
   }
 
   getVARIENT(v: any) {
-    console.log('MANKIND', v);
     return v.type + ': ' + v.name;
   }
 
   async exe(mine: any) {
     let a = await this.notify.listen();
-    console.log(a, 'notification');
     mine = this.dialog.open(NotificationorderpopupComponent, {
       width: '34%',
       data: { name: 'aditya' },

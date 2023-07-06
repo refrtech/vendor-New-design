@@ -11,7 +11,6 @@ export class ChooseStoreTypeComponent implements OnInit {
     { value: '1', viewValue: 'Hybrid' },
   ];
   constructor() {
-    console.log("1111");
 
   }
 

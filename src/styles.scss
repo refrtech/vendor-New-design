@@ -90,9 +90,9 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
     background: #000000;
   }
 
-  @include mat.all-component-themes($client-theme-dark);
-  background: $grey;
-  color: $white;
+  // @include mat.all-component-themes($client-theme-dark);
+  // background: $grey;
+  // color: $white;
 
   .b_accent {
     background: $grey !important;
@@ -225,94 +225,126 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   }
 }
 
-.b_black {
+// background
+
+.bg_gray {
+  background: #f9f3ff !important;
+}
+
+.bg_lightyellow {
+  background: #f7ffd4 !important;
+}
+
+.bg_black {
   background: $black !important;
 }
 
-.c_black {
-  color: $black !important;
-}
-
-
-
-.f_black {
-  fill: $black !important;
-}
-
-.b_white {
+.bg_white {
   background: $white !important;
-}
-
-.c_white {
-  color: $white !important;
-}
-
-.f_white {
-  fill: $white !important;
 }
 
 .b_primary {
   background: $primary !important;
 }
 
+.bg_primaryLight {
+  background: $primaryLight !important;
+}
+
+.bg_warn {
+  background: $warn !important;
+}
+
+.bg_red {
+  background: $red !important;
+}
+
+.bg_green {
+  background: #27ae60 !important;
+}
+
+.bg_gradient {
+  background: $gradient !important;
+}
+
+// borders
+
+.popgreenborder {
+  border: 1px solid #ceff00 !important;
+}
+
+.border_none {
+  border: none !important;
+}
+
+.Aborder_purple {
+  border: 1px solid #874bf9 !important;
+}
+
+.Aborder {
+  border: 1px solid #000 !important;
+}
+
+// colors
+
+.c_black {
+  color: $black !important;
+}
+
+.c_white {
+  color: $white !important;
+}
+
 .c_primary {
   color: $primary !important;
-}
-
-.f_primary {
-  fill: $primary !important;
-}
-
-.b_primaryLight {
-  background: $primaryLight !important;
 }
 
 .c_primaryLight {
   color: $primaryLight !important;
 }
 
-.f_primaryLight {
-  fill: $primaryLight !important;
-}
-
-.b_warn {
-  background: $warn !important;
-}
-
 .c_warn {
   color: $warn !important;
-}
-
-.f_warn {
-  fill: $warn !important;
-}
-
-.b_red {
-  background: $red !important;
 }
 
 .c_red {
   color: $red !important;
 }
 
-.f_red {
-  fill: $red !important;
-}
-
-.b_green {
-  background: #27ae60 !important;
-}
-
 .c_green {
   color: $green !important;
 }
 
-.f_green {
-  fill: $green !important;
+.c_darkgreen {
+  color: #27ae60 !important;
 }
 
-.b_gradient {
-  background: $gradient !important;
+.f_black {
+  fill: $black !important;
+}
+
+.f_white {
+  fill: $white !important;
+}
+
+.f_primary {
+  fill: $primary !important;
+}
+
+.f_primaryLight {
+  fill: $primaryLight !important;
+}
+
+.f_warn {
+  fill: $warn !important;
+}
+
+.f_red {
+  fill: $red !important;
+}
+
+.f_green {
+  fill: $green !important;
 }
 
 .c_gradient {
@@ -330,7 +362,7 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 600;
 }
 
-.fw_500{
+.fw_500 {
   font-weight: 500;
 }
 
@@ -338,8 +370,29 @@ $gradient: linear-gradient(170deg, #ff3269, #ff794d);
   font-weight: 700;
 }
 
-.cursor_pointer{
+.cursor_pointer {
   cursor: pointer;
+}
+
+.outline_none {
+  outline: none !important;
+}
+
+.vendorTable {
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 10px;
+
+  .mat-header-row {
+    background: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tr td,
+  th {
+    text-align: center !important;
+  }
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -893,6 +946,10 @@ img[src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"]
   text-align: center !important;
 }
 
+.r_align {
+  text-align: right !important;
+}
+
 .s_size {
   font-size: 14px !important;
 }
@@ -924,7 +981,7 @@ textarea {
 }
 
 // borderradius
-.br40P {
+.br40 {
   border-radius: 40px !important;
 }
 
@@ -996,6 +1053,10 @@ textarea {
   font-weight: normal !important;
 }
 
+.lineheight_normal {
+  line-height: normal;
+}
+
 .whitespace {
   white-space: break-spaces !important;
 }
@@ -1012,6 +1073,14 @@ textarea {
   display: none;
 }
 
+.text_capitalize {
+  text-transform: capitalize;
+}
+
+.mat-tab-label {
+  border-bottom: 2px solid #e7e7e7 !important;
+}
+
 @media (min-width: 1270px) {
   .gradient_svg {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/refr/o/FIAMImages%2FSetup%20your%20business.svg?alt=media&token=2838ea11-890e-4ad0-a75f-0da6633b3a16);
@@ -1025,6 +1094,18 @@ textarea {
     background-size: cover;
   }
 
+  .ld_d_none{
+    display: none !important;
+  }
+
+  .ld_c_align {
+    text-align: center !important;
+  }
+
+  .ld_r_align {
+    text-align: right !important;
+  }
+
   .ld_xxxl_size {
     font-size: 32px !important;
   }
@@ -1033,7 +1114,7 @@ textarea {
     font-size: 27px !important;
   }
 
-  .ld_fs_24{
+  .ld_fs_24 {
     font-size: 24px !important;
   }
 
@@ -1047,6 +1128,10 @@ textarea {
 
   .ld_l_size {
     font-size: 18px !important;
+  }
+
+  .ld_fs_17 {
+    font-size: 17px !important;
   }
 
   .ld_m_size {
@@ -1273,6 +1358,10 @@ textarea {
     padding: 20px !important;
   }
 
+  .ld_A25padding {
+    padding: 25px !important;
+  }
+
   .ld_A30padding {
     padding: 30px !important;
   }
@@ -1305,12 +1394,20 @@ textarea {
     padding-top: 50px !important;
   }
 
+  .ld_lr50padding {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+
   .ld_r30padding {
     padding-right: 30px !important;
   }
 
   .ld_b30padding {
     padding-bottom: 30px !important;
+  }
+  .ld_b40padding {
+    padding-bottom: 40px !important;
   }
 
   .ld_b60padding {
@@ -1319,6 +1416,14 @@ textarea {
 
   .ld_l30padding {
     padding-left: 30px !important;
+  }
+
+  .ld_t25padding {
+    padding-top: 25px !important;
+  }
+
+  .ld_b25padding {
+    padding-bottom: 25px !important;
   }
 
   .ld_l25padding {
@@ -1551,6 +1656,19 @@ textarea {
     margin-bottom: 5px;
   }
 
+  .ld_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ld_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .ld_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .ld_M4width {
     max-width: 4% !important;
     min-width: 4% !important;
@@ -1566,6 +1684,11 @@ textarea {
     min-width: 10% !important;
   }
 
+  .ld_M15width {
+    max-width: 15% !important;
+    min-width: 15% !important;
+  }
+
   .ld_M20width {
     max-width: 20% !important;
     min-width: 20% !important;
@@ -1579,6 +1702,11 @@ textarea {
   .ld_M30width {
     max-width: 30% !important;
     min-width: 30% !important;
+  }
+
+  .ld_M35width {
+    max-width: 35% !important;
+    min-width: 35% !important;
   }
 
   .ld_M40width {
@@ -1725,6 +1853,10 @@ textarea {
     align-self: center !important;
   }
 
+  .ld_JCend {
+    justify-content: end !important;
+  }
+
   .ld_JCcenter {
     justify-content: center !important;
   }
@@ -1737,12 +1869,20 @@ textarea {
     justify-content: space-around !important;
   }
 
+  .ld_JCspaceE {
+    justify-content: space-evenly !important;
+  }
+
   .ld_boldText {
     font-weight: bold !important;
   }
 }
 
 @media (max-width: 1270px) {
+  .md_c_align {
+    text-align: center !important;
+  }
+
   .md_xxxl_size {
     font-size: 32px !important;
   }
@@ -1751,9 +1891,9 @@ textarea {
     font-size: 27px !important;
   }
 
-     .ld_fs_24 {
-       font-size: 24px !important;
-     }
+  .ld_fs_24 {
+    font-size: 24px !important;
+  }
 
   .md_xl_size {
     font-size: 22px !important;
@@ -1765,6 +1905,10 @@ textarea {
 
   .md_l_size {
     font-size: 18px !important;
+  }
+
+  .md_fs_17 {
+    font-size: 17px !important;
   }
 
   .md_m_size {
@@ -1991,6 +2135,10 @@ textarea {
     padding: 20px !important;
   }
 
+  .md_A25padding {
+    padding: 25px !important;
+  }
+
   .md_A30padding {
     padding: 30px !important;
   }
@@ -2029,6 +2177,10 @@ textarea {
 
   .md_b30padding {
     padding-bottom: 30px !important;
+  }
+
+  .md_b40padding {
+    padding-bottom: 40px !important;
   }
 
   .md_b60padding {
@@ -2269,6 +2421,19 @@ textarea {
     margin-bottom: 5px;
   }
 
+  .md_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .md_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .md_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .md_M4width {
     max-width: 4% !important;
     min-width: 4% !important;
@@ -2443,6 +2608,10 @@ textarea {
     align-self: center !important;
   }
 
+  .md_JCend {
+    justify-content: end !important;
+  }
+
   .md_JCcenter {
     justify-content: center !important;
   }
@@ -2458,9 +2627,29 @@ textarea {
   .md_boldText {
     font-weight: bold !important;
   }
+
+  .vendorInput {
+    .mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+      margin: 0 !important;
+
+      .mat-form-field-flex .mat-form-field-infix {
+        border-top: none !important;
+        padding-top: 1em !important;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
+
+  .sd_d_none{
+    display: none !important;
+  }
+  .sd_c_align {
+    text-align: center !important;
+  }
+
   .sd_xxxl_size {
     font-size: 32px !important;
   }
@@ -2469,10 +2658,9 @@ textarea {
     font-size: 27px !important;
   }
 
-     .ld_fs_24 {
-       font-size: 24px !important;
-     }
-
+  .ld_fs_24 {
+    font-size: 24px !important;
+  }
 
   .sd_xl_size {
     font-size: 22px !important;
@@ -2484,6 +2672,10 @@ textarea {
 
   .sd_l_size {
     font-size: 18px !important;
+  }
+
+  .sd_fs_17 {
+    font-size: 17px !important;
   }
 
   .sd_m_size {
@@ -2708,6 +2900,10 @@ textarea {
 
   .sd_A20padding {
     padding: 20px !important;
+  }
+
+  .sd_A25padding {
+    padding: 25px !important;
   }
 
   .sd_A30padding {
@@ -2987,6 +3183,18 @@ textarea {
     margin-top: 5px;
     margin-bottom: 5px;
   }
+  .sd_tb10margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .sd_tb15margin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .sd_tb20margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
   .sd_M4width {
     max-width: 4% !important;
@@ -3118,8 +3326,17 @@ textarea {
     min-width: fit-content !important;
   }
 
+  .sd_Maxwidth {
+    max-width: max-content !important;
+    min-width: max-content !important;
+  }
+
   .sd_dflex {
     display: flex;
+  }
+
+  .sd_dgrid {
+    display: grid;
   }
 
   .sd_dflex_dir_column {
@@ -3162,6 +3379,10 @@ textarea {
     align-self: center !important;
   }
 
+  .sd_JCend {
+    justify-content: end !important;
+  }
+
   .sd_JCcenter {
     justify-content: center !important;
   }
@@ -3187,29 +3408,48 @@ textarea {
   background-color: #8000ff !important;
 }
 
+.bg_Light_purple {
+  background-color: #efdeff !important;
+}
+
 .vendorInput {
   .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-    margin: 0 !important;
-    .mat-form-field-flex .mat-form-field-infix {
-      border-top: none !important;
-      padding-top: 1.4em !important;
+    padding-bottom: 0px !important;
+
+    .mat-form-field-infix {
+      padding: 10px 0 !important;
+      border-top: none;
+      height: 20px;
+      line-height: 24px;
     }
   }
+}
+
+@media (max-width: 900px) {
 }
 
 .vendorSelect {
   .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-    margin: 0 !important;
-    .mat-form-field-flex .mat-form-field-infix {
-      // border-top: none !important;
-      // padding-top: 1.4em !important;
+    padding-bottom: 0px !important;
+
+    .mat-form-field-infix {
+      padding: 10px 0 !important;
+      border-top: none;
+      height: 20px;
+      line-height: 24px;
     }
   }
 }
 
-.mat-form-field-flex{
+.mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: 0px !important;
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+  transform: none !important;
+}
+
+.mat-form-field-flex {
   align-items: center !important;
 }
 
@@ -3219,8 +3459,7 @@ textarea {
   color: yellow !important;
 }
 
-
-.tooltip_c{
+.tooltip_c {
   padding: 0 !important;
   box-shadow: none !important;
   min-width: 0 !important;
@@ -3229,15 +3468,11 @@ textarea {
   vertical-align: -webkit-baseline-middle !important;
 }
 
-.custom_tooltip{
+.custom_tooltip {
   color: #000000 !important;
-  background: #FFFFFF !important;
-  box-shadow: 0px -1px 5px rgba(190, 190, 190, 0.25), 0px 4px 4px rgba(100, 100, 100, 0.25) !important;
+  background: #ffffff !important;
+  box-shadow: 0px -1px 5px rgba(190, 190, 190, 0.25),
+    0px 4px 4px rgba(100, 100, 100, 0.25) !important;
   border-radius: 5px !important;
   padding: 8px !important;
-}
-
-
-.dialogLayout1 mat-dialog-container{
-  padding: 0px !important;
 }

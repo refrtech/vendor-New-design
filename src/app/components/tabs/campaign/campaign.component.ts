@@ -46,12 +46,10 @@ export class CampaignComponent implements OnInit {
             this.userData = mine;
             this.execute(mine);
           }else{
-            console.log("CREATE CAMP")
             // GO TO CREATE CAMP
             //this.auth.resource.router.navigate(["/store/create-campaign"]);
           }
         }else{
-          console.log("CREATE STORE")
           // GO TO CREATE STORE
           //this.auth.resource.router.navigate(["/store/create-location"]);
         }
@@ -93,7 +91,6 @@ export class CampaignComponent implements OnInit {
     refDialog.afterClosed().subscribe(ref =>{
       if(!ref || !ref.id){}else{
         if(this.userData){
-          console.log("Add Money")
           //this.execute(this.userData);
           // const costX = (ref.tX !== 'tC') ? this.campCost(ref.tX) : ref.payCustom
           // const amRate = this.auth.resource.campaignPlans;
@@ -144,12 +141,8 @@ export class CampaignComponent implements OnInit {
     });
     refDialog.afterClosed().subscribe(ref =>{
       if(!ref.success){
-        console.log(ref)
         this.auth.resource.startSnackBar(ref.info)
         //this.disableForm = false;
-      }else{
-        console.log("Payment Complete")
-
       }
     })
   }

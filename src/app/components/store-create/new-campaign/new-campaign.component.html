@@ -1,218 +1,342 @@
-<div class="formHold textC">
-  <h3 class="textL c_primary" *ngIf="enableDirect" 
-  style="margin-bottom: 24px !important;" >Create campaign</h3>
-
-    <app-content *ngIf="!(store$ | async)"></app-content>
-
-<form (submit)="true" *ngIf="store$ | async as store">
-
-      <mat-form-field appearance="legacy" class="fullWidth">
-        <mat-label>Campaign name</mat-label>
-        <input [disabled]="disableForm"
-        matInput [(ngModel)]="storeCamp.campaignName" placeholder="Enter store name" autocomplete="off" name="campaignName" required>
-        <mat-error>Campaign name is required.</mat-error>
-      </mat-form-field>
-
-
-      <br>
-
-
-    <!--p class="textL" style="
-    height: 52px;
-    line-height: 52px !important;
-    margin-left: 1% !important;
-    margin-right: 0px !important;
-">Set duration <span style="font-size: 12px; vertical-align: middle;">(minimum one month)</span></p-->
-
-      <mat-form-field appearance="legacy" class="halfWidth">
-        <mat-label>From</mat-label>
-        <input matInput color="primary" placeholder="Press icon to choose" [matDatepicker]="pickerS" name="dateS" [(ngModel)]="storeCamp.dateS" [min]="startDate" [max]="maxStaDate" (ngModelChange)="storeCamp.dateE = ''" readonly [disabled]="disableForm">
-        <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
-        <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
-        <mat-error>from is required.</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="legacy" class="halfWidth">
-        <mat-label>Until</mat-label>
-        <input matInput color="primary" placeholder="Press icon to choose" [matDatepicker]="pickerE" name="dateE" [(ngModel)]="storeCamp.dateE" [min]="minEndDate" [max]="maxEndDate" readonly [disabled]="disableForm || !storeCamp.dateS">
-        <mat-datepicker-toggle matSuffix [for]="pickerE"></mat-datepicker-toggle>
-        <mat-datepicker #pickerE startView="month" [disabled]="disableForm || !storeCamp.dateS" [startAt]="minEndDate"></mat-datepicker>
-        <mat-error>until is required.</mat-error>
-      </mat-form-field>
-
-      <br>
-      
-
-      <div class="timetable">
-        <table>
-            <tr>
-                <td colspan="3" class="tit">Discount type *</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                  <a mat-button color="primary" [disabled]="disableForm" (click)="
-                  storeCamp.type = 'flat'; 
-                  defualtCamp.nowCB = 100; 
+<!-- <div class="formHold textC">
+  <h3 class="textL c_primary" *ngIf="enableDirect" style="margin-bottom: 24px !important;">Create campaign</h3>
+  <app-content *ngIf="!(store$ | async)"></app-content>
+  <form (submit)="true" *ngIf="store$ | async as store">
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Campaign name</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeCamp.campaignName" placeholder="Enter store name"
+        autocomplete="off" name="campaignName" required>
+      <mat-error>Campaign name is required.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="legacy" class="halfWidth">
+      <mat-label>From</mat-label>
+      <input matInput color="primary" placeholder="Press icon to choose" [matDatepicker]="pickerS" name="dateS"
+        [(ngModel)]="storeCamp.dateS" [min]="startDate" [max]="maxStaDate" (ngModelChange)="storeCamp.dateE = ''"
+        readonly [disabled]="disableForm">
+      <mat-datepicker-toggle matSuffix [for]="pickerS"></mat-datepicker-toggle>
+      <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
+      <mat-error>from is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="halfWidth">
+      <mat-label>Until</mat-label>
+      <input matInput color="primary" placeholder="Press icon to choose" [matDatepicker]="pickerE" name="dateE"
+        [(ngModel)]="storeCamp.dateE" [min]="minEndDate" [max]="maxEndDate" readonly
+        [disabled]="disableForm || !storeCamp.dateS">
+      <mat-datepicker-toggle matSuffix [for]="pickerE"></mat-datepicker-toggle>
+      <mat-datepicker #pickerE startView="month" [disabled]="disableForm || !storeCamp.dateS"
+        [startAt]="minEndDate"></mat-datepicker>
+      <mat-error>until is required.</mat-error>
+    </mat-form-field>
+    <br>
+    <div class="timetable">
+      <table>
+        <tr>
+          <td colspan="3" class="tit">Discount type *</td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <a mat-button color="primary" [disabled]="disableForm"
+              (click)="
+                  storeCamp.type = 'flat';
+                  defualtCamp.nowCB = 100;
                   defualtCamp.minCB = 100;  storeCamp.max = 0;
-                  storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4);"><mat-icon>{{storeCamp.type == 'flat' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Flat</a>
-                  <a mat-button color="primary" [disabled]="disableForm" (click)="
-                  storeCamp.type = 'percent'; 
-                  defualtCamp.nowCB = 30;  
+                  storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4);"><mat-icon>{{storeCamp.type == 'flat' ?
+                'check_box':'check_box_outline_blank'}}</mat-icon> Flat</a>
+            <a mat-button color="primary" [disabled]="disableForm"
+              (click)="
+                  storeCamp.type = 'percent';
+                  defualtCamp.nowCB = 30;
                   defualtCamp.minCB = 10;  storeCamp.max = 100;
-                  storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4); "><mat-icon>{{storeCamp.type == 'percent' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Percentage</a>
-                </td>
-            </tr>
-        </table>
+                  storeCamp.cbNew = defualtCamp.minCB; storeCamp.cbExi = (storeCamp.cbNew/2); storeCamp.cbDir = (storeCamp.cbNew/4); "><mat-icon>{{storeCamp.type ==
+                'percent' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Percentage</a>
+          </td>
+        </tr>
+      </table>
     </div>
-
-
-      <mat-form-field appearance="legacy" class="fullWidth">
-        <mat-label>Cashback amount</mat-label>
-        <input [disabled]="disableForm" [min]="defualtCamp.minCB" [max]=" 
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Cashback amount</mat-label>
+      <input [disabled]="disableForm" [min]="defualtCamp.minCB" [max]="
         (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
         (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
         0
-        " matInput 
-        [(ngModel)]="storeCamp.cbNew" 
-        (ngModelChange)="setUpCashback(storeCamp.cbNew)" placeholder="Set cashback amount" autocomplete="off" type="number" name="cashback" required>
-        <span matPrefix *ngIf=" storeCamp.type == 'flat' ">₹ &nbsp;</span>
-        <span matSuffix *ngIf=" storeCamp.type == 'percent' ">&nbsp; %</span>
-        <mat-error *ngIf="!storeCamp.cbNew">Cashback amount is required.</mat-error>
-        <mat-error *ngIf="storeCamp.cbNew">Min amount {{defualtCamp.minCB}} & Max {{
-            (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
-            (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
-            0
-            }}.</mat-error>
-      </mat-form-field>
-
-      <br>
-
-      <div class="timetable">
-        <table>
-            <tr>
-                <td colspan="2" class="tit">Customize Reward-structure *</td>
-            </tr>
-            <tr>
-                <td><span class="rewardType">New lead</span></td>
-                <td>
-                    <mat-form-field appearance="legacy" class="fullWidth">
-                      <mat-label>Cashback</mat-label>
-                      <input [disabled]="disableForm"
-                      matInput [ngModel]="storeCamp.cbNew" name="cbNewLead" placeholder="for new leads" autocomplete="off" type="number" readonly>
-                      <mat-error *ngIf="!storeCamp.cbNew">Cashback amount is required.</mat-error>
-                      <mat-error *ngIf="storeCamp.cbNew">Min {{defualtCamp.minCB}} & Max {{
-                          (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
-                          (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
-                          0
-                          }}.</mat-error>
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="rewardType">Existing leads</span></td>
-                <td>
-                    <mat-form-field appearance="legacy" class="fullWidth">
-                      <mat-label>Cashback</mat-label>
-                      <input [disabled]="disableForm" [min]="defualtCamp.minCB / 2" [max]="storeCamp.cbNew"
-                      matInput [(ngModel)]="storeCamp.cbExi" name="cbExtLead" placeholder="for existing customers" autocomplete="off" type="number" required>
-                      <mat-error *ngIf="!storeCamp.cbExi">Cashback amount is required.</mat-error>
-                      <mat-error *ngIf="storeCamp.cbExi">Min {{defualtCamp.minCB / 2}} & Max {{storeCamp.cbNew / 2}}.</mat-error>
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="rewardType">Direct sale</span></td>
-                <td>
-                    <mat-form-field appearance="legacy" class="fullWidth">
-                      <mat-label>Cashback</mat-label>
-                      <input [disabled]="disableForm" [min]="defualtCamp.minCB / 4" [max]="storeCamp.cbNew / 2"
-                      matInput [(ngModel)]="storeCamp.cbDir" name="cbDirect" placeholder="for direct sale" autocomplete="off" type="number" required>
-                      <mat-error *ngIf="!storeCamp.cbDir">Cashback amount is required.</mat-error>
-                      <mat-error *ngIf="storeCamp.cbDir">Min {{defualtCamp.minCB / 4}} & Max {{storeCamp.cbNew / 2}}.</mat-error>
-                    </mat-form-field>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-      <mat-form-field appearance="legacy" class="fullWidth">
-        <mat-label>Minimum order value</mat-label>
-        <input [disabled]="disableForm" [min]="storeCamp.cbNew" [max]="9999"
-        matInput [(ngModel)]="storeCamp.min" placeholder="Set MOV for cashback" autocomplete="off" type="number" name="cashbackMin" required>
-        <span matPrefix>₹ &nbsp;</span>
-        <mat-error>Minimum order value is required.</mat-error>
-      </mat-form-field>
-      
-      <br>
-
-      <mat-form-field appearance="legacy" class="fullWidth" *ngIf=" storeCamp.type == 'percent' ">
-        <mat-label>Maximum cashback</mat-label>
-        <input [disabled]="disableForm"
-        matInput [(ngModel)]="storeCamp.max" placeholder="Set max cashback" autocomplete="off" type="number" name="campaignMax" required>
-        <span matPrefix>₹ &nbsp;</span>
-        <mat-error>Maximum cashback is required.</mat-error>
-      </mat-form-field>
-
-      <br *ngIf=" storeCamp.type == 'percent' ">
-
-      <table class="tierTable"  cellspacing="0" cellpadding="0">
-<ng-container *ngIf="!enableDirect">
-
-  
-        <tr class="c_persist">
-            <th class="textL" colspan="2"><span class="tit">Tier</span></th>
-            <th class="b_primaryLight"><span class="c_primary">No of Sales</span></th>
-            <th>Payment</th>
+        " matInput [(ngModel)]="storeCamp.cbNew" (ngModelChange)="setUpCashback(storeCamp.cbNew)"
+        placeholder="Set cashback amount" autocomplete="off" type="number" name="cashback" required>
+      <span matPrefix *ngIf=" storeCamp.type == 'flat' ">₹ &nbsp;</span>
+      <span matSuffix *ngIf=" storeCamp.type == 'percent' ">&nbsp; %</span>
+      <mat-error *ngIf="!storeCamp.cbNew">Cashback amount is required.</mat-error>
+      <mat-error *ngIf="storeCamp.cbNew">Min amount {{defualtCamp.minCB}} & Max {{
+        (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
+        (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
+        0
+        }}.</mat-error>
+    </mat-form-field>
+    <br>
+    <div class="timetable">
+      <table>
+        <tr>
+          <td colspan="2" class="tit">Customize Reward-structure *</td>
         </tr>
-<ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
-        <!--tr class="c_persist textL">
-            <td><span class="c_invert">Tier {{i+1}}</span></td>
-            <td colspan="2"><span class="c_invert" style="font-size: 12px;" *ngIf="i == 0">No of Sales</span></td>
-        </tr-->
-
-          <tr class="c_primaryLight" [class]=" 'tier' + (i + 1) ">
-              <!--td class="textL">{{i+1 == 1 ? 'I':''}}{{i+1 == 2 ? 'II':''}}{{i+1 == 3 ? 'III':''}}{{i+1 == 4 ? 'IV':''}}</td-->
-              <td class="textL" colspan="2"><p class="c_white">₹ {{t.cost}}<br><span style="font-size: 12px;">You get ₹ {{t.refill}}</span></p></td>
-              <td class="b_primaryLight"><p class="c_white scaleIT">{{(t.refill/(1.5 * 
-                  ( 
-                      (storeCamp.type !== 'flat' ? 0 : (storeCamp.cbNew || defualtCamp.nowCB) ) +
-                      (storeCamp.type !== 'percent' ? 0 : (storeCamp.max) || defualtCamp.maxCB) +
-                      0
-                  )
-                  ) | number:'1.0-0' )}}</p></td>
-              <td class="textR"><button mat-raised-button color="primary" 
-                [disabled]="disableForm || 
-                storeCamp.cbNew > t.refill ||
-                storeCamp.type !== 'percent' && storeCamp.max > t.refill " (click)="createStoreCampaign( t.tX, false )">Pay</button></td>
-          </tr>
-
-</ng-container>
-
-        <tr class="b_accent c_persist">
-            <th class="textL" colspan="4"><span class="c_invert">Enterprise Tier for large Corporations</span></th>
+        <tr>
+          <td><span class="rewardType">New lead</span></td>
+          <td>
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Cashback</mat-label>
+              <input [disabled]="disableForm" matInput [ngModel]="storeCamp.cbNew" name="cbNewLead"
+                placeholder="for new leads" autocomplete="off" type="number" readonly>
+              <mat-error *ngIf="!storeCamp.cbNew">Cashback amount is required.</mat-error>
+              <mat-error *ngIf="storeCamp.cbNew">Min {{defualtCamp.minCB}} & Max {{
+                (storeCamp.type == 'flat' ? defualtCamp.maxFl : 0) +
+                (storeCamp.type == 'percent' ? defualtCamp.maxPe : 0) +
+                0
+                }}.</mat-error>
+            </mat-form-field>
+          </td>
         </tr>
-          <tr class="b_accent tierCustom c_white" >
-              <td colspan="3"><input class="b_persist c_invert" [(ngModel)]="payCustom" min="1" placeholder="Negotiated amount" type="number" name="customPack">
-                  <!--p>₹ {{100}}<br><span style="font-size: 12px;">You get ₹ {{99}}</span></p-->
-              </td>
-              <td class="textR"><button mat-stroked-button color="primary" [disabled]="disableForm || !payCustom" (click)="createStoreCampaign( 'tC', false )">Apply</button></td>
-          </tr>
-
-</ng-container>
-          <tr class="c_persist"><td colspan="4" style="padding: 30px 0 0 0 !important;">
-              <a mat-raised-button [routerLink]=" storeCamp.storeTyp !== 'Offl' ? '/store/add-product' : '/dash' " class="c_invert" *ngIf="!enableDirect">Create Later</a>
-              <div style="display: flex; margin: 0 16px; " *ngIf="enableDirect">
-              <a mat-raised-button class="c_invert" mat-dialog-close *ngIf="enableDirect">Create Later</a>
-              <span class="divide"></span>
-              <a mat-raised-button color="primary" *ngIf="enableDirect" [disabled]="disableForm" (click)="createStoreCampaign( ('t' + (0+1)) , true )">Create Campaign</a>
-              </div>
-          </td></tr>
+        <tr>
+          <td><span class="rewardType">Existing leads</span></td>
+          <td>
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Cashback</mat-label>
+              <input [disabled]="disableForm" [min]="defualtCamp.minCB / 2" [max]="storeCamp.cbNew" matInput
+                [(ngModel)]="storeCamp.cbExi" name="cbExtLead" placeholder="for existing customers" autocomplete="off"
+                type="number" required>
+              <mat-error *ngIf="!storeCamp.cbExi">Cashback amount is required.</mat-error>
+              <mat-error *ngIf="storeCamp.cbExi">Min {{defualtCamp.minCB / 2}} & Max {{storeCamp.cbNew /
+                2}}.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="rewardType">Direct sale</span></td>
+          <td>
+            <mat-form-field appearance="legacy" class="fullWidth">
+              <mat-label>Cashback</mat-label>
+              <input [disabled]="disableForm" [min]="defualtCamp.minCB / 4" [max]="storeCamp.cbNew / 2" matInput
+                [(ngModel)]="storeCamp.cbDir" name="cbDirect" placeholder="for direct sale" autocomplete="off"
+                type="number" required>
+              <mat-error *ngIf="!storeCamp.cbDir">Cashback amount is required.</mat-error>
+              <mat-error *ngIf="storeCamp.cbDir">Min {{defualtCamp.minCB / 4}} & Max {{storeCamp.cbNew /
+                2}}.</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
       </table>
-    
-        <!--div class="formFoot">
-            <span class="divide"></span>
-            <button [disabled]="disableForm" type="submit"
-            mat-stroked-button matStepperNext color="primary">Create Campaign</button>
-        </div-->
-</form>
     </div>
+    <mat-form-field appearance="legacy" class="fullWidth">
+      <mat-label>Minimum order value</mat-label>
+      <input [disabled]="disableForm" [min]="storeCamp.cbNew" [max]="9999" matInput [(ngModel)]="storeCamp.min"
+        placeholder="Set MOV for cashback" autocomplete="off" type="number" name="cashbackMin" required>
+      <span matPrefix>₹ &nbsp;</span>
+      <mat-error>Minimum order value is required.</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="legacy" class="fullWidth" *ngIf=" storeCamp.type == 'percent' ">
+      <mat-label>Maximum cashback</mat-label>
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeCamp.max" placeholder="Set max cashback"
+        autocomplete="off" type="number" name="campaignMax" required>
+      <span matPrefix>₹ &nbsp;</span>
+      <mat-error>Maximum cashback is required.</mat-error>
+    </mat-form-field>
+    <br *ngIf=" storeCamp.type == 'percent' ">
+    <table class="tierTable" cellspacing="0" cellpadding="0">
+      <ng-container *ngIf="!enableDirect">
+        <tr class="c_persist">
+          <th class="textL" colspan="2"><span class="tit">Tier</span></th>
+          <th class="bg_primaryLight"><span class="c_primary">No of Sales</span></th>
+          <th>Payment</th>
+        </tr>
+        <ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
+          <tr class="c_primaryLight" [class]=" 'tier' + (i + 1) ">
+            <td class="textL" colspan="2">
+              <p class="c_white">₹ {{t.cost}}<br><span style="font-size: 12px;">You get ₹ {{t.refill}}</span></p>
+            </td>
+            <td class="bg_primaryLight">
+              <p class="c_white scaleIT">{{(t.refill/(1.5 *
+                (
+                (storeCamp.type !== 'flat' ? 0 : (storeCamp.cbNew || defualtCamp.nowCB) ) +
+                (storeCamp.type !== 'percent' ? 0 : (storeCamp.max) || defualtCamp.maxCB) +
+                0
+                )
+                ) | number:'1.0-0' )}}</p>
+            </td>
+            <td class="textR"><button mat-raised-button color="primary" [disabled]="disableForm ||
+                storeCamp.cbNew > t.refill ||
+                storeCamp.type !== 'percent' && storeCamp.max > t.refill "
+                (click)="createStoreCampaign( t.tX, false )">Pay</button></td>
+          </tr>
+
+        </ng-container>
+        <tr class="b_accent c_persist">
+          <th class="textL" colspan="4"><span class="c_invert">Enterprise Tier for large Corporations</span></th>
+        </tr>
+        <tr class="b_accent tierCustom c_white">
+          <td colspan="3"><input class="b_persist c_invert" [(ngModel)]="payCustom" min="1"
+              placeholder="Negotiated amount" type="number" name="customPack">
+          </td>
+          <td class="textR"><button mat-stroked-button color="primary" [disabled]="disableForm || !payCustom"
+              (click)="createStoreCampaign( 'tC', false )">Apply</button></td>
+        </tr>
+      </ng-container>
+      <tr class="c_persist">
+        <td colspan="4" style="padding: 30px 0 0 0 !important;">
+          <a mat-raised-button [routerLink]=" storeCamp.storeTyp !== 'Offl' ? '/store/add-product' : '/dash' "
+            class="c_invert" *ngIf="!enableDirect">Create Later</a>
+          <div style="display: flex; margin: 0 16px; " *ngIf="enableDirect">
+            <a mat-raised-button class="c_invert" mat-dialog-close *ngIf="enableDirect">Create Later</a>
+            <span class="divide"></span>
+            <a mat-raised-button color="primary" *ngIf="enableDirect" [disabled]="disableForm"
+              (click)="createStoreCampaign( ('t' + (0+1)) , true )">Create Campaign</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div> -->
+
+
+
+
+
+<!-- New Des start-->
+
+
+
+
+<div class="formHold ld_lr50padding">
+  <h3 class="textL c_primary" *ngIf="enableDirect" style="margin-bottom: 24px !important;">Update campaign</h3>
+  <app-content *ngIf="!(store$ | async)"></app-content>
+
+
+
+  <form (submit)="true" *ngIf="store$ | async as store">
+    <div class="ld_m_size boldText ld_b10padding">Campaign name</div>
+    <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
+      [floatLabel]="floatLabelControl.value">
+      <input [disabled]="disableForm" matInput [(ngModel)]="storeCamp.campaignName" placeholder="Enter campaign name"
+        autocomplete="off" name="campaignName" required>
+    </mat-form-field>
+    <br>
+    <div class="ld_m_size boldText ld_b10padding">Starts From</div>
+    <br>
+    <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
+    [floatLabel]="floatLabelControl.value">
+    <input matInput color="primary" placeholder="Please select the start date." [matDatepicker]="pickerS"
+     [min]="startDate" [max]="maxStaDate" readonly [disabled]="disableForm" [(ngModel)]="storeCamp.dateS" name="startdate">
+    <mat-datepicker-toggle matSuffix [for]="pickerS" ></mat-datepicker-toggle>
+    <mat-datepicker #pickerS startView="month" [disabled]="disableForm" [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+    <div class="ld_m_size boldText ld_b10padding">Tiers</div>
+    <div class="c_gray ld_xs_size">
+      Higher savings on higher refill tiers
+    </div>
+    <mat-form-field appearance="fill" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
+      [floatLabel]="floatLabelControl.value">
+      <mat-select [(ngModel)]="seltier" [disabled]="disableForm" (selectionChange)="CalESTreach()" name="tiers">
+        <ng-container *ngFor="let t of auth.resource.campaignPlans; let i = index;">
+          <mat-option [value]="t.tX">Tier {{i + 1}} - ₹{{t.cost}} (wallet credits ₹{{t.refill}}) </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <div class="ld_m_size boldText ld_b5padding">Brand Reach</div>
+    <div class="caard ld_A15padding ld_t10margin sd_A10padding sd_t10margin br10">
+      <div class="ld_s_size sd_s_size boldText">
+        Instant reward for recommendation
+      </div>
+      <div class="c_gray ld_xs_size ld_b5padding sd_xs_size sd_b5padding">
+        First time reward to new customer for recommending your store
+      </div>
+      <mat-form-field appearance="outline" class="fullWidth" [hideRequiredMarker]="hideRequiredControl.value"
+        [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_instant" matInput autocomplete="off" maxlength="3"
+          type="number" name="costperrecomm" required>
+      </mat-form-field>
+      <div class="ld_s_size sd_s_size boldText">
+        Cost per successful recommendation
+      </div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_cpc" (change)="CalESTreach()" matInput
+          autocomplete="off" maxlength="3" type="number" name="costperclick" required>
+      </mat-form-field>
+
+      <div class="ld_s_size sd_s_size boldText">
+        Estimated Reach
+      </div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input disabled="true" [(ngModel)]="ESTreach" matInput autocomplete="off" name="Estreach" required>
+      </mat-form-field>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="ld_m_size sd_M_size boldText sd_b5padding ld_b5padding sd_t20margin ld_t20margin">Conversion</div>
+    <div class="caard ld_A15padding ld_t10margin sd_A15padding sd_t10margin br10">
+      <div class="ld_s_size sd_s_size boldText ld_b10padding sd_b10padding">
+        Cost per conversion
+      </div>
+      <div class="ld_dflex">
+        <div class="halfWidth ld_xs_size sd_xs_size c_gray">To new customer ( in % )</div>
+        <div class="halfWidth ld_xs_size sd_xs_size c_gray sd_d_none">To existing customer</div>
+      </div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_CPCNew" matInput autocomplete="off" maxlength="2"
+          name="cpcNew" required placeholder="% value">
+      </mat-form-field>
+      <div class="halfWidth sd_xs_size c_gray ld_d_none">To existing customer ( in % )</div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" [(ngModel)]="storeCamp.CashBack_CPCExi" matInput autocomplete="off" maxlength="2"
+          name="cpcExi" required placeholder="% value">
+      </mat-form-field>
+      <div class="ld_s_size sd_s_size boldText">
+        Estimated Conversions
+      </div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="fullWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="true" [(ngModel)]="ESTconv" matInput autocomplete="off" name="Estconv" required>
+      </mat-form-field>
+      <div class="ld_dflex">
+        <div class="halfWidth ld_xs_size sd_xs_size boldText">Maximum cashback</div>
+        <div class="halfWidth ld_xs_size boldText sd_d_none">Minimum order value</div>
+      </div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" type="number" [(ngModel)]="storeCamp.maxCashBack" matInput autocomplete="off"
+          name="Maxcashback" max-length="3" required placeholder="Enter amount">
+      </mat-form-field>
+      <div class="halfWidth ld_d_none sd_xs_size boldText">Minimum order value</div>
+      <mat-form-field class="ld_s_size sd_s_size" appearance="outline" class="halfWidth"
+        [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="floatLabelControl.value">
+        <input [disabled]="disableForm" type="number" [(ngModel)]="storeCamp.minOrderValue" matInput autocomplete="off"
+          name="Minorder" max-length="3" required placeholder="Enter amount">
+      </mat-form-field>
+    </div>
+    <div class="r_align dflex ld_t20padding sd_t20padding" *ngIf="!enableDirect">
+      <span class="purple_text textDecoration_underline" (click)="createStoreCampaign(seltier,true)">
+        Pay Later
+      </span>
+      <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin"
+        (click)="createStoreCampaign(seltier,false)">Pay Now ₹{{auth.resource.campaignPlans[campplanindex].cost}}</button>
+    </div>
+
+    <div class="r_align dflex ld_t20padding sd_t20padding" *ngIf="enableDirect">
+      <span class="purple_text" (click)="dialogRef.close()">
+        Close
+      </span>
+      <button mat-button class="bg_purple c_white ld_l20margin sd_l20margin"
+        (click)="createStoreCampaign(seltier,false)">Update Campaign</button>
+    </div>
+  </form>
+</div>

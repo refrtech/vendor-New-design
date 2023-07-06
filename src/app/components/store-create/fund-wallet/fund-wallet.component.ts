@@ -38,14 +38,11 @@ export class FundWalletComponent implements OnInit {
   execute(){
     const routePra = this.actRoute.snapshot.params;
     const what = routePra["campID"];
-    console.log(what);
-
     if(!what){
-      
+
     }else{
       this.auth.getCampaignByID(what).pipe(take(1)).subscribe((hype:any[]) => {
         if(!hype || !hype[0]){}else{
-          console.log("Mant", hype[0]);
           this.campaign$ = of(hype[0]);
           this.storeTyp = hype[0].storeTyp;
           this.auth.resource.storeTypeNow = hype[0].storeTyp;
@@ -78,7 +75,6 @@ export class FundWalletComponent implements OnInit {
       this.oferONL = tit;
     }
     const m = this.cart.filter((x:any) => x == tit)
-    console.log("Hit",m)
     if(m.length < free){
       for(var i=0; i < free; i++){
         this.cart.push(tit);
@@ -141,7 +137,6 @@ export class FundWalletComponent implements OnInit {
       const amTotal = payX;
 
       //this.startPayment()
-      console.log( amRate, amCamp, amMerc, amSale,amCost,amSave,amTotal );
       this.startPayment( by, tX, amRate, amCamp, amMerc, amSale,amCost,amSave,amTotal );
     }
   }
@@ -152,20 +147,19 @@ export class FundWalletComponent implements OnInit {
 
     const refDialog = this.auth.resource.dialog.open(PayComponent, {
       width: w, minWidth: w, maxWidth: w,
-      height: h, 
-      data:{ 
+      height: h,
+      data:{
         //campID: this.userData.campID,
         from:"SIGN", tX:tX,
-        type:["addBalance", "firstBalance", "vendorAc"], by, to:"Δ", amRate, amCamp, 
-        amMerc, 
-        amSale, amCost, amSave, 
+        type:["addBalance", "firstBalance", "vendorAc"], by, to:"Δ", amRate, amCamp,
+        amMerc,
+        amSale, amCost, amSave,
         amTotal, userData:this.userData },
-      
+
       disableClose: true, panelClass:"dialogLayout"//, autoFocus:false
     });
     refDialog.afterClosed().subscribe(ref =>{
       if(!ref.success){
-        console.log(ref)
         this.auth.resource.startSnackBar(ref.info)
         this.disableForm = false;
       }else{
@@ -177,7 +171,7 @@ export class FundWalletComponent implements OnInit {
         }
       }
     })
-    
+
   }
 
 }

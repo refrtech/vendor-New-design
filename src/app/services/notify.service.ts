@@ -26,8 +26,6 @@ async function generateFirebaseMessagingToken() {
     const messaging = getMessaging();
     getToken(messaging, { vapidKey: environment.firebase.apiKey }).then((currentToken) => {
       if (currentToken) {
-        console.log("Hurraaa!!! we got the token.....")
-        console.log(currentToken);
         // Send the token to your server and update the UI if necessary
         if(currentToken){
          // this.auth.updateUserSNS(uid, currentToken)
@@ -35,11 +33,9 @@ async function generateFirebaseMessagingToken() {
         // ...
       } else {
         // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
         // ...
       }
     }).catch((err) => {
-      console.log('An error occurred while retrieving token................. ', err);
       // ...
     });
    // return token;
@@ -98,10 +94,8 @@ export class NotifyService {
         const messaging = getMessaging(initializeApp(environment.firebase));
         //const messaging = getMessaging();
 
-        getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
+        getToken(messaging, { vapidKey: environment.firebase.apiKey }).then((currentToken) => {
           if (currentToken) {
-            console.log("Hurraaa!!! we got the token.....")
-            console.log(currentToken);
             // Send the token to your server and update the UI if necessary
             if(currentToken && !tokenSNS_.includes(currentToken)){
               this.auth.updateUserSNS(uid, currentToken)
@@ -109,16 +103,13 @@ export class NotifyService {
             // ...
           } else {
             // Show permission request UI
-            console.log('No registration token available. Request permission to generate one.');
             // ...
           }
         }).catch((err) => {
-          console.log('An error occurred while retrieving token. ', err);
           // ...
         });
       }else{
 
-        console.log('Initializing HomePage');
 
         // Request permission to use push notifications
         // iOS will prompt user and return if they granted permission or not
@@ -137,7 +128,6 @@ export class NotifyService {
           (token: Token) => {
             // alert('Push registration success, token: ' + token.value);
             let currentToken = token.value;
-            console.log(currentToken);
             // Send the token to your server and update the UI if necessary
             if(currentToken && !tokenSNS_.includes(currentToken)){
               this.auth.updateUserSNS(uid, currentToken)
@@ -169,15 +159,11 @@ export class NotifyService {
     }
 
     listen() {
-      console.log('Inside listening message :'+this.auth.resource.appMode);
       // generateFirebaseMessagingToken().then((result)=>{
-      //   console.log('Inside firebase token :'+result);
       // })
       if(!this.auth.resource.appMode){
         const messaging = getMessaging(initializeApp(environment.firebase));
-        console.log('Inside IFF  '+messaging);
         onMessage(messaging, (payload) => {
-          console.log('Message received. ', payload);
           const audio = new Audio();
           audio.src = 'https://firebasestorage.googleapis.com/v0/b/refr-india.appspot.com/o/not-kiddin-243.mp3?alt=media&token=edd1b859-a85b-45db-a034-302210698947';
           audio.load();
@@ -216,22 +202,18 @@ export class NotifyService {
           // ...
         } else {
           // Show permission request UI
-          console.log('No registration token available. Request permission to generate one.');
           // ...
         }
       }).catch((err) => {
-        console.log('An error occurred while retrieving token. ', err);
         // ...
       });
 
       // this.angularFireMessaging.messages.subscribe((message) => {
-      //   console.log(message);
       // });
     }
 
     requestPermission() {
       // this.angularFireMessaging.requestToken.subscribe((token) => {
-      //   console.log(token);
       // },(err) => {
       //   console.error('Unable to get permission to notify.', err);
       // });
@@ -239,7 +221,6 @@ export class NotifyService {
 
     receiveMessage() {
       // this.angularFireMessaging.messages.subscribe((payload) => {
-      // console.log("new message received. ", payload);
       // this.currentMessage.next(payload);
       // })
     }
@@ -247,9 +228,7 @@ export class NotifyService {
   // Listen for token refresh
   monitorRefresh(user:any) {
     // this.angularFireMessaging.tokenChanges.subscribe(token => {
-    //   console.log('Token refreshed.', token);
     //   // this.messaging.getToken.pipe(take(1)).subscribe(token => {
-    //   //   console.log('older token',token)
     //      this.saveToken(user, token)
     //   // })
     // });
@@ -258,7 +237,6 @@ export class NotifyService {
   // save the permission token in firestore
   private saveToken(user:any, token:any): void {
     // const currentTokens = user.fcmTokens || { }
-    // console.log(currentTokens, token)
 
     // // If token does not exist in firestore, update db
     // if (!currentTokens[token]) {
@@ -276,9 +254,7 @@ export class NotifyService {
   // get permission to send messages
   getPermission(user:any) {
     this.messaging.requestPermission.pipe(take(1)).subscribe(() => {
-      console.log('Notification permission granted.');
       this.messaging.getToken.pipe(take(1)).subscribe(token => {
-        console.log('created new token',token)
         this.saveToken(user, token)
       })
     })
@@ -288,9 +264,7 @@ export class NotifyService {
   // Listen for token refresh
   monitorRefresh(user:any) {
     this.messaging.onTokenRefresh(() => {
-      console.log('Token refreshed.');
       this.messaging.getToken.pipe(take(1)).subscribe(token => {
-        console.log('older token',token)
         this.saveToken(user, token)
       })
     });
@@ -299,7 +273,6 @@ export class NotifyService {
   // used to show message when app is open
   receiveMessages() {
     this.messaging.onMessage(payload => {
-     console.log('Message received. ', payload);
      this.messageSource.next(payload)
    });
   }
@@ -307,7 +280,6 @@ export class NotifyService {
   // save the permission token in firestore
   private saveToken(user:any, token:any): void {
       const currentTokens = user.fcmTokens || { }
-      //console.log(currentTokens, token)
 
       // If token does not exist in firestore, update db
       if (!currentTokens[token]) {
@@ -321,22 +293,16 @@ export class NotifyService {
 doWhat(){
   document.addEventListener('DOMContentLoaded', function() {
     if (!Notification) {
-     console.log('Desktop notifications not available in your browser. Try Chromium.');
      return;
     }
 
   if (Notification.permission !== 'granted')
      Notification.requestPermission();
    });
-
-   console.log(Notification.permission)
   //  function notifyMe() {
     if (Notification.permission !== 'granted')
      Notification.requestPermission();
     else {
-      console.log("MYRA")
-
-
     new Notification('Notification title', {
       icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
       body: 'Hey there! You\'ve been notified!',

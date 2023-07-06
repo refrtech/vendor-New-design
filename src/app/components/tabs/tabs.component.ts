@@ -40,8 +40,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
     public dependancy: DependencyService,
     private _bottomSheet: MatBottomSheet
   ) {
-    console.log(" router  " + this.router.url);
-
   }
 
   ngOnInit(): void {
@@ -71,7 +69,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    
+
     // let menu_bar:any = document.querySelector('.sc-bottom-bar');
     // let menu_item = document.querySelectorAll('.sc-menu-item');
     // let menu_indicator:any = document.querySelector('.sc-nav-indicator');
@@ -98,7 +96,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
     });
   }
   infossss() {
-    console.log(" .   " + this.dependancy.activeroute);
     if (this.dependancy.activeroute == '/dash') {
       this.router.navigate(['/dashHIW'])
     }
@@ -132,7 +129,6 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
       audio.src = 'https://firebasestorage.googleapis.com/v0/b/refr-india.appspot.com/o/not-kiddin-243.mp3?alt=media&token=edd1b859-a85b-45db-a034-302210698947';
       audio.load();
       audio.play();
-      console.log('Inside notificationList Listener constrcutor.');
       if (notifications) {
         audio.play().then(() => {
           // success
@@ -145,7 +141,6 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Inside Simple Changes :'+changes);
     const audio = new Audio();
     audio.src = 'https://firebasestorage.googleapis.com/v0/b/refr-india.appspot.com/o/not-kiddin-243.mp3?alt=media&token=edd1b859-a85b-45db-a034-302210698947';
     audio.load();
@@ -154,14 +149,12 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
   }
   ngAfterViewInit(): void {
     this.auth.user$.pipe(take(1)).subscribe((mine) => {
-      console.log(mine);
 
       if (mine) {
         this.getNotifiy(mine.phone);
         const handler = {
           set: function(target:any, property:any, value:any) {
             target[property] = value;
-            console.log('Array modified');
             // Call your function here to handle the change
             //myFunction();
             const audio = new Audio();
@@ -179,7 +172,7 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
             return true;
           }
         };
-        
+
         const proxy = new Proxy(this.notificationList$, handler);
       }
     })
@@ -188,8 +181,6 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
   ngOnInit(): void {
 
     // this.auth.user$.pipe(take(1)).subscribe((mine) => {
-    //   console.log(mine);
-
     //   if (mine) {
     //     this.getNotifiy(mine.phone);
     //   }
@@ -204,7 +195,7 @@ export class BottomSheetNotification implements OnInit, AfterViewInit ,OnChanges
       this.notificationList$ =  this.auth
       .getNotify(30, '+91'+phone);
     }
- 
+
       // .pipe(take(1))
       // .subscribe((d: any) => {
       //   if (d.length == 0 && phone.includes("+91") == true) {

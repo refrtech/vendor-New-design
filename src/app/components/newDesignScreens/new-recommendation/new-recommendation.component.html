@@ -1,0 +1,203 @@
+<div class="container">
+  <div class="row">
+    <div class="section r_align bg_white">
+      <div class="matDate">
+        <mat-form-field appearance="outline" class="vendorSelect orderdatepick">
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="section bg_white ld_b20padding sd_t20padding">
+      <div class="order_section col-100 ld_dflex">
+        <div class="ld_M100width br10 ld_dflex ld_c_align ld_JCspace">
+          <div class="ld_dflex sd_dflex ld_M35width">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Total orders
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                100
+              </div>
+            </div>
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                To be shipped
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                100
+              </div>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex sd_dflex ld_M35width sd_t20padding">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                To be delivered
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                100
+              </div>
+            </div>
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Total sales
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                100
+              </div>
+            </div>
+          </div>
+          <div class="ld_M30width"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="section bg_white ld_b40padding sd_tb20padding">
+      <div class="order_section col-100 ld_dflex">
+        <div class="ld_M100width br10 ld_dflex ld_c_align ld_JCspace">
+          <div class="ld_dflex sd_dflex ld_M35width">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Last Wallet Refill Date
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                12/03/23
+              </div>
+            </div>
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Wallet balance
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹4280
+              </div>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex sd_dflex ld_M35width sd_t15padding sd_b30padding">
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Cost per recommendation
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹20
+              </div>
+            </div>
+            <div class="ld_M50width sd_M50width">
+              <div class="ld_s_size sd_s_size fw_400">
+                Cost per conversion
+              </div>
+              <div class="ld_xl_size sd_xxl_size ld_boldText sd_boldText ld_t10padding sd_t20padding">
+                ₹20
+              </div>
+            </div>
+          </div>
+
+
+          <div class="ld_M30width ld_AScenter">
+            <!-- <button mat-button class="Aborder_purple purple_text" routerLink="/recommendsetting"> -->
+              <button mat-button class="Aborder_purple purple_text" (click)="createNew()">
+              Recommendation setting
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="section bg_white ld_t30padding sd_M100width sd_lr0padding">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Reach">
+          <table class="ld_M100width ld_t30margin sd_Maxwidth" mat-table [dataSource]="TransationdataSource" matSort>
+            <ng-container matColumnDef="Tran_details">
+              <th class="M40width sd_lr10padding" mat-header-cell *matHeaderCellDef mat-sort-header>
+                Order details
+              </th>
+              <td mat-cell *matCellDef="let row" class="A10padding sd_lr10padding">
+                <div class="dflex">
+                  <div class="l_align AScenter overFlow_dotted l10padding">
+                    <div class="s_size boldtext">
+                      {{row.tranID}}
+                    </div>
+                    <div class="ld_xxs_size c_gray">
+                      {{row.tranDate}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="User_details">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
+                User details
+              </th>
+              <td mat-cell *matCellDef="let row" class="line_throughtxt A10padding s_size sd_lr10padding">
+                {{row.User_Name}}
+                <div class="ld_xxs_size c_gray">
+                  {{row.user_No}}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Interaction">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
+                Interaction
+              </th>
+              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
+                {{row.clicks}}
+                <div class="c_gray">
+                  Clicks
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Refr_Token">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="sd_lr10padding">
+                Refr Token given
+              </th>
+              <td mat-cell class="A10padding s_size sd_lr10padding" *matCellDef="let row">
+                ₹{{row.Refrtoken}}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="OrderColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: OrderColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+        </mat-tab>
+        <mat-tab label="Conversions">Conversions</mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

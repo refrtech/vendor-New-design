@@ -50,11 +50,11 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
     draggable: false
   };
   initialCordinates = {
-    lat: 19.0760, 
+    lat: 19.0760,
     lng: 72.8777
   };
   initialMark = {
-    lat: 19.0760, 
+    lat: 19.0760,
     lng: 72.8777
   }
   storeOptions: google.maps.MarkerOptions = {
@@ -83,8 +83,8 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.indStates = this.auth.resource.foreignMarks[this.auth.resource.foreignMarks.findIndex((n:any) => n.iso == "IND")].states;    
-      this.execute()  
+      this.indStates = this.auth.resource.foreignMarks[this.auth.resource.foreignMarks.findIndex((n:any) => n.iso == "IND")].states;
+      this.execute()
     this.addSearchBox();
     }, 3000);
   }
@@ -110,7 +110,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
             this.loadPlacesAPI = true;
             bounds.union(place.geometry.viewport);
             this.inputClicked(place)
-            console.log("PLACES", place.geometry.location.lat(), place.geometry.location.lng())
             //vicinity
             let latX =place.geometry.location.lat();
             let lngX =place.geometry.location.lng();
@@ -124,11 +123,9 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
               //zoom: 16
             }; this.initialMark = this.initialCordinates;
             this.initialZoom = 16;
-            console.log("union", place)
           }else{
             bounds.extend(place.geometry.location);
-            console.log("extend")
-          } 
+          }
         }
       })
       this.Gmap.fitBounds(bounds)
@@ -166,7 +163,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
             };
             this.storeMarks.push(element)
           }
-          console.log(this.storeMarks)
 /*
           const x = {
             position:{
@@ -189,7 +185,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
   getInfoFromApi(latitude:number, longitude:number){
     this.loadPlacesAPI = true;
     this.depends.getLocationInfo("IND", latitude, longitude).pipe().subscribe((res:any) => {
-      console.log("HIT",res)
       if(!res || !res.success || !res.result || !res.result[0]){
         this.loadPlacesAPI = false;
       }else{
@@ -220,7 +215,7 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
       }
       this.initialCordinates = {
         //center: {
-          lat: this.storeLoc.loc?.latitude, 
+          lat: this.storeLoc.loc?.latitude,
           lng: this.storeLoc.loc?.longitude
         //},
         //zoom: 16
@@ -228,7 +223,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
       this.initialMark = this.initialCordinates;
       this.initialZoom = 16;
       //http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false
-      //console.log(this.storeLoc.loc )
       this.startScan = false;
       //let key = "AIzaSyABtVV28ilpCAlbhN-tEPe_t57QGwQ5WiM";
       //const newLocation = await this.httpClient.jsonp( `http://maps.googleapis.com/maps/api/geocode/json?key=${key}&latlng=${this.storeLoc.loc?.latitude},${this.storeLoc.loc?.longitude}&sensor=false`, 'callback');
@@ -243,11 +237,8 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
   }
   }
   inputClicked(result:any){
-    console.log("result", result)
     result.address_components.map((component:any) => {
-      const types = component.types
-      console.log("types", types)
-
+      const types = component.types;
       if (types.includes('postal_code')) {
         this.storeLoc.postal_code = component.long_name
       }
@@ -264,21 +255,17 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
         this.storeLoc.administrative_area_level_1 = component.long_name;
           const stateIndex = this.indStates.find((x:any) => {
             const z = this.storeLoc.administrative_area_level_1.toLowerCase() == x.name.toLowerCase();
-          console.log("state", z, this.storeLoc.administrative_area_level_1, x.name)
             return z
           })
           if(stateIndex?.isos){
-            console.log("stateIndex", stateIndex)
             this.storeLoc.stateISO = stateIndex.isos;
           }
         // const state = this.indStates[
         //   this.indStates.findIndex(x => {
         //     const z = x.name.toLowerCase() == this.storeLoc.administrative_area_level_1.toLowerCase();
-        //     console.log("z",z);
         //   })
         // ];
         // if(state){
-        //   console.log("state",state)
         //   this.storeLoc.indStateISO = state.isos;
         // }
       }
@@ -288,7 +275,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
       }
 
       if(types.includes('country')){
-        console.log("types", types, component.long_name)
         if(component.long_name.toLowerCase() !== "india"){
           this.storeLoc.postal_code = "";
           this.storeLoc.locality = "";
@@ -322,7 +308,7 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
       /*
       this.initialCordinates = {
         //center: {
-          lat: this.storeLoc.loc?.latitude, 
+          lat: this.storeLoc.loc?.latitude,
           lng: this.storeLoc.loc?.longitude
         //},
         //zoom: 16
@@ -337,15 +323,14 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
 
 
   createStoreLocation(addNewLoc:boolean){
-    console.log(this.storeLoc)
     //this.submitFirst = true;
     this.disableForm = true;
 
     if(
-      !this.storeLoc.locAddress || !this.storeLoc.locSearch || //!this.storeLoc.locality || 
+      !this.storeLoc.locAddress || !this.storeLoc.locSearch || //!this.storeLoc.locality ||
       !this.storeLoc.postal_code || !this.storeLoc.administrative_area_level_2 || !this.storeLoc.administrative_area_level_1 ||
 
-      !this.storeLoc.nationISO || !this.storeLoc.stateISO || !this.storeLoc.storeID 
+      !this.storeLoc.nationISO || !this.storeLoc.stateISO || !this.storeLoc.storeID
     ){
       if( !this.storeLoc.locAddress ){
         this.auth.resource.startSnackBar("Store address is required");
@@ -393,7 +378,6 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
         // create new location redirect
       }
     }).catch(err => {
-      console.log(err)
     })
   }
 
@@ -403,10 +387,10 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
 
     this.storeLoc = {
       storeID: "",
-  
+
       nationISO: "IND",
       stateISO: "",
-  
+
       locAddress: "",
       locSearch:"",
       loc:{},
@@ -417,18 +401,18 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
       point_of_interest:"",
     }
     this.initialCordinates = {
-      lat: 19.0760, 
+      lat: 19.0760,
       lng: 72.8777
     };
     this.initialMark = {
-      lat: 19.0760, 
+      lat: 19.0760,
       lng: 72.8777
     }
     this.storeMarks = [];
 
     this.initialZoom = 11;
     this.indStates = [];
-  
+
     //this.submitFirst = false;
     this.disableForm = false;
     this.ngAfterViewInit();

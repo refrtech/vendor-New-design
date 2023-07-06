@@ -23,15 +23,10 @@ export class PayComponent implements OnInit {
     public dialogRef: MatDialogRef<PayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private winRef: WindowService,
-  ) { 
+  ) {
     this.paymentData = this.data;
-    console.log( data );
-
-    if(!data){
-      console.log("NO DATA")
-
-    }else{
-
+    if(!data){}
+    else{
       if(this.paymentData.from == 'SIGN'){
       this.pay.startGatewaySign(this.data).then(ref => {
         if(!ref){
@@ -44,47 +39,38 @@ export class PayComponent implements OnInit {
       }
 
       if(this.paymentData.from == 'CAMP'){
-        console.log("paymentData", this.paymentData)
       this.pay.startGatewayCamp(this.data).then(ref => {
         if(!ref){
           this.payFailed("Payment Failed, Try again...");
         }else{
           this.paymentId = ref.id;
-          console.log("paymentId", ref)
           this.createRzpayOrder(this.paymentId, this.paymentData.amTotal, "Refr Technology", "Onboarding Refill","#512da8")
         }
       })
       }
 
       if(this.paymentData.from == 'FUND'){
-        console.log("paymentData", this.paymentData)
       this.pay.startGatewayCamp(this.data).then(ref => {
         if(!ref){
           this.payFailed("Payment Failed, Try again...");
         }else{
           this.paymentId = ref.id;
-          console.log("paymentId", ref)
           this.createRzpayOrder(this.paymentId, this.paymentData.amTotal, "Refr Technology", "Campaign Refill","#512da8")
         }
       })
       }
 
       if(this.paymentData.from == 'WALL'){
-        console.log("paymentData", this.paymentData)
       this.pay.startGatewayWallet(this.data).then(ref => {
         if(!ref){
           this.payFailed("Payment Failed, Try again...");
         }else{
           this.paymentId = ref.id;
-          console.log("paymentId", ref)
           this.createRzpayOrder(this.paymentId, this.paymentData.amTotal, "Refr Technology", "Wallet Balance","#512da8")
         }
       })
       }
-
-
     }
-
   }
 
   ngOnInit(): void {
@@ -107,13 +93,11 @@ export class PayComponent implements OnInit {
     if(type !== "razorpay" || !this.paymentData.by || !this.paymentData.amTotal){
       this.payFailed("Payment Failed, You will be refunded within 3 to 15 days.");
     }else{
-      console.log("Payment responce", response);
       const gwID = response.razorpay_payment_id;
       const gwSIGN = response.razorpay_signature;
       const gwORDR = response.razorpay_order_id;
       const amt = this.paymentData.amCamp;
       const tX = this.paymentData.tX;
-      console.log("tX:", tX)
 
       if(this.paymentData.from == 'WALL'){
           const amtX:number = this.paymentData.amRate.refill;
@@ -121,7 +105,7 @@ export class PayComponent implements OnInit {
           const ExRate:number = this.paymentData.amRate.cutRate;
 
         this.pay.addVendorHypeBalance(
-          this.paymentId, this.paymentData.by, amtX,//this.paymentData.amTotal, 
+          this.paymentId, this.paymentData.by, amtX,//this.paymentData.amTotal,
           gwID,gwSIGN,gwORDR, gwInfo
         );
         this.pay.records("", refrFees)
@@ -140,14 +124,14 @@ export class PayComponent implements OnInit {
           let camper = {
             cost: 2000,
             refill: 1660, refr: 700,
-            refrGST: 44.66, refrGST_c: 9, refrGST_n: 18, refrGST_s: 9, 
+            refrGST: 44.66, refrGST_c: 9, refrGST_n: 18, refrGST_s: 9,
             refrGw: 47.2, refrGwRATE: 2.36,
             tX: "t11",
             total: 2000
           }
 
           this.pay.addVendorHypeBalance(
-            this.paymentId, this.paymentData.by, amtX,//this.paymentData.amTotal, 
+            this.paymentId, this.paymentData.by, amtX,//this.paymentData.amTotal,
             gwID,gwSIGN,gwORDR, gwInfo
           ).then(() => {
             const data = {
@@ -166,7 +150,6 @@ export class PayComponent implements OnInit {
 
         }
         if(this.paymentData.userData.campID){
-          console.log("CAMP: " + this.paymentData.userData.campID)
           this.pay.completeHypePayment(this.paymentData.userData.campID);
         }
       }
@@ -188,24 +171,19 @@ export class PayComponent implements OnInit {
       userData: this.paymentData.userData,
       theme:theme || "#ff0000"
     }
-    //console.log(data);
     //RazorpayCheckout.on("payment.success", successCallback);
     //RazorpayCheckout.on("payment.cancel", cancelCallback);
     // RazorpayCheckout.open(initRes);
     // call api to create order_id
     //this.pay.payWithRazor(data);
     this.pay.onlinePaymentNew("IND", data).pipe(take(1)).subscribe((getPayRes: any) => {
-      console.log("getPayRes", getPayRes);
-
       if(getPayRes && getPayRes.success){
-    
+
         getPayRes.modal = {
           ondismiss: () => {
-            console.log("ondismiss")
             this.payFailed("Payment Failed, Try again...");
             // this.storeservice.cancelOrder(orderId).subscribe((elem) => {
             //   if(elem.status === 200){
-            //     console.log(elem);
             //     //this.toastrService.error('Transaction has been cancelled')
             //     //this.router.navigate(["/tabs/home"])
             //   }
@@ -213,20 +191,16 @@ export class PayComponent implements OnInit {
           },
         };
         getPayRes.handler = (response:any, error:any) => {
-          console.log("hello bro: ")
           if (response) {
-          console.log("response: ", response)
           const dataVerify = {
             amount:amount, currency:"INR", //amount_paid:5000, amount_due:126,
             paymentId: response.razorpay_payment_id,
             signature: response.razorpay_signature,
             order_id: response.razorpay_order_id
           }
-          console.log("dataVerify",dataVerify)
           //this.payComplete("razorpay", response)
 
           this.pay.verifyPayment("IND", dataVerify).pipe(take(1)).subscribe((getVerifyRes:any) => {
-             console.log("getPayRes", getVerifyRes)
              if(!getVerifyRes || !getVerifyRes.success){
               this.payFailed("Payment Failed, Try again...");
              }else{
@@ -237,14 +211,13 @@ export class PayComponent implements OnInit {
 
           /*
           */
-          
+
             //this.toastrService.success('Payment completed successfully.');
 
             //this.router.navigate(["/OrderStatus/" + data.orderId +'/' + (this.type || "direct") ]); //DIP
             //this.router.navigate([`/success-message/${response.razorpay_order_id}`]);
           }
           if(error){
-            console.log("error: ", error)
             this.payFailed("Payment Failed, Try again..."); // You need to store error
             //this.toastrService.success('Payment failed.');
             //this.router.navigate(["/tabs/home"])

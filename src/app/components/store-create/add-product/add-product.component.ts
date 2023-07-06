@@ -61,7 +61,6 @@ export class AddProductComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     const urlX = this.auth.resource.router.url;
-    console.log("urlX", urlX)
     if(urlX == '/my-inventory'){ this.enableDirect = true; }
   }
 
@@ -119,10 +118,8 @@ export class AddProductComponent implements OnInit, AfterViewInit {
         const iX = this.storeProduct.variants.filter((v:any) => {
           return v.title?.toLowerCase() == title.toLowerCase() && v.type == type; //&& v.name == x;
         })
-        console.log("i Got Hit", iX.length)
-    
+
         if(iX.length == 1){
-          console.log("i Got Hit 1")
           this.choose.titles.splice( this.choose.titles.findIndex(v => v.toLowerCase() == title.toLowerCase()), 1 );
         }
         this.storeProduct.variants.splice( this.storeProduct.variants.findIndex(v => v.name.toLowerCase() == x.toLowerCase() && v.title?.toLowerCase() == title.toLowerCase() && v.type == type ), 1 );
@@ -139,14 +136,12 @@ export class AddProductComponent implements OnInit, AfterViewInit {
           if( !this.choose.titles.includes(title) ){
             this.choose.titles.push(title);
           }
-        }else{
-          console.log("enter Proper")
         }
       }else{
         const data = {type, name:x};
         this.storeProduct.variants.push(data);
       }
-      
+
     }
   }
   removeVariantBulk( type:string, title:string ){
@@ -169,13 +164,9 @@ export class AddProductComponent implements OnInit, AfterViewInit {
         source:CameraSource.Camera,
         resultType: CameraResultType.Uri
       });
-      console.log("image", image)
       const imageUrl = image.webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
-      }else{
-        console.log("No image")
       }
     }
   }
@@ -190,9 +181,6 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       const imageUrl = image.photos[0].webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
-      }else{
-        console.log("No image")
       }
     }
   }
@@ -209,10 +197,8 @@ export class AddProductComponent implements OnInit, AfterViewInit {
         disableClose: true, panelClass:"dialogLayout"//, autoFocus:false
       });
       refDialog.afterClosed().subscribe(result =>{
-        console.log("cropper closed")
         if(!result.success){
           if(result.info){
-            console.log(result.info);
             this.auth.resource.startSnackBar(result.info)
           }
         }else{
@@ -224,10 +210,8 @@ export class AddProductComponent implements OnInit, AfterViewInit {
 
 
   createStoreProduct(){
-    console.log(this.storeProduct)
     this.submitFirst = true;
     this.disableForm = true;
-
     if(
       !this.storeProduct.storeID ||
       !this.storeProduct.productName ||
@@ -236,7 +220,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       !this.storeProduct.cost || this.invalidRate(this.storeProduct.cost) ||
       this.storeProduct.price < this.storeProduct.cost ||
       !this.storeProduct.category ||
-      !this.storeProduct.code 
+      !this.storeProduct.code
     ){
       if(!this.storeProduct.productName){
         this.auth.resource.startSnackBar("Product name is required");
@@ -290,7 +274,6 @@ export class AddProductComponent implements OnInit, AfterViewInit {
         // create new location redirect
       //}
     }).catch(err => {
-      console.log(err)
     })
   }
 

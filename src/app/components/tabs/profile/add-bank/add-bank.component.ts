@@ -96,7 +96,6 @@ export class AddBankComponent implements OnInit {
     this.makingChanges = true;
     if(!this.vpaX || this.invalid_VPA(this.vpaX)){
       this.resource.startSnackBar("Please Enter Valid UPI ID")
-      console.log(this.vpaX)
       this.makingChanges = false;
     }else{
       this.dialogRef.close({success:true, vpa: this.vpaX});

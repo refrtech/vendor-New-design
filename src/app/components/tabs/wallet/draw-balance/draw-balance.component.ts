@@ -86,7 +86,6 @@ export class DrawBalanceComponent implements OnInit {
 
 this.auth.getStore(sid).pipe(take(1)).subscribe(shop => {
             let storename = shop["name"];
-            // console.log("storename ", storename)
 
             if(this.payMethod == "IMPS" && BankIMPS && BankIMPS.verified){
               this.startIMPS(uid, sid, xBankIMPS, xBankUPI, balance, locked, redeem,
@@ -109,7 +108,6 @@ this.auth.getStore(sid).pipe(take(1)).subscribe(shop => {
   startIMPS(user:string, store:string, BankIMPS:any, BankUPI:any, balance:number, locked:number, redeem:number,
     username:string, storename:string
     ){
-    console.log("startIMPS")
     this.pay.createPayout("IMPS", BankIMPS, BankUPI, user, store, balance, locked, redeem,
     username, storename
     ).then(() => {
@@ -120,7 +118,6 @@ this.auth.getStore(sid).pipe(take(1)).subscribe(shop => {
   startUPI(user:string, store:string, BankIMPS:any, BankUPI:any, balance:number, locked:number, redeem:number,
     username:string, storename:string
     ){
-    console.log("startUPI")
     this.pay.createPayout("UPI", BankIMPS, BankUPI, user, store, balance, locked, redeem,
     username, storename
     ).then(() => {

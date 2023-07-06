@@ -82,7 +82,7 @@ export class ListProductComponent implements OnInit {
     public auth: AuthService,
     public router:Router,
     public dependancy:DependencyService
-    ) { 
+    ) {
       this.dependancy.activeroute = this.router.url;
     }
 
@@ -103,17 +103,15 @@ export class ListProductComponent implements OnInit {
           if(mine.storeCam?.length > 0){
             this.execute(mine);
           }else{
-            console.log("CREATE CAMP")
             // GO TO CREATE CAMP
             //this.auth.resource.router.navigate(["/store/create-campaign"]);
           }
         }else{
-          console.log("CREATE STORE")
           // GO TO CREATE STORE
           //this.auth.resource.router.navigate(["/store/create-location"]);
         }
       }
-      
+
     })
   }
 
@@ -150,7 +148,7 @@ export class ListProductComponent implements OnInit {
 
     this.storeProduct = {
       storeID:product["sid"], by:product["by"],
-  
+
       productName:product["title"],
       description:product["description"],
       price:product["price"],
@@ -158,7 +156,7 @@ export class ListProductComponent implements OnInit {
       category:product["category"],
       code:product["code"],
       variants:product["variants"],
-  
+
       warranty:product["warranty"],
       content:product["content"],
 
@@ -167,7 +165,7 @@ export class ListProductComponent implements OnInit {
     }
 
     this.productCurrent = {
-  
+
       productName:product["title"],
       description:product["description"],
       price:product["price"],
@@ -175,7 +173,7 @@ export class ListProductComponent implements OnInit {
       category:product["category"],
       code:product["code"],
       variants:product["variants"],
-  
+
       warranty:product["warranty"],
       content:product["content"],
 
@@ -225,7 +223,6 @@ export class ListProductComponent implements OnInit {
   createBulk(productList: any[]){
     let w = (this.auth.resource.getWidth - 16) + "px";
     let h = (this.auth.resource.getHeight - 16) + "px";
-    console.log(this.userID, this.storeID, this.productCat)
 
     if(this.userID && this.storeID){
     const refDialog = this.auth.resource.dialog.open(UploadProductComponent, {
@@ -244,8 +241,6 @@ export class ListProductComponent implements OnInit {
 
       }else{
         this.auth.resource.startSnackBar("Creating " + ref.length + " Products...");
-        console.log("MANHANDLE: ", ref, productList)
-
         if(productList){
           if(productList.length == 0){
             this.startBulkUpload(ref);
@@ -257,11 +252,9 @@ export class ListProductComponent implements OnInit {
 
       if( productList.findIndex((p:any) => {
         let x = element.productName == p.title;
-        console.log("GIRL", element.productName, p.title, x);
         return x;
       }) >= 0 ){
         newALL = false;
-        console.log("MATCH")
       }
 
       if( ref.length == (i+1) ){
@@ -285,15 +278,12 @@ export class ListProductComponent implements OnInit {
   startBulkUpload(data:any[]){
     const products = [];
 
-    console.log(data)
-
     for (let p = 0; p < data.length; p++) {
       const storeProduct = data[p];
       this.addNewProduct(storeProduct)
       .then((ref:any) => {
         this.auth.resource.startSnackBar("The new product been created.");
       }).catch(err => {
-        console.log(err)
       }).finally(() => {
 
       if(data.length == (p+1) ){
@@ -318,7 +308,7 @@ export class ListProductComponent implements OnInit {
   }
 
 
-  
+
 
 
 
@@ -346,10 +336,7 @@ export class ListProductComponent implements OnInit {
         const iX = this.storeProduct.variants.filter((v:any) => {
           return v.title?.toLowerCase() == title.toLowerCase() && v.type == type; //&& v.name == x;
         })
-        console.log("i Got Hit", iX.length)
-    
         if(iX.length == 1){
-          console.log("i Got Hit 1")
           this.choose.titles.splice( this.choose.titles.findIndex(v => v.toLowerCase() == title.toLowerCase()), 1 );
         }
         this.storeProduct.variants.splice( this.storeProduct.variants.findIndex(v => v.name.toLowerCase() == x.toLowerCase() && v.title?.toLowerCase() == title.toLowerCase() && v.type == type ), 1 );
@@ -367,19 +354,18 @@ export class ListProductComponent implements OnInit {
             this.choose.titles.push(title);
           }
         }else{
-          console.log("enter Proper")
         }
       }else{
         const data = {type, name:x};
         this.storeProduct.variants.push(data);
       }
-      
+
     }
   }
 
   removeVariantBulk( type:string, title:string ){
     const b = this.storeProduct.variants.filter((v:any) => {
-      console.log(v.title, title) //?.toLowerCase().toLowerCase()
+      //?.toLowerCase().toLowerCase()
       return v.title == title && v.type == type;
     });
     for (let i = 0; i < b.length; i++) {
@@ -397,13 +383,10 @@ export class ListProductComponent implements OnInit {
         source:CameraSource.Camera,
         resultType: CameraResultType.Uri
       });
-      console.log("image", image)
       const imageUrl = image.webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
       }else{
-        console.log("No image")
       }
     }
   }
@@ -418,15 +401,13 @@ export class ListProductComponent implements OnInit {
       const imageUrl = image.photos[0].webPath || "";
       if(imageUrl){
       this.startCropper(imageUrl, type);
-      console.log("image", imageUrl)
       }else{
-        console.log("No image")
       }
     }
   }
 
   startCropper(webPath:string, type:string){
-    
+
     if(!this.disableForm){
       let isPhone = this.auth.resource.getWidth < 768;
       let w = isPhone ? this.auth.resource.getWidth + "px" : "480px";
@@ -438,10 +419,8 @@ export class ListProductComponent implements OnInit {
         disableClose: true, panelClass:"dialogLayout"//, autoFocus:false
       });
       refDialog.afterClosed().subscribe(result =>{
-        console.log("cropper closed")
         if(!result.success){
           if(result.info){
-            console.log(result.info);
             this.auth.resource.startSnackBar(result.info)
           }
         }else{
@@ -489,11 +468,11 @@ if( type == 'logoBurn'){
         }
       })
     }
-    
+
   }
 
   removeProductBanner( type:string, resultImage:string ){
-    
+
     this.disableForm = true;
 /*
 if( type == 'logo'){
@@ -528,7 +507,7 @@ if( type == 'logoBurn'){
   });
 }
 */
-  
+
 }
 
 
@@ -542,15 +521,14 @@ invalidPhone(phone:string){ const newNum  = new FormControl(phone, [ Validators.
     this.storeProduct.category == this.productCurrent.category &&
     this.storeProduct.code == this.productCurrent.code &&
     //this.storeProduct.variants.toString() == this.productCurrent.variants.toString() &&
-    
+
     this.storeProduct.warranty == this.productCurrent.warranty &&
     this.storeProduct.content == this.productCurrent.content &&
 
     this.storeProduct.quota == this.productCurrent.quota;
   }
-  
+
   updateStoreProduct(){
-    console.log(this.storeProduct)
     this.submitFirst = true;
     this.disableForm = true;
 
@@ -562,7 +540,7 @@ invalidPhone(phone:string){ const newNum  = new FormControl(phone, [ Validators.
       !this.storeProduct.cost || this.invalidRate(this.storeProduct.cost) ||
       this.storeProduct.price < this.storeProduct.cost ||
       !this.storeProduct.category ||
-      !this.storeProduct.code 
+      !this.storeProduct.code
     ){
       if(!this.storeProduct.productName){
         this.auth.resource.startSnackBar("Product name is required");
@@ -598,7 +576,7 @@ invalidPhone(phone:string){ const newNum  = new FormControl(phone, [ Validators.
       this.updateProduct();
     }
   }
-  
+
 
 updateProduct(){
   // this.imageUrlLogo
@@ -611,10 +589,9 @@ updateProduct(){
     //   this.auth.resource.router.navigate(["/dash"])
     // }
   }).catch(err => {
-    console.log(err)
   })
 }
 
 
-  
+
 }

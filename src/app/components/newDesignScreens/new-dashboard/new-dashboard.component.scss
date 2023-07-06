@@ -1,0 +1,448 @@
+p {
+    margin: 0 !important;
+}
+
+.c_custom_gray {
+    color: #474747;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #F6FFCF 0%, #ECD8FF 100%);
+
+    .h1 {
+        font-size: 16px;
+        padding: 15px 100px 15px 15px;
+    }
+}
+
+table {
+    margin: 30px 0 0 0;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25) !important;
+    border-radius: 5px;
+
+    th {
+        background: #F7F7F7;
+    }
+}
+
+
+.section {
+    padding: 30px 0;
+    width: 90%;
+    margin: auto;
+
+    .dashOverviewSection {
+        margin: 30px 0 0 0;
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            background: #F5F5F5;
+            box-shadow: 0px 2px 9px rgba(117, 117, 117, 0.25);
+            border-radius: 10px;
+
+            // .overviewContent {
+            //     border-right: 1px solid #EEEEEE;
+            // }
+        }
+    }
+
+    .redeem_card {
+
+        .redeem_item_table {
+            margin: 30px 0 0 0;
+            border: 1px solid #EEEEEE;
+            box-shadow: 0px 2px 4px rgba(230, 230, 230, 0.25);
+            border-radius: 5px;
+
+            .redeem_item_heading {
+                background-color: #ffffff;
+
+                .table_header {
+                    border-bottom: 1px solid #EEEEEE;
+                    padding: 20px 0;
+                }
+
+                .redeem_users {
+                    padding: 20px 0;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #EEEEEE;
+
+                    .accept_cancel_ctas {
+                        text-align: center;
+
+                        button:nth-child(1) {
+                            background-color: red;
+                            background: #FFEAEE;
+                            border: 1px solid #FF1744;
+                            border-radius: 3px;
+                            margin: 0 1rem 0 0;
+                        }
+
+                        button:nth-child(2) {
+                            color: #27AE60;
+                            background: #F0FFF6;
+                            border: 1px solid #27AE60;
+                            border-radius: 3px;
+                            padding: 0 50px;
+                        }
+                    }
+                }
+
+                .redeem_users:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    .loyalty_offer_camp{
+        position: relative;
+        .loyalty_camp_svg{
+            position: absolute;
+            top: -21px;
+            left: 20px;
+            svg{
+                width: 100%;
+            }
+        }
+        .loyalty_offer {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1px solid #F2F2F2;
+            box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+            border-radius: 10px;
+
+            .avail_disc {
+                border-left: 1px solid #dddddd;
+
+                span {
+                    background-color: #faf5ff;
+                    padding: 8px 20px;
+                }
+            }
+        }
+    }
+
+    .order_section {
+        margin: 30px 0 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .col-49 {
+            width: 49%;
+            display: inline-block;
+
+            .card {
+                background: #FFFFFF;
+                border: 1px solid #F2F2F2;
+                box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
+                border-radius: 10px;
+
+                .download_invoice {
+                    border: 1px solid #874BF9
+                }
+
+                .bg_grayish {
+                    background: #FBF6FF;
+                    border: 1px solid #F1F1F1;
+                    border-radius: 5px;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                }
+
+                .bg_grayish2 {
+                    margin-left: auto;
+                }
+
+                .totalSection {
+                    background: #FBF7FF;
+                }
+
+                .orderPlaced {
+                    button {
+                        border-radius: 20px;
+                        padding: 8px 25px;
+                        line-height: 0;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .activeCamp_billing{
+        display: flex;
+        .camp {
+
+            margin: 30px 0 0 0;
+            background: #FFFFFF;
+            box-shadow: 0px 2px 16px rgba(194, 194, 194, 0.25);
+            border-radius: 10px;
+
+            .camp_header {
+                border-bottom: 1px solid #EBEBEB;
+                padding: 0 0 16px 0;
+            }
+
+            .anchor {
+                border-bottom: 1px solid #d7d7d7;
+            }
+        }
+    }
+
+    .ld_loyalty_offer_camp_section{
+        display: none;
+    }
+}
+
+
+.complete_btn {
+    background: #2755AE;
+}
+
+.pending_btn {
+    background: #FFC500;
+}
+
+.Shipped_btn {
+    background: #336DB1;
+}
+
+.refund_btn {
+    background: #CE7712;
+}
+
+.reject_btn {
+    background: #D43B26;
+}
+
+.delivered_btn {
+    background: #27AE60;
+}
+
+
+.cta_button {
+    padding: 0px 30px;
+    height: 35px;
+    line-height: 0;
+}
+
+
+@media (max-width:900px) {
+    .gradient {
+        .h1 {
+            padding: 15px;
+        }
+    }
+
+    .mat-form-field {
+        width: 210px !important;
+    }
+
+
+    .section {
+        padding: 40px 0;
+        width: 90%;
+        margin: auto;
+
+        .dashOverviewSection {
+            margin: 30px 0 0 0;
+
+            .overview {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                background: #F5F5F5;
+                box-shadow: 0px 2px 9px rgba(117, 117, 117, 0.25);
+                border-radius: 10px;
+
+                .overviewContent {
+                    // border-right: 1px solid #EEEEEE;
+                    display: flex;
+                    flex-direction: column;
+
+                    .h6 {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+
+        .redeem_item_moblie {
+            background: #FFFFFF;
+            border: 1px solid #FAFAFA;
+            box-shadow: 0px 1px 9px rgba(199, 199, 199, 0.25);
+            border-radius: 10px;
+            margin: 30px 0 0 0;
+
+            .border {
+                padding: 20px;
+                border-bottom: 1px solid #EEEEEE;
+
+                .name_reward {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .bill_amount {
+                    padding: 1rem 0;
+
+                    .vendorInput {
+                        width: 100% !important;
+                    }
+                }
+
+                .accept_cancel_ctas {
+                    text-align: end;
+
+                    button:nth-child(1) {
+                        background-color: red;
+                        background: #FFEAEE;
+                        border: 1px solid #FF1744;
+                        border-radius: 3px;
+                        margin: 0 1rem 0 0;
+                    }
+
+                    button:nth-child(2) {
+                        color: #27AE60;
+                        background: #F0FFF6;
+                        border: 1px solid #27AE60;
+                        border-radius: 3px;
+                        padding: 0 50px;
+                    }
+                }
+            }
+
+            .border:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .order_section {
+            margin: 30px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            .col-49 {
+                width: 100%;
+                display: inline-block;
+                    .card {
+                        background: #FFFFFF;
+                        border: 1px solid #F2F2F2;
+                        box-shadow: 0px 2px 5px rgba(173, 173, 173, 0.25);
+                        border-radius: 10px;
+
+                        .download_invoice {
+                            border: 1px solid #874BF9;
+                            font-size: 0.7rem;
+                        }
+
+                        .bg_grayish {
+                            background: #FBF6FF;
+                            border: 1px solid #F1F1F1;
+                            border-radius: 5px;
+                            padding: 10px;
+                            display: flex;
+                            align-items: center;
+                            width: max-content;
+                        }
+
+                        .bg_grayish2 {
+                            margin-left: auto;
+                        }
+
+                        .totalSection {
+                            background: #FBF7FF;
+                        }
+
+                        .orderPlaced {
+                            button {
+                                border-radius: 20px;
+                                padding: 8px 25px;
+                                line-height: 0;
+                            }
+                        }
+                    }
+            }
+
+        }
+
+
+        .activeCamp_billing{
+            flex-direction: column;
+        }
+
+        .camp {
+
+            .camp_header {
+                gap: 0.4rem;
+                flex-direction: column;
+            }
+            .anchor {
+                border-bottom: 1px solid #d7d7d7;
+            }
+        }
+
+    }
+
+    .section:nth-child(2){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(3){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(4){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(5){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(6){
+        padding: 0 0 40px 0;
+    }
+    .section:nth-child(7){
+        padding: 0 0 40px 0;
+    }
+    .table {
+        overflow: scroll;
+
+        table {
+            min-width: max-content;
+        }
+    }
+
+
+    // .loyalty_offer_camp{
+    //     display: none;
+    // }
+
+    .ld_loyalty_offer_camp_section{
+        display: block !important;
+        border: 1px solid #DDDDDD;
+        position: relative;
+        .ess_svg{
+            position: absolute;
+            top: -22px;
+        }
+        .loyalty_cuss{
+            padding: 40px 20px 20px 20px;
+            background-color: white;
+            button{
+                border: none;
+                outline: none;
+                padding: 15px;
+                width: 100%;
+                font-size: 14px;
+                border-radius: 8px;
+            }
+        }
+    }
+
+
+}

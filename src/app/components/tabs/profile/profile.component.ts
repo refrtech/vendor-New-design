@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user$.pipe(take(1)).subscribe(user => {
       const data = {
-        //false, user.username, 
+        //false, user.username,
         name: user.name || "",
 
         soFB: user.soFB || "",
@@ -102,7 +102,7 @@ export class ProfileComponent implements OnInit {
         soYT: user.soYT || "",
         soTW: user.soTW || "",
         soWA: user.soWA || "",
-        //user.info, user.url, user.typ, user.sex, user.stat, user.check, 
+        //user.info, user.url, user.typ, user.sex, user.stat, user.check,
         uid: user.uid, iso: user.iso || "",
         phoneNumFull: user.phone.split("+91")[1] || "",
         email: user.email || "",
@@ -199,7 +199,6 @@ export class ProfileComponent implements OnInit {
   }
 
   setUpTime(type: string, t: any) {
-    console.log(type, t)
     if (type == 'from') {
       this.storeLoc.openMonS = t;
       this.storeLoc.openTueS = t;
@@ -222,7 +221,6 @@ export class ProfileComponent implements OnInit {
 
   updateOrdr(type: string, current: any, val: any) {
     this.makingChanges = true;
-    console.log(type, current, val)
     this.typeORDER[type] = val;
 
     this.auth.updateStoreOrdr(this.storeID, this.typeORDER).then(() => {
@@ -267,7 +265,6 @@ export class ProfileComponent implements OnInit {
 
 
   setContactNumber() {
-    console.log(this.phoneNumFull)
     // if(!know){
     //   this.phoneNumber.area = "";
     //   this.phoneNumber.prefix = "";
@@ -320,18 +317,15 @@ export class ProfileComponent implements OnInit {
         };
 
         //xLoc["logistics"] = {
-        //...store[0].typeORDER.logistics, 
-        // openBreak: !store[0].schedule.openBreak ? false : store[0].schedule.openBreak,  
-        // openBreakS: !store[0].schedule.openBreak ? "11:00" : store[0].schedule.openBreakS,  
-        // openBreakE : !store[0].schedule.openBreak ?  "15:00" : store[0].schedule.openBreakE, 
+        //...store[0].typeORDER.logistics,
+        // openBreak: !store[0].schedule.openBreak ? false : store[0].schedule.openBreak,
+        // openBreakS: !store[0].schedule.openBreak ? "11:00" : store[0].schedule.openBreakS,
+        // openBreakE : !store[0].schedule.openBreak ?  "15:00" : store[0].schedule.openBreakE,
         //};
-        console.log("xLoc ", xLoc)
         // if(!xLoc["logistics"].openBreak){
-        //   console.log("xLoc ", xLoc)
         // xLoc["logistics"].openBreak = false;
-        // xLoc["logistics"].openBreakS = "11:00"; 
+        // xLoc["logistics"].openBreakS = "11:00";
         // xLoc["logistics"].openBreakE = "15:00";
-        //   console.log("xLoc ", xLoc)
         // }
 
         xLoc["delivery"] = store[0].typeORDER.delivery;
@@ -384,13 +378,10 @@ export class ProfileComponent implements OnInit {
         //source:CameraSource.Camera,
         resultType: CameraResultType.Uri
       });
-      console.log("image", image)
       const imageUrl = image.webPath || "";
       if (imageUrl) {
         this.startCropper(imageUrl, type);
-        console.log("image", imageUrl)
       } else {
-        console.log("No image")
       }
     }
   }
@@ -407,10 +398,8 @@ export class ProfileComponent implements OnInit {
         disableClose: true, panelClass: "dialogLayout"//, autoFocus:false
       });
       refDialog.afterClosed().subscribe(result => {
-        console.log("cropper closed")
         if (!result.success) {
           if (result.info) {
-            console.log(result.info);
             this.auth.resource.startSnackBar(result.info)
           }
         } else {
@@ -504,12 +493,11 @@ export class ProfileComponent implements OnInit {
       this.auth.resource.startSnackBar("issue: format must be A-Za-z.")
     } else {
       const newName = this.auth.resource.last.value; //+ (this.auth.resource.last.value ? (" " + this.auth.resource.last.value) : "");
-      console.log(this.storeName, newName)
       this.auth.updateStoreBio(this.storeID,
-        //uid, 
+        //uid,
         this.storeName, newName,
         //this.dataCurrent.soIG, this.dataCurrent.soYT,this.dataCurrent.soTW,this.dataCurrent.soWA,
-        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat 
+        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat
       ).then(() => {
         this.storeName = newName;
         this.auth.resource.startSnackBar("Name Update Under Review!");
@@ -535,7 +523,7 @@ export class ProfileComponent implements OnInit {
         (type == "TW" ? info : this.dataCurrent.soTW),
         (type == "WA" ? info : this.dataCurrent.soWA),
         this.dataCurrent.GST,this.auth.resource.GST.value
-        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat 
+        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat
       ).then(() => {
         if (type == "FB") { this.dataCurrent.soFB = info }
         if (type == "IG") { this.dataCurrent.soIG = info }
@@ -558,12 +546,11 @@ export class ProfileComponent implements OnInit {
       this.auth.resource.startSnackBar("issue: format must be A-Za-z.")
     } else {
       const newName = this.auth.resource.first.value; //+ (this.auth.resource.last.value ? (" " + this.auth.resource.last.value) : "");
-      console.log(this.dataCurrent.name, newName)
       this.auth.updateUserBio(
         uid, this.dataCurrent.name, newName,
         this.dataCurrent.soFB,
         this.dataCurrent.soIG, this.dataCurrent.soYT, this.dataCurrent.soTW, this.dataCurrent.soWA,this.dataCurrent.GST,this.auth.resource.GST.value
-        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat 
+        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat
       ).then(() => {
         this.dataCurrent.name = newName;
         this.auth.resource.startSnackBar("Name Update Under Review!");
@@ -581,15 +568,14 @@ export class ProfileComponent implements OnInit {
       this.auth.resource.GST.enable();
       this.makingChanges = false;
       this.auth.resource.startSnackBar("issue: Please Enter valide GST Number.")
-    } 
+    }
     else {
       const newGST = this.auth.resource.GST.value;
-      console.log(this.dataCurrent.GST, newGST);
       this.auth.updateUserBio(
         uid, this.dataCurrent.name, this.auth.resource.first.value,
         this.dataCurrent.soFB,
         this.dataCurrent.soIG, this.dataCurrent.soYT, this.dataCurrent.soTW, this.dataCurrent.soWA,this.dataCurrent.GST,this.auth.resource.GST.value
-        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat 
+        //this.dataCurrent.username, this.dataCurrent.info, this.dataCurrent.url, this.dataCurrent.typ, this.dataCurrent.sex, this.dataCurrent.stat
       ).then(() => {
         this.dataCurrent.GST = newGST;
         this.auth.resource.startSnackBar("GST Update Under Review!");
@@ -607,7 +593,6 @@ export class ProfileComponent implements OnInit {
     } else {
       const step0_CheckUserExist = this.auth.step0_userForward(this.phoneNumber.e164, true);
       step0_CheckUserExist.then((data: any) => {
-        console.log("Indian", data)
         if (!data.success) {
           if (data.info == "401" || data.code == "auth/user-disabled") {
             this.auth.stepDisable = false;
@@ -636,7 +621,7 @@ export class ProfileComponent implements OnInit {
   //   this.auth.step4_resetLogin( this.phoneNumber.e164 ).then(data => {
   //     //this.finalRESULT(data);
   //   })
-  //   const stepAdd_USERS_PHONE = this.auth.stepAdd_USERS_PHONE( this.phoneNumber.e164, //validatePassword, 
+  //   const stepAdd_USERS_PHONE = this.auth.stepAdd_USERS_PHONE( this.phoneNumber.e164, //validatePassword,
   //     this.phoneNumber.iso, this.phoneNumber.coin );
   // }
 
@@ -703,7 +688,6 @@ export class ProfileComponent implements OnInit {
       this.auth.resource.startSnackBar("The account is already associated with a google account.")
     } else {
       this.auth.googleSync(hasfacebook).then(data => {
-        console.log("Man", data)
         if (!data.success) {
           this.auth.resource.startSnackBar(data.info)
         } else {
@@ -719,7 +703,6 @@ export class ProfileComponent implements OnInit {
       this.auth.resource.startSnackBar("The account is already associated with a facebook account.")
     } else {
       this.auth.facebookSync(hasgogle).then(data => {
-        console.log("Man", data)
         if (!data.success) {
           this.auth.resource.startSnackBar(data.info)
         } else {

@@ -118,13 +118,11 @@
                                                 {{
                                                 getCampAmt( campaign, "min") }} </p>
                                         </div>
-                                        <div class="col-10">
-
-                                        </div>
+                                        <div class="col-10"></div>
                                         <div class="col-40">
                                             <p *ngIf="x.sin">{{ x.sin.toDate() | date:'MMM, dd, yyyy hh:mm' }}</p>
                                             <div class="textR mt-5">
-                                                <button mat-stroked-button class="outline-success b_green c_white"
+                                                <button mat-stroked-button class="outline-success bg_green c_white"
                                                     (click)="acceptReedem(mine.acBalH, x, x.id, x.journey, amt?.value, x.camp, campaign, x.code)"
                                                     [disabled]="makeChanges">Accept</button> <br>
                                                 <button style="margin-top: 10px;" mat-stroked-button color="danger"
@@ -213,7 +211,7 @@
                                         </div>
                                         <div class="col-12_5">
                                             <div>
-                                                <button mat-stroked-button class="outline-success b_green c_white"
+                                                <button mat-stroked-button class="outline-success bg_green c_white"
                                                     (click)="acceptReedem(mine.acBalH, x, x.id, x.journey, amt?.value, x.camp, campaign, x.code)"
                                                     [disabled]="makeChanges">Accept</button>
                                             </div>
@@ -261,7 +259,7 @@
                             <ng-container *ngIf="paymentOrder$ | async as paymentOrder">
                                 <ng-container *ngFor="let x of paymentOrder; let i = index">
                                     <ng-container *ngIf="
-                                    x.status > 0 || x.status < 0 || 
+                                    x.status > 0 || x.status < 0 ||
                                     x.ordrTYPE == 'COD' && x.status == 0 ||
                                     x.ordrTYPE == 'RefrCASH+COD' && x.status == 0 ||
                                     x.invoice.useRefrCash && (x.invoice.amtRefrCash == x.amTotal)
@@ -451,7 +449,7 @@
                                                         <div class="col-50 r_align">
                                                             <button class="rounded_btn complete_btn" mat-button
                                                                 *ngIf="x.journey == 'POS'">Complete</button>
-                                                            <select *ngIf=" 
+                                                            <select *ngIf="
                                                         (x.journey == 'F2F' || x.journey == 'DIRECT' || x.journey == 'BURN') && x.status == 0 && (x.ordrTYPE == 'COD' || x.ordrTYPE == 'RefrCASH' || x.ordrTYPE == 'RefrCASH+COD') ||
                                                         (x.journey == 'F2F' || x.journey == 'DIRECT' || x.journey == 'BURN') && x.status == 1 && (x.ordrTYPE == 'ONLINE' || x.ordrTYPE == 'RefrCASH+ONLINE') ||
                                                         false " #oStatePlaced [ngModel]=" 'Placed' "
@@ -470,7 +468,7 @@
                                                         x.logistics.require && x.status == 10 && x.logistics.status == 10 && (x.journey == 'F2F' || x.journey == 'DIRECT' || x.journey == 'BURN')"
                                                                 (click)=" ordrStatus(  x.journey, x , 'Track' );">Shipping</button>
                                                             <select
-                                                                *ngIf=" 
+                                                                *ngIf="
                                                         !x.logistics.require && x.status == 10 && x.logistics.status == 10 && (x.journey == 'F2F' || x.journey == 'DIRECT' || x.journey == 'BURN')"
                                                                 #oStateShipping [ngModel]=" 'Shipping' "
                                                                 (ngModelChange)="ordrStatus( x.journey, x , oStateShipping.value )"
@@ -521,12 +519,12 @@
                                             <div class="d-flex-row mt-md-10 mt-sm-5">
                                                 <h3 class="mr-5 col-70 col-sm-60">
                                                     <b> {{x.name}} </b>
-                                                    <button mat-button class="active-chip c_white b_black"
+                                                    <button mat-button class="active-chip c_white bg_black"
                                                         *ngIf="x.tX == 'tC' && !x.customAct">{{!x.ban ?
                                                         'Pending':'Rejected'}}</button>
                                                     <button class="active-chip c_white"
-                                                        [class.b_green]=" auth.resource.compareDates( x.dateE.toDate() ) "
-                                                        [class.b_red]=" x.stoped || x.paused || !auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        [class.bg_green]=" auth.resource.compareDates( x.dateE.toDate() ) "
+                                                        [class.bg_red]=" x.stoped || x.paused || !auth.resource.compareDates( x.dateE.toDate() ) "
                                                         mat-button
                                                         *ngIf=" x.tX !== 'tC' || x.tX == 'tC' && x.customAct ">
                                                         {{ !auth.resource.compareDates( x.dateE.toDate() ) ?
@@ -562,7 +560,7 @@
                                                 </div>
                                                 <div class="col-35  col-sm-50">
                                                     <div class="padding-grd ">
-                                                        <div class="bg-gradient b_gradient c_white">
+                                                        <div class="bg-gradient bg_gradient c_white">
                                                             <h6 *ngIf="x.type == 'flat'">Cashback ₹{{x.cbDir}}/-</h6>
                                                             <h6 *ngIf="x.type == 'percent'">{{x.cbDir}}% Cashback upto
                                                                 ₹{{x.max}}/-</h6>
@@ -589,7 +587,86 @@
                         <app-content *ngIf="!(campaign$ | async)"></app-content>
                     </div>
                 </div>
+                <br>
+
+
+
+                <ng-container *ngIf="paymentOrder$ | async as paymentOrder">
+
+
+                <div class="section">
+                  <div class="brand_reach">
+                    <div class="ld_dflex md_dflex">
+                      <div class="heading ld_xml_size md_xml_size sd_xml_size fw_600">Brand Reach</div>
+                      <span class="divide"></span>
+                      <a class="purple_text fw_400 ld_m_size md_m_size">See all</a>
+                    </div>
+                    <div class="table">
+                      <div class="asd">
+                        <table mat-table [dataSource]="paymentOrder" class="mat-elevation-z8 ld_M100width">
+                          <!-- Position Column -->
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef
+                              class="ld_m_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Name </th>
+                            <td mat-cell *matCellDef="let element"
+                              class="ld_s_size md_m_size text_capitalize textC ld_A20padding md_A20padding">
+                              {{element.userName}}
+                              <div class="textC ld_xs_size md_s_size c_gray">
+                                <!-- {{element.sin.toDate() | date:'dd-MMM-YYYY , hh:mm a'}} -->
+                                30/06/2023
+                              </div>
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="contact">
+                            <th mat-header-cell *matHeaderCellDef
+                              class="ld_m_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Contact no. </th>
+                            <td mat-cell *matCellDef="let element" class="ld_s_size md_m_size textC ld_A20padding md_A20padding">
+                              <div>{{element.logistics.phone}}</div>
+                              <div *ngIf="element.logistics.phone">{{element.logistics.email}}</div>
+                              <div *ngIf="!element.logistics.phone && !element.logistics.email">-</div>
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="interaction">
+                            <th mat-header-cell *matHeaderCellDef class="ld_m_size md_l_size sd_l_size fw_500 textC c_black">
+                              Interaction </th>
+                            <td mat-cell *matCellDef="let element" class="ld_s_size md_m_size textC ld_A20padding md_A20padding">
+                              <!-- {{element.clicks}} -->
+                              10
+                              <div class="textC ld_s_size md_s_size c_custom_gray">Clicks</div>
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="token">
+                            <th mat-header-cell *matHeaderCellDef
+                              class="ld_m_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding"> Refr Token given </th>
+                            <td mat-cell *matCellDef="let element" class="ld_s_size md_m_size textC ld_A20padding md_A20padding">
+                              {{element.earn}}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef
+                              class="ld_m_size md_l_size sd_l_size fw_500 textC c_black sd_lr20padding">Action</th>
+                            <td mat-cell *matCellDef="let element" class="textC">
+                              <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#A4A4A4"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                  <path
+                                    d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                    stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                              </a>
+                            </td>
+                          </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </ng-container>
             </div>
         </div>
     </div>
 </div>
+

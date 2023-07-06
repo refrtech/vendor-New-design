@@ -20,8 +20,7 @@ export class OrdrTrackComponent implements OnInit {
     public pay: PaymentService,
     private dialogRef: MatDialogRef<OrdrTrackComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { 
-    console.log("ORDR", data.ordr)
+  ) {
     this.payment = data.ordr;
 
     const shipID = this.payment.shipCreate.y3Order.shipment_id;
@@ -39,16 +38,14 @@ export class OrdrTrackComponent implements OnInit {
   trackShipment(id:string, shipID:string, shipToken:string){
     this.depends.trackShipment("IN", shipID, shipToken)//.pipe()
     .subscribe((res:any) => {
-      console.log("ORDRX", res)
       if(!res || !res.success || !res.data ){
 
       }else{
         this.pay.updateShiping(id, res.data).then(() => {
           this.show = true;
         })
-        console.log("MARYADA", res.data)
         // STATUS CODE	DESCRIPTION
-        // 0	
+        // 0
         // 6	Shipped
         // 7	Delivered
         // 8	Cancelled
@@ -67,18 +64,17 @@ export class OrdrTrackComponent implements OnInit {
         // 21	Undelivered
 
         if(
-          res.data.shipment_status == 0 || 
-          res.data.shipment_status == 8 || 
+          res.data.shipment_status == 0 ||
+          res.data.shipment_status == 8 ||
           res.data.shipment_status == 16 ||
 
           res.data.shipment_status == 7
           //res.data.track_status == 0
           ){
-          console.log("Status", 0)
           const w = res?.data?.shipment_track[0]?.weight
           this.dialogRef.close({success:true, status:res.data.shipment_status, weight:(+w||0) })
         }
-        
+
       }
     })
   }

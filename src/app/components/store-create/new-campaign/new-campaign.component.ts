@@ -1,15 +1,16 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-new-campaign',
   templateUrl: './new-campaign.component.html',
-  styleUrls: ['./new-campaign.component.scss']
+  styleUrls: ['./new-campaign.component.scss'],
 })
 export class NewCampaignComponent implements OnInit, AfterViewInit {
-
   /*<!--
   - flat / percentage
   - cashback amount
@@ -31,13 +32,34 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     nowCB: 100, // 100Fl & 20Pe
     minCB: 8, // 8Fl & 1Pe
     maxCB: 100, // only for percent calculation
-    maxFl: 18000, maxPe:18000
-  }
-  storeCamp = {
-    storeID:"", by:"",
+    maxFl: 18000,
+    maxPe: 18000,
+  };
 
-    campaignName:"",
-    type:"flat", storeTyp:"",
+  //old storecamp
+  // storeCamp = {
+  //   storeID: '',
+  //   by: '',
+  //   campaignName: '',
+  //   type: 'flat',
+  //   storeTyp: '',
+  //   // x | x/2 | x/4
+  //   cbNew: 100,
+  //   cbExi: 50,
+  //   cbDir: 25,
+  //   min: 999,
+  //   max: 0, // 0Fl & 100Pe
+  //   expiry: false,
+  //   dateS: '',
+  //   dateE: '', //Min duration span 1 month
+  //   stage: 0,
+  // };
+
+  storeCamp = {
+    storeID: '',
+    by: '',
+    campaignName: '',
+    storeType: '',
     // x | x/2 | x/4
     cbNew: 100, cbExi: 50, cbDir: 25,
     min: 999,
@@ -52,48 +74,60 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
   disableForm = false;
 
   startDate = new Date();
-  get maxStaDate(){
+  campwalBal?: number;
+  campid: string = '';
+
+  get maxStaDate() {
     const year = this.startDate.getFullYear();
     const month = this.startDate.getMonth();
     const day = this.startDate.getDate();
-    return new Date(year + 0, (month + 3),day);
+    return new Date(year + 0, month + 3, day);
   }
-  get minEndDate(){
-    let x = this.storeCamp.dateS ? this.storeCamp.dateS : null;
-    if(!x){
-      return new Date();
-    }else{
-      const year = new Date(x).getFullYear();
-      const month = new Date(x).getMonth();
-      const day = new Date(x).getDate();
-      return new Date(year + 0, (month + 1), day);
-    }
-  }
-  get maxEndDate(){
-    let x = this.storeCamp.dateS ? this.storeCamp.dateS : null;
-    if(!x){
-      return new Date();
-    }else{
-      const year = new Date(x).getFullYear();
-      const month = new Date(x).getMonth();
-      const day = new Date(x).getDate();
-      return new Date(year + 1, month, day);
-    }
-  }
+  // get minEndDate() {
+  //   let x = this.storeCamp.dateS ? this.storeCamp.dateS : null;
+  //   if (!x) {
+  //     return new Date();
+  //   } else {
+  //     const year = new Date(x).getFullYear();
+  //     const month = new Date(x).getMonth();
+  //     const day = new Date(x).getDate();
+  //     return new Date(year + 0, month + 1, day);
+  //   }
+  // }
+  // get maxEndDate() {
+  //   let x = this.storeCamp.dateS ? this.storeCamp.dateS : null;
+  //   if (!x) {
+  //     return new Date();
+  //   } else {
+  //     const year = new Date(x).getFullYear();
+  //     const month = new Date(x).getMonth();
+  //     const day = new Date(x).getDate();
+  //     return new Date(year + 1, month, day);
+  //   }
+  // }
 
   enableDirect = false;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+
+  ///
+
+  seltier: string = 't11';
+  ESTreach?: number;
+  ESTconv?: number;
+  campplanindex: number = 0;
 
   constructor(
     public auth: AuthService,
-    private dialogRef: MatDialogRef<NewCampaignComponent>,
-    //@Inject(MAT_DIALOG_DATA) public data: {enableDirect: boolean;}
-  ) {
-  }
+    private router: Router,
+    public dialogRef: MatDialogRef<NewCampaignComponent>
+  ) {}
 
   ngOnInit(): void {
     const urlX = this.auth.resource.router.url;
-    console.log("urlX", urlX)
-    if(urlX == '/campaign'){ this.enableDirect = true; }
+    if (urlX == '/campaign' || urlX == '/New_recomm') {
+      this.enableDirect = true;
+    }
   }
 
   ngAfterViewInit(): void {
@@ -102,7 +136,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     }, 3000);
   }
 
-  async execute(){
+  async execute() {
     const currentUser = await this.auth.afAuth.currentUser;
     const uid = currentUser?.uid;
     if(!uid){
@@ -150,8 +184,7 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
     console.log(this.storeCamp)
     //this.submitFirst = true;
     this.disableForm = true;
-
-    if(
+    if (
       !this.storeCamp.storeID ||
       !this.storeCamp.campaignName ||
       !this.storeCamp.dateS || !this.storeCamp.dateE ||
@@ -215,9 +248,10 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
         }
       }
       this.disableForm = false;
-    }
-    else {
+    }else{
         this.addNewCampaign(tX, kind);
+
+
     }
   }
 
@@ -246,25 +280,85 @@ export class NewCampaignComponent implements OnInit, AfterViewInit {
       }).catch(err => {
         console.log(err)
         this.disableForm = false;
-        this.auth.resource.startSnackBar("Failed to create the Campaign.")
-      })
-    }
-    // if(tX == "t1"){}
-    // if(tX == "t2"){}
-    // if(tX == "t3"){}
-    // if(tX == "t4"){}
-
-    // if(tX == "tC"){
-    //   this.auth.resource.startSnackBar("The service is not yet available in your region...")
-    //   if(this.enableDirect){
-    //     this.dialogRef.close()
-    //   }
-    // }
-    if(tX == "tC" && (!this.payCustom || this.payCustom < 1)){
-      this.disableForm = false;
-      this.auth.resource.startSnackBar("Amount must be more than 1.")
-    }
+        this.auth.resource.startSnackBar('Failed to Update the Campaign.');
+      });
   }
 
+  addNewCampaign(tX: string, kind: boolean) {
+    console.log(this.storeCamp)
+    if (
+      tX == 't1' ||
+      tX == 't2' ||
+      tX == 't3' ||
+      tX == 't4' ||
+      tX == 't11' ||
+      tX == 't12' ||
+      tX == 't13' ||
+      tX == 't14' ||
+      tX == 't15' ||
+      tX == 't16' ||
+      (tX == 'tC' && this.payCustom && this.payCustom >= 1)
+    ) {
+      this.auth
+        .addNewCampaign(tX, this.storeCamp)
+        .then((res) => {
+          this.auth.resource.startSnackBar('The Campaign has been created.');
+          if (!kind) {
+            this.auth.resource.router.navigate([
+              '/store/fund-wallet/' + res.id,
+            ]);
+            // go to next route (create campaign)
+          } else {
+            // this.dialogRef.close();
+            if (this.storeCamp.storeType !== 'Offl') {
+              this.router.navigateByUrl('/store/add-product');
+            } else {
+              this.router.navigateByUrl('/dash');
+            }
+          }
+        })
+        .catch((err) => {
+          this.disableForm = false;
+          this.auth.resource.startSnackBar('Failed to create the Campaign.');
+        });
+    }
+    // if (tX == 'tC' && (!this.payCustom || this.payCustom < 1)) {
+    //   this.disableForm = false;
+    //   this.auth.resource.startSnackBar('Amount must be more than 1.');
+    // }
+  }
 
+  CalESTreach() {
+    this.campplanindex = this.auth.resource.campaignPlans.findIndex(
+      (x: any) => x.tX == this.seltier
+    );
+    if (!this.storeCamp.CashBack_cpc) {
+      this.storeCamp.CashBack_cpc = 5;
+    }
+    if (this.storeCamp.CashBack_cpc < 5) {
+      this.auth.resource.startSnackBar('Min value is 5.');
+      this.storeCamp.CashBack_cpc = 5;
+    }
+    if (this.storeCamp.CashBack_cpc % 1 != 0) {
+      this.auth.resource.startSnackBar('Please enter the valid value.');
+      this.storeCamp.CashBack_cpc =
+        this.storeCamp.CashBack_cpc - (this.storeCamp.CashBack_cpc % 1);
+    }
+    if (
+      this.storeCamp.CashBack_cpc >
+      this.auth.resource.campaignPlans[this.campplanindex].refill * (1 / 10)
+    ) {
+      this.storeCamp.CashBack_cpc =
+        this.auth.resource.campaignPlans[this.campplanindex].refill * (1 / 10);
+    }
+
+    this.ESTreach = parseInt(
+      (
+        (this.campwalBal +
+          this.auth.resource.campaignPlans[this.campplanindex].refill) /
+        this.storeCamp.CashBack_cpc
+      ).toString()
+    );
+    this.ESTconv = parseInt((this.ESTreach * (1 / 10)).toString());
+  }
 }

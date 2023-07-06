@@ -50,11 +50,10 @@ export class NewCustomerComponent implements OnInit {
       if(!this.form.value.name || this.form.value.name?.trim() == "" || this.invalidName(this.form.value.name)){
       this.resource.startSnackBar("Please Enter Contcat Name.");
       }else {
-        //console.log("valid phone & valid Contact Name" +this.form.value);
         this._bottomSheetRef.dismiss({success:true, ...this.form.value });
       }
 
-    } 
+    }
   }
 
 }

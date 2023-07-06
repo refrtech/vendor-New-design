@@ -22,7 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -122,9 +122,14 @@ import { DailydropsComponent } from './components/newDesignScreens/dailydrops/da
 import { DailydropsSectionComponent } from './components/newDesignScreens/dailydrops-section/dailydrops-section.component';
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
 import { UserSettingsComponent } from './components/welcome/sign/user-settings/user-settings.component';
-
-// import { Capacitor } from '@capacitor/core';
-// import { getApp } from '@firebase/app';
+import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
+import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { NewWalletComponent } from './components/newDesignScreens/new-wallet/new-wallet.component';
+import { OrdersComponent } from './components/newDesignScreens/orders/orders.component';
+import { OrderDetailsComponent } from './components/newDesignScreens/orders/order-details/order-details.component';
+import { NewRecommendationComponent } from './components/newDesignScreens/new-recommendation/new-recommendation.component';
+import { RecommendationsettingpageComponent } from './components/newDesignScreens/new-recommendation/recommendationsettingpage/recommendationsettingpage.component';
 
 @NgModule({
   declarations: [
@@ -176,6 +181,13 @@ import { UserSettingsComponent } from './components/welcome/sign/user-settings/u
     DailydropsComponent,
     DailydropsSectionComponent,
     PaymentSummmaryComponent,
+    NewDashboardComponent,
+    SidenavtabsComponent,
+    NewWalletComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    NewRecommendationComponent,
+    RecommendationsettingpageComponent
   ],
   imports: [
     BrowserModule,
@@ -186,6 +198,7 @@ import { UserSettingsComponent } from './components/welcome/sign/user-settings/u
     HttpClientJsonpModule,
     FormsModule,
     ReactiveFormsModule,
+    MatChipsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -208,6 +221,7 @@ import { UserSettingsComponent } from './components/welcome/sign/user-settings/u
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
 
     // 3. Initialize
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -259,6 +273,7 @@ import { UserSettingsComponent } from './components/welcome/sign/user-settings/u
       provide: MatDialogRef,
       useValue: {},
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     SocialSharing,
   ],
   bootstrap: [AppComponent],
