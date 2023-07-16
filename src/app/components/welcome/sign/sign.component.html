@@ -119,10 +119,7 @@
                   <path fill="#f3f3f3" d="M0 0h23v23H0z"/><path fill="#f35325" d="M1 1h10v10H1z"/><path fill="#81bc06" d="M12 1h10v10H12z"/><path fill="#05a6f0" d="M1 12h10v10H1z"/><path fill="#ffba08" d="M12 12h10v10H12z"/>
                 </svg>
               </a-->
-
               </div>
-
-
               <div class="textC" style="margin: 20px 0 0 0;">
                 <!--span class="divide"></span>
                   <span class="progress" *ngIf="auth.stepDisable">
@@ -132,8 +129,17 @@
                   </span-->
                 <button mat-raised-button color="primary" type="submit"
                   style="width: -webkit-fill-available; max-width: 90px;"
-                  [disabled]=" auth.stepDisable || phoneNumber.country?.length == 0 || phoneNumber.area?.length !== 3 || phoneNumber.prefix?.length !== 3 || phoneNumber.line?.length !== (phoneNumber.digits - 6) ">Continue</button>
+                  [disabled]=" auth.stepDisable || phoneNumber.country.length == 0 || phoneNumber.area.length !== 3 || phoneNumber.prefix.length !== 3 || phoneNumber.line.length !== (phoneNumber.digits - 6) ">Continue</button>
               </div>
+              <div class="ld_tb15padding md_tb15padding sd_tb15padding c_align gray_txt">
+                <div class="ld_t10padding md_t10padding sd_t10padding ld_b2padding md_b2padding sd_b2padding">By continuing you agree to our</div>
+                <div>
+                    <span class="semiBoldtext c_black text_underline" (click)="orders('terms')">Terms of services</span>
+                    &
+                    <span class="semiBoldtext c_black text_underline" (click)="orders('privacy')">Privacy Policy</span>
+                </div>
+            </div>
+
             </form>
             <mat-menu #menuNations="matMenu" overlapTrigger="false">
               <button mat-menu-item *ngFor="let n of auth.resource.foreignMarks"
@@ -246,12 +252,15 @@
               <div style="display: flex;margin: 20px 0 0 0;">
                 <a mat-button *ngIf="!auth.stepDisable" (click)="step2()" style="margin-right: 5px;">Sign with
                   password</a>
+
                 <span class="divide"></span>
                 <span class="progress" *ngIf="auth.stepDisable">
                   <span class="progress1">|</span>
                   <span class="progress2">|</span>
                   <span class="progress3">|</span>
                 </span>
+
+
                 <button mat-raised-button color="primary" type="submit"
                   [disabled]=" auth.stepDisable || !verificationCode ">Verify</button>
               </div>

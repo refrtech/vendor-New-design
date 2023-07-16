@@ -121,6 +121,7 @@ import { StudentofferSectionComponent } from './components/newDesignScreens/stud
 import { DailydropsComponent } from './components/newDesignScreens/dailydrops/dailydrops.component';
 import { DailydropsSectionComponent } from './components/newDesignScreens/dailydrops-section/dailydrops-section.component';
 import { PaymentSummmaryComponent } from './components/newDesignScreens/payment-summmary/payment-summmary.component';
+import { UserSettingsComponent } from './components/welcome/sign/user-settings/user-settings.component';
 import { NewDashboardComponent } from './components/newDesignScreens/new-dashboard/new-dashboard.component';
 import { SidenavtabsComponent } from './components/newDesignScreens/sidenavtabs/sidenavtabs.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -159,6 +160,7 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     ListOrderComponent,
     ListProductComponent,
     AddBalanceComponent,
+    UserSettingsComponent,
     UploadProductComponent,
     OrdrPlacedComponent,
     PlanBalanceComponent,
