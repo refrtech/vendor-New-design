@@ -185,7 +185,7 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     OrdersComponent,
     OrderDetailsComponent,
     NewRecommendationComponent,
-    RecommendationsettingpageComponent
+    RecommendationsettingpageComponent,
   ],
   imports: [
     BrowserModule,

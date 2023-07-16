@@ -35,92 +35,101 @@ import { ListProductComponent } from './components/tabs/list-product/list-produc
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'test', component: TestComponent },
-  {
-    path: '',
-    component: TabsComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: '/dash', pathMatch: 'full' },
-      { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
-      {
-        path: 'dashHIW',
-        component: MerchanthowitworksComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'knowmore/:id', component: KnowmoremerchantComponent },
-      {
-        path: 'customer',
-        component: CustomerComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'campaign',
-        component: CampaignComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
-      {
-        path: 'wallet/:campID',
-        component: WalletComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'insight',
-        component: InsightComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'my-order-list',
-        component: ListOrderComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'my-inventory',
-        component: ListProductComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'dash', redirectTo: '', pathMatch: 'full' },
-    ],
-  },
-
   // {
   //   path: '',
-  //   component: SidenavtabsComponent,
+  //   component: TabsComponent,
+  //   canActivate: [AuthGuard],
   //   children: [
   //     { path: '', redirectTo: '/dash', pathMatch: 'full' },
-  //     { path: 'dash', component: NewDashboardComponent },
+  //     { path: 'dash', component: DashboardComponent, canActivate: [AuthGuard] },
   //     {
-  //       path: 'New_wallet',
-  //       loadChildren: () =>
-  //         import(
-  //           './components/newDesignScreens/new-wallet/newwalletmodules/newwalletmodules.module'
-  //         ).then((m) => m.NewwalletmodulesModule),
+  //       path: 'dashHIW',
+  //       component: MerchanthowitworksComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'knowmore/:id', component: KnowmoremerchantComponent },
+  //     {
+  //       path: 'customer',
+  //       component: CustomerComponent,
+  //       canActivate: [AuthGuard],
   //     },
   //     {
-  //       path: 'New_recomm',
-  //       loadChildren: () =>
-  //         import(
-  //           './components/newDesignScreens/new-recommendation/newrecommendationmodule/newrecommendationmodule.module'
-  //         ).then((m) => m.NewrecommendationmoduleModule),
+  //       path: 'campaign',
+  //       component: CampaignComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
+  //     {
+  //       path: 'wallet/:campID',
+  //       component: WalletComponent,
+  //       canActivate: [AuthGuard],
   //     },
   //     {
-  //       path: 'New_orders',
-  //       loadChildren: () =>
-  //         import(
-  //           './components/newDesignScreens/orders/orders/orders-routing.module'
-  //         ).then((m) => m.OrdersRoutingModule),
+  //       path: 'insight',
+  //       component: InsightComponent,
+  //       canActivate: [AuthGuard],
   //     },
   //     {
-  //       path: 'New_cust',
-  //       component: NewCustomerComponent,
+  //       path: 'profile',
+  //       component: ProfileComponent,
+  //       canActivate: [AuthGuard],
   //     },
+  //     {
+  //       path: 'my-order-list',
+  //       component: ListOrderComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     {
+  //       path: 'my-inventory',
+  //       component: ListProductComponent,
+  //       canActivate: [AuthGuard],
+  //     },
+  //     { path: 'dash', redirectTo: '', pathMatch: 'full' },
   //   ],
   // },
+
+  {
+    path: '',
+    component: SidenavtabsComponent,
+    children: [
+      { path: '', redirectTo: '/dash', pathMatch: 'full' },
+      { path: 'dash', component: NewDashboardComponent },
+      {
+        path: 'New_wallet',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/new-wallet/newwalletmodules/newwalletmodules.module'
+          ).then((m) => m.NewwalletmodulesModule),
+      },
+      {
+        path: 'New_recomm',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/new-recommendation/newrecommendationmodule/newrecommendationmodule.module'
+          ).then((m) => m.NewrecommendationmoduleModule),
+      },
+      {
+        path: 'New_orders',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/orders/orders/orders-routing.module'
+          ).then((m) => m.OrdersRoutingModule),
+      },
+
+      {
+        path: 'New_setting',
+        loadChildren: () =>
+          import(
+            './components/newDesignScreens/storesetting/setting-module/setting-module.module'
+          ).then((m) => m.SettingModuleModule),
+      },
+
+      {
+        path: 'New_cust',
+        component: NewCustomerComponent,
+      },
+    ],
+  },
 
   {
     path: 'store',
