@@ -33,7 +33,7 @@ export class SidenavtabsComponent implements OnInit {
     { tit: "Inventory Management", link: "/" },
     { tit: "Influencer support", link: "/" },
     { tit: "Insights", link: "/" },
-    { tit: "Setting", link: "/" },
+    { tit: "Setting", link: "/New_setting" },
   ]
 
   constructor(

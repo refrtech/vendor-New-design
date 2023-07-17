@@ -1,0 +1,883 @@
+<div class="container" *ngIf="store$ | async as store">
+  <div class="row">
+    <div class="section ld_t30padding">
+      <div
+        class="dashboard_area ld_dflex md_dflex sd_dflex ld_align-items-center md_align-items-center sd_align-items-center ld_JCspace md_JCspace sd_JCspace">
+        <div>
+          <div class="dashboardOverview ld_xml_size md_l_size md_m_size fw_600 ">
+            Store Setting
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section ld_t30padding">
+      <div
+        class="bg_grad shadow1 br10 ld_A15padding md_A15padding sd_A10padding ld_dflex ld_JCspace md_JCspace sd_JCspace ld_align-items-center md_align-items-center sd_A15padding sd_align-items-center sd_b30margin">
+        <div>
+          <div class="h1 fw_400 ld_m_size ld_boldText ld_nopadding md_nopadding sd_nopadding sd_l_size sd_b10padding">
+            Power your business with AI
+          </div>
+          <div class="ld_xs_size c_gray">
+            This will help your customers find your business when they need it the most
+          </div>
+        </div>
+        <span class="ld_xs_size purple_text textDecoration_underline">Learn more</span>
+      </div>
+      <div class="ld_t30padding">
+        <!--<ng-container *ngIf="store.subCat == 'sc-healthcare-dentist'" -->
+        <ng-container *ngFor="let x of db;let i = index">
+          <ng-container *ngIf="x.type == 'radio'">
+            <div class="ld_dflex boldText {{i == 0 ? '' : 'ld_t20padding'}} ld_JCspace">
+              <div>
+                {{i+1}}. {{x.question}}
+              </div>
+              <div>
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="x.id">
+                  <ng-container *ngFor="let opt of x.options">
+                    <mat-radio-button [value]="opt.value" color="primary"
+                      class="ld_r20padding">{{opt.label}}</mat-radio-button>
+                  </ng-container>
+                </mat-radio-group>
+              </div>
+            </div>
+          </ng-container>
+
+
+          <ng-container *ngIf="x.type == 'text'">
+            <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+              <div>
+                {{i+1}}. {{x.question}}
+              </div>
+            </div>
+            <div class="ld_t10padding">
+              <textarea></textarea>
+            </div>
+          </ng-container>
+        </ng-container>
+
+
+
+
+
+
+
+
+        <!-- <button (click)="SubmitAns()">submit</button> -->
+        <!-- </ng-container> -->
+
+
+
+
+
+
+        <!-- for salon owners -->
+
+        <!-- <ng-container *ngIf="store.cat == 'salons_and_spa'">
+
+
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              1. * Are there any precautions or considerations for clients with specific skin or hair conditions?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              2. Are you open on Mondays?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              3. Do you have valet service ?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              4. Do you offer EMI options for payment?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              5. Do you run offers ?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              6. Do you give discounts?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              7. Do you have a membership program?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              8. * Do you provide consultations before haircuts or color treatments to discuss styles or
+              options?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              9. * Do you offer any services for men, such as haircuts, grooming, or beard trims?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              10. * What services does your salon offer, and what are the prices for each service?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              11. * Can you provide information about the stylists and technicians at your salon, including their name,
+              expertise and experience?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              12. * How can I schedule an appointment at your salon, and is there a preferred method for booking?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              13. * What hair treatments or services do you offer for different hair types, such as coloring, cutting,
+              styling, or extensions?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              14. * What skincare services or treatments does your salon offer, such as facials, waxing, or massages?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              15. * Are there any specific products or brands used in your salon that customers should be aware of?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              16. * Can you provide information about any specialized treatments or services, such as bridal or special
+              occasion packages?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              17. * How far in advance should appointments be scheduled, particularly for popular or busy times?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+        </ng-container>
+
+
+
+
+
+        <ng-container *ngIf="store.subCat == 'bar'">
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have any outdoor seating or a rooftop area?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are reservations recommended or required?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you provide Valet service?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Does your bar have a beach view?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have quarter/Nip system?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you serve draught beer?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you serve seasonal cocktails?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have any special promotions or happy hour deals?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What type of bar is it? (e.g., sports bar, cocktail bar, dive bar, etc.)
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What are the most popular drinks or cocktails served at your bar?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What kind of atmosphere or ambiance does your bar have?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What type of music or entertainment do you offer?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What kind of food or snacks do you serve?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What are the busiest days and times at your bar?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are there any unique or interesting features about your bar that customers should know about?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+
+        </ng-container>
+
+
+
+
+
+        <!-- sc-food_and_beverages-restaurants -->
+        <ng-container *ngIf="store.subCat == 'sc-food_and_beverages-restaurants'">
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have any vegetarian or vegan options available?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer any special discounts or promotions?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are there any parking facilities available for customers?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer takeout or delivery services?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer valet service ?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer free deliveries?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have outdoor sitting?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have a live dj?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have live music?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have a smoking area?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Is your restaurant wheelchair friendly?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Does your restaurant have a beach view?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What type of cuisine does your restaurant specialize in?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the price range of your menu items?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What are your restaurant's hours of operation?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the seating capacity of your restaurant?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have a bar or offer any alcoholic beverages?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the ambiance of your restaurant (e.g., casual, upscale, family-friendly)?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+        </ng-container>
+
+
+
+        <ng-container *ngIf="store.subCat == 'sc-food_and_beverages-cafe'">
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer outdoor sitting?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Is your cafe pet-friendly?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you offer outdoor seating?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are there any special events or promotions that you offer?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you provide Valet service?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Does your cafe have a sunset view?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Does your cafe have a beach view?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are you open till late beyond 1am?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Are customers allowed to work ?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Do you have fee wifi?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Is your cafe good for meetings?
+            </div>
+            <div>
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary" class="ld_r20padding">Yes</mat-radio-button>
+                <mat-radio-button value="2" color="primary">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+
+
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the average price of your coffee?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              Where do you source your coffee beans from?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the speciality of your cafe?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What type of cuisine does your cafe serve?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the price range of your cafe?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the seating capacity of your cafe?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the ambiance and decor of your cafe?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+          <div class="ld_dflex boldText ld_t20padding ld_JCspace">
+            <div>
+              What is the location and accessibility of your cafe?
+            </div>
+          </div>
+          <div class="ld_t10padding">
+            <textarea></textarea>
+          </div>
+
+
+
+        </ng-container> -->
+      </div>
+    </div>
+  </div>
+</div>
