@@ -229,7 +229,7 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
 
 
   inputClicked(result:any){
-    result.address_components.map((component:any) => {
+    result?.address_components.map((component:any) => {
       const types = component.types;
       if (types.includes('postal_code')) {
         this.storeLoc.postal_code = component.long_name
@@ -314,7 +314,7 @@ export class NewStoreComponent implements OnInit, AfterViewInit {
 /*
 inputClicked = (result) => {
 
-  result.address_components.map(component => {
+  result?.address_components.map(component => {
     const types = component.types
 
     if (types.includes('postal_code')) {

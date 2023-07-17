@@ -777,7 +777,7 @@
           <form (submit)="true" *ngFor="let loc of listLoc; let i = index;">
             <mat-form-field appearance="legacy" class="fullWidth">
               <mat-label>Address {{i+1}}</mat-label>
-              <input matInput placeholder="Location name" [value]="loc.line1" readonly>
+              <input matInput placeholder="Location name" [value]="loc?.line1" readonly>
               <span matPrefix style="vertical-align: middle;"><mat-icon>map</mat-icon>&nbsp;</span>
               <button mat-icon-button matSuffix><mat-icon>delete</mat-icon></button>
               <mat-hint align="end">{{loc.city}}, {{loc.zip}}</mat-hint>

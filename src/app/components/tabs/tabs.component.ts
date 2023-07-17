@@ -26,6 +26,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
     { tit: "Products", link: "/my-inventory" },
     { tit: "My Customers", link: "/customer" },
     { tit: "Orders", link: "/my-order-list" },
+    {tit:'Store Setting',link:"/questions" }
     //{ tit:"Subscriptions", link:"/dash" },
     //{ tit:"Integrations", link:"/api" },
     ///{ tit:"Reports", link:"/insight" },

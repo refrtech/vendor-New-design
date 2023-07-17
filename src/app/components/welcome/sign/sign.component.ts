@@ -47,7 +47,7 @@ export class SignComponent implements OnInit {
     this.auth.setupReCapca();
   }
 
-  setContactNumber(){
+  setContactNumber() {
     console.log(this.phoneNumFull);
     // if(!know){
     //   this.phoneNumber.area = "";
@@ -95,9 +95,8 @@ export class SignComponent implements OnInit {
             // .catch(err => {
             //   this.finalRESULT({"success":false,info:"401"});
             // });
-
-          }else{
-            this.auth.verifyPhoneWithOTPX( phone, false ).then(dataV => {
+          } else {
+            this.auth.verifyPhoneWithOTPX(phone, false).then((dataV) => {
               //this.auth.stepDisable = false;
               //this.finalRESULT(dataV);
               if (!dataV.success) {
@@ -204,45 +203,6 @@ export class SignComponent implements OnInit {
         // })
       }
     }
-        let validatePassword = this.auth.resource.pass.value;
-        if( this.auth.resource.invalidPassword(validatePassword) ){
-          //this.auth.resource.pass.setValue("");
-          this.auth.resource.first.enable();
-          //this.auth.resource.last.enable();
-          //this.auth.resource.pass.enable();
-          this.verificationCode = "";
-          this.auth.resource.startSnackBar("issue: format must be 0-9A-Za-z@.")
-        }else{
-          const name = this.auth.resource.first?.value; //+" "+ this.auth.resource.last?.value;
-          //const pass = this.auth.resource.pass.value;
-
-    if(this.verificationCode?.length < 6){
-      this.auth.resource.startSnackBar("issue: verification code invalid.")
-    }else{
-      this.auth.confirmationResult.confirm(this.verificationCode).then((credential:any) => {
-        this.auth.step2X_varifyCODE(credential, name, //pass,
-        this.phoneNumber.e164, this.phoneNumber.iso, this.phoneNumber.coin ).then(creUser => {
-          this.finalRESULT(creUser);
-          this.goToDash()
-        })
-        // .catch(err =>{
-        //   this.auth.resource.startSnackBar(err);
-        // })
-      }).catch((err:any) => {
-        console.error(err);
-        this.verificationCode = "";
-        this.auth.resource.startSnackBar(err);
-      })
-      // this.auth.step2X_varifyCODE(this.verificationCode, "", name, pass,
-      // this.phoneNumber.e164, //validatePassword, name,
-      // this.phoneNumber.iso, this.phoneNumber.coin
-      // ).then(data => {
-      //   //this.auth.resource.playSound('beep')
-      //   //this.finalRESULT(data);
-      // })
-    }
-
-        }
   }
 
   step6() {
@@ -358,16 +318,14 @@ export class SignComponent implements OnInit {
     });
   }
 
+  createUserUsingEmail(email: any, password: any) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential: any) => {
+        // Signed in
+        var user = userCredential.user;
 
-  createUserUsingEmail(email:any,password:any) {
-
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential:any) => {
-      // Signed in
-      var user = userCredential.user;
-
-      console.log('userCredential :'+user.uid)
+        console.log('userCredential :' + user.uid);
 
         //this.finalRESULT(userCredential);
         this.auth
@@ -415,23 +373,26 @@ export class SignComponent implements OnInit {
     }
   }
 
-  social(signFor:string){
-    if(signFor == "google"){
-      this.auth.googleSignin().then((data:any) => {
-        console.log(data)
-        this.finalRESULT(data)
-      }).catch(err => {
-        this.credentialX = "Ve: " + err;
-      })
-        //this.auth.resource.playSound('beep');
+  social(signFor: string) {
+    if (signFor == 'google') {
+      this.auth
+        .googleSignin()
+        .then((data: any) => {
+          console.log(data);
+          this.finalRESULT(data);
+        })
+        .catch((err) => {
+          this.credentialX = 'Ve: ' + err;
+        });
+      //this.auth.resource.playSound('beep');
 
-        //this.finalRESULT(data);
-        //UPDATE ALLOW NOTIFICATION SEND
-        //if(data.success && environment.production){
-          // take first real user
-        //}
-        //UPDATE ALLOW NOTIFICATION SEND
-/*
+      //this.finalRESULT(data);
+      //UPDATE ALLOW NOTIFICATION SEND
+      //if(data.success && environment.production){
+      // take first real user
+      //}
+      //UPDATE ALLOW NOTIFICATION SEND
+      /*
       {
         "operationType": "signIn",
         "credential": {
@@ -556,7 +517,7 @@ export class SignComponent implements OnInit {
     // }
   }
 
-  signWithSocial(cred:any, medium:string){
+  signWithSocial(cred: any, medium: string) {
     //console.log("Maron 5", cred)
 
     const step0_CheckUserExist = this.auth.step0_socialForward(
@@ -564,27 +525,27 @@ export class SignComponent implements OnInit {
       cred.email
     );
 
-    step0_CheckUserExist.then(ref => {
-      console.log("MEGA", ref)
-      if(!ref){
-        const data = {"success":false, info:"401"}
+    step0_CheckUserExist.then((ref) => {
+      console.log('MEGA', ref);
+      if (!ref) {
+        const data = { success: false, info: '401' };
         this.finalRESULT(data);
       } else {
         this.credentialX = 'V: ' + ref.exists() + ' ' + ref.id;
         const existsX = ref.exists();
-           if(!existsX){
-             // create new user
-             this.auth.socialCreate(cred, medium).then((x:any) => {
-               this.goToDash()
-               //console.log("One",x)
-               //this.auth.upgradeSocial();
-             })
-           }else{
-             this.goToDash()
-             //this.auth.upgradeSocial();
-             // sign current user
-             //socialCreate
-           }
+        if (!existsX) {
+          // create new user
+          this.auth.socialCreate(cred, medium).then((x: any) => {
+            this.goToDash();
+            //console.log("One",x)
+            //this.auth.upgradeSocial();
+          });
+        } else {
+          this.goToDash();
+          //this.auth.upgradeSocial();
+          // sign current user
+          //socialCreate
+        }
       }
       /*
       v.pipe(take(1)).subscribe((ref:any) => {
@@ -595,9 +556,9 @@ export class SignComponent implements OnInit {
 
         }
         */
-      })
+    });
 
-      /*
+    /*
       v.pipe(take(1)).subscribe((ref:any) => {
            if(!ref){
              const data = {"success":false, info:"401"}
@@ -623,13 +584,11 @@ export class SignComponent implements OnInit {
     //step0_CheckUserExist.then((data:any) =>{
     //this.finalRESULT(data);
     //})
-
   }
 
-
-  finalRESULT(data:any){
-    if(!data.success){
-      if(data.info !== "401"){
+  finalRESULT(data: any) {
+    if (!data.success) {
+      if (data.info !== '401') {
         this.auth.stepDisable = false;
         this.auth.resource.startSnackBar(data.info);
       } else {
@@ -640,7 +599,7 @@ export class SignComponent implements OnInit {
       if (data.code == 'auth/user-disabled') {
         this.dialogRef.close();
       }
-    }else{
+    } else {
       this.auth.stepDisable = false;
 
       if (data.complete) {
@@ -661,36 +620,32 @@ export class SignComponent implements OnInit {
     }
   }
 
-  setUpNotify(){
-  // this.notify.requestPermission();
-  // this.notify.listen();
-
-  //   //.filter(user => !!user) // filter null
-  //    // take first real user
-  //   this.auth.user$.pipe(take(1)).subscribe(user => {
-  //     if (user) {
-  //       // this.notifyService.requestPermission()
-  //       // this.notifyService.monitorRefresh(user)
-  //       // this.notifyService.receiveMessage()
-
-  //       //this.notifyService.getPermission(user)
-  //       //this.notifyService.monitorRefresh(user)
-  //       //this.notifyService.receiveMessages()
-  //   // this.notifyService.requestPermission();
-  //   // this.notifyService.listen();
-
-  //     }
-  //   })
-
+  setUpNotify() {
+    // this.notify.requestPermission();
+    // this.notify.listen();
+    //   //.filter(user => !!user) // filter null
+    //    // take first real user
+    //   this.auth.user$.pipe(take(1)).subscribe(user => {
+    //     if (user) {
+    //       // this.notifyService.requestPermission()
+    //       // this.notifyService.monitorRefresh(user)
+    //       // this.notifyService.receiveMessage()
+    //       //this.notifyService.getPermission(user)
+    //       //this.notifyService.monitorRefresh(user)
+    //       //this.notifyService.receiveMessages()
+    //   // this.notifyService.requestPermission();
+    //   // this.notifyService.listen();
+    //     }
+    //   })
   }
 
-  goToDash(){
-    this.auth.user$.pipe(take(1)).subscribe((mine:any) => {
-      if(mine){
-        if(mine.storeLoc.length > 0){
-          if(mine.storeCam.length > 0){
+  goToDash() {
+    this.auth.user$.pipe(take(1)).subscribe((mine: any) => {
+      if (mine) {
+        if (mine.storeLoc.length > 0) {
+          if (mine.storeCam.length > 0) {
             this.auth.resource.router.navigate(['/dash']);
-          }else{
+          } else {
             this.auth.resource.router.navigate(['/store/create-campaign']);
           }
         } else {
@@ -700,32 +655,50 @@ export class SignComponent implements OnInit {
           this.dialogRef.close();
         }, 500);
       } else {
-        console.log('mine :'+mine);
+        console.log('mine :' + mine);
       }
     });
   }
 
-  goToDashForEmailUser(mine:any){
-      if(mine){
-        if(mine.storeLoc.length > 0){
-          if(mine.storeCam.length > 0){
-            this.auth.resource.router.navigate(['/dash']);
-          }else{
-            this.auth.resource.router.navigate(['/store/create-campaign']);
-          }
-        }else{
-          this.auth.resource.router.navigate(['/store/create-location']);
+  goToDashForEmailUser(mine: any) {
+    if (mine) {
+      if (mine.storeLoc.length > 0) {
+        if (mine.storeCam.length > 0) {
+          this.auth.resource.router.navigate(['/dash']);
+        } else {
+          this.auth.resource.router.navigate(['/store/create-campaign']);
         }
-        setTimeout(() => {
-          this.dialogRef.close();
-        }, 500)
       } else {
-        console.log('mine :'+mine);
+        this.auth.resource.router.navigate(['/store/create-location']);
       }
-
+      setTimeout(() => {
+        this.dialogRef.close();
+      }, 500);
+    } else {
+    }
   }
 
+  orders(type: string) {
+    let isPhone = this.getWidth < 768;
+    let w = isPhone ? this.getWidth + 'px' : '480px';
+    let h = isPhone ? this.getHeight + 'px' : '98vh';
+    const refDialog = this.auth.resource.dialog.open(UserSettingsComponent, {
+      width: w,
+      minWidth: '320px',
+      maxWidth: '480px',
+      height: h,
+      hasBackdrop: true,
+      disableClose: false,
+      panelClass: 'dialogLayout',
+      data: type,
+    });
+    refDialog.afterClosed().subscribe(() => {});
+  }
 
-
-
+  get getHeight() {
+    return window.innerHeight;
+  }
+  get getWidth() {
+    return window.innerWidth;
+  }
 }

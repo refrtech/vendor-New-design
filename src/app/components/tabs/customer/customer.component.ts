@@ -176,7 +176,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     for (let index = 0; index < gotIT.length; index++) {
       let element: any = {
         name: gotIT[index].displayName || "",
-        //email: gotIT[index].emails[0].address || "",
+        //email: gotIT[index].emails[0]?.address || "",
         phone: gotIT[index].phoneNumbers[0].number || ""
       };
 

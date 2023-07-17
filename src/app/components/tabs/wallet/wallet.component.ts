@@ -174,7 +174,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
             //this.qrCode.append(this.canvasX?.nativeElement);
             const type: string[] = [];
             this.payments$ = this.pay.getAllPayments(mine.uid, 22, type) //.pipe(take(1));
-            this.payments$ = this.pay.getAllPayments(mine.uid, 22, type) //.pipe(take(1));
+            // this.payments$ = this.pay.getAllPayments(mine.uid, 22, type) //.pipe(take(1));
             // D5AJShva0AcA2KCXF9ZEkiH6kb12 LA CANE
             // ki6vTii6S2UHkqRpxujnzQujRcp1 Estate monkey
             // Csxq4c0L6pQjX5bLIqU0pogl5ry2 Jee Hukum
@@ -184,8 +184,9 @@ export class WalletComponent implements OnInit, AfterViewInit {
             // cB8lFziWJAeR3QV9LnoZtOhlIyH3 KUSUM Rolls
             // VRQqXCsm9wYn7OOdVNWWIgGIMj43 Snip n’ Scissors
             // UPQAXnNgMfUTjtqplaYIKDiqtoM2 En’creo
-            this.payments$ = this.pay.getAllPayments("UPQAXnNgMfUTjtqplaYIKDiqtoM2", 100, type) //.pipe(take(1));
+            // this.payments$ = this.pay.getAllPayments("UPQAXnNgMfUTjtqplaYIKDiqtoM2", 100, type) //.pipe(take(1));
             this.payments$.pipe(take(1)).subscribe(z => {
+              console.log("Transaction = ",z);
             })
           }, 3000)
         }
@@ -469,7 +470,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
     this.invoicedata = {
       Total: data.amBurst,
       storename: data.storeName,
-      shopaddress: data.logistics.addressPick.line1 + ", " + data.logistics.addressPick.zip + ", " + data.logistics.addressPick.locality,
+      shopaddress: data.logistics.addressPick?.line1 + ", " + data.logistics.addressPick?.zip + ", " + data.logistics.addressPick?.locality,
       orderId: data.id,
       orderdate: data.sin,
       Cust_name: data.userName,

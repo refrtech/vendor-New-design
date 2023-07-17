@@ -25,7 +25,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
 import {
   BottomSheetNotification,
   TabsComponent,
@@ -130,6 +129,8 @@ import { OrdersComponent } from './components/newDesignScreens/orders/orders.com
 import { OrderDetailsComponent } from './components/newDesignScreens/orders/order-details/order-details.component';
 import { NewRecommendationComponent } from './components/newDesignScreens/new-recommendation/new-recommendation.component';
 import { RecommendationsettingpageComponent } from './components/newDesignScreens/new-recommendation/recommendationsettingpage/recommendationsettingpage.component';
+import { StoresettingComponent } from './components/tabs/storesetting/storesetting.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -146,6 +147,7 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     InsightComponent,
     ContentComponent,
     CustomerComponent,
+    StoresettingComponent,
     StoreCreateComponent,
     CropperComponent,
     MerchanthowitworksComponent,
@@ -187,7 +189,7 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     OrdersComponent,
     OrderDetailsComponent,
     NewRecommendationComponent,
-    RecommendationsettingpageComponent
+    RecommendationsettingpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -210,6 +212,7 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatRadioModule,
     MatMenuModule,
     MatTabsModule,
     MatListModule,
@@ -221,7 +224,6 @@ import { RecommendationsettingpageComponent } from './components/newDesignScreen
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
 
     // 3. Initialize
     provideFirebaseApp(() => initializeApp(environment.firebase)),

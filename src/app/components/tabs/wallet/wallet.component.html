@@ -414,7 +414,10 @@
                     <span *ngIf="x.to !== 'Δ' && x.by !== 'Δ'">
                       <span *ngIf="x.status !== -10 && x.amBurst !== 0 ">+</span>
                       <span *ngIf="x.status == -10 && x.amBurst !== 0">-</span>
-                      <span *ngIf="x.ordrTYPE !== 'CASH'">{{x.amBurst | number:'1.0-2'}}</span>
+                      <span *ngIf="x.ordrTYPE !== 'CASH' && x.journey != 'DIRECT_OFFLINE'">{{x.amBurst |
+                        number:'1.0-2'}}</span>
+                      <span *ngIf="x.ordrTYPE !== 'CASH' && x.journey == 'DIRECT_OFFLINE'">{{x.amTotal |
+                        number:'1.0-2'}}</span>
                       <span *ngIf="x.ordrTYPE == 'CASH'">{{x.amTotal | number:'1.0-2'}}</span>
                     </span>
                   </div>

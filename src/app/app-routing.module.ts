@@ -31,6 +31,7 @@ import { InsightComponent } from './components/tabs/insight/insight.component';
 import { ProfileComponent } from './components/tabs/profile/profile.component';
 import { ListOrderComponent } from './components/tabs/list-order/list-order.component';
 import { ListProductComponent } from './components/tabs/list-product/list-product.component';
+import { StoresettingComponent } from './components/tabs/storesetting/storesetting.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -72,6 +73,11 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'questions',
+        component: StoresettingComponent,
         canActivate: [AuthGuard],
       },
       {

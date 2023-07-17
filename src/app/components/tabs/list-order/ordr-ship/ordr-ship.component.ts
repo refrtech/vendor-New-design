@@ -71,7 +71,7 @@ export class OrdrShipComponent implements OnInit {
       this.shipment.order_id = data.ordr.id
       this.shipment.name = data.ordr.storeName
 
-      this.shipment.address = pickME.line1
+      this.shipment.address = pickME?.line1
       this.shipment.address_2 = pickME.area
       this.shipment.city = pickME.city
       this.shipment.state = pickME.region

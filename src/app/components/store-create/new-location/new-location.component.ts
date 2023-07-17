@@ -237,7 +237,7 @@ export class NewLocationComponent implements OnInit, AfterViewInit {
   }
   }
   inputClicked(result:any){
-    result.address_components.map((component:any) => {
+    result?.address_components.map((component:any) => {
       const types = component.types;
       if (types.includes('postal_code')) {
         this.storeLoc.postal_code = component.long_name
