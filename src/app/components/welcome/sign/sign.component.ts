@@ -71,9 +71,11 @@ export class SignComponent implements OnInit {
       this.auth.resource.startSnackBar('issue: format must be 0-9.');
     } else {
       const phone = this.phoneNumber.e164;
-      const step0_CheckUserExist = this.auth.step0_userForward( phone, false );
-      step0_CheckUserExist.then((data:any) =>{
-        if(!data.success){
+      const step0_CheckUserExist = this.auth.step0_userForward(phone, false);
+      step0_CheckUserExist.then((data: any) => {
+        console.log('Mega', data);
+        if (!data.success) {
+          //console.log("Dip Err")
           this.finalRESULT(data);
         } else {
           if (!data.exist) {
@@ -93,8 +95,6 @@ export class SignComponent implements OnInit {
             // .catch(err => {
             //   this.finalRESULT({"success":false,info:"401"});
             // });
-          } else {
-            this.auth.verifyPhoneWithOTPX(phone, false).then((dataV) => {
           } else {
             this.auth.verifyPhoneWithOTPX(phone, false).then((dataV) => {
               //this.auth.stepDisable = false;
@@ -151,17 +151,17 @@ export class SignComponent implements OnInit {
     this.auth.resource.first.disable();
     //this.auth.resource.pass.disable();
 
-        let validatePassword = this.auth.resource.pass.value;
-        if( this.auth.resource.invalidPassword(validatePassword) ){
-          //this.auth.resource.pass.setValue("");
-          this.auth.resource.first.enable();
-          //this.auth.resource.last.enable();
-          //this.auth.resource.pass.enable();
-          this.verificationCode = "";
-          this.auth.resource.startSnackBar("issue: format must be 0-9A-Za-z@.")
-        }else{
-          const name = this.auth.resource.first?.value; //+" "+ this.auth.resource.last?.value;
-          //const pass = this.auth.resource.pass.value;
+    let validatePassword = this.auth.resource.pass.value;
+    if (this.auth.resource.invalidPassword(validatePassword)) {
+      //this.auth.resource.pass.setValue("");
+      this.auth.resource.first.enable();
+      //this.auth.resource.last.enable();
+      //this.auth.resource.pass.enable();
+      this.verificationCode = '';
+      this.auth.resource.startSnackBar('issue: format must be 0-9A-Za-z@.');
+    } else {
+      const name = this.auth.resource.first?.value; //+" "+ this.auth.resource.last?.value;
+      //const pass = this.auth.resource.pass.value;
 
       if (this.verificationCode?.length < 6) {
         this.auth.resource.startSnackBar('issue: verification code invalid.');
@@ -169,6 +169,7 @@ export class SignComponent implements OnInit {
         this.auth.confirmationResult
           .confirm(this.verificationCode)
           .then((credential: any) => {
+            //console.log(credential.user)
             this.auth
               .step2X_varifyCODE(
                 credential,
@@ -182,6 +183,7 @@ export class SignComponent implements OnInit {
                 this.goToDash();
               });
             // .catch(err =>{
+            //   console.log("Err", err)
             //   this.auth.resource.startSnackBar(err);
             // })
           })
@@ -190,10 +192,12 @@ export class SignComponent implements OnInit {
             this.verificationCode = '';
             this.auth.resource.startSnackBar(err);
           });
+        // console.log(this.verificationCode, "", name, pass)
         // this.auth.step2X_varifyCODE(this.verificationCode, "", name, pass,
         // this.phoneNumber.e164, //validatePassword, name,
         // this.phoneNumber.iso, this.phoneNumber.coin
         // ).then(data => {
+        //   console.log(data)
         //   //this.auth.resource.playSound('beep')
         //   //this.finalRESULT(data);
         // })
@@ -320,14 +324,8 @@ export class SignComponent implements OnInit {
       .then((userCredential: any) => {
         // Signed in
         var user = userCredential.user;
-  createUserUsingEmail(email: any, password: any) {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential: any) => {
-        // Signed in
-        var user = userCredential.user;
 
-      console.log('userCredential :'+user.uid)
+        console.log('userCredential :' + user.uid);
 
         //this.finalRESULT(userCredential);
         this.auth
@@ -339,24 +337,28 @@ export class SignComponent implements OnInit {
 
         // ...
 
-      // getAuth().currentUser.updateProfile({
-      //     phone: +918454083097
-      //   }).then(function() {
-      //     // Update successful.
-      //   }).catch(function(error:any) {
-      //   });
-
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+        // getAuth().currentUser.updateProfile({
+        //     phone: +918454083097
+        //   }).then(function() {
+        //     // Update successful.
+        //     console.log('User Phone Updated Successfully');
+        //   }).catch(function(error:any) {
+        //       console.log('Error update :'+error)
+        //   });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('errorMessage :' + error);
+        // ..
+      });
   }
 
-  step5(){//OLD USER FORGOT PASSWOZRD
+  step5() {
+    //OLD USER FORGOT PASSWOZRD
 
     this.auth.resource.pass.disable();
+
     let validatePassword = this.auth.resource.pass.value;
     if (this.auth.resource.invalidPassword(validatePassword)) {
       this.auth.resource.pass.setValue('');
@@ -518,12 +520,15 @@ export class SignComponent implements OnInit {
   signWithSocial(cred: any, medium: string) {
     //console.log("Maron 5", cred)
 
-    const step0_CheckUserExist = this.auth.step0_socialForward( cred.uid, cred.email );
+    const step0_CheckUserExist = this.auth.step0_socialForward(
+      cred.uid,
+      cred.email
+    );
 
-    step0_CheckUserExist.then(ref => {
-      console.log("MEGA", ref)
-      if(!ref){
-        const data = {"success":false, info:"401"}
+    step0_CheckUserExist.then((ref) => {
+      console.log('MEGA', ref);
+      if (!ref) {
+        const data = { success: false, info: '401' };
         this.finalRESULT(data);
       } else {
         this.credentialX = 'V: ' + ref.exists() + ' ' + ref.id;
@@ -640,7 +645,7 @@ export class SignComponent implements OnInit {
         if (mine.storeLoc.length > 0) {
           if (mine.storeCam.length > 0) {
             this.auth.resource.router.navigate(['/dash']);
-          }else{
+          } else {
             this.auth.resource.router.navigate(['/store/create-campaign']);
           }
         } else {
@@ -655,47 +660,24 @@ export class SignComponent implements OnInit {
     });
   }
 
-  goToDashForEmailUser(mine:any){
-      if(mine){
-        if(mine.storeLoc.length > 0){
-          if(mine.storeCam.length > 0){
-            this.auth.resource.router.navigate(['/dash']);
-          }else{
-            this.auth.resource.router.navigate(['/store/create-campaign']);
-          }
-        }else{
-          this.auth.resource.router.navigate(['/store/create-location']);
+  goToDashForEmailUser(mine: any) {
+    if (mine) {
+      if (mine.storeLoc.length > 0) {
+        if (mine.storeCam.length > 0) {
+          this.auth.resource.router.navigate(['/dash']);
+        } else {
+          this.auth.resource.router.navigate(['/store/create-campaign']);
         }
-        setTimeout(() => {
-          this.dialogRef.close();
-        }, 500)
       } else {
-        console.log('mine :'+mine);
+        this.auth.resource.router.navigate(['/store/create-location']);
       }
-
-  orders(type: string) {
-    let isPhone = this.getWidth < 768;
-    let w = isPhone ? this.getWidth + 'px' : '480px';
-    let h = isPhone ? this.getHeight + 'px' : '98vh';
-    const refDialog = this.auth.resource.dialog.open(UserSettingsComponent, {
-      width: w,
-      minWidth: '320px',
-      maxWidth: '480px',
-      height: h,
-      hasBackdrop: true,
-      disableClose: false,
-      panelClass: 'dialogLayout',
-      data: type,
-    });
-    refDialog.afterClosed().subscribe(() => {});
+      setTimeout(() => {
+        this.dialogRef.close();
+      }, 500);
+    } else {
+    }
   }
 
-  get getHeight() {
-    return window.innerHeight;
-  }
-  get getWidth() {
-    return window.innerWidth;
-  }
   orders(type: string) {
     let isPhone = this.getWidth < 768;
     let w = isPhone ? this.getWidth + 'px' : '480px';

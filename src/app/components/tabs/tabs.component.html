@@ -88,6 +88,11 @@
                 <a mat-icon-button class="c_white" (click)="infossss()" *ngIf="dependancy.activeroute == '/dash' || dependancy.activeroute == '/wallet'">
                   <mat-icon>help_outline</mat-icon>
                 </a>
+
+                <a mat-icon-button class="c_white" *ngIf="dependancy.activeroute == '/storesetting'">
+                  <mat-icon>settings</mat-icon>
+                </a>
+
                 <a mat-icon-button class="c_white" (click)="openBottomSheet(mine.note)">
                   <mat-icon>{{mine.note.length > 0 ? 'notifications_active' : 'notifications_none'}}</mat-icon><span
                     *ngIf="mine.note.length > 0">{{mine.note.length > 99 ? "99+":mine.note.length}}</span>

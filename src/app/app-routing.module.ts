@@ -76,7 +76,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'questions',
+        path: 'storesetting',
         component: StoresettingComponent,
         canActivate: [AuthGuard],
       },
